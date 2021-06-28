@@ -18,5 +18,27 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/terms-and-condition', function () {
+    return view('tandc');
+});
+
+Route::get('/privacy-policy', function () {
+    return view('privacy');
+});
+
+Route::get('/faq', function () {
+    return view('help-center.faq');
+});
+
+Route::get('/help-center', function () {
+    return view('help-center.help-center');
+});
+
+Route::get('/site-map', function () {
+    return view('site-map');
+});
+
+
+
 
 Route::get('/page', [PagesController::class, 'index']);

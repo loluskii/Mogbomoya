@@ -1,7 +1,7 @@
 <footer>
     <div class="container py-5">
         <div class="row">
-            <div class="col-3">
+            <div class="col-md-3 col-sm-12">
                 <ul style="list-style-type: none">
                     <li class="top my-3">
                         The Mogbomoya App
@@ -11,7 +11,7 @@
                     <li class="my-3">Site Map</li>
                 </ul>
             </div>
-            <div class="col-3">
+            <div class="col-md-3 col-sm-12">
                 <ul style="list-style-type: none">
                     <li class="top my-3">
                         Find Events
@@ -22,7 +22,7 @@
                     <li class="my-3">Festival and Concerts</li>
                 </ul>
             </div>
-            <div class="col-3">
+            <div class="col-md-3 col-sm-12">
                 <ul style="list-style-type: none">
                     <li class="top my-3">
                         Legal
@@ -32,7 +32,7 @@
                     <li class="my-3">Privacy Policy</li>
                 </ul>
             </div>
-            <div class="col-3">
+            <div class="col-md-3 col-sm-12">
                 <ul style="list-style-type: none">
                     <li class="top my-3">
                         Get the App

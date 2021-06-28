@@ -17,8 +17,13 @@ body {
     font-size: 14px;
 }
 
-.jumbotron {
+.jumbotron-landing {
     background-image: url('../images/landing.png');
+    color: white;
+}
+
+.jumbotron-terms {
+    background-color: #006554;
     color: white;
 }
 
@@ -37,7 +42,7 @@ body {
 }
 
 ul li:not(.top) {
-    font-weight: 200;
+    font-weight: 100;
 }
 
 .nav-pills .nav-item a {

@@ -1,9 +1,10 @@
-@extends('layouts.main') @section('content')
+@extends('layouts.main') 
+@section('content')
 <div class="container-fluid">
-    <div class="jumbotron">
+    <div class="jumbotron jumbotron-landing">
         <div class="container-fluid py-5 my-5">
             <h1 class="h2">Find events to attend</h1>
-            <div class="col-4 pl-0">
+            <div class="col-md-4 col-sm-12 pl-0">
                 <p>From virtual events to music concerts and business seminars, Mògbómoyá gives you access to a wide range of events tailored to suit your needs</p>
                 <a class="btn cta-button btn-lg py-2 px-4" href="#" role="button">Browse Events</a>
             </div>
@@ -88,7 +89,7 @@
             
             <div class="row py-4">
                 <div class="col-md-3">
-                    <div class="card" style="width: 21rem;">
+                    <div class="card" >
                         <img src="{{asset('images/category-images/Rectangle.png')}}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Eat & Drink Festival</h5>
@@ -98,7 +99,7 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="card" style="width: 21rem;">
+                    <div class="card" >
                         <img src="{{asset('images/category-images/Rectangle.png')}}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Eat & Drink Festival</h5>
@@ -109,7 +110,7 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="card" style="width: 21rem;">
+                    <div class="card" >
                         <img src="{{asset('images/category-images/Rectangle.png')}}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Eat & Drink Festival</h5>
@@ -119,7 +120,7 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="card" style="width: 21rem;">
+                    <div class="card" >
                         <img src="{{asset('images/category-images/Rectangle.png')}}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Eat & Drink Festival</h5>
@@ -135,4 +136,4 @@
             </div>
         </div>
     </div>
-    @endsection
+@endsection
