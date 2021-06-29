@@ -53,10 +53,10 @@
             <div class="row mx-4 py-2 justify-content-between">
                 <p>© 2021 Mógbòmoyá. All rights reserved</p>
                 <p>
-                    <span><img src="{{asset('images/footer/Twitter.svg')}}" alt="" srcset=""></span>
-                    <span><img src="{{asset('images/footer/Instagram.svg')}}" alt="" srcset=""></span>
-                    <span><img src="{{asset('images/footer/Facebook.svg')}}" alt="" srcset=""></span>
-                    <span><img src="{{asset('images/footer/Youtube.svg')}}" alt="" srcset=""></span>
+                    <span><img src="{{asset('images/footer/twitter.svg')}}" alt="" srcset=""></span>
+                    <span><img src="{{asset('images/footer/instagram.svg')}}" alt="" srcset=""></span>
+                    <span><img src="{{asset('images/footer/facebook.svg')}}" alt="" srcset=""></span>
+                    <span><img src="{{asset('images/footer/youtube.svg')}}" alt="" srcset=""></span>
                 </p>
             </div>
         </div>
