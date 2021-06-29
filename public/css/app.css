@@ -5,6 +5,10 @@ button:focus {
     outline: none;
 }
 
+p {
+    font-weight: 100;
+}
+
 body {
     font-family: 'Sen', sans-serif;
     background-color: #f7f7f7;
@@ -60,7 +64,8 @@ footer .top {
     font-weight: 700;
 }
 
-hr {
+
+/* hr {
     border: 0.5px white solid;
     opacity: 0.1;
-}
+} */

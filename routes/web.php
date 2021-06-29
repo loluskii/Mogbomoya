@@ -38,6 +38,28 @@ Route::get('/site-map', function () {
     return view('site-map');
 });
 
+Route::get('/events/new-event', function () {
+    return view('events.new-event.index');
+});
+
+
+Route::get('/events/info', function () {
+    return view('events.info');
+});
+
+Route::get('/sign-up', function () {
+    return view('auth.sign-up');
+});
+
+
+Route::get('/login', function () {
+    return view('auth.login');
+});
+
+Route::get('/auth/new-password', function () {
+    return view('auth.new-password');
+});
+
 
 
 
