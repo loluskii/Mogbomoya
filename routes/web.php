@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +15,8 @@ use App\Http\Controllers\PagesController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [PagesController::class, 'index']);
+Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/terms-and-condition', function () {
     return view('tandc');
@@ -42,7 +42,6 @@ Route::get('/events/new-event', function () {
     return view('events.new-event.index');
 });
 
-
 Route::get('/events/info', function () {
     return view('events.info');
 });
@@ -51,16 +50,14 @@ Route::get('/sign-up', function () {
     return view('auth.sign-up');
 });
 
-
 Route::get('/login', function () {
     return view('auth.login');
-});
+})->name('login');
+
+Route::get('oauth/{driver}', [LoginController::class, 'redirectToProvider'])->name('social.oauth');
+
+Route::get('oauth/{driver}/callback', [LoginController::class, 'handleProviderCallback'])->name('social.callback');
 
 Route::get('/auth/new-password', function () {
     return view('auth.new-password');
 });
-
-
-
-
-Route::get('/page', [PagesController::class, 'index']);

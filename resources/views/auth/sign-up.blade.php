@@ -99,10 +99,10 @@
                         <div>
                             <p class="text-center text-sm-left">Or continue with:</p>
                             <p class="text-sm-left text-center">
-                                <a href="" class="mr-3 mr-sm-2"><img src="{{asset('images/icons/apple.svg')}}" alt="" srcset=""></a>
-                                <a href="" class="mr-3 mr-sm-2"><img src="{{asset('images/icons/google.svg')}}" alt="" srcset=""></a>
-                                <a href="" class="mr-3 mr-sm-2"><img src="{{asset('images/icons/facebook.svg')}}" alt="" srcset=""></a>
-                                <a href="" class="mr-3 mr-sm-2"><img src="{{asset('images/icons/twitter.svg')}}" alt="" srcset=""></a>
+                                {{-- <a href="" class="mr-3 mr-sm-2"><img src="{{asset('images/icons/apple.svg')}}" alt="" srcset=""></a> --}}
+                                <a href="{{ route('social.oauth', 'google') }}" class="mr-3 mr-sm-2"><img src="{{asset('images/icons/google.svg')}}" alt="" srcset=""></a>
+                                <a href="{{ route('social.oauth', 'facebook') }}" class="mr-3 mr-sm-2"><img src="{{asset('images/icons/facebook.svg')}}" alt="" srcset=""></a>
+                                {{-- <a href="" class="mr-3 mr-sm-2"><img src="{{asset('images/icons/twitter.svg')}}" alt="" srcset=""></a> --}}
                             </p>
                         </div>
                     </div>

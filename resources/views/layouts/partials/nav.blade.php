@@ -1,3 +1,4 @@
+@guest
 <nav class="navbar navbar-expand-lg navbar-light bg-white">
   <a class="navbar-brand" href="/">
     <img src="{{asset('images/logo.png')}}" height="58" alt="">
@@ -27,10 +28,10 @@
     </ul>
   </div>
 </nav>
+@endguest
 
-
-{{-- IF AUTH --}}
-{{-- <nav class="navbar navbar-expand-lg navbar-light bg-white">
+@auth
+<nav class="navbar navbar-expand-lg navbar-light bg-white">
   <a class="navbar-brand" href="#">
     <img src="{{asset('images/logo.png')}}" height="58" alt="">
   </a>
@@ -70,15 +71,16 @@
       </li>
       <li class="nav-item dropdown pt-2">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <img src="{{asset('images/icons/user-image.svg')}}" alt="" srcset=""> Dara Assim-Ita
+          <img src="{{asset('images/icons/user-image.svg')}}" alt="" srcset=""> {{auth()->user()->name}} 
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item py-3" href="#">Interests</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item py-3" href="#"><img src="{{asset('images/icons/account.svg')}}" class="px-2" alt="" srcset=""> Account Settings</a>
-          <a class="dropdown-item py-3" href="#"><img src="{{asset('images/icons/logout.svg')}}" class="pr-2" alt="" srcset=""> Logout</a>
+          <a class="dropdown-item py-3" href="{{route('logout')}}"><img src="{{asset('images/icons/logout.svg')}}" class="pr-2" alt="" srcset=""> Logout</a>
         </div>
       </li>
     </ul>
   </div>
-</nav> --}}
+</nav>
+@endguest
