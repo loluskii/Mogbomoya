@@ -76,7 +76,7 @@
                                 <a href="" class="mr-3 mr-sm-2"><img src="{{asset('images/icons/facebook.svg')}}" alt="" srcset=""></a>
                                 <a href="" class="mr-3 mr-sm-2"><img src="{{asset('images/icons/twitter.svg')}}" alt="" srcset=""></a>
                             </p>
-                            <p class="text-sm-left text-center">Dont't have an account? <a href="">Sign up</a></p>
+                            <p class="text-sm-left text-center">Dont't have an account? <a href="/sign-up">Sign up</a></p>
                         </div>
                     </div>
                 </form>

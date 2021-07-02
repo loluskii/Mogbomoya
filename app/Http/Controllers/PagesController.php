@@ -17,6 +17,8 @@ class PagesController extends Controller
             }, $words));
 
             return view('welcome');
+        }else{
+            return view('welcome');
         }
         
     }

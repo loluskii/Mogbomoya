@@ -49,7 +49,7 @@
         <div class="col-md-6">
             <div class="container p-5 mt-5">
                 <h3 style="font-weight: bold">Welcome to Mogbomoya👋🏾</h3>
-                <p class="text-muted">Already have an account? <a href="">Sign In</a></p>
+                <p class="text-muted">Already have an account? <a href="/login">Sign In</a></p>
                 <form action="" class="pt-4" autocomplete="off">
                     <div class="col-sm-12 col-md-10 px-0">
                         <div class="form-row">

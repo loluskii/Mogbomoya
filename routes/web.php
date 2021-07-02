@@ -61,3 +61,24 @@ Route::get('oauth/{driver}/callback', [LoginController::class, 'handleProviderCa
 Route::get('/auth/new-password', function () {
     return view('auth.new-password');
 });
+
+Route::get('/auth/reset-password', function () {
+    return view('auth.reset-password');
+});
+
+Route::get('/account', function () {
+    return view('user.index');
+});
+
+Route::get('/user/bank-details', function () {
+    return view('user.bank-details');
+});
+
+Route::get('/collections', function () {
+    return view('user.collections');
+});
+
+Route::get('/my-events', function () {
+    return view('user.my-events');
+});
+

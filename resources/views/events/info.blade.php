@@ -76,7 +76,7 @@
                             </a>
                         </div>
                         <div class="mr-3">
-                            <button class="btn register">Register</button>
+                            <button class="btn register" data-toggle="modal" data-target="#exampleModal">Register</button>
                         </div>
                     </div>
                     <center>
@@ -123,7 +123,7 @@
                             hobbyist cooks.
                         </p>
                         <div class="pt-3 pb-5">
-                            <button class="btn register">Register</button>
+                            <button class="btn register" data-toggle="modal" data-target="#exampleModal">Register</button>
                         </div>
                     </div>
 
@@ -177,4 +177,46 @@
         </div>
     </div>
 </div>
+
+
+
+
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header flex-column pr-5 mr-auto">
+          <h5 class="modal-title" id="exampleModalLabel">Register for the 2018 Annual Business Conference <br>  </h5>
+          <p class="mb-0"> Friday, 29 Dec 2020 by 12:00pm - 8:00pm WAT</p>
+          
+        </div>
+        
+        <div class="modal-body">
+            <div class="container">
+                <div class="row">
+                    <div class="mr-auto">
+                        <h6>General Admission</h6>
+                        <p>Free</p>
+                    </div>
+                    <div class="form-group">
+                        <label for=""></label>
+                        <select class="form-control" name="" id="">
+                          <option>1</option>
+                          <option>2</option>
+                          <option>3</option>
+                        </select>
+                      </div>
+                </div>
+      
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
 @endsection

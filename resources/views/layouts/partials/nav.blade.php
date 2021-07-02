@@ -17,7 +17,7 @@
         <a class="nav-link" href="/help-center">Help Center </a>
       </li>
       <li class="nav-item mr-4">
-        <a class="nav-link" href="#">Sign In</a>
+        <a class="nav-link" href="/login">Sign In</a>
       </li>
       <li class="nav-item mr-4">
         <a class="nav-link " href="#" style="color: #008A69;"> <img src="{{asset('images/icons/plus.svg')}}" alt="" srcset=""> Create Event</a>
@@ -32,7 +32,7 @@
 
 @auth
 <nav class="navbar navbar-expand-lg navbar-light bg-white">
-  <a class="navbar-brand" href="#">
+  <a class="navbar-brand" href="/">
     <img src="{{asset('images/logo.png')}}" height="58" alt="">
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,7 +55,7 @@
     </li>
       <li class="nav-item mr-4">
         <div class="text-center">
-          <a href="#" class="nav-link">
+          <a href="/my-events" class="nav-link">
             <p class="mb-0"><img src="{{asset('images/icons/ticket-black.svg')}}" alt="" srcset=""></p>
             <p>My Events</p>
           </a>
@@ -63,7 +63,7 @@
       </li>
       <li class="nav-item mr-4">
         <div class="text-center">
-          <a href="#" class="nav-link">
+          <a href="/collections" class="nav-link">
             <p class="mb-0"><img src="{{asset('images/icons/bookmarks.svg')}}" alt="" srcset=""></p>
             <p>Bookmarks</p>
           </a>
@@ -76,11 +76,13 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item py-3" href="#">Interests</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item py-3" href="#"><img src="{{asset('images/icons/account.svg')}}" class="px-2" alt="" srcset=""> Account Settings</a>
+          <a class="dropdown-item py-3" href="/account"><img src="{{asset('images/icons/account.svg')}}" class="px-2" alt="" srcset=""> Account Settings</a>
           <a class="dropdown-item py-3" href="{{route('logout')}}"><img src="{{asset('images/icons/logout.svg')}}" class="pr-2" alt="" srcset=""> Logout</a>
         </div>
       </li>
     </ul>
   </div>
 </nav>
-@endguest
+@endauth
+
+
