@@ -21,6 +21,10 @@ body {
     font-size: 14px;
 }
 
+.cta-button:hover {
+    color: white;
+}
+
 .jumbotron-landing {
     background-image: url('../images/landing.png');
     color: white;
@@ -78,7 +82,6 @@ footer .top {
     color: white;
 }
 
-a .btn:hover,
 .btnPrimary:hover {
     color: white;
 }
