@@ -72,6 +72,17 @@ footer .top {
     background-color: red;
 }
 
+.btnPrimary {
+    background-color: #008A69;
+    padding: 12px 32px;
+    color: white;
+}
+
+.btn:hover,
+.btnPrimary:hover {
+    color: white;
+}
+
 
 /* hr {
     border: 0.5px white solid;
