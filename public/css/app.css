@@ -78,7 +78,7 @@ footer .top {
     color: white;
 }
 
-.btn:hover,
+a .btn:hover,
 .btnPrimary:hover {
     color: white;
 }
