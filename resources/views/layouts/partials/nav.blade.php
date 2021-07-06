@@ -20,7 +20,7 @@
         <a class="nav-link" href="/login">Sign In</a>
       </li>
       <li class="nav-item mr-4">
-        <a class="nav-link " href="#" style="color: #008A69;"> <img src="{{asset('images/icons/plus.svg')}}" alt="" srcset=""> Create Event</a>
+        <a class="nav-link " href="/event/create" style="color: #008A69;"> <img src="{{asset('images/icons/plus.svg')}}" alt="" srcset=""> Create Event</a>
       </li>
       <li class="nav-item">
         <a class="nav-link " href="#" style="color: #D60B7B; font-weight: bold"> <img src="{{asset('images/icons/location.svg')}}" alt="" srcset=""> Find events near me</a>
@@ -47,7 +47,7 @@
     <ul class="navbar-nav mr-0">
       <li class="nav-item mr-4">
         <div class="text-center">
-          <a href="" class="nav-link">
+          <a href="/event/create" class="nav-link">
             <p class="mb-0"><img src="{{asset('images/icons/plus.svg')}}" srcset=""></p>
             <p style="color: #008A69;">Create Event</p>
           </a>

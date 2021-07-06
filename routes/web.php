@@ -38,7 +38,7 @@ Route::get('/site-map', function () {
     return view('site-map');
 });
 
-Route::get('/events/new-event', function () {
+Route::get('/event/create', function () {
     return view('events.new-event.index');
 });
 

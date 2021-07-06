@@ -137,3 +137,10 @@
         </div>
     </div>
 @endsection
+
+@section('scripts')
+    <script src="">
+        console.log('hello');
+    </script>
+
+    @endsection
