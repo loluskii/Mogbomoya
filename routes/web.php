@@ -82,3 +82,7 @@ Route::get('/my-events', function () {
     return view('user.my-events');
 });
 
+Route::get('/s=location', function () {
+    return view('search.index');
+});
+

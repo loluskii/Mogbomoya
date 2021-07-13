@@ -59,7 +59,7 @@
                     <div class="row justify-content-between mb-4">
                         <div class="ml-3">
                             <a href="http://" class="btn save shadow" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="{{asset('images/share.svg')}}" srcset="">
+                                <img src="{{asset('images/save.svg')}}" srcset="">
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item py-2" href="#">Save to</a>
@@ -72,7 +72,7 @@
                                 <a class="dropdown-item py-2" href="#">Done</a>
                             </div>
                             <a href="http://" class="btn save shadow">
-                                <img src="{{asset('images/save.svg')}}" srcset="">
+                                <img src="{{asset('images/share.svg')}}" srcset="">
                             </a>
                         </div>
                         <div class="mr-3">
@@ -185,38 +185,98 @@
 
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header flex-column pr-5 mr-auto">
-          <h5 class="modal-title" id="exampleModalLabel">Register for the 2018 Annual Business Conference <br>  </h5>
-          <p class="mb-0"> Friday, 29 Dec 2020 by 12:00pm - 8:00pm WAT</p>
-          
-        </div>
-        
-        <div class="modal-body">
-            <div class="container">
-                <div class="row">
-                    <div class="mr-auto">
-                        <h6>General Admission</h6>
-                        <p>Free</p>
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="modal-header flex-column pr-5 mr-auto">
+                        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: bold">Register for the 2018 Annual Business Conference <br> </h5>
+                        <p class="mb-0"> Friday, 29 Dec 2020 by 12:00pm - 8:00pm WAT</p>
+
                     </div>
-                    <div class="form-group">
-                        <label for=""></label>
-                        <select class="form-control" name="" id="">
+
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="mr-auto">
+                                    <h6>General Admission</h6>
+                                    <p>Free</p>
+                                </div>
+                                <div class="form-group">
+                                    <label for=""></label>
+                                    <select class="form-control" name="" id="">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                  </select>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-5">
+                    <div class="modal-header flex-column pt-0 pr-0" style="background-image: url(../images/info-image.svg); background-position: center center; height: 250px;">
+                        {{-- <img src="{{asset('images/info-image.svg')}}" class="img-fluid" style=""> --}}
+
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="mr-auto">
+                                    <h6>Order Summary</h6>
+                                    <div class="py-3 justify-content-between">
+                                        <p>Free</p>
+                                        <div class="form-group">
+                                            <label for=""></label>
+                                            <select class="form-control" name="" id="">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                          </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{--
+            <div class="modal-header flex-column pr-5 mr-auto">
+                <h5 class="modal-title" id="exampleModalLabel">Register for the 2018 Annual Business Conference <br> </h5>
+                <p class="mb-0"> Friday, 29 Dec 2020 by 12:00pm - 8:00pm WAT</p>
+
+            </div>
+
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="mr-auto">
+                            <h6>General Admission</h6>
+                            <p>Free</p>
+                        </div>
+                        <div class="form-group">
+                            <label for=""></label>
+                            <select class="form-control" name="" id="">
                           <option>1</option>
                           <option>2</option>
                           <option>3</option>
                         </select>
-                      </div>
+                        </div>
+                    </div>
+
                 </div>
-      
+            </div> --}}
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
             </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
     </div>
-  </div>
+</div>
 @endsection
