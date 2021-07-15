@@ -1,5 +1,4 @@
-@extends('events.main') 
-@section('css')
+@extends('events.main') @section('css')
 <style>
     .nav-tabs {
         border-bottom: none;
@@ -61,20 +60,27 @@
     label {
         font-size: 11px;
     }
-    input[type=date], input[type=time]{
-            font-size: 14px;
+    
+    input[type=date],
+    input[type=time] {
+        font-size: 14px;
     }
-
+    span{
+        color: black;
+    }
+    
     @media only screen and (max-width: 600px) {
-        #next, #create{
+        #next,
+        #create {
             width: 100%;
+        }
+        .span-text{
+            font-size: 10px;
         }
     }
 </style>
 
-@endsection
-
-@section('content')
+@endsection @section('content')
 
 <div class="container-fluid">
     <div class="row">
@@ -164,7 +170,7 @@
                                     <div class="form-group py-2">
                                         <label for="">WHAT TYPE OF EVENT IS THIS</label>
                                         <div class="form-row">
-                                            <div class="col-md-3 col-6">
+                                            <div class="col-md-4 col-6">
                                                 <div class="form-check form-check-inline py-4 w-100" style="border: 1px solid #ECEEEE; border-radius: 5px; background-color:white">
                                                     <label class="form-check-label px-3">
                                                         <input class="form-check-input" type="radio" name="type" id="event-type"
@@ -172,7 +178,7 @@
                                                     </label>
                                                 </div>
                                             </div>
-                                            <div class="col-md-3 col-6">
+                                            <div class="col-md-4 col-6">
                                                 <div class="form-check form-check-inline  py-4 w-100" style="border: 1px solid #ECEEEE; border-radius: 5px; background-color:white">
                                                     <label class="form-check-label px-3">
                                                         <input class="form-check-input" type="radio" name="type" id="event-type"
@@ -199,27 +205,26 @@
                                         </div>
                                     </div>
                                     <div class="form-group py-2">
-                                        <div class="form-row">
-                                            <div class="col-md-2 col-6">
-                                                <div class="form-check bg-white py-3 pl-4 pr-4">
-                                                    <input type="radio" class="form-check-input" name="eventType" id="private" value="checkedValue">
-                                                    <label class="form-check-label">
-                                                        <span style="font-weight: bold">Private</span><br>
-                                                        Only people with the unique link can
-                                                        see & register to attend.</label>
+                                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                            <div class="form-row">
+                                                <div class="col-md-4 col-6">
+                                                    <label class="btn btnPrimaryOutline bg-white pt-sm-4 pt-2 pb-sm-2 pb-1 px-sm-3 px-2" style="text-align: left;">
+                                                      <input type="radio" name="options" style="display: none"> 
+                                                      <span>
+                                                        Public Event
+                                                      </span>
+                                                      <p class="text-dark span-text">Only people with the unique link can see & register to attend</p>
+                                            
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-4 col-6">
+                                                    <label class="btn btnPrimaryOutline bg-white pt-sm-4 pt-2 pb-sm-2 pb-1 px-sm-3 px-2" style="text-align: left">
+                                                      <input type="radio" name="options" style="display: none"> 
+                                                      <span>Public Event</span>
+                                                      <p class="text-dark span-text">Everyone on the app can see & register to attend your event</p>
+                                                    </label>
                                                 </div>
                                             </div>
-
-                                            <div class="col-md-2 col-6">
-                                                <div class="form-check bg-white py-3 pl-4 pr-4">
-                                                    <input type="radio" class="form-check-input" name="eventType" id="public" value="checkedValue">
-                                                    <label class="form-check-label">
-                                                        <span style="font-weight: bold">Public</span><br>
-                                                        Everyone on the app can see and register to attend your
-                                                        event.</label>
-                                                </div>
-                                            </div>
-
                                         </div>
                                     </div>
                                     <div class="py-4">
@@ -275,25 +280,23 @@
     </div>
 </div>
 
-@endsection
-
-@section('script')
-    <script>
-        $('#addNewTier').click(function(e){
+@endsection @section('script')
+<script>
+    $('#addNewTier').click(function(e) {
             e.preventDefault()
             $('.tier').append("<div class='tier-category'><div class='form-group py-2'><label for=''>TIER NAME</label><div class='col-md-10 col-sm-12 pl-0'><input type='text' name='' id='tier-name' class='form-control form-control-lg' placeholder='' aria-describedby='helpId'></div></div><div class='form-group py-2'><div class='form-row'><div class='col-md-3 col-6'><label for=''>PRICE</label><input type='currency' class='form-control form-control-lg'></div><div class='col-md-3 col-6'><label for=''>SET LIMITS (OPTIONAL)</label><input type='number' class='form-control form-control-lg'></div></div></div></div>")
         })
         // $('#next').click(function (){})
-        $('#next').click(function(e){
-            e.preventDefault();
-            var next_tab = $('.nav-tabs > .active').next('a');
-            if(next_tab.length>0){
-                next_tab.trigger('click');
+    $('#next').click(function(e) {
+        e.preventDefault();
+        var next_tab = $('.nav-tabs > .active').next('a');
+        if (next_tab.length > 0) {
+            next_tab.trigger('click');
 
-            }else{
-                $('.nav-tabs a:eq(0)').trigger('click');
-            }
-        });
-    </script>
+        } else {
+            $('.nav-tabs a:eq(0)').trigger('click');
+        }
+    });
+</script>
 
 @endsection

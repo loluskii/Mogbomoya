@@ -98,8 +98,28 @@ footer .top {
     color: #008A69;
 }
 
+.btnPrimaryOutline {
+    color: #008A69;
+    border: 1px solid rgb(226, 226, 226)
+}
 
-/* hr {
-    border: 0.5px white solid;
-    opacity: 0.1;
-} */
+.btnPrimaryOutline:hover {
+    border-color: #008A69;
+}
+
+.btnPrimaryOutline.active {
+    color: #008A69;
+    border: 1px solid #008A69;
+}
+
+.btnPrimaryOutline.active>span {
+    color: #008A69;
+    font-weight: bold;
+}
+
+@media (min-width: 992px) {
+    .modal-lg,
+    .modal-xl {
+        max-width: 1000px;
+    }
+}
