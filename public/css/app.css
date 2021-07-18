@@ -1,0 +1,125 @@
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+p {
+    font-weight: 100;
+}
+
+body {
+    font-family: 'Sen', sans-serif;
+    background-color: #f7f7f7;
+    ;
+}
+
+.cta-button {
+    background-color: #008A69;
+    color: white;
+    font-size: 14px;
+}
+
+.cta-button:hover {
+    color: white;
+}
+
+.jumbotron-landing {
+    background-image: url('../images/landing.png');
+    color: white;
+}
+
+.jumbotron-terms {
+    background-color: #006554;
+    color: white;
+}
+
+.home-location {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom-color: rgb(207, 207, 207);
+    background-color: transparent;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+    color: #fff;
+    background-color: #006554;
+}
+
+ul li:not(.top) {
+    font-weight: 100;
+}
+
+.nav-pills .nav-item a {
+    text-decoration: none;
+    color: grey;
+    font-weight: lighter;
+}
+
+footer {
+    background-color: black;
+    color: white;
+}
+
+footer .top {
+    font-weight: 700;
+}
+
+.circle {
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: red;
+}
+
+.btnPrimary {
+    background-color: #008A69;
+    padding: 12px 32px;
+    color: white;
+}
+
+.btnPrimary:hover {
+    color: white;
+}
+
+.btnSecondary {
+    background: #E6F4F0;
+    padding: 12px 20px;
+    color: #008A69;
+    border: none;
+    border-radius: 5px;
+}
+
+.btnSecondary:hover {
+    color: #008A69;
+}
+
+.btnPrimaryOutline {
+    color: #008A69;
+    border: 1px solid rgb(226, 226, 226)
+}
+
+.btnPrimaryOutline:hover {
+    border-color: #008A69;
+}
+
+.btnPrimaryOutline.active {
+    color: #008A69;
+    border: 1px solid #008A69;
+}
+
+.btnPrimaryOutline.active>span {
+    color: #008A69;
+    font-weight: bold;
+}
+
+@media (min-width: 992px) {
+    .modal-lg,
+    .modal-xl {
+        max-width: 1000px;
+    }
+}
