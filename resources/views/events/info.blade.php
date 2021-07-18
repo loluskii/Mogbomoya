@@ -285,24 +285,24 @@
                                 </div>
                                 <div class="form-group">
                                     <label for=""></label>
-                                    <select class="custom-select form-control form-control-lg mx-3" name="" id="">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
+                                    <select class="custom-select form-control form-control-lg mx-3" id="regularQuantity" name="">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="mr-auto">
                                     <h6>VIP</h6>
-                                    <p>£45.00</p>
+                                    <p>£<span class="priceValue">45.00</span> </p>
                                 </div>
                                 <div class="form-group">
                                     <label for=""></label>
-                                    <select class="custom-select form-control form-control-lg mx-3" name="" id="">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
+                                    <select class="custom-select form-control form-control-lg mx-3" name="" id="vipQuantity">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
                                     </select>
                                 </div>
                             </div>
@@ -322,7 +322,7 @@
                                     Free
                                 </span>
                                 <span class="mr-3">
-                                    0.00
+                                    £0.00
                                 </span>
                             </div>
                             <hr style="width: auto">
@@ -331,7 +331,7 @@
                                     Total
                                 </span>
                                 <span class="mr-3">
-                                    0.00
+                                    £<span class="totalPrice"></span>
                                 </span>
                             </div>
                             <div class="pt-3 pb-5 float-right">
@@ -347,4 +347,16 @@
     </div>
 </div>
 
+@endsection
+
+@section('script')
+<script>
+    $(document).ready(function(){
+        let price = $('.priceValue').html();
+        $("#vipQuantity").change(function(){
+            var totalPrice = parseFloat($(this).children("option:selected").val()) * price;
+            $('.totalPrice').append(totalPrice);
+        });
+    });
+</script>
 @endsection

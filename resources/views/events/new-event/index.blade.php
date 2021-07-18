@@ -96,7 +96,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item mr-4" style="padding-top: 15px">
-                            <a class="nav-link" href="#">Help Center </a>
+                            <a class="nav-link" href="/help-center">Help Center </a>
                         </li>
                         <li class="nav-item dropdown pt-2">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
