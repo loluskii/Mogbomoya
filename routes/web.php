@@ -80,7 +80,7 @@ Route::prefix('event')->group(function () {
 
 });
 
-Route::prefix('user')->group(function () {
+Route::middleware('auth')->prefix('user')->group(function () {
 
     Route::get('/account', function () {
         return view('user.index');
