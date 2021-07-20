@@ -45,20 +45,25 @@
             <div class="container p-5 mt-5">
                 <h3 style="font-weight: bold">Create a new Password</h3>
                 <p><small>We sent a special 6 digit code to the email address associated with your account jo**ap****@youremail.com. Enter the code below to set your new password.</small></p>
-                <form action="" class="pt-4">
+                <form action="" class="pt-4" onsubmit="return validate()" autocomplete="off">
                     <div class="col-sm-12 col-md-9 px-0">
                         <div class="form-group pb-2">
                             <label for="">password</label>
-                            <input class="form-control form-control-lg" placeholder="**********" type="text" name="email" id="">
+                            <input class="form-control form-control-lg" placeholder="**********" type="password" pattern="^[a-z]{2,4}$" name="pass1" id="newPassword1">
                         </div> 
                         <div class="form-group pb-2">
                             <label for="">password</label>
-                            <input class="form-control form-control-lg" placeholder="**********" type="text" name="email" id="">
-                        </div>  
+                            <input class="form-control form-control-lg" placeholder="**********" pattern="^[a-z]{2,4}$" type="password" name="pass2" id="newPassword2">
+                        </div> 
+                        <div class="invalid-feedback">a to z only (2 to 4 long)</div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input checkbox" id="exampleCheck1">
+                            <label class="form-check-label pt-1"  for="exampleCheck1">Show Password</label>
+                          </div> 
 
                         <div class="py-4">
-                            <button class="btn register d-sm-none d-none d-md-block">Done</button>
-                            <button class="btn btn-block register d-sm-block  d-md-none">Done</button>
+                            <button type="submit" class="btn register d-sm-none d-none d-md-block">Done</button>
+                            <button type="submit" class="btn btn-block register d-sm-block  d-md-none">Done</button>
                         </div>
                     </div>
                 </form>
@@ -67,3 +72,30 @@
         <div class="col-md-1"></div>
     </div>
 </div>
+
+@section('script')
+<script>
+    $(document).ready(function(event){
+        $("#newPassword1").keyup(function(e){
+        var val = $(this).val();
+        val = val.replace(/[^\w]+/g, "");
+        $("#newPassword2").val(val);
+        });
+
+        $('.checkbox').click(function(){
+            $(this).is(':checked') ? $('#newPassword1, #newPassword2 ').attr('type', 'text') : $(' #newPassword1, #newPassword2 ').attr('type', 'password');
+        })
+
+        var pass=$("#newPassword1").val();
+        var password_regex1=/([a-z].*[A-Z])|([A-Z].*[a-z])([0-9])+([!,%,&,@,#,$,^,*,?,_,~])/;
+        var password_regex2=/([0-9])/;
+        var password_regex3=/([!,%,&,@,#,$,^,*,?,_,~])/;
+        var passwordTest = true;
+
+        
+        
+
+    })
+    
+</script>
+@endsection
