@@ -60,26 +60,27 @@
             <div class="container p-5 mt-5">
                 <h3 style="font-weight: bold">Create a new Password</h3>
                 <p><small>We sent a special 6 digit code to the email address associated with your account jo**ap****@youremail.com. Enter the code below to set your new password.</small></p>
-                <form action="" class="pt-4">
+                <form action="" class="pt-4" autocomplete="off">
                     <div class="col-sm-12 col-md-9 px-0">
                         <div class="d-flex justify-content-center align-items-center container">
                             <div class="py-5">
                                 <div class="d-flex flex-row mt-5">
-                                    <input type="text" class="form-control text-center" autofocus="">
-                                    <input type="text" class="form-control  text-center">
-                                    <input type="text" class="form-control  text-center">
-                                    <input type="text" class="form-control  text-center">
-                                    <input type="text" class="form-control  text-center">
-                                    <input type="text" class="form-control  text-center">
+                                    <input type="text" name="digit1" class="form-control text-center" autofocus="">
+                                    <input type="text" name="digit2" class="form-control  text-center">
+                                    <input type="text" name="digit3" class="form-control  text-center">
+                                    <input type="text" name="digit4" class="form-control  text-center">
+                                    <input type="text" name="digit5" class="form-control  text-center">
+                                    <input type="text" name="digit6" class="form-control  text-center">
                                 </div>
-                                <div class="py-4">
-                                    <button class="btn register d-sm-none d-none d-md-block">Verify</button>
-                                    <button class="btn btn-block register d-sm-block  d-md-none">Verify</button>
-                                    {{-- <a href="" class="font-weight-bold">Cancel</a> --}}
-                                </div>
-                                <div class="text-center mt-5">
+                                <div class="text-center mt-4">
                                     <span class="d-block mobile-text">Don't receive the code? <a href="" class="font-weight-bold resend">Resend</a></span>
                                 </div>
+                                <div class="pt-5 pb-2">
+                                    <button class="btn btnPrimary d-sm-none d-none d-md-block">Verify</button>
+                                    <button class="btn btnPrimary btn-block register d-sm-block  d-md-none">Verify</button>
+                                </div>
+                                <a href="" class="mt-3 resend font-weight-bold" style="text-decoration: none;">Cancel</a>
+                                
                             </div>
                         </div>
 
@@ -91,11 +92,3 @@
     </div>
 </div>
 
-
-<div class="d-flex justify-content-center align-items-center container">
-    <div class="card py-5 px-3">
-        <h5 class="m-0">Mobile phone verification</h5><span class="mobile-text">Enter the code we just send on your mobile phone <b class="text-danger">+91 86684833</b></span>
-        <div class="d-flex flex-row mt-5"><input type="text" class="form-control" autofocus=""><input type="text" class="form-control"><input type="text" class="form-control"><input type="text" class="form-control"></div>
-        <div class="text-center mt-5"><span class="d-block mobile-text">Don't receive the code?</span><span class="font-weight-bold text-danger cursor">Resend</span></div>
-    </div>
-</div>

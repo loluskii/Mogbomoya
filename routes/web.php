@@ -82,6 +82,8 @@ Route::prefix('event')->group(function () {
 
 Route::prefix('user')->group(function () {
 
+    Route::get('/bank-details')->name('bank.details');
+
     Route::get('/account', function () {
         return view('user.index');
     });

@@ -10,26 +10,33 @@
             padding: 12px 32px;
         }
         .sidebar{
-            background-color: #008A69;
+            background-color: #006554;
             height: 100vh;
         }
+        .list-group-item {
+            background-color: transparent;
+            color: white;
+            font-weight: bold;
+        }
+
 
     </style>
 @endsection
+
 
 @section('content')
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-3 d-none d-md-block d-sm-none sidebar">
-            {{-- <div class="sidebar-heading border-bottom bg-light">Start Bootstrap</div> --}}
-            {{-- <div class="list-group list-group-flush">
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Dashboard</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Shortcuts</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Overview</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Events</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Profile</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Status</a>
-            </div> --}}
+            <div class="list-group list-group-flush mt-5 pt-2">
+                <a href="/" class="mb-5 pb-5"><img src="{{asset('images/logo-white.svg')}}" class="img-fluid" style="height: 50px" srcset=""></a>
+                <a class="list-group-item list-group-item-action" href="account">My account</a>
+                <a class="list-group-item list-group-item-action p-3" href="/user/bank-details">Bank account details</a>
+                <a class="list-group-item list-group-item-action p-3" href="#!">Customize your interests</a>
+                <a class="list-group-item list-group-item-action p-3" href="#!">Talk to us</a>
+                <a class="list-group-item list-group-item-action p-3" href="#!">Deactivate account</a>
+            </div>
+
         </div>
         <div class="col-md-9 px-sm-0 px-2">
             <nav class="navbar navbar-expand-lg navbar-light">
@@ -46,7 +53,7 @@
                         <li class="nav-item dropdown pt-2">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="{{asset('images/icons/user-image.svg')}}" alt="" srcset=""> {{auth()->user()->name}} 
+                                {{-- <img src="{{asset('images/icons/user-image.svg')}}" alt="" srcset=""> {{auth()->user()->name}}  --}}
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item py-3" href="#">Interests</a>
