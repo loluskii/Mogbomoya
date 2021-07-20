@@ -94,8 +94,8 @@
                             
                         </div>
                         <div class="py-4">
-                            <button class="btn register d-sm-none d-none d-md-block">Continue</button>
-                            <button class="btn btn-block register d-sm-block  d-md-none">Continue</button>
+                            <button type="submit" class="btn btnPrimary d-sm-none d-none d-md-block">Continue</button>
+                            <button type="submit" class="btn btnPrimary btn-block register d-sm-block  d-md-none">Continue</button>
                         </div>
                         <div>
                             <p class="text-center text-sm-left">Or continue with:</p>
