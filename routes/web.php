@@ -82,15 +82,13 @@ Route::prefix('event')->group(function () {
 
 Route::middleware('auth')->prefix('user')->group(function () {
 
-    Route::get('/bank-details')->name('bank.details');
-
     Route::get('/account', function () {
         return view('user.index');
     });
 
     Route::get('/bank-details', function () {
         return view('user.bank-details');
-    });
+    })->name('bank.details');
 
     Route::get('/collections', function () {
         return view('user.collections');
