@@ -45,8 +45,7 @@
                         <li class="nav-item dropdown pt-2">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="{{ asset('images/icons/user-image.svg') }}" alt="" srcset="">
-                                Appleseed John
+                                <img src="{{asset('images/icons/user-image.svg')}}" alt="" srcset=""> {{auth()->user()->name}} 
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item py-3" href="#">Interests</a>

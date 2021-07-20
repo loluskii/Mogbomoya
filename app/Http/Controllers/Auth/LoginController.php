@@ -33,14 +33,17 @@ class LoginController extends Controller
             if (Auth::attempt(array($fieldType => $input['username'] , 'password' => $input['password']) ,  $shouldRemember ) ) {
                 $request->session()->regenerate();
     
-                return redirect()->intended('/');
+                return redirect()->intended('/')->with(
+                    'success', 'Welcome!',
+                );
             }
-            return 'error';
-            return back()->withErrors([
-                'username' => 'The provided credentials do not match our records.',
-            ]);
+            return back()->with(
+                'error', 'The provided credentials do not match our records.',
+            );
         }catch(\Exception $e){
-            return $e->getMessage();
+            return back()->with(
+                'error', $e->getMessage()
+            );
         }
         
     }
@@ -53,6 +56,8 @@ class LoginController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/login')->with(
+            'success', 'Logged Out Successfully',
+        );
     }
 }

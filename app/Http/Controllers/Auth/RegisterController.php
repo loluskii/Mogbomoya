@@ -58,13 +58,15 @@ class RegisterController extends Controller
 
     protected function sendSuccessResponse()
     {
-        return redirect()->intended('/');
+        return redirect()->intended('/')->with(
+            'success' , 'Welcome'
+        );
     }
 
     protected function sendFailedResponse($msg = null)
     {
         return redirect()->route('login')
-            ->withErrors(['msg' => $msg ?: 'Unable to login, try with another provider to login.']);
+            ->withErrors(['error' => $msg ?: 'Unable to login, try with another provider to login.']);
     }
 
     protected function loginOrCreateAccount($providerUser, $driver) {
@@ -122,10 +124,14 @@ class RegisterController extends Controller
     
           Auth::login($user, true);
 
-          return redirect()->intended('/');
+          return redirect()->intended('/')->with(
+            'success' , 'Welcome'
+          );
 
         }catch(\Exception $e){
-            return $e->getMessage();
+            return back()->with(
+                'error', $e->getMessage()
+            );
         } 
     }
 }
