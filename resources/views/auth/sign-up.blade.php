@@ -53,6 +53,7 @@
                 <form action="{{route('register')}}" method="POST" class="pt-4" autocomplete="off">
                 @csrf
                     <div class="col-sm-12 col-md-10 px-0">
+                        @include('layouts.partials.errors')
                         <div class="form-row">
                             <div class="col">
                                 <div class="form-group pb-2">

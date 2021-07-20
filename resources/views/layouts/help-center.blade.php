@@ -38,8 +38,7 @@
                     </ul>
                 </div>
             </nav>
-            
-                       
+                         
             @yield('content')
 
             @include('layouts.partials.footer')

@@ -60,9 +60,6 @@
             </nav>
          --}}
 
-
-
-
         @yield('content')
         
         @include('layouts.partials.footer-scripts')

@@ -22,7 +22,7 @@
     </head>
     <body>
         <div id="wrapper">
-           
+            
             @yield('content')
 
         </div>

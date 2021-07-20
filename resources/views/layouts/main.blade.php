@@ -25,7 +25,7 @@
     <body>
         <div id="wrapper">
             @include('layouts.partials.nav')
-           
+                       
             @yield('content')
 
             @include('layouts.partials.footer')

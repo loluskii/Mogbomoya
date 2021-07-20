@@ -25,8 +25,8 @@ class StoreUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|regex:/^\S*$/u|regex:/(^([a-zA-Z]+)(\d+)?$)/u',
-            'email' => 'required|unique:users|regex:/^\S*$/u|regex:/(^([a-zA-Z]+)(\d+)?$)/u',
+            'name' => 'required',
+            'email' => 'required|unique:users|email:rfc,dns',
             'username' => 'required|unique:users|regex:/^\S*$/u|regex:/(^([a-zA-Z]+)(\d+)?$)/u',
             'phone_number' => 'required|unique:users',
             'password' => 'required'
