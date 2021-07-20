@@ -24,7 +24,7 @@ Route::post('sign-up', [RegisterController::class, 'register'])->name('register'
 Route::post('login', [LoginController::class, 'authenticate'])->name('login');
 
 Route::get('/login', function () {
-    
+
     return view('auth.login');
 
 })->name('login.view');
@@ -64,13 +64,13 @@ Route::get('/site-map', function () {
     return view('site-map');
 });
 
-Route::prefix(['event'])->group(function () {
+Route::prefix('event')->group(function () {
 
-    Route::get('/event/create', function () {
+    Route::get('create', function () {
         return view('events.new-event.index');
     })->middleware('auth');
 
-    Route::get('/events/info', function () {
+    Route::get('info', function () {
         return view('events.info');
     });
 
@@ -80,7 +80,7 @@ Route::prefix(['event'])->group(function () {
 
 });
 
-Route::prefix(['user'])->group(function () {
+Route::prefix('user')->group(function () {
 
     Route::get('/account', function () {
         return view('user.index');
