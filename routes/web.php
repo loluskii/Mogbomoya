@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
-use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +18,7 @@ use App\Http\Controllers\Auth\AuthController;
 
 Route::get('/', [PagesController::class, 'index']);
 
-Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/terms-and-condition', function () {
     return view('tandc');
@@ -51,15 +52,17 @@ Route::get('/sign-up', function () {
     return view('auth.sign-up');
 });
 
-Route::post('sign-up', [AuthController::class, 'register'])->name('register');
+Route::post('sign-up', [RegisterController::class, 'register'])->name('register');
+
+Route::post('login', [LoginController::class, 'authenticate'])->name('login');
 
 Route::get('/login', function () {
     return view('auth.login');
-})->name('login');
+})->name('login.view');
 
-Route::get('oauth/{driver}', [AuthController::class, 'redirectToProvider'])->name('social.oauth');
+Route::get('oauth/{driver}', [RegisterController::class, 'redirectToProvider'])->name('social.oauth');
 
-Route::get('oauth/{driver}/callback', [AuthController::class, 'handleProviderCallback'])->name('social.callback');
+Route::get('oauth/{driver}/callback', [RegisterController::class, 'handleProviderCallback'])->name('social.callback');
 
 
 Route::get('/auth/new-password', function () {

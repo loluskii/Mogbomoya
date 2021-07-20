@@ -8,12 +8,10 @@ use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Http\Requests\StoreUserRequest;
 
-class AuthController extends Controller
+class RegisterController extends Controller
 {
-    use RegistersUsers;
 
     public function __construct()
     {
@@ -112,17 +110,6 @@ class AuthController extends Controller
         return in_array($driver, $this->providers) && config()->has("services.{$driver}");
     }
 
-    public function logout(Request $request){
-        dd(Auth::check());
-        Auth::logout();
-
-        $request->session()->invalidate();
-
-        $request->session()->regenerateToken();
-
-        return redirect('/');
-    }
-
     public function register(StoreUserRequest $request){
         try{
             $user = User::create([
@@ -139,7 +126,6 @@ class AuthController extends Controller
 
         }catch(\Exception $e){
             return $e->getMessage();
-        }
-        
+        } 
     }
 }
