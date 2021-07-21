@@ -53,18 +53,23 @@
                 <form action="{{route('register')}}" method="POST" class="pt-4" autocomplete="off">
                 @csrf
                     <div class="col-sm-12 col-md-10 px-0">
-                        @include('layouts.partials.errors')
                         <div class="form-row">
                             <div class="col">
                                 <div class="form-group pb-2">
                                     <label for="">full name</label>
-                                    <input class="form-control form-control-lg" placeholder="John Appleseed" type="text" name="name" id="">
+                                    <input class="form-control form-control-lg" placeholder="John Appleseed" type="text" name="name" value = "{{old('name')}}" required>
+                                    @error('name')
+                                        <b class="text-danger">{{ $message }} </b>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="form-group pb-3">
                                     <label for="">pick a username</label>
-                                    <input class="form-control form-control-lg" placeholder="@appleseed" type="text" name="username" id="" >
+                                    <input class="form-control form-control-lg" placeholder="@appleseed" type="text" name="username" value = "{{old('username')}}" required>
+                                    @error('username')
+                                        <b class="text-danger">{{ $message }} </b>
+                                    @enderror
                                 </div>  
                             </div>  
                         </div>
@@ -73,19 +78,28 @@
                             <div class="col">
                                 <div class="form-group pb-2">
                                     <label for="">email address</label>
-                                    <input class="form-control form-control-lg" placeholder="youremail@address.com" type="email" name="email" id="">
+                                    <input class="form-control form-control-lg" placeholder="youremail@address.com" type="email" name="email" value = "{{old('email')}}" required>
+                                    @error('email')
+                                        <b class="text-danger">{{ $message }} </b>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="form-group pb-2">
                                     <label for="">phone number</label>
-                                    <input class="form-control form-control-lg" placeholder="2349-012-3456" type="number" name="phone_number" id="">
+                                    <input class="form-control form-control-lg" placeholder="2349-012-3456" type="number" name="phone_number" value =" {{old('phone_number')}}" required>
+                                    @error('phone_number')
+                                        <b class="text-danger">{{ $message }} </b>
+                                    @enderror
                                 </div>  
                             </div>  
                         </div>
                         <div class="form-group pb-2">
                             <label for="">password</label>
-                            <input class="form-control form-control-lg" placeholder="**********" type="password" name="password" id="">
+                            <input class="form-control form-control-lg" placeholder="**********" type="password" name="password" required>
+                            @error('password')
+                                <b class="text-danger">{{ $message }} </b>
+                            @enderror
                         </div>  
                         <div class="form-row justify-content-between pb-4">
                             <div class="custom-control custom-checkbox my-1 mr-sm-2 ml-1">

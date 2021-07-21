@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 
@@ -68,15 +69,17 @@ Route::prefix('event')->group(function () {
 
     Route::get('create', function () {
         return view('events.new-event.index');
-    })->middleware('auth');
+    })->name('event.create')->middleware('auth');
+
+    Route::post('create', [EventController::class, 'create'])->name('event.create');
 
     Route::get('info', function () {
         return view('events.info');
-    });
+    })->name('event.info');
 
     Route::get('/my-events', function () {
         return view('user.my-events');
-    })->middleware('auth');
+    })->name('user.events')->middleware('auth');
 
     Route::get('event-info', function () {
         return view('user.event-info');
