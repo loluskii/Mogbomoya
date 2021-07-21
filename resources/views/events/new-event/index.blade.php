@@ -68,6 +68,69 @@
     span{
         color: black;
     }
+
+
+.images {
+  display: flex;
+  flex-wrap:  wrap;
+  margin-top: 20px;
+}
+.images .img,
+.images .pic {
+  flex-basis: 31%;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  border: 1px solid rgb(206, 206, 206);
+
+}
+.images .img {
+  width: 112px;
+  height: 200px;
+  background-size: cover;
+  margin-right: 10px;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.images .img span {
+  display: none;
+  text-transform: capitalize;
+  z-index: 2;
+}
+.images .img::after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  transition: opacity .1s ease-in;
+  border-radius: 4px;
+  opacity: 0;
+  position: absolute;
+}
+.images .img:hover::after {
+  display: block;
+  background-color: #000;
+  opacity: .5;
+}
+.images .img:hover span {
+  display: block;
+  color: #fff;
+}
+.images .pic {
+  background-color: #fff;
+  align-self: center;
+  text-align: center;
+  padding: 40px 0;
+  text-transform: uppercase;
+  color: #848EA1;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+
     
     
     @media only screen and (max-width: 600px) {
@@ -81,7 +144,8 @@
     }
 </style>
 
-@endsection @section('content')
+@endsection 
+@section('content')
 
 <div class="container-fluid">
     <div class="row">
@@ -156,6 +220,13 @@
                                         @error('featured_image')
                                             <b class="text-danger">{{ $message }} </b>
                                         @enderror
+                                        <div class="images">
+                                            <div class="pic">
+                                              add
+                                            </div>
+                                          </div>
+                                    </div>
+                                    <div class="form-group py-2">
                                         <label for="">EVENT NAME</label>
                                         <div class="col-md-10 col-sm-12 pl-0">
                                             <input type="text" name="name" id="event-name" class="form-control form-control-lg" placeholder="" required value="{{old('name')}}" aria-describedby="helpId">
@@ -317,9 +388,9 @@
                                         </div>
                                         <div class="tier"></div>
                                     </div>
-                                    <a class="btn btnSecondary" href="#" id="addNewTier"> <img src="{{asset('images/icons/plus.svg')}}" alt="" srcset=""> Add a new tier</a>
+                                    <a class="btn btnSecondary" href="#" id="addNewTier"> <img src="{{asset('images/icons/plus.svg')}}" alt="" srcset=""> Add a new tier</a> <span class="bg-warning text-white">Maximum of 3 Tiers!</span>
                                     <div class="py-4">
-                                        <button class="btn btnPrimary" type="submit" id="create">Create Event</button>
+                                        <button type="submit" class="btn btnPrimary" id="create">Create Event</button>
                                     </div>
                                 </div>
                             </div>
@@ -333,21 +404,50 @@
 
 @endsection @section('script')
 <script>
-    $('#addNewTier').click(function(e) {
+    $(document).ready(function(){
+        uploadImage();
+
+        $('#addNewTier').click(function(e) {
             e.preventDefault()
             $('.tier').append("<div class='tier-category'><div class='form-group py-2'><label for=''>TIER NAME</label><div class='col-md-10 col-sm-12 pl-0'><input type='text' name='tier_name[]' id='tier-name' class='form-control form-control-lg' placeholder='' aria-describedby='helpId'></div></div><div class='form-group py-2'><div class='form-row'><div class='col-md-3 col-6'><label for=''>PRICE</label><input type='currency' name='tier_price[]' class='form-control form-control-lg'></div><div class='col-md-3 col-6'><label for=''>SET LIMITS (OPTIONAL)</label><input type='number' name='limit[]' class='form-control form-control-lg'></div></div></div></div>")
         })
-        // $('#next').click(function (){})
-    $('#next').click(function(e) {
-        e.preventDefault();
-        var next_tab = $('.nav-tabs > .active').next('a');
-        if (next_tab.length > 0) {
-            next_tab.trigger('click');
+        $('#next').click(function(e) {
+            e.preventDefault();
+            var next_tab = $('.nav-tabs > .active').next('a');
+            if (next_tab.length > 0) {
+                next_tab.trigger('click');
 
-        } else {
-            $('.nav-tabs a:eq(0)').trigger('click');
+            } else {
+                $('.nav-tabs a:eq(0)').trigger('click');
+            }
+        });
+
+        function uploadImage() {
+            var button = $('.images .pic')
+            var uploader = $('<input type="file" accept="image/*" />')
+            var images = $('.images')
+
+            button.on('click', function() {
+                uploader.click()
+            })
+
+            uploader.on('change', function() {
+                var reader = new FileReader()
+                reader.onload = function(event) {
+                    images.html('<div class="img" style="background-image: url(\'' + event.target.result + '\');" rel="' + event.target.result + '"><span>remove</span></div>')
+                }
+                // reader.readAsDataURL(uploader[0].files[0])
+
+            })
+
+            images.on('click', '.img', function() {
+                $(this).remove()
+            })
+
         }
-    });
+
+
+    })
 </script>
 
 @endsection
