@@ -277,36 +277,58 @@
                     </div>
                     <hr style="width: auto;">
                     <div class="modal-body">
-                        <div class="container">
-                            <div class="row">
-                                <div class="mr-auto">
-                                    <h6>Regular</h6>
-                                    <p>£0.00</p>
+                        <form action="">
+                            <div class="container ticketQuantity">
+                                <div class="row">
+                                    <div class="mr-auto">
+                                        <h6>Regular</h6>
+                                        <p>£0.00</p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for=""></label>
+                                        <select class="custom-select form-control form-control-lg mx-3" id="regularQuantity" name="regularQuantity">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                        </select>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for=""></label>
-                                    <select class="custom-select form-control form-control-lg mx-3" id="regularQuantity" name="">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                    </select>
+                                <div class="row">
+                                    <div class="mr-auto">
+                                        <h6>VIP</h6>
+                                        <p>£<span class="priceValue">45.00</span> </p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for=""></label>
+                                        <select class="custom-select form-control form-control-lg mx-3" name="vipQuantity" id="vipQuantity">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="mr-auto">
-                                    <h6>VIP</h6>
-                                    <p>£<span class="priceValue">45.00</span> </p>
+                            {{-- This particular section is for if the user is not signed in. If he's signed in after putting in the number of tickets, it should register auto. Else, it should ask for name and email. --}}
+                            <div class="container guestForm"  style="display: none;">
+                                <div class="form-group py-2">
+                                    <div class="form-row">
+                                        <div class="col-md-6 col-6">
+                                            <label for="">FIRST NAME</label>
+                                            <input type="text" class="form-control form-control-lg" placeholder="First name" name="fnameGuest">
+                                        </div>
+                                        <div class="col-md-6 col-6">
+                                            <label for="">LAST NAME</label>
+                                            <input type="text" class="form-control form-control-lg" placeholder="Last name" name="lnameGuest">
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for=""></label>
-                                    <select class="custom-select form-control form-control-lg mx-3" name="" id="vipQuantity">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                    </select>
+                                <div class="form-group py-2">
+                                    <label for="">EMAIL ADDRESS</label>
+                                    <input type="email" name="emailGuest" id="event-name" class="form-control form-control-lg" placeholder="Email address" aria-describedby="helpId">
                                 </div>
                             </div>
-                        </div>
+                            {{-- This particular section is for if the user is not signed in. If he's signed in after putting in the number of tickets, it should register auto. Else, it should ask for name and email. --}}
+                        </form>                        
                     </div>
                 </div>
                 <div class="col-md-5 bg-light px-0">
@@ -335,8 +357,7 @@
                                 </span>
                             </div>
                             <div class="pt-3 pb-5 float-right">
-                                <button class="btn btnPrimary " data-toggle="modal"
-                                    data-target="#exampleModal">Register</button>
+                                <button class="btn btnPrimary ctaButton">Continue</button>
                             </div>
                         </div>
                     </div>
@@ -352,11 +373,24 @@
 @section('script')
 <script>
     $(document).ready(function(){
+        let user = false;
         let price = $('.priceValue').html();
         $("#vipQuantity").change(function(){
             var totalPrice = parseFloat($(this).children("option:selected").val()) * price;
-            $('.totalPrice').append(totalPrice);
+            $('.totalPrice' ).append(totalPrice);
         });
+
+        if(user){
+            $('.ctaButton').text('Register');
+        }else{
+            $('.ctaButton').text('Continue');
+            $('.ctaButton').click(function(){
+                $('.ticketQuantity').hide();
+                $('.guestForm').show();
+                $(this).text('Register');
+            });
+        }
+
     });
 </script>
 @endsection

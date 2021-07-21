@@ -107,7 +107,8 @@ footer .top {
     border-color: #008A69;
 }
 
-.btnPrimaryOutline.active {
+.btnPrimaryOutline.active,
+.btnPrimaryOutline:checked {
     color: #008A69;
     border: 1px solid #008A69;
 }

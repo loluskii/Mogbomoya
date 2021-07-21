@@ -31,7 +31,7 @@
             <div class="list-group list-group-flush mt-5 pt-2">
                 <a href="/" class="mb-5 pb-5"><img src="{{asset('images/logo-white.svg')}}" class="img-fluid" style="height: 50px" srcset=""></a>
                 <a class="list-group-item list-group-item-action" href="account">My account</a>
-                <a class="list-group-item list-group-item-action p-3" href="{{route('bank.details')}}">Bank account details</a>
+                <a class="list-group-item list-group-item-action p-3" href="/user/bank-details">Bank account details</a>
                 <a class="list-group-item list-group-item-action p-3" href="#!">Customize your interests</a>
                 <a class="list-group-item list-group-item-action p-3" href="#!">Talk to us</a>
                 <a class="list-group-item list-group-item-action p-3" href="#!">Deactivate account</a>

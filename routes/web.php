@@ -78,6 +78,10 @@ Route::prefix('event')->group(function () {
         return view('user.my-events');
     })->middleware('auth');
 
+    Route::get('event-info', function () {
+        return view('user.event-info');
+    })->middleware('auth');
+
 });
 
 Route::middleware('auth')->prefix('user')->group(function () {

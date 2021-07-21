@@ -31,7 +31,7 @@
 @endguest
 
 @auth
-<nav class="navbar navbar-expand-lg navbar-light bg-white">
+<nav class="navbar navbar-expand-lg navbar-light bg-white px-5">
   <a class="navbar-brand" href="/">
     <img src="{{asset('images/logo.png')}}" height="58" alt="">
   </a>
@@ -44,7 +44,7 @@
     <form class="form-inline my-2 my-lg-0 ml-3 mr-5">
       <input class="form-control mr-sm-2 bg-light" type="search" placeholder="Search Events" aria-label="Search" style="width: 500px; height: 60px; border: none">
     </form>
-    <ul class="navbar-nav mr-0">
+    <ul class="navbar-nav ml-auto">
       <li class="nav-item mr-4">
         <div class="text-center">
           <a href="/event/create" class="nav-link">

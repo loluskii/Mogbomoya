@@ -69,6 +69,7 @@
         color: black;
     }
     
+    
     @media only screen and (max-width: 600px) {
         #next,
         #create {
