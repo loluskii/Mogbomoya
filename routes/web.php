@@ -69,7 +69,7 @@ Route::prefix('event')->group(function () {
 
     Route::get('create', function () {
         return view('events.new-event.index');
-    })->name('event.create')->middleware('auth');
+    })->name('event.index')->middleware('auth');
 
     Route::post('create', [EventController::class, 'create'])->name('event.create');
 
@@ -77,9 +77,7 @@ Route::prefix('event')->group(function () {
         return view('events.info');
     })->name('event.info');
 
-    Route::get('/my-events', function () {
-        return view('user.my-events');
-    })->name('user.events')->middleware('auth');
+    Route::get('my-events', [EventController::class, 'index'])->name('user.events')->middleware('auth');
 
     Route::get('event-info', function () {
         return view('user.event-info');

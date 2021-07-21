@@ -14,4 +14,9 @@ class Event extends Model
         'tiers' => 'array',
         'tiers_left' => 'array',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

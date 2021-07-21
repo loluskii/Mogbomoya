@@ -143,33 +143,51 @@
                     </div>
                 </nav>
                 <div class="container-fluid">
-                    <form action="" class="py-5">
+                    <form action="{{ route('event.create') }}" method="POST" class="py-5" enctype="multipart/form-data">
+                        @csrf
                         <div class="tab-content" id="nav-tabContent">
                             <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                                 <h4 style="font-weight: bold">Basic Information</h4>
                                 <p>Provide information about your event that would help users know why they should attend your event.</p>
                                 <div>
+                                    <input type="file" name="featured_image" required>
+
                                     <div class="form-group py-2">
+                                        @error('featured_image')
+                                            <b class="text-danger">{{ $message }} </b>
+                                        @enderror
                                         <label for="">EVENT NAME</label>
                                         <div class="col-md-10 col-sm-12 pl-0">
-                                            <input type="text" name="" id="event-name" class="form-control form-control-lg" placeholder="" aria-describedby="helpId">
+                                            <input type="text" name="name" id="event-name" class="form-control form-control-lg" placeholder="" required value="{{old('name')}}" aria-describedby="helpId">
+                                            @error('name')
+                                                <b class="text-danger">{{ $message }} </b>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="form-group py-2">
                                         <label for="">INCLUDE A SHORT DESCRIPTION ABOUT YOUR EVENT</label>
                                         <div class="col-md-10 col-sm-12 pl-0">
-                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                            <textarea class="form-control" name="description" required value="{{old('description')}}" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                            @error('description')
+                                                <b class="text-danger">{{ $message }} </b>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="form-group py-2">
                                         <div class="form-row">
                                             <div class="col-md-3 col-6">
                                                 <label for="">TIME</label>
-                                                <input type="time" class="form-control form-control-lg">
+                                                <input type="time" name="time" required value="{{old('time')}}" class="form-control form-control-lg">
+                                                @error('time')
+                                                    <b class="text-danger">{{ $message }} </b>
+                                                @enderror
                                             </div>
                                             <div class="col-md-3 col-6">
                                                 <label for="">DATE</label>
-                                                <input type="date" class="form-control form-control-lg">
+                                                <input type="date" name="date" required value="{{old('date')}}" class="form-control form-control-lg">
+                                                @error('date')
+                                                    <b class="text-danger">{{ $message }} </b>
+                                                @enderror
                                             </div>
                                         </div>
                                     </div>
@@ -179,35 +197,45 @@
                                             <div class="col-md-4 col-6">
                                                 <div class="form-check form-check-inline py-4 w-100" style="border: 1px solid #ECEEEE; border-radius: 5px; background-color:white">
                                                     <label class="form-check-label px-3">
-                                                        <input class="form-check-input" type="radio" name="type" id="event-type"
-                                                            value="1"> Virtual Event
+                                                        <input class="form-check-input" type="radio" name="event_type" id="event-type"
+                                                            value="0"> Virtual Event
                                                     </label>
                                                 </div>
                                             </div>
                                             <div class="col-md-4 col-6">
                                                 <div class="form-check form-check-inline  py-4 w-100" style="border: 1px solid #ECEEEE; border-radius: 5px; background-color:white">
                                                     <label class="form-check-label px-3">
-                                                        <input class="form-check-input" type="radio" name="type" id="event-type"
+                                                        <input class="form-check-input" type="radio" name="event_type" id="event-type"
                                                             value="1"> Physical Event
                                                     </label>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                    @error('event_type')
+                                        <b class="text-danger">{{ $message }} </b>
+                                    @enderror
                                     <div class="form-group py-2">
                                         <label for="">LOCATION</label>
                                         <div class="col-md-10 col-sm-12 pl-0">
-                                            <input type="text" class="form-control form-control-lg">
+                                            <input type="text" name="location" required value="{{old('location')}}" class="form-control form-control-lg">
+                                            @error('location')
+                                                <b class="text-danger">{{ $message }} </b>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="">SELECT 1-3 CATEGORIES</label>
                                         <div class="col-md-10 col-sm-12 pl-0">
-                                            <select class="form-control form-control-lg" name="" id="categories">
-                                                <option></option>
-                                                <option></option>
-                                                <option></option>
+                                            <select class="form-control form-control-lg" name="categories[]" id="categories" multiple>
+                                                <option value=" " selected>-- Categories --</option>
+                                                <option value="gaming">Gaming</option>
+                                                <option value="tech">Tech</option>
+                                                <option value="business">Business</option>
                                             </select>
+                                            @error('categories')
+                                                <b class="text-danger">{{ $message }} </b>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="form-group py-2">
@@ -215,9 +243,9 @@
                                             <div class="form-row">
                                                 <div class="col-md-4 col-6">
                                                     <label class="btn btnPrimaryOutline bg-white pt-sm-4 pt-2 pb-sm-2 pb-1 px-sm-3 px-2" style="text-align: left;">
-                                                      <input type="radio" name="options" style="display: none"> 
+                                                      <input type="radio" name="isPublic" value="0" style="display: none"> 
                                                       <span>
-                                                        Public Event
+                                                        Private Event
                                                       </span>
                                                       <p class="text-dark span-text">Only people with the unique link can see & register to attend</p>
                                             
@@ -225,14 +253,18 @@
                                                 </div>
                                                 <div class="col-md-4 col-6">
                                                     <label class="btn btnPrimaryOutline bg-white pt-sm-4 pt-2 pb-sm-2 pb-1 px-sm-3 px-2" style="text-align: left">
-                                                      <input type="radio" name="options" style="display: none"> 
+                                                      <input type="radio"  name="isPublic" value="1" name="options" style="display: none"> 
                                                       <span>Public Event</span>
                                                       <p class="text-dark span-text">Everyone on the app can see & register to attend your event</p>
                                                     </label>
                                                 </div>
+                                                
                                             </div>
                                         </div>
                                     </div>
+                                    @error('isPublic')
+                                        <b class="text-danger">{{ $message }} </b>
+                                    @enderror
                                     <div class="py-4">
                                         <button class="btn btnPrimary" id="next">Continue</button>
                                     </div>
@@ -245,25 +277,38 @@
                                     <div class="form-group py-2">
                                         <label for="">IS THIS A PAID EVENT?</label>
                                         <div class="col-md-10 col-sm-12 pl-0">
-                                            <input type="text" name="" id="event-type" class="form-control form-control-lg" placeholder="" aria-describedby="helpId">
+                                            <select class="form-control form-control-lg" name="isPaid" id="categories">
+                                                <option value=" " selected> -- IS THIS A PAID EVENT --</option>
+                                                <option value="0">No</option>
+                                                <option value="1">Yes</option>
+                                            </select>
                                         </div>
                                     </div>
+                                    @error('isPaid')
+                                        <b class="text-danger">{{ $message }} </b>
+                                    @enderror
                                     <div class="tier-category">
                                         <div class="form-group py-2">
                                             <label for="">TIER NAME</label>
                                             <div class="col-md-10 col-sm-12 pl-0">
-                                                <input type="text" name="" id="tier-name" class="form-control form-control-lg" placeholder="" aria-describedby="helpId">
+                                                <input type="text" name="tier_name[]" id="tier-name" class="form-control form-control-lg" placeholder="" aria-describedby="helpId">
+                                                @error('tier_name')
+                                                    <b class="text-danger">{{ $message }} </b>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="form-group py-2">
                                             <div class="form-row">
                                                 <div class="col-md-3 col-6">
                                                     <label for="">PRICE</label>
-                                                    <input type="currency" class="form-control form-control-lg">
+                                                    <input type="currency" name="tier_price[]" class="form-control form-control-lg">
+                                                    @error('tier_price')
+                                                        <b class="text-danger">{{ $message }} </b>
+                                                    @enderror
                                                 </div>
                                                 <div class="col-md-3 col-6">
                                                     <label for="">SET LIMITS (OPTIONAL)</label>
-                                                    <input type="number" class="form-control form-control-lg">
+                                                    <input type="number" name="limit[]" class="form-control form-control-lg">
                                                 </div>
                                             </div>
                                         </div>
@@ -274,7 +319,7 @@
                                     </div>
                                     <a class="btn btnSecondary" href="#" id="addNewTier"> <img src="{{asset('images/icons/plus.svg')}}" alt="" srcset=""> Add a new tier</a>
                                     <div class="py-4">
-                                        <button class="btn btnPrimary" id="create">Create Event</button>
+                                        <button class="btn btnPrimary" type="submit" id="create">Create Event</button>
                                     </div>
                                 </div>
                             </div>
@@ -290,7 +335,7 @@
 <script>
     $('#addNewTier').click(function(e) {
             e.preventDefault()
-            $('.tier').append("<div class='tier-category'><div class='form-group py-2'><label for=''>TIER NAME</label><div class='col-md-10 col-sm-12 pl-0'><input type='text' name='' id='tier-name' class='form-control form-control-lg' placeholder='' aria-describedby='helpId'></div></div><div class='form-group py-2'><div class='form-row'><div class='col-md-3 col-6'><label for=''>PRICE</label><input type='currency' class='form-control form-control-lg'></div><div class='col-md-3 col-6'><label for=''>SET LIMITS (OPTIONAL)</label><input type='number' class='form-control form-control-lg'></div></div></div></div>")
+            $('.tier').append("<div class='tier-category'><div class='form-group py-2'><label for=''>TIER NAME</label><div class='col-md-10 col-sm-12 pl-0'><input type='text' name='tier_name[]' id='tier-name' class='form-control form-control-lg' placeholder='' aria-describedby='helpId'></div></div><div class='form-group py-2'><div class='form-row'><div class='col-md-3 col-6'><label for=''>PRICE</label><input type='currency' name='tier_price[]' class='form-control form-control-lg'></div><div class='col-md-3 col-6'><label for=''>SET LIMITS (OPTIONAL)</label><input type='number' name='limit[]' class='form-control form-control-lg'></div></div></div></div>")
         })
         // $('#next').click(function (){})
     $('#next').click(function(e) {

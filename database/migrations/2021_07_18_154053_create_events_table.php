@@ -16,14 +16,16 @@ class CreateEventsTable extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->integer('user_id');
+            $table->string('reference');
             $table->string('featured_image');
             $table->longText('description');
             $table->time('time');
             $table->date('date');
             $table->boolean('event_type')->default(0);
-            $table->boolean('visbility')->default(0);
-            $table->boolean('is_paid')->default(0);
-            $table->string('locatione');
+            $table->boolean('isPublic')->default(0);
+            $table->boolean('isPaid')->default(0);
+            $table->string('location');
             $table->json('interest_category_id');
             $table->json('tiers');
             $table->json('tiers_left');
