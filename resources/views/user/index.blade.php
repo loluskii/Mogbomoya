@@ -44,58 +44,8 @@
 @section('content')
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-3 d-none d-md-block d-sm-none sidebar">
-            {{-- <div class="sidebar-heading border-bottom bg-light">
-                <a href="/" class="mt-5"><img src="{{asset('images/logo-white.svg')}}" class="img-fluid" style="height: 50px" srcset="">
-                    <span style="font-size: 23px; font-weight: 700; text-decoration: none; color: white">Mogbomoya</span>
-                </a>
-            </div> --}}
-            <div class="list-group list-group-flush mt-5 pt-2">
-                <a href="/" class="mb-5 pb-5"><img src="{{asset('images/logo-white.svg')}}" class="img-fluid" style="height: 50px" srcset=""></a>
-                <a class="list-group-item list-group-item-action" href="{{ route('user.account') }}">My account</a>
-                <a class="list-group-item list-group-item-action p-3" href="{{route('bank.details')}}">Bank account details</a>
-                <a class="list-group-item list-group-item-action p-3" href="#!">Customize your interests</a>
-                <a class="list-group-item list-group-item-action p-3" href="#!">Talk to us</a>
-                <a class="list-group-item list-group-item-action p-3" href="#!">Deactivate account</a>
-            </div>
-        </div>
-        <div class="col-md-9 px-sm-0 px-2">
-            <nav class="navbar navbar-expand-lg navbar-light">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">                    
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item mr-4" style="padding-top: 15px">
-                            <a class="nav-link" href="#">Help Center </a>
-                        </li>
-                        <li class="nav-item dropdown pt-2">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {{-- <img src="{{asset('images/icons/user-image.svg')}}" alt="" srcset=""> {{auth()->user()->name}}  --}}
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item py-3" href="#">Interests</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item py-3" href="#"><img src="{{ asset('images/icons/account.svg') }}"
-                                        class="px-2" alt="" srcset=""> Account Settings</a>
-                                
-                                <a class="dropdown-item py-3" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                    <img src="{{asset('images/icons/logout.svg')}}" class="pr-2" alt="" srcset=""> Logout
-                                </a>
-                        
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        
-
+            @include('user.side-nav')
+            
             <div class="container px-sm-5 px-2 mt-5 pt-3">
                 <h3 class=" px-sm-5">My Account</h3>
                 <p class=" px-sm-5">Manage your account details and public profile</p>
@@ -111,64 +61,62 @@
                             <button type="button" style="padding: 8px 16px" name="changePassword" id="changePassword" class="w-100 rounded form-contro-lg text-center bg-white border text-muted">Change Password</button>
                           </div>
                     </div>
-                    <form action="">
-
+                    <form action="{{ route('user.update')}}" method="POST">
+                    @csrf
                     <div class="form-row py-2 px-sm-5">
                         <div class="col">
                             <div class="form-group">
-                                <label for="">FIRST NAME</label>
-                                <input type="text" name="fname" id="" class="form-control form-control-lg" placeholder="John" aria-describedby="helpId">
+                                <label for="">FULL NAME</label>
+                                <input type="text" name="name" id="" class="form-control form-control-lg" value="{{auth()->user()->name}} " placeholder="John Appleased" aria-describedby="helpId">
+                                @error('name')
+                                    <b class="text-danger">{{ $message }} </b>
+                                @enderror
                             </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="">LAST NAME</label>
-                                <input type="text" name="lname" id="" class="form-control form-control-lg" placeholder="Appleseed" aria-describedby="helpId">
-                              </div>
                         </div>
                     </div>
                     <div class="form-row py-2 px-sm-5">
                         <div class="col">
                             <div class="form-group">
                                 <label for="">USERNAME</label>
-                                <input type="text" name="uname" id="" class="form-control form-control-lg" placeholder="appleseed" aria-describedby="helpId">
-                              </div>
+                                <input type="text" name="username" id="" value="{{auth()->user()->username}}" class="form-control form-control-lg" placeholder="appleased" aria-describedby="helpId">
+                                @error('username')
+                                    <b class="text-danger">{{ $message }} </b>
+                                @enderror
+                            </div>
                         </div>
-                        <div class="col">
+                        {{-- <div class="col">
                             <div class="form-group">
                                 <label for="">DISPLAY NAME</label>
                                 <input type="text" name="display_name" id="" class="form-control form-control-lg" placeholder="John Appleseed" aria-describedby="helpId">
                               </div>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="form-row py-2 px-sm-5">
                         <div class="col">
                             <div class="form-group">
                                 <label for="">PHONE NUMBER</label>
-                                <input type="text" name="phone_no" id="" class="form-control form-control-lg" placeholder="+234 123 4567 890" aria-describedby="helpId">
-                              </div>
+                                <input type="text" name="phone_number" id="" class="form-control form-control-lg" value="{{auth()->user()->phone_number}}" placeholder="+234 123 4567 890" aria-describedby="helpId">
+                                @error('phone_number')
+                                    <b class="text-danger">{{ $message }} </b>
+                                @enderror
+                            </div>
                         </div>
                         <div class="col">
                             <div class="form-group">
                                 <label for="">COUNTRY</label>
                                 <select class="form-control form-control-lg" name="country" id="">
-                                    <option value="">---</option>
-                                    <option value="NG">Nigeria</option>
-                                    <option value="GH">Ghana</option>
-                                    <option value="CAM">Cameroon</option>
-                                  </select>
+                                    <option value=" ">--Select Country--</option>
+                                    @foreach ($countries as $country)
+                                        <option value="{{$country}}" {{$country == auth()->user()->country ? 'selected' : ''}}>{{$country}}</option>
+                                    @endforeach
+                                </select>
+                                @error('country')
+                                    <b class="text-danger">{{ $message }} </b>
+                                @enderror
                               </div>
                         </div>
                     </div>
-                    <div class=" px-sm-5 px-0">
-                        <p class="text-center text-sm-left">Or continue with:</p>
-                        <p class="text-sm-left text-center">
-                            <a href="" class="mr-3 mr-sm-2"><img src="{{asset('images/icons/apple.svg')}}" alt="" srcset=""></a>
-                            <a href="{{ route('social.oauth', 'google') }}" class="mr-3 mr-sm-2"><img src="{{asset('images/icons/google.svg')}}" alt="" srcset=""></a>
-                            <a href="{{ route('social.oauth', 'facebook') }}" class="mr-3 mr-sm-2"><img src="{{asset('images/icons/facebook.svg')}}" alt="" srcset=""></a>
-                            <a href="" class="mr-3 mr-sm-2"><img src="{{asset('images/icons/twitter.svg')}}" alt="" srcset=""></a>
-                        </p>
-                    </div>
+                   
                     <div class="py-4 px-sm-5 px-0">
                         <button class="btn register d-sm-none d-none d-md-block">Save Changes</button>
                         <button class="btn btn-block register d-sm-block  d-md-none">Save Changes</button>
@@ -240,25 +188,37 @@
 {{-- Change email modal --}}
 
 <!-- Change password Modal -->
-  <div class="modal fade" id="passwordModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
         <div class="modal-body">
             <div class="container">
                 <h5 class="modal-title" id="exampleModalLabel" style="font-weight: bold">Verify Your Password </h5>
             <p class="mb-0"> Re-enter your Mogbomoya password to continue.</p>
-            <form action="" class="py-4">
+            <form action="{{ route('user.update.password') }}" method="POST" class="py-4">
+                @csrf
                 <div class="form-group">
-                    <label for="">PASSWORD</label>
-                    <input type="text" name="oldPassword" id="oldPassword" class="form-control form-control-lg" placeholder="Old Password" aria-describedby="helpId">
+                    @if (auth()->user()->password != '')
+                        <label for="">CURRENT PASSWORD</label>
+                        <input type="text" name="current_password" id="oldPassword" class="form-control form-control-lg" placeholder="Old Password" aria-describedby="helpId">
+                        @error('current_password')
+                            <b class="text-danger">{{ $message }} </b>
+                        @enderror
+                    @endif
                 </div>
                 <div class="form-group">
                     <label for="">NEW PASSWORD</label>
-                    <input type="text" name="newPassword" id="newPassword" class="form-control form-control-lg" placeholder="New Password" aria-describedby="helpId">
+                    <input type="text" name="new_password" id="newPassword" class="form-control form-control-lg" placeholder="New Password" aria-describedby="helpId">
+                    @error('new_password')
+                        <b class="text-danger">{{ $message }} </b>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="">CONFIRM PASSWORD</label>
-                    <input type="text" name="cPassword" id="cPassword" class="form-control form-control-lg" placeholder="Confirm Password" aria-describedby="helpId">
+                    <input type="text" name="new_confirm_password" id="cPassword" class="form-control form-control-lg" placeholder="Confirm Password" aria-describedby="helpId">
+                    @error('new_confirm_password')
+                        <b class="text-danger">{{ $message }} </b>
+                    @enderror
                 </div>
                 <div class="form-check">
                     <input type="checkbox" class="form-check-input checkbox" id="exampleCheck1">
@@ -290,7 +250,7 @@ $(document).ready(function(){
         $('#myModal').modal('show');
     })
     $('#changePassword').click(function(){
-        $('#passwordModal').modal('show');
+        $('#changePasswordModal').modal('show');
     })
 })
 

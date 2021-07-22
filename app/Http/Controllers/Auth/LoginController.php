@@ -30,7 +30,7 @@ class LoginController extends Controller
     
             $shouldRemember = $request->remember ? true : false;
     
-            if (Auth::attempt(array($fieldType => $input['username'] , 'password' => $input['password']) ,  $shouldRemember ) ) {
+            if (Auth::attempt(array($fieldType => $input['username'] , 'password' => $input['password'], 'isActive' => 1 ) ,  $shouldRemember ) ) {
                 $request->session()->regenerate();
     
                 return redirect()->intended('/')->with(

@@ -102,6 +102,11 @@ class RegisterController extends Controller
           }
     
           // login the user
+            if($user->isActive != 1){
+                return redirect()->route('login.view')->with(
+                    'error', 'Sorry this account is inactive/deactivated'
+                );
+            }
             Auth::login($user, true);
             return $this->sendSuccessResponse();
       }
