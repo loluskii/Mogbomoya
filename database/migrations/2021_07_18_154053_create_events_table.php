@@ -27,8 +27,6 @@ class CreateEventsTable extends Migration
             $table->boolean('isPaid')->default(0);
             $table->string('location');
             $table->json('interest_category_id');
-            $table->json('tiers');
-            $table->json('tiers_left');
             $table->timestamps();
         });
     }

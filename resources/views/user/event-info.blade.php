@@ -48,14 +48,14 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="card">
-                    <img src="{{ asset('images/info-image.svg') }}" alt="" srcset="">
+                    <img src="{{ asset("images/event/$event->featured_image") }}" alt="" srcset="">
                 </div>
             </div>
             <div class="px-0 col-md-6 eventDetails">
                 <div class="container">
                     <div class="card px-4 py-3 cardDetails" style="border: none">
-                        <h3>2018 Annual Business Conference</h3>
-                        <p><span class="mr-4 text-muted">by Eat Drink Lagos </span></p>
+                        <h3>{{$event->name}}</h3>
+                        <p><span class="mr-4 text-muted">by {{$event->user->name}}</span></p>
                         <div class="row justify-content-between mb-4">
                             <div class="ml-3">
                                 <a href="http://" class="btn save shadow" role="button" data-toggle="dropdown"
@@ -91,21 +91,21 @@
                         <div class="container pl-0 mt-4 py-3">
                             <div class="pb-2">
                                 <p class="mb-1" style="font-weight: bold"><img class="mr-2"
-                                        src="{{ asset('images/icons/calendar-black.svg') }}" srcset=""> Friday, 29 Dec 2020
+                                        src="{{ asset('images/icons/calendar-black.svg') }}" srcset=""> {{ \Carbon\Carbon::parse($event->date)->toFormattedDateString()}}
                                 </p>
-                                <p class="ml-4 pl-3">12:00pm - 8:00pm WAT</p>
+                                <p class="ml-4 pl-3">{{ \Carbon\Carbon::parse($event->time)->toTimeString()}} WAT</p>
                                 <p style="font-weight: bold; cursor: pointer;" class="ml-4 pl-3"><span style="color: #008A69;" data-toggle="modal" data-target="#updateTimeModal">Change date and time</span></p>
                             </div>
                             <div class="py-1">
                                 <p class="mb-1" style="font-weight: bold"><img class="mr-3"
-                                        src="{{ asset('images/icons/location-black.svg') }}" srcset=""> Sterling Arena
+                                        src="{{ asset('images/icons/location-black.svg') }}" srcset=""> {{$event->location}}
                                 </p>
-                                <p class="ml-4 pl-3">Marina Road, Lagos Island, Lagos State, Nigeria</p>
+                                {{-- <p class="ml-4 pl-3">Marina Road, Lagos Island, Lagos State, Nigeria</p> --}}
                                 <p style="font-weight: bold;  cursor: pointer;" class="ml-4 pl-3"><span style="color: #008A69;" data-toggle="modal" data-target="#updateLocationModal">Change Location</span></p>
                             </div>
                             <div class="py-1">
                                 <p class="mb-1" style="font-weight: bold"><img class="mr-3"
-                                        src="{{ asset('images/icons/ticket-black.svg') }}" srcset=""> Free Event
+                                        src="{{ asset('images/icons/ticket-black.svg') }}" srcset="">{{$event->isPaid == 0 ? 'Free Event' : 'Paid Event'}} 
                                 </p>
                                 <p class="ml-4 pl-3">Registration is required</p>
                             </div>
@@ -134,14 +134,7 @@
                             </div>
                            
                             <p class="eventDescription text-justified">
-                                #EatDrinkFestival is a food and drink festival organized by EatDrinkLagos, Lagos premier food
-                                and drink guide. Nigeria's leading celebration of food and drink sees thousands of food lovers come together
-                                to eat and drink from an extensive selection served up by some of the best chefs,
-                                restaurants, and street food vendors in Lagos. Now in
-                                its fifth year, the team is taking #EatDrinkFestival to greater heights. In addition to
-                                bites and sips from a dynamic selection of Lagos' up and coming vendors, you'll find pop ups
-                                from celebrity chefs, aspiring chefs, and
-                                hobbyist cooks.
+                                {{$event->description}}
                             </p>
                             
                         </div>
@@ -217,6 +210,7 @@
             <hr>
             <div class="modal-body">
                 <form action="">
+                    @csrf
                     <div class="container guestForm px-0">
                         <div class="form-group py-2">
                             <label for="">Message</label>
@@ -240,19 +234,20 @@
         <div class="modal-content">
             <div class="modal-header flex-column" style="border-bottom: none">
                 <h5 class="modal-title" id="exampleModalLabel" style="font-weight: bold">Change date and time </h5>
-                <p class="mb-0"> By changing the details of this event, a notificationwill be sent to registered attendees, with the updated information.</p>
+                <p class="mb-0"> By changing the details of this event, a notification will be sent to registered attendees, with the updated information.</p>
             </div>
             <hr>
             <div class="modal-body">
-                <form action="">
+                <form action="{{route('update.event-info', $event->id)}}" method="POST">
+                    @csrf
                     <div class="form-row pb-4">
                         <div class="col-md-6 col-6">
                             <label for="">DATE</label>
-                            <input type="date" class="form-control form-control-lg" placeholder="First name" name="fnameGuest">
+                            <input type="date" class="form-control form-control-lg" name="date">
                         </div>
                         <div class="col-md-6 col-6">
                             <label for="">TIME</label>
-                            <input type="time" class="form-control form-control-lg" placeholder="Last name" name="lnameGuest">
+                            <input type="time" class="form-control form-control-lg" name="time">
                         </div>
                     </div>
                     <div class="py-4">
@@ -276,13 +271,12 @@
             </div>
             <hr>
             <div class="modal-body">
-                <form action="">
-                    <label for="">DATE</label>
-
+                <form action="{{route('update.event-info', $event->id)}}" method="POST">
+                    @csrf
                     <div class="form-row pb-4">
                         <div class="col-md-6 col-6">
                             <label class="btn border bg-white w-100 py-3" style="text-align: left;">
-                                <input type="radio" name="options"> 
+                                <input type="radio" name="isPublic" value="1" {{$event->isPublic == 1 ? 'checked' : ''}}> 
                                 <span>
                                     Public Event
                                 </span>
@@ -290,15 +284,15 @@
                         </div>
                         <div class="col-md-6 col-6">
                             <label class="btn border bg-white w-100 py-3" style="text-align: left;">
-                                <input type="radio" name="options"> 
+                                <input type="radio" name="isPublic" value="0" {{$event->isPublic == 0 ? 'checked' : ''}}> 
                                 <span>
-                                    Public Event
+                                    Private Event
                                 </span>
                         </div>
                     </div>
                     <div class="form-group">
                       <label for="">LOCATION</label>
-                      <input type="text" name="" id="" class="form-control form-control-lg" placeholder="" aria-describedby="helpId">
+                      <input type="text" name="location" id="" class="form-control form-control-lg" placeholder="" aria-describedby="helpId">
                     </div>
                     <div class="py-4">
                         <button type="submit" class="btn btnPrimary">Save Changes</button>
@@ -323,11 +317,12 @@
             </div>
             <hr>
             <div class="modal-body">
-                <form action="">
+                <form action="{{route('update.event-info', $event->id)}}" method="POST">
+                    @csrf
                     <div class="container guestForm px-0">
                         <div class="form-group py-2">
                             <label for="">DESCRIPTION</label>
-                            <textarea class="form-control form-control-lg" name="message" id="" rows="3"></textarea>
+                            <textarea class="form-control form-control-lg" name="description" id="" rows="3"></textarea>
                         </div>
                     </div>
                     <div class="py-3">

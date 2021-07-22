@@ -5,6 +5,7 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,23 +74,24 @@ Route::prefix('event')->group(function () {
 
     Route::post('create', [EventController::class, 'create'])->name('event.create');
 
-    Route::get('info', function () {
-        return view('events.info');
-    })->name('event.info');
+    // Route::get('info', function () {
+    //     return view('events.info');
+    // })->name('event.info');
 
     Route::get('my-events', [EventController::class, 'index'])->name('user.events')->middleware('auth');
 
-    Route::get('event-info', function () {
-        return view('user.event-info');
-    })->middleware('auth');
+    Route::get('event-info/{slug}', [EventController::class, 'show'])->name('event.info')->middleware('auth');
 
+    Route::post('update-info/{slug}', [EventController::class, 'update'])->name('update.event-info')->middleware('auth');
 });
 
 Route::middleware('auth')->prefix('user')->group(function () {
 
     Route::get('/account', function () {
         return view('user.index');
-    });
+    })->name('user.account');
+
+    Route::post('update-user', [UserController::class, 'update'])->name('user.update')->middleware('auth');
 
     Route::get('/bank-details', function () {
         return view('user.bank-details');
@@ -97,7 +99,7 @@ Route::middleware('auth')->prefix('user')->group(function () {
 
     Route::get('/collections', function () {
         return view('user.collections');
-    });
+    })->name('user.collections');
 });
 
 Route::get('/s=location', function () {

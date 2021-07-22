@@ -55,7 +55,7 @@
     </li>
       <li class="nav-item mr-4">
         <div class="text-center">
-          <a href="/my-events" class="nav-link">
+          <a href="{{route('user.events')}}" class="nav-link">
             <p class="mb-0"><img src="{{asset('images/icons/ticket-black.svg')}}" alt="" srcset=""></p>
             <p>My Events</p>
           </a>
@@ -63,7 +63,7 @@
       </li>
       <li class="nav-item mr-4">
         <div class="text-center">
-          <a href="/collections" class="nav-link">
+          <a href="{{route('user.collections')}}" class="nav-link">
             <p class="mb-0"><img src="{{asset('images/icons/bookmarks.svg')}}" alt="" srcset=""></p>
             <p>Bookmarks</p>
           </a>
@@ -76,7 +76,7 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item py-3" href="#">Interests</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item py-3" href="/account"><img src="{{asset('images/icons/account.svg')}}" class="px-2" alt="" srcset=""> Account Settings</a>
+          <a class="dropdown-item py-3" href="{{ route('user.account')}}"><img src="{{asset('images/icons/account.svg')}}" class="px-2" alt="" srcset=""> Account Settings</a>
           <a class="dropdown-item py-3" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
               <img src="{{asset('images/icons/logout.svg')}}" class="pr-2" alt="" srcset=""> Logout
           </a>

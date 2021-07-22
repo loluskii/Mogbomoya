@@ -424,7 +424,7 @@
 
         function uploadImage() {
             var button = $('.images .pic')
-            var uploader = $('<input type="file" accept="image/*" />')
+            var uploader = $('<input type="file" name="featured_image" accept="image/*" />')
             var images = $('.images')
 
             button.on('click', function() {

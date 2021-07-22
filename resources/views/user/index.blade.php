@@ -52,7 +52,7 @@
             </div> --}}
             <div class="list-group list-group-flush mt-5 pt-2">
                 <a href="/" class="mb-5 pb-5"><img src="{{asset('images/logo-white.svg')}}" class="img-fluid" style="height: 50px" srcset=""></a>
-                <a class="list-group-item list-group-item-action" href="/account">My account</a>
+                <a class="list-group-item list-group-item-action" href="{{ route('user.account') }}">My account</a>
                 <a class="list-group-item list-group-item-action p-3" href="{{route('bank.details')}}">Bank account details</a>
                 <a class="list-group-item list-group-item-action p-3" href="#!">Customize your interests</a>
                 <a class="list-group-item list-group-item-action p-3" href="#!">Talk to us</a>
@@ -99,7 +99,6 @@
             <div class="container px-sm-5 px-2 mt-5 pt-3">
                 <h3 class=" px-sm-5">My Account</h3>
                 <p class=" px-sm-5">Manage your account details and public profile</p>
-                <form action="">
                     <div class="col-md-4 col-sm-12  px-sm-5 px-0">
                         <div class="form-group">
                             <label for="">EMAIL ADDRESS</label>
@@ -112,6 +111,8 @@
                             <button type="button" style="padding: 8px 16px" name="changePassword" id="changePassword" class="w-100 rounded form-contro-lg text-center bg-white border text-muted">Change Password</button>
                           </div>
                     </div>
+                    <form action="">
+
                     <div class="form-row py-2 px-sm-5">
                         <div class="col">
                             <div class="form-group">

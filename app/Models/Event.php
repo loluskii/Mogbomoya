@@ -11,12 +11,15 @@ class Event extends Model
 
     protected $casts = [
         'interest_category_id' => 'array',
-        'tiers' => 'array',
-        'tiers_left' => 'array',
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function tiers()
+    {
+        return $this->hasMany(Tier::class);
     }
 }
