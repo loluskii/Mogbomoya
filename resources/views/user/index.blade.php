@@ -217,12 +217,12 @@
                 <form action="" class="verifynewEmailForm pt-1 pb-3"autocomplete="off">
                     <p>We've sent you a code. Enter it to verify your new email address.</p>
                     <div class="d-flex flex-row mt-5 px-sm-5 px-0">
-                        <input type="text" name="digit1" class="form-control digit mr-2 text-center" autofocus="">
-                        <input type="text" name="digit2" class="form-control digit mx-2 text-center">
-                        <input type="text" name="digit3" class="form-control digit mx-2 text-center">
-                        <input type="text" name="digit4" class="form-control digit mx-2 text-center">
-                        <input type="text" name="digit5" class="form-control digit mx-2 text-center">
-                        <input type="text" name="digit6" class="form-control digit mx-2 text-center">
+                        <input type="text" maxLength="1" size="1" min="0" max="9" pattern="[0-9]{1}" name="digit1" class="form-control digit mr-2 text-center" autofocus="">
+                        <input type="text" maxLength="1" size="1" min="0" max="9" pattern="[0-9]{1}" name="digit2" class="form-control digit mx-2 text-center">
+                        <input type="text" maxLength="1" size="1" min="0" max="9" pattern="[0-9]{1}" name="digit3" class="form-control digit mx-2 text-center">
+                        <input type="text" maxLength="1" size="1" min="0" max="9" pattern="[0-9]{1}" name="digit4" class="form-control digit mx-2 text-center">
+                        <input type="text" maxLength="1" size="1" min="0" max="9" pattern="[0-9]{1}" name="digit5" class="form-control digit mx-2 text-center">
+                        <input type="text" maxLength="1" size="1" min="0" max="9" pattern="[0-9]{1}" name="digit6" class="form-control digit mx-2 text-center">
                     </div>
                     <div class="text-center mt-4">
                         <span class="d-block mobile-text">Don't receive the code? <a href="" class="font-weight-bold resend">Resend</a></span>
@@ -288,10 +288,54 @@
 $(document).ready(function(){
     $('#changeEmail').click(function(){
         $('#myModal').modal('show');
-    })
+    });
     $('#changePassword').click(function(){
         $('#passwordModal').modal('show');
-    })
+    });
+
+
+    var body = $('#myModal');
+
+    function goToNextInput(e) {
+        var key = e.which,
+        t = $(e.target),
+        sib = t.next('input');
+
+        if (key != 9 && (key < 48 || key > 57)) {
+            e.preventDefault();
+            return false;
+        }
+
+        if (key === 9) {
+            return true;
+        }
+
+        if (!sib || !sib.length) {
+            sib = body.find('input').eq(0);
+        }
+        sib.select().focus();
+    }
+
+    function onKeyDown(e) {
+        var key = e.which;
+
+        if (key === 9 || (key >= 48 && key <= 57)) {
+            return true;    
+        }
+
+        e.preventDefault();
+        return false;
+    }
+
+    function onFocus(e) {
+        $(e.target).select();
+    }
+
+    body.on('keyup', 'input', goToNextInput);
+    body.on('keydown', 'input', onKeyDown);
+    body.on('click', 'input', onFocus);
+
+   
 })
 
 
