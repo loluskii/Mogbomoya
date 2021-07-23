@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('linked_accounts')->nullable();
             $table->boolean('show_email')->default(0);
+            $table->boolean('isActive')->default(1);
             $table->string('avatar')->nullable();
             $table->string('provider', 20)->nullable();
             $table->string('provider_id')->nullable();

@@ -5,7 +5,9 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\UserController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\BankController;
 
 /*
 |--------------------------------------------------------------------------
@@ -87,15 +89,17 @@ Route::prefix('event')->group(function () {
 
 Route::middleware('auth')->prefix('user')->group(function () {
 
-    Route::get('/account', function () {
-        return view('user.index');
-    })->name('user.account');
+    Route::get('/account', [UserController::class, 'edit'])->name('user.edit')->middleware('auth');
 
     Route::post('update-user', [UserController::class, 'update'])->name('user.update')->middleware('auth');
+    
+    Route::post('change-password', [UserController::class, 'changePassword'])->name('user.update.password')->middleware('auth');
 
-    Route::get('/bank-details', function () {
-        return view('user.bank-details');
-    })->name('bank.details');
+    Route::post('deactivate-user', [UserController::class, 'changeActiveStatus'])->name('user.deactivate')->middleware('auth');
+
+    Route::get('bank-details', [BankController::class, 'index'])->name('bank.details')->middleware('auth');
+
+    Route::post('store-bank-details', [BankController::class, 'validateBank'])->name('bank.store')->middleware('auth');
 
     Route::get('/collections', function () {
         return view('user.collections');
@@ -105,4 +109,8 @@ Route::middleware('auth')->prefix('user')->group(function () {
 Route::get('/s=location', function () {
     return view('search.index');
 });
+
+
+Route::get('/payment/callback', [PaymentController::class, 'handleGatewayCallback'])->name('payment.callback');
+Route::post('/pay', [PaymentController::class, 'redirectToGateway'])->name('pay');
 

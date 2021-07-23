@@ -22,4 +22,9 @@ class Event extends Model
     {
         return $this->hasMany(Tier::class);
     }
+
+    public function categories() 
+    {
+        return InterestCategory::find($this->interest_category_id);
+    }
 }

@@ -18,7 +18,7 @@ class CreateBanksTable extends Migration
             $table->integer('user_id');
             $table->string('bank_code');
             $table->string('bank_name');
-            $table->string('acct_no');
+            $table->string('acct_no')->unique();
             $table->string('acct_name');
             $table->integer('bank_id');
             $table->timestamps();

@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class UpdateUserRequest extends FormRequest
 {
@@ -24,10 +25,11 @@ class UpdateUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|regex:/^\S*$/u|regex:/(^([a-zA-Z]+)(\d+)?$)/u',
-            'email' => 'required|unique:users,email,'.Auth::user()->id,
-            'username' => 'required|string|min:5|max:30|regex:/^\S*$/u|regex:/(^([a-zA-Z]+)(\d+)?$)/u|unique:users,user_data_name,'.Auth::user()->id,
-            'phone_no' => 'nullable|unique:users,phone_no,'.Auth::user()->id,
+            'name' => 'required',
+            // 'email' => 'required|unique:users,email,'.Auth::id(),
+            'username' => 'required|string|min:5|max:30|regex:/^\S*$/u|regex:/(^([a-zA-Z]+)(\d+)?$)/u|unique:users,username,'.Auth::id(),
+            'phone_number' => 'required|unique:users,phone_number,'.Auth::id(),
+            'country' => 'required|nullable|unique:users,country,'.Auth::id(),
         ];
     }
 }
