@@ -43,7 +43,7 @@
 
 @section('content')
 <div class="container-fluid">
-    <div class="row">
+    <div class="row" style="height: 100vh">
         <div class="col-md-3 d-none d-md-block d-sm-none sidebar">
             {{-- <div class="sidebar-heading border-bottom bg-light">
                 <a href="/" class="mt-5"><img src="{{asset('images/logo-white.svg')}}" class="img-fluid" style="height: 50px" srcset="">
@@ -74,7 +74,7 @@
                         <li class="nav-item dropdown pt-2">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {{-- <img src="{{asset('images/icons/user-image.svg')}}" alt="" srcset=""> {{auth()->user()->name}}  --}}
+                                <img src="{{asset('images/icons/user-image.svg')}}" alt="" srcset=""> {{auth()->user()->name}} 
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item py-3" href="#">Interests</a>
@@ -160,7 +160,7 @@
                               </div>
                         </div>
                     </div>
-                    <div class=" px-sm-5 px-0">
+                    {{-- <div class=" px-sm-5 px-0">
                         <p class="text-center text-sm-left">Or continue with:</p>
                         <p class="text-sm-left text-center">
                             <a href="" class="mr-3 mr-sm-2"><img src="{{asset('images/icons/apple.svg')}}" alt="" srcset=""></a>
@@ -168,7 +168,7 @@
                             <a href="{{ route('social.oauth', 'facebook') }}" class="mr-3 mr-sm-2"><img src="{{asset('images/icons/facebook.svg')}}" alt="" srcset=""></a>
                             <a href="" class="mr-3 mr-sm-2"><img src="{{asset('images/icons/twitter.svg')}}" alt="" srcset=""></a>
                         </p>
-                    </div>
+                    </div> --}}
                     <div class="py-4 px-sm-5 px-0">
                         <button class="btn register d-sm-none d-none d-md-block">Save Changes</button>
                         <button class="btn btn-block register d-sm-block  d-md-none">Save Changes</button>
