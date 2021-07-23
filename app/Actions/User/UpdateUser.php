@@ -3,8 +3,10 @@ namespace App\Actions\User;
 
 use App\Models\User;
 use Auth;
+use DB;
 class UpdateUser{
      public function run($request){
+      DB::BeginTransaction();
         $user = User::find(Auth::id());
         $user->name = $request['name'] ?? $user->name; 
         $user->username = $request['username'] ?? $user->username; 
@@ -13,5 +15,6 @@ class UpdateUser{
         $user->country = $request['country'] ?? $user->country; 
 
         $user->update();
+      DB::commit();
      }
 }

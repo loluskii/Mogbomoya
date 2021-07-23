@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\UpdateUserRequest;
-use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Actions\User\UpdateUser;
 use App\Actions\User\ChangePassword;

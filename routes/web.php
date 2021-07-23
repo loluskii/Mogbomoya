@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\BankController;
 
 /*
 |--------------------------------------------------------------------------
@@ -96,9 +97,9 @@ Route::middleware('auth')->prefix('user')->group(function () {
 
     Route::post('deactivate-user', [UserController::class, 'changeActiveStatus'])->name('user.deactivate')->middleware('auth');
 
-    Route::get('/bank-details', function () {
-        return view('user.bank-details');
-    })->name('bank.details');
+    Route::get('bank-details', [BankController::class, 'index'])->name('bank.details')->middleware('auth');
+
+    Route::post('store-bank-details', [BankController::class, 'validateBank'])->name('bank.store')->middleware('auth');
 
     Route::get('/collections', function () {
         return view('user.collections');

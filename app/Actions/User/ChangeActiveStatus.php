@@ -5,6 +5,7 @@ use App\Models\User;
 use Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Rules\MatchOldPassword;
+use DB;
 
 class ChangeActiveStatus{
      public function run($request){
@@ -14,7 +15,7 @@ class ChangeActiveStatus{
                 'current_password' => ['required', new MatchOldPassword],
             ]);
         }
-
+        DB::BeginTransaction();
         $user = User::find(auth()->user()->id);
         $user->isActive = !$user->isActive;
         $user->update();
@@ -26,5 +27,6 @@ class ChangeActiveStatus{
         $request->session()->regenerateToken();
 
         return true;
+        DB::commit();
      }
 }
