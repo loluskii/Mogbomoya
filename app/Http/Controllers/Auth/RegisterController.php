@@ -9,6 +9,8 @@ use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\StoreUserRequest;
+use Illuminate\Auth\Events\Registered;
+use DB;
 
 class RegisterController extends Controller
 {
@@ -87,6 +89,7 @@ class RegisterController extends Controller
                    $user = User::create([
                       'name' => $providerUser->getName(),
                       'email' => $providerUser->getEmail(),
+                      'email_verified_at' => now(),
                       'avatar' => $providerUser->getAvatar(),
                       'provider' => $driver,
                       'provider_id' => $providerUser->getId(),
@@ -119,6 +122,7 @@ class RegisterController extends Controller
 
     public function register(StoreUserRequest $request){
         try{
+            DB::BeginTransaction();
             $user = User::create([
                 'name' => $request->name,
                 'email' => $request->email,
@@ -127,7 +131,13 @@ class RegisterController extends Controller
                 'password' => Hash::make($request->password)
           ]);   
     
+
           Auth::login($user, true);
+          event(new Registered($user));
+          DB::commit();
+
+
+        //   $user->sendEmailVerificationNotification();
 
           return redirect()->intended('/')->with(
             'success' , 'Welcome'

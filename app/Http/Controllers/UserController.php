@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
 use App\Actions\User\UpdateUser;
 use App\Actions\User\ChangePassword;
+use App\Actions\User\ChangeEmail;
 use App\Actions\User\ChangeActiveStatus;
 use App\Actions\Country\AllCountries;
 
@@ -37,6 +38,19 @@ class UserController extends Controller
             (new ChangePassword())->run($request);
             return back()->with(
                 'success' , 'Password Updated'
+            );
+        }catch(\Exception $e){
+            return back()->with(
+                'error' , $e->getMessage()
+            );
+        }
+    }
+
+    public function changeEmail(Request $request){
+        try{
+            (new ChangeEmail())->run($request);
+            return back()->with(
+                'success' , 'Please click the link sent to your new email to verify and update your new email'
             );
         }catch(\Exception $e){
             return back()->with(

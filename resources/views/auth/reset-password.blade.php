@@ -59,27 +59,33 @@
         <div class="col-md-6">
             <div class="container p-5 mt-5">
                 <h3 style="font-weight: bold">Create a new Password</h3>
-                <p><small>We sent a special 6 digit code to the email address associated with your account jo**ap****@youremail.com. Enter the code below to set your new password.</small></p>
-                <form action="" class="pt-4" autocomplete="off">
+                {{-- <p><small>We sent a special 6 digit code to the email address associated with your account jo**ap****@youremail.com. Enter the code below to set your new password.</small></p> --}}
+                <form action="{{route('user.reset.password')}}" method="POST" class="pt-4" autocomplete="off">
+                    @csrf
                     <div class="col-sm-12 col-md-9 px-0">
-                        <div class="d-flex justify-content-center align-items-center container">
+                        <div class="container">
                             <div class="py-5">
-                                <div class="d-flex flex-row mt-5">
+                                {{-- <div class="d-flex flex-row mt-5">
                                     <input type="text" name="digit1" class="form-control text-center" autofocus="">
                                     <input type="text" name="digit2" class="form-control  text-center">
                                     <input type="text" name="digit3" class="form-control  text-center">
                                     <input type="text" name="digit4" class="form-control  text-center">
                                     <input type="text" name="digit5" class="form-control  text-center">
                                     <input type="text" name="digit6" class="form-control  text-center">
-                                </div>
-                                <div class="text-center mt-4">
-                                    <span class="d-block mobile-text">Don't receive the code? <a href="" class="font-weight-bold resend">Resend</a></span>
-                                </div>
+                                </div> --}}
+                                {{-- <div class="text-center mt-4">
+                                    <span class="d-block mobile-text">Didn't receive the code? <a href="" class="font-weight-bold resend">Resend</a></span>
+                                </div> --}}
+                                <label for="">Email Address</label>
+                                <input type="email" name="email" class="form-control" id="">
+                                @error('email')
+                                    <b class="text-danger">{{ $message }} </b>
+                                @enderror
                                 <div class="pt-5 pb-2">
-                                    <button class="btn btnPrimary d-sm-none d-none d-md-block">Verify</button>
-                                    <button class="btn btnPrimary btn-block register d-sm-block  d-md-none">Verify</button>
+                                    <button class="btn btnPrimary d-sm-none d-none d-md-block">Submit</button>
+                                    <button class="btn btnPrimary btn-block register d-sm-block  d-md-none">Submit</button>
                                 </div>
-                                <a href="" class="mt-3 resend font-weight-bold" style="text-decoration: none;">Cancel</a>
+                                <a href="{{route('login.view')}}" class="mt-3 resend font-weight-bold" style="text-decoration: none;">Cancel</a>
                                 
                             </div>
                         </div>

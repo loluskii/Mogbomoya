@@ -67,7 +67,7 @@
                                 <label class="custom-control-label pt-1" for="customControlInline">Remember me</label>
                               </div>
                             <div class="custom-control custom-checkbox my-1 mr-sm-2">
-                                <a href="">Forgot Password?</a>
+                                <a href="{{route('password.request')}}">Forgot Password?</a>
                             </div>
                         </div>
                         <div class="py-4">
