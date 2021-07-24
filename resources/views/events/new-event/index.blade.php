@@ -214,17 +214,12 @@
                                 <h4 style="font-weight: bold">Basic Information</h4>
                                 <p>Provide information about your event that would help users know why they should attend your event.</p>
                                 <div>
-                                    <input type="file" name="featured_image" required>
-
                                     <div class="form-group py-2">
                                         @error('featured_image')
                                             <b class="text-danger">{{ $message }} </b>
                                         @enderror
-                                        <div class="images">
-                                            <div class="pic">
-                                              add
-                                            </div>
-                                          </div>
+                                        <input type="file" name="featured_image" class="featured_image" required>
+                                        
                                     </div>
                                     <div class="form-group py-2">
                                         <label for="">EVENT NAME</label>
@@ -405,7 +400,6 @@
 @endsection @section('script')
 <script>
     $(document).ready(function(){
-        uploadImage();
 
         $('#addNewTier').click(function(e) {
             e.preventDefault()
@@ -422,29 +416,18 @@
             }
         });
 
-        function uploadImage() {
-            var button = $('.images .pic')
-            var uploader = $('<input type="file" name="featured_image" accept="image/*" />')
-            var images = $('.images')
+        // function uploadImage() {
+        //     var imgInp = document.getElementsByClassName('featured_image');
+        //     var blah = document.getElementById('blah');
 
-            button.on('click', function() {
-                uploader.click()
-            })
+        //     imgInp.onchange = evt => {
+        //         const [file] = imgInp.files
+        //         if (file) {
+        //             blah.src = URL.createObjectURL(file)
+        //         }
+        //     }
 
-            uploader.on('change', function() {
-                var reader = new FileReader()
-                reader.onload = function(event) {
-                    images.html('<div class="img" style="background-image: url(\'' + event.target.result + '\');" rel="' + event.target.result + '"><span>remove</span></div>')
-                }
-                // reader.readAsDataURL(uploader[0].files[0])
-
-            })
-
-            images.on('click', '.img', function() {
-                $(this).remove()
-            })
-
-        }
+        // }
 
 
     })

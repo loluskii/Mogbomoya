@@ -116,6 +116,22 @@
                               </div>
                         </div>
                     </div>
+                    <div class="form-row py-2 px-sm-5">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="">CUSTOMIZE YOUR INTERESTS</label>
+                                <select class="form-control form-control-lg interests" name="interests[]" id="" multiple>
+                                    <option value=" ">---</option>
+                                    <option value="1"> <img src="{{asset('images/icons/gambling.svg')}}" alt="" srcset=""> Gambling </option>
+                                    <option value="2"><img src="{{asset('images/icons/cycling.svg')}}" alt="" srcset=""> Outdoor Sports</option>
+                                    <option value="3"><img src="{{asset('images/icons/childcare.svg')}}" alt="" srcset=""> Childcare</option>
+                                    
+                                </select>                                @error('name')
+                                    <b class="text-danger">{{ $message }} </b>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
                    
                     <div class="py-4 px-sm-5 px-0">
                         <button class="btn register d-sm-none d-none d-md-block">Save Changes</button>
@@ -214,6 +230,7 @@ $(document).ready(function(){
     $('#changePassword').click(function(){
         $('#changePasswordModal').modal('show');
     });
+    $('.interests').select2();
 
 
     var body = $('#myModal');

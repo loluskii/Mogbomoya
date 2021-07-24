@@ -24,6 +24,9 @@ use Illuminate\Http\Request;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/', [PagesController::class, 'index']);
+
 Route::get('/sign-up', function () {
     return view('auth.sign-up');
 });
@@ -102,7 +105,7 @@ Route::get('/site-map', function () {
 
 Route::middleware('verified')->group(function () {
 
-    Route::get('/', [PagesController::class, 'index']);
+    
 
     Route::prefix('event')->group(function () {
 
