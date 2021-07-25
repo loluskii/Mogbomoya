@@ -94,6 +94,7 @@ class RegisterController extends Controller
                       'provider' => $driver,
                       'provider_id' => $providerUser->getId(),
                       'access_token' => $providerUser->token,
+                      'isActive' => 1,
                       'password' => '' // user can use reset password to create a password
                 ]);
     
@@ -103,9 +104,9 @@ class RegisterController extends Controller
                 
                }
           }
-    
+     
           // login the user
-            if($user->isActive != 1){
+            if($user->isActive !== 1){
                 return redirect()->route('login.view')->with(
                     'error', 'Sorry this account is inactive/deactivated'
                 );

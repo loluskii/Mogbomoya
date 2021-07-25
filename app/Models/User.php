@@ -6,10 +6,11 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable , SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -28,7 +29,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'phone_number',
         'country',
         'linked_accounts',
-        'show_email'
+        'show_email',
+        'isActive',
+        'email_verified_at'
     ];
 
     /**
@@ -53,5 +56,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function bank()
     {
         return $this->belongsTo(Bank::class, 'id');
+    }
+
+    public function interests()
+    {
+        return $this->belongsToMany(Interest::class);
     }
 }

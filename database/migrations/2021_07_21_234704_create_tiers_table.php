@@ -20,6 +20,7 @@ class CreateTiersTable extends Migration
             $table->integer('limit')->nullable();
             $table->integer('limit_remaining')->nullable();
             $table->integer('event_id');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

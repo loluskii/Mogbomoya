@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEventCollectionsTable extends Migration
+class CreateInterestEventsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateEventCollectionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('event_collections', function (Blueprint $table) {
+        Schema::create('event_interest', function (Blueprint $table) {
             $table->id();
-            $table->integer('collection_id');
             $table->integer('event_id');
+            $table->integer('interest_id');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -29,6 +29,6 @@ class CreateEventCollectionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('event_collections');
+        Schema::dropIfExists('event_interest');
     }
 }

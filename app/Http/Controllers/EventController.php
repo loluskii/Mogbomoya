@@ -8,11 +8,17 @@ use App\Actions\Event\CreateEvent;
 use App\Actions\Event\UpdateEvent;
 use App\Services\Event\EventQueries;
 use Illuminate\Support\Facades\Auth;
-
+use App\Models\Interest;
 class EventController extends Controller
 {
-    public function index(){
+    public function index()
+    {
+        $interests = Interest::all();
+        return view('events.new-event.index')->with('interests', $interests);
+    }
+    public function myEvents(){
         $events = (new EventQueries())->withPagination(12);
+        
         return view('user.my-events')->with('events', $events);
     }
 
@@ -38,7 +44,7 @@ class EventController extends Controller
             return view('event.info')->with('event', $event);
         }
 
-        return view('events.info')->with('event', $event);
+        return view('user.event-info')->with('event', $event);
 
     }
 

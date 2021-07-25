@@ -105,21 +105,16 @@ Route::get('/site-map', function () {
 
 Route::middleware('verified')->group(function () {
 
-    
-
     Route::prefix('event')->group(function () {
 
-        Route::get('create', function () {
-            return view('events.new-event.index');
-        })->name('event.index')->middleware('auth');
-
+        Route::get('create', [EventController::class, 'index'])->name('event.index')->middleware('auth');
         Route::post('create', [EventController::class, 'create'])->name('event.create');
 
         // Route::get('info', function () {
         //     return view('events.info');
         // })->name('event.info');
 
-        Route::get('my-events', [EventController::class, 'index'])->name('user.events')->middleware('auth');
+        Route::get('my-events', [EventController::class, 'myEvents'])->name('user.events')->middleware('auth');
 
         Route::get('event-info/{slug}', [EventController::class, 'show'])->name('event.info')->middleware('auth');
 

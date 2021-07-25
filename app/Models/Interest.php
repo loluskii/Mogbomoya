@@ -4,22 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Interest extends Model
 {
-    use HasFactory;
+    use HasFactory , SoftDeletes;
 
-    protected $casts = [
-        'interest_category' => 'array',
-    ];
-
-    public function user()
+    public function users()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsToMany(User::class);
     }
 
-    public function categories() 
+    public function events()
     {
-        return InterestCategory::find($this->interest_category);
+        return $this->belongsToMany(Event::class);
     }
+
 }

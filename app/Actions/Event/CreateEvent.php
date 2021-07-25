@@ -2,6 +2,8 @@
 namespace App\Actions\Event;
 use App\Models\Event;
 use App\Models\Tier;
+use App\Models\Interest;
+use App\Models\InterestEvent;
 use DB;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
@@ -9,7 +11,6 @@ use Illuminate\Support\Facades\Auth;
 class CreateEvent{
     public function run($request){
         DB::beginTransaction();
-        
             $event = new Event;
             $event->name = $request['name'];
             $event->user_id = Auth::id();
@@ -21,7 +22,6 @@ class CreateEvent{
             $event->location = $request['location'];
             $event->isPublic = $request['isPublic'];
             $event->isPaid = $request['isPaid'];
-            $event->interest_category_id = $request['categories'];
             $imageName = Str::slug($request['name']).'-'.time().'.'.$request->featured_image->extension();  
             $request->featured_image->move(public_path('images/event'), $imageName);
             $event->featured_image = $imageName;
@@ -35,6 +35,15 @@ class CreateEvent{
                 $tier->event_id = $event->id;
 
                 $tier->save();
+            }
+            for($i = 0; $i < count($request['categories']); $i++){
+                $findInterest = Interest::find((int)$request['categories'][$i]);
+                if($findInterest){
+                    $category = new InterestEvent;
+                    $category->interest_id =  $request['categories'][$i];
+                    $category->event_id = $event->id;
+                    $category->save();
+                }
             }
         DB::commit();
     }

@@ -21,6 +21,7 @@ class CreateBanksTable extends Migration
             $table->string('acct_no')->unique();
             $table->string('acct_name');
             $table->integer('bank_id');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

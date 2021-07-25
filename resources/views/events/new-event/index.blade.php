@@ -295,9 +295,9 @@
                                         <div class="col-md-10 col-sm-12 pl-0">
                                             <select class="form-control form-control-lg" name="categories[]" id="categories" multiple>
                                                 <option value=" " selected>-- Categories --</option>
-                                                <option value="gaming">Gaming</option>
-                                                <option value="tech">Tech</option>
-                                                <option value="business">Business</option>
+                                                @foreach ($interests as $interest)
+                                                    <option value="{{$interest->id}}">{{$interest->name}}</option>
+                                                @endforeach
                                             </select>
                                             @error('categories')
                                                 <b class="text-danger">{{ $message }} </b>
@@ -343,7 +343,7 @@
                                     <div class="form-group py-2">
                                         <label for="">IS THIS A PAID EVENT?</label>
                                         <div class="col-md-10 col-sm-12 pl-0">
-                                            <select class="form-control form-control-lg" name="isPaid" id="categories">
+                                            <select class="form-control form-control-lg" name="isPaid">
                                                 <option value=" " selected> -- IS THIS A PAID EVENT --</option>
                                                 <option value="0">No</option>
                                                 <option value="1">Yes</option>
