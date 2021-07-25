@@ -10,7 +10,7 @@ use App\Models\Interest;
 class PagesController extends Controller
 {
     public function index(){
-        $interests = Interest::select('name', 'icon')->get();
+        $interests = Interest::select('id','name', 'icon')->get();
 
         if(Auth::check()){
             // $words = array(Auth::user()->name);

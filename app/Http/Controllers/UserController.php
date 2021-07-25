@@ -5,20 +5,27 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
+use App\Models\Interest;
 use App\Actions\User\UpdateUser;
 use App\Actions\User\ChangePassword;
 use App\Actions\User\ChangeEmail;
 use App\Actions\User\ChangeActiveStatus;
 use App\Actions\Country\AllCountries;
+use Auth;
 
 class UserController extends Controller
 {
     public function edit(){
         try{
+            $myInterests = Auth::user()->interests->pluck('id')->toArray();
             $countries = (new AllCountries())->run();
-            return view('user.index')->with('countries', $countries);
+            $interests = Interest::select('id','name', 'icon')->get();
+
+            return view('user.index')->with('countries', $countries)->with('interests', $interests)->with('myInterests', $myInterests);
         }catch(\Exception $e){
-            return $e->getMessage();
+            return back()->with(
+                'error' , $e->getMessage()
+            );
         }
     }
 
@@ -29,7 +36,9 @@ class UserController extends Controller
                 'success' , 'Profile Updated'
             );
         }catch(\Exception $e){
-            return $e->getMessage();
+            return back()->with(
+                'error' , $e->getMessage()
+            );
         }
     }
 

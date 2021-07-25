@@ -11,4 +11,6 @@ class InterestEvent extends Model
     use HasFactory , SoftDeletes;
     protected $table = 'event_interest';
 
+    protected $fillable = ['event_id', 'interest_id'];
+
 }

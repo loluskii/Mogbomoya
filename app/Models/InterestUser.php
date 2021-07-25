@@ -10,4 +10,7 @@ class InterestUser extends Model
 {
     use HasFactory , SoftDeletes;
     protected $table = 'interest_user';
+
+    protected $fillable = ['user_id', 'interest_id'];
+
 }

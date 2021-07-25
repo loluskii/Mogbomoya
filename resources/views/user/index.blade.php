@@ -95,7 +95,7 @@
                         <div class="col">
                             <div class="form-group">
                                 <label for="">PHONE NUMBER</label>
-                                <input type="text" name="phone_number" id="" class="form-control form-control-lg" value="{{auth()->user()->phone_number}}" placeholder="+234 123 4567 890" aria-describedby="helpId">
+                                <input type="text" name="phone_number" id="" class="form-control form-control-lg" value="{{auth()->user()->phone_number ?? ''}}" placeholder="+234 123 4567 890" aria-describedby="helpId">
                                 @error('phone_number')
                                     <b class="text-danger">{{ $message }} </b>
                                 @enderror
@@ -105,7 +105,7 @@
                             <div class="form-group">
                                 <label for="">COUNTRY</label>
                                 <select class="form-control form-control-lg" name="country" id="">
-                                    <option value=" ">--Select Country--</option>
+                                    <option value="">--Select Country--</option>
                                     @foreach ($countries as $country)
                                         <option value="{{$country}}" {{$country == auth()->user()->country ? 'selected' : ''}}>{{$country}}</option>
                                     @endforeach
@@ -121,12 +121,12 @@
                             <div class="form-group">
                                 <label for="">CUSTOMIZE YOUR INTERESTS</label>
                                 <select class="form-control form-control-lg interests" name="interests[]" id="" multiple>
-                                    <option value=" ">---</option>
-                                    <option value="1"> <img src="{{asset('images/icons/gambling.svg')}}" alt="" srcset=""> Gambling </option>
-                                    <option value="2"><img src="{{asset('images/icons/cycling.svg')}}" alt="" srcset=""> Outdoor Sports</option>
-                                    <option value="3"><img src="{{asset('images/icons/childcare.svg')}}" alt="" srcset=""> Childcare</option>
-                                    
-                                </select>                                @error('name')
+                                    <option value="">---</option>
+                                    @foreach($interests as $interest)
+                                        <option value="{{$interest->id}}" {{in_array($interest->id, $myInterests) ? 'selected' : ''}}> <img src="{{asset("images/icons/$interest->icon")}}" alt="" srcset=""> {{$interest->name}} </option>
+                                    @endforeach
+                                </select>                               
+                                 @error('interests')
                                     <b class="text-danger">{{ $message }} </b>
                                 @enderror
                             </div>
@@ -144,78 +144,9 @@
     </div>
 </div>
 
-  
-  <!-- Change email Modal -->
-{{-- <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" >
-    <div class="modal-dialog">
-        <div class="modal-content">
-        <div class="modal-body">
-            <div class="container">
-                <h5 class="modal-title" id="exampleModalLabel" style="font-weight: bold">Change your email </h5>
-                
-                <form action="{{route('user.update.email')}}" method="POST" class=" pt-1 pb-4">
-                    @csrf
-                    <p style="font-size: 12px"> Re-enter your Mogbomoya password to continue.</p>
-                    @if (auth()->user()->password != '')
-                        <div class="form-group">
-                            <label for="">PASSWORD</label>
-                            <input type="text" name="current_password" id="checkPassword" class="form-control form-control-lg" placeholder="Enter Password">
-                        </div>
-                    @endif
-
-                    <div class="form-group">
-                        <label for="">NEW EMAIL</label>
-                        <input type="email" name="email" id="" class="form-control form-control-lg" placeholder="Enter New Email">
-                    </div>
-
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input checkbox" id="exampleCheck1">
-                        <label class="form-check-label pt-1"  for="exampleCheck1">Show Password</label>
-                    </div> 
-                    <div class="py-3">
-                        <button type="submit" class="btn py-2">Continue</button>
-                    </div>
-                </form>
-
-                <form action="" class="updateEmailForm pt-1 pb-3"  style="display: none">
-                    <p style="font-size: 12px"> Your current email is <span>daraassimi@gmail.com</span>. What would you like to update it to? Note that your email is not shouwn in your public profile </p>
-                    <div class="form-group">
-                        <label for="">EMAIL</label>
-                        <input type="email" name="changeEmail" id="changeEmail" class="form-control form-control-lg" placeholder="Change Password" aria-describedby="helpId">
-                    </div>
-                    <div class="py-3">
-                        <button type="submit" class="btn py-2">Continue</button>
-                    </div>    
-                </form>
-                <form action="" class="verifynewEmailForm pt-1 pb-3"autocomplete="off">
-                    <p>We've sent you a code. Enter it to verify your new email address.</p>
-                    <div class="d-flex flex-row mt-5 px-sm-5 px-0">
-                        <input type="text" maxLength="1" size="1" min="0" max="9" pattern="[0-9]{1}" name="digit1" class="form-control digit mr-2 text-center" autofocus="">
-                        <input type="text" maxLength="1" size="1" min="0" max="9" pattern="[0-9]{1}" name="digit2" class="form-control digit mx-2 text-center">
-                        <input type="text" maxLength="1" size="1" min="0" max="9" pattern="[0-9]{1}" name="digit3" class="form-control digit mx-2 text-center">
-                        <input type="text" maxLength="1" size="1" min="0" max="9" pattern="[0-9]{1}" name="digit4" class="form-control digit mx-2 text-center">
-                        <input type="text" maxLength="1" size="1" min="0" max="9" pattern="[0-9]{1}" name="digit5" class="form-control digit mx-2 text-center">
-                        <input type="text" maxLength="1" size="1" min="0" max="9" pattern="[0-9]{1}" name="digit6" class="form-control digit mx-2 text-center">
-                    </div>
-                    <div class="text-center mt-4">
-                        <span class="d-block mobile-text">Don't receive the code? <a href="" class="font-weight-bold resend">Resend</a></span>
-                    </div>
-                    <div class="pt-3 text-center pb-2">
-                        <button class="btn btnPrimary btn-block">Verify</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-        
-        </div>
-    </div>
-</div> --}}
-{{-- Change email modal --}}
-
 @include('user.change-password-modal')
+
 @include('user.change-email-modal')
-
-
 
 @endsection
 

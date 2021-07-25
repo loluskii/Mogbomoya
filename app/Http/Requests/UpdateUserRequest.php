@@ -27,9 +27,10 @@ class UpdateUserRequest extends FormRequest
         return [
             'name' => 'required',
             // 'email' => 'required|unique:users,email,'.Auth::id(),
-            'username' => 'required|string|min:5|max:30|regex:/^\S*$/u|regex:/(^([a-zA-Z]+)(\d+)?$)/u|unique:users,username,'.Auth::id(),
-            'phone_number' => 'required|unique:users,phone_number,'.Auth::id(),
-            'country' => 'required|nullable|unique:users,country,'.Auth::id(),
+            'username' => 'nullable|string|min:5|max:30|regex:/^\S*$/u|regex:/(^([a-zA-Z]+)(\d+)?$)/u|unique:users,username,'.Auth::id(),
+            'phone_number' => 'nullable|string|unique:users,phone_number,'.Auth::id(),
+            'country' => 'nullable|string',
+            'interests' => 'nullable|array',
         ];
     }
 }
