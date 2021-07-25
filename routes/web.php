@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\BankController;
+use App\Http\Controllers\CollectionController;
 use App\Http\Requests\EmailVerificationRequest;
 
 // use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -108,38 +109,41 @@ Route::middleware('verified')->group(function () {
     Route::prefix('event')->group(function () {
 
         Route::get('create', [EventController::class, 'index'])->name('event.index')->middleware('auth');
-        Route::post('create', [EventController::class, 'create'])->name('event.create');
 
-        // Route::get('info', function () {
-        //     return view('events.info');
-        // })->name('event.info');
+        Route::post('create', [EventController::class, 'create'])->name('event.create')->middleware('auth');
 
         Route::get('my-events', [EventController::class, 'myEvents'])->name('user.events')->middleware('auth');
 
-        Route::get('event-info/{slug}', [EventController::class, 'show'])->name('event.info')->middleware('auth');
+        Route::get('event-info/{slug}', [EventController::class, 'show'])->name('event.info');
 
         Route::post('update-info/{slug}', [EventController::class, 'update'])->name('update.event-info')->middleware('auth');
     });
 
     Route::middleware('auth')->prefix('user')->group(function () {
 
-        Route::get('/account', [UserController::class, 'edit'])->name('user.edit')->middleware('auth');
+        Route::get('/account', [UserController::class, 'edit'])->name('user.edit');
 
-        Route::post('update-user', [UserController::class, 'update'])->name('user.update')->middleware('auth');
+        Route::post('update-user', [UserController::class, 'update'])->name('user.update');
         
-        Route::post('change-password', [UserController::class, 'changePassword'])->name('user.update.password')->middleware('auth');
+        Route::post('change-password', [UserController::class, 'changePassword'])->name('user.update.password');
 
-        Route::post('change-email', [UserController::class, 'changeEmail'])->name('user.update.email')->middleware('auth');
+        Route::post('change-email', [UserController::class, 'changeEmail'])->name('user.update.email');
 
-        Route::post('deactivate-user', [UserController::class, 'changeActiveStatus'])->name('user.deactivate')->middleware('auth');
+        Route::post('deactivate-user', [UserController::class, 'changeActiveStatus'])->name('user.deactivate');
 
-        Route::get('bank-details', [BankController::class, 'index'])->name('bank.details')->middleware('auth');
+        Route::get('bank-details', [BankController::class, 'index'])->name('bank.details');
 
-        Route::post('store-bank-details', [BankController::class, 'validateBank'])->name('bank.store')->middleware('auth');
+        Route::post('store-bank-details', [BankController::class, 'validateBank'])->name('bank.store');
 
-        Route::get('/collections', function () {
-            return view('user.collections');
-        })->name('user.collections');
+        Route::prefix('collections')->group(function () {
+            Route::get('/', [CollectionController::class, 'index'])->name('user.collections');
+
+            Route::post('/', [CollectionController::class, 'create'])->name('collection.store');
+
+            Route::get('collection-info/{slug}', [CollectionController::class, 'show'])->name('collection.info');
+
+        });
+
     });
 
     Route::get('/s=location', function () {

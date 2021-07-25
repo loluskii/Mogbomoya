@@ -30,6 +30,26 @@
                 </div>
             </div>
         </div>
+
+        <div class="row py-4">
+          @forelse ($collections as $collection)
+              <div class="col-md-3">
+                  <div class="card" >
+                      <img src="{{asset("images/collection/$collection->featured_image")}}" class="card-img-top" alt="{{$collection->name}}">
+                      <div class="card-body">
+                          <a href="{{route('collection.info', $collection->reference)}}"><h5 class="text-dark  card-title">{{ $collection->name }}</h5></a>
+                          <p class="card-text mb-0 text-muted">{{$collection->location}}</p>
+                          <p class="card-text text-muted"><span>{{ \Carbon\Carbon::parse($collection->date)->toFormattedDateString()}}</span> | <span>{{ \Carbon\Carbon::parse($collection->time)->toTimeString()}} </span></p>
+                      </div>
+                  </div>
+              </div>
+          @empty
+              <div class="col-md-12 text-center">
+                  <p>No collections to display.</p>
+              </div>
+          @endforelse
+          {{$collections->links()}}
+      </div>
     </div>
     <div class="modal fade" id="addNewCollectionModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -41,15 +61,16 @@
               </button>
             </div>
             <div class="modal-body">
-              <form action="https://google.com">
+              <form action="{{route('collection.store')}}" method="POST">
+                  @csrf
                   <div class="form-group">
                     <label for="">COLLECTION NAME</label>
-                    <input type="text" name="collection_name" id="" class="form-control form-control-lg" placeholder="" aria-describedby="helpId">
+                    <input type="text" name="name" id="" class="form-control form-control-lg" placeholder="" aria-describedby="helpId">
                   </div>
               </form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btnPrimary">Create Collection</button>
+              <button type="submit" class="btn btnPrimary">Create Collection</button>
             </div>
           </div>
         </div>

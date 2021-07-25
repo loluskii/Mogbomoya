@@ -238,7 +238,7 @@
             </div>
             <hr>
             <div class="modal-body">
-                <form action="{{route('update.event-info', $event->id)}}" method="POST">
+                <form action="{{route('update.event-info', $event->reference)}}" method="POST">
                     @csrf
                     <div class="form-row pb-4">
                         <div class="col-md-6 col-6">
@@ -271,7 +271,7 @@
             </div>
             <hr>
             <div class="modal-body">
-                <form action="{{route('update.event-info', $event->id)}}" method="POST">
+                <form action="{{route('update.event-info', $event->reference)}}" method="POST">
                     @csrf
                     <div class="form-row pb-4">
                         <div class="col-md-6 col-6">
@@ -317,7 +317,7 @@
             </div>
             <hr>
             <div class="modal-body">
-                <form action="{{route('update.event-info', $event->id)}}" method="POST">
+                <form action="{{route('update.event-info', $event->reference)}}" method="POST">
                     @csrf
                     <div class="container guestForm px-0">
                         <div class="form-group py-2">

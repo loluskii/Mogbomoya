@@ -40,17 +40,17 @@ class EventController extends Controller
 
         $event = (new EventQueries())->findRef($reference);
 
-        if($event->user_id != Auth::id()){
-            return view('event.info')->with('event', $event);
+        if($event->user_id == Auth::id()){
+            return view('events.info')->with('event', $event);
         }
 
         return view('user.event-info')->with('event', $event);
 
     }
 
-    public function update(Request $request, $id){
+    public function update(Request $request, $slug){
         try{
-            (new UpdateEvent())->run($request, $id);
+            (new UpdateEvent())->run($request, $slug);
             return back()->with(
                 'success', 'Event updated Successfully'
             );
