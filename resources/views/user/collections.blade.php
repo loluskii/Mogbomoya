@@ -2,7 +2,7 @@
 
 @section('css')
 <style>
-    .card{
+    .add_to{
         background-color: transparent;
         border: 2px dashed #008A69;
     }
@@ -17,7 +17,7 @@
                 <div class="row my-5">
                     <div class="col-sm-4 col-md-3">
                         <a  data-toggle="modal" data-target="#addNewCollectionModal">
-                            <div class="card">
+                            <div class="card add_to">
                                 <div class="card-body text-center p-5">
                                     <div class="">
                                         <img src="{{asset('images/icons/plus.svg')}}" alt="" srcset="">
@@ -38,8 +38,6 @@
                       <img src="{{asset("images/collection/$collection->featured_image")}}" class="card-img-top" alt="{{$collection->name}}">
                       <div class="card-body">
                           <a href="{{route('collection.info', $collection->reference)}}"><h5 class="text-dark  card-title">{{ $collection->name }}</h5></a>
-                          <p class="card-text mb-0 text-muted">{{$collection->location}}</p>
-                          <p class="card-text text-muted"><span>{{ \Carbon\Carbon::parse($collection->date)->toFormattedDateString()}}</span> | <span>{{ \Carbon\Carbon::parse($collection->time)->toTimeString()}} </span></p>
                       </div>
                   </div>
               </div>

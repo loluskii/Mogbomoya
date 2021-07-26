@@ -14,4 +14,9 @@ class Collection extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function event_collections()
+    {
+        return $this->hasMany(EventCollection::class);
+    }
 }

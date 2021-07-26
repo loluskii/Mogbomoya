@@ -9,6 +9,8 @@ use App\Actions\Event\UpdateEvent;
 use App\Services\Event\EventQueries;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Interest;
+use App\Services\Collection\CollectionQueries;
+
 class EventController extends Controller
 {
     public function index()
@@ -40,8 +42,10 @@ class EventController extends Controller
 
         $event = (new EventQueries())->findRef($reference);
 
+        $collections = (new CollectionQueries())->withPagination(12);
+
         if($event->user_id == Auth::id()){
-            return view('events.info')->with('event', $event);
+            return view('events.info')->with('event', $event)->with('collections', $collections);
         }
 
         return view('user.event-info')->with('event', $event);

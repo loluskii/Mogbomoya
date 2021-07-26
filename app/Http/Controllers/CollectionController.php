@@ -35,13 +35,11 @@ class CollectionController extends Controller
 
         $collection = (new CollectionQueries())->findRef($reference);
 
-        $event_collection = $collection->id;
+        $collection_name = $collection->name;
 
-        if($collection->user_id == Auth::id()){
-            return view('collections.info')->with('collection', $collection);
-        }
+        $event_collections = $collection->event_collections()->paginate(10);
 
-        abort(404);
+        return view('user.collections-info')->with('event_collections', $event_collections)->with('collection_name', $collection_name);
 
     }
 }

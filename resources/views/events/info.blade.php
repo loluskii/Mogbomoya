@@ -63,11 +63,10 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item py-2" href="#">Save to</a>
-                                    <a class="dropdown-item py-2" href="#">Shayo💃</a>
-                                    <a class="dropdown-item py-2" href="#">Marketing</a>
-                                    <a class="dropdown-item py-2" href="#">Crashers</a>
-                                    <a class="dropdown-item py-2" href="#">Racing</a>
-                                    <a class="dropdown-item py-2" href="#">Business</a>
+                                    @foreach ($collections as $collection)
+                                        <a class="dropdown-item py-2" href="#">{{ $collection->name }}</a>
+                                    @endforeach
+
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item py-2" href="#">Done</a>
                                 </div>

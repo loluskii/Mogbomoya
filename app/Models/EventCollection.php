@@ -15,8 +15,4 @@ class EventCollection extends Model
         return $this->belongsTo(Event::class);
     }
 
-    public function collection()
-    {
-        return $this->belongsTo(Collection::class);
-    }
 }
