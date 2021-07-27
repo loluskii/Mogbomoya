@@ -62,13 +62,17 @@
                                     <img src="{{ asset('images/save.svg') }}" srcset="">
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item py-2" href="#">Save to</a>
-                                    @foreach ($collections as $collection)
-                                        <a class="dropdown-item py-2" href="#">{{ $collection->name }}</a>
-                                    @endforeach
+                                    @if($collections->count() > 0)
+                                        <a class="dropdown-item py-2" href="#">Save to</a>
+                                        @foreach ($collections as $collection)
+                                            <a class="dropdown-item py-2" onclick="confirm('Are you sure you want to proceed with this action?')" href="{{ route('event.add_to_collection', ['event_reference' => $event->reference, 'collection_reference' => $collection->reference]) }}">{{ $collection->name }}</a>
+                                        @endforeach
 
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item py-2" href="#">Done</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item py-2" href="#">Done</a>
+                                    @else 
+                                        <a class="dropdown-item py-2" href="#">No collections</a>
+                                    @endif
                                 </div>
                                 <a href="http://" class="btn save shadow">
                                     <img src="{{ asset('images/share.svg') }}" srcset="">

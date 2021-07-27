@@ -120,6 +120,8 @@ Route::middleware('verified')->group(function () {
         Route::get('event-info/{slug}', [EventController::class, 'show'])->name('event.info');
 
         Route::post('update-info/{slug}', [EventController::class, 'update'])->name('update.event-info')->middleware('auth');
+
+        Route::get('add-to-collection/{event_reference}/{collection_reference}', [EventController::class, 'addToCollection'])->name('event.add_to_collection')->middleware('auth');
     });
 
     Route::middleware('auth')->prefix('user')->group(function () {

@@ -234,9 +234,9 @@
                                         <div class="col-md-10 col-sm-12 pl-0">
                                             <select class="form-control form-control-lg" name="categories[]" id="categories" multiple>
                                                 <option value=" " selected>-- Categories --</option>
-                                                {{-- @foreach ($interests as $interest)
+                                                @foreach ($interests as $interest)
                                                     <option value="{{$interest->id}}">{{$interest->name}}</option>
-                                                @endforeach --}}
+                                                @endforeach
                                             </select>
                                             @error('categories')
                                                 <b class="text-danger">{{ $message }} </b>

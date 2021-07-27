@@ -58,18 +58,18 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body">
-              <form action="{{route('collection.store')}}" method="POST">
-                  @csrf
-                  <div class="form-group">
-                    <label for="">COLLECTION NAME</label>
-                    <input type="text" name="name" id="" class="form-control form-control-lg" placeholder="" aria-describedby="helpId">
-                  </div>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button type="submit" class="btn btnPrimary">Create Collection</button>
-            </div>
+            <form action="{{route('collection.store')}}" method="POST">
+                @csrf
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="">COLLECTION NAME</label>
+                        <input type="text" name="name" id="" class="form-control form-control-lg" placeholder="" aria-describedby="helpId">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btnPrimary">Create Collection</button>
+                </div>
+            </form>
           </div>
         </div>
       </div>

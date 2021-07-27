@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\Event\AddToCollection;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreEventRequest;
 use App\Actions\Event\CreateEvent;
@@ -57,6 +58,19 @@ class EventController extends Controller
             (new UpdateEvent())->run($request, $slug);
             return back()->with(
                 'success', 'Event updated Successfully'
+            );
+        }catch(\Exception $e){
+            return back()->with(
+                'error', $e->getMessage()
+            );   
+        }
+    }
+
+    public function addToCollection(Request $request){
+        try{
+            (new AddToCollection())->run($request);
+            return back()->with(
+                'success', 'Event added to collection Successfully'
             );
         }catch(\Exception $e){
             return back()->with(
