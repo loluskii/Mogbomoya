@@ -68,10 +68,17 @@ class EventController extends Controller
 
     public function addToCollection(Request $request){
         try{
-            (new AddToCollection())->run($request);
+            $response = (new AddToCollection())->run($request);
+
+            if($response == false){
+                return back()->with(
+                    'error', 'This event exists in the collection already.'
+                );
+            }
             return back()->with(
                 'success', 'Event added to collection Successfully'
             );
+            
         }catch(\Exception $e){
             return back()->with(
                 'error', $e->getMessage()

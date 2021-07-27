@@ -30,12 +30,16 @@
                 </div>
             </div>
         </div>
-
+        
         <div class="row py-4">
           @forelse ($collections as $collection)
               <div class="col-md-3">
                   <div class="card" >
-                      <img src="{{asset("images/collection/$collection->featured_image")}}" class="card-img-top" alt="{{$collection->name}}">
+                      @if($collection->event_collections->first())
+                        <img src="{{asset("images/event/".$collection->event_collections->first()->event->featured_image)}}" class="card-img-top" alt="{{$collection->name}}">
+                      @else 
+                        <img src="https://www.online-tech-tips.com/wp-content/uploads/2020/04/WallpaperCraft.jpg.optimal.jpg" class="card-img-top" alt="{{$collection->name}}">
+                      @endif
                       <div class="card-body">
                           <a href="{{route('collection.info', $collection->reference)}}"><h5 class="text-dark  card-title">{{ $collection->name }}</h5></a>
                       </div>
