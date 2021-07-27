@@ -26,4 +26,11 @@ class PagesController extends Controller
         }
         
     }
+
+    public function interests(){
+        $interests = Interest::select('id','name', 'icon')->get();
+        
+        return view('user.interests')->with('interests', $interests);
+
+    }
 }

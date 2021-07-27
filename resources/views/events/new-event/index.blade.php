@@ -70,67 +70,6 @@
     }
 
 
-.images {
-  display: flex;
-  flex-wrap:  wrap;
-  margin-top: 20px;
-}
-.images .img,
-.images .pic {
-  flex-basis: 31%;
-  margin-bottom: 10px;
-  border-radius: 4px;
-  border: 1px solid rgb(206, 206, 206);
-
-}
-.images .img {
-  width: 112px;
-  height: 200px;
-  background-size: cover;
-  margin-right: 10px;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-}
-.images .img span {
-  display: none;
-  text-transform: capitalize;
-  z-index: 2;
-}
-.images .img::after {
-  content: '';
-  width: 100%;
-  height: 100%;
-  transition: opacity .1s ease-in;
-  border-radius: 4px;
-  opacity: 0;
-  position: absolute;
-}
-.images .img:hover::after {
-  display: block;
-  background-color: #000;
-  opacity: .5;
-}
-.images .img:hover span {
-  display: block;
-  color: #fff;
-}
-.images .pic {
-  background-color: #fff;
-  align-self: center;
-  text-align: center;
-  padding: 40px 0;
-  text-transform: uppercase;
-  color: #848EA1;
-  font-size: 12px;
-  cursor: pointer;
-}
-
-
     
     
     @media only screen and (max-width: 600px) {
@@ -295,9 +234,9 @@
                                         <div class="col-md-10 col-sm-12 pl-0">
                                             <select class="form-control form-control-lg" name="categories[]" id="categories" multiple>
                                                 <option value=" " selected>-- Categories --</option>
-                                                @foreach ($interests as $interest)
+                                                {{-- @foreach ($interests as $interest)
                                                     <option value="{{$interest->id}}">{{$interest->name}}</option>
-                                                @endforeach
+                                                @endforeach --}}
                                             </select>
                                             @error('categories')
                                                 <b class="text-danger">{{ $message }} </b>

@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\UpdateUserRequest;
+use App\Http\Requests\UpdateUserInterestRequest;
 use App\Models\User;
 use App\Models\Interest;
 use App\Actions\User\UpdateUser;
+use App\Actions\User\UpdateUserInterest;
 use App\Actions\User\ChangePassword;
 use App\Actions\User\ChangeEmail;
 use App\Actions\User\ChangeActiveStatus;
@@ -34,6 +36,19 @@ class UserController extends Controller
             (new UpdateUser())->run($request->validated());
             return back()->with(
                 'success' , 'Profile Updated'
+            );
+        }catch(\Exception $e){
+            return back()->with(
+                'error' , $e->getMessage()
+            );
+        }
+    }
+
+    public function updateInterest(UpdateUserInterestRequest $request){
+        try{
+            (new UpdateUserInterest())->run($request->validated());
+            return redirect()->route('index.view')->with(
+                'success' , 'Interest Updated'
             );
         }catch(\Exception $e){
             return back()->with(

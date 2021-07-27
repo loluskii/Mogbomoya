@@ -101,6 +101,10 @@ class RegisterController extends Controller
                  }else{
                 
                 //Show message here 
+
+                return redirect()->route('login.view')->with(
+                    'error', 'Something went wrong, Please try again or use another login method'
+                );
                 
                }
           }

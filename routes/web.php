@@ -26,11 +26,14 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', [PagesController::class, 'index']);
+Route::get('/', [PagesController::class, 'index'])->name('index.view');
+
 
 Route::get('/sign-up', function () {
     return view('auth.sign-up');
 });
+
+Route::get('interests', [PagesController::class, 'interests']);
 
 Route::post('sign-up', [RegisterController::class, 'register'])->name('register');
 
@@ -124,6 +127,8 @@ Route::middleware('verified')->group(function () {
         Route::get('/account', [UserController::class, 'edit'])->name('user.edit');
 
         Route::post('update-user', [UserController::class, 'update'])->name('user.update');
+
+        Route::post('update-user-interest', [UserController::class, 'updateInterest'])->name('user.interests.update');
         
         Route::post('change-password', [UserController::class, 'changePassword'])->name('user.update.password');
 

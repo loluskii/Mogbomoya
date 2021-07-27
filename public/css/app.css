@@ -1,3 +1,8 @@
+:root {
+    --avatar-size: 2.5rem;
+    /* change this value anything, e.g., 100px, 10rem, etc. */
+}
+
 input:focus,
 select:focus,
 textarea:focus,
@@ -116,6 +121,25 @@ footer .top {
 .btnPrimaryOutline.active>span {
     color: #008A69;
     font-weight: bold;
+}
+
+.circle {
+    background-color: #008A69;
+    border-radius: 50%;
+    height: var(--avatar-size);
+    text-align: center;
+    width: var(--avatar-size);
+}
+
+.initials {
+    font-size: calc(var(--avatar-size) / 2);
+    /* 50% of parent */
+    line-height: 1;
+    position: relative;
+    color: #fff;
+    ;
+    top: calc(var(--avatar-size) / 4);
+    /* 25% of parent */
 }
 
 @media (min-width: 992px) {
