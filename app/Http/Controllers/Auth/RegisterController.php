@@ -73,7 +73,7 @@ class RegisterController extends Controller
 
     protected function loginOrCreateAccount($providerUser, $driver) {
         // check for existing account
-        $user = User::where('email', $providerUser->getEmail())->first();
+        $user = User::firstWhere('email', $providerUser->getEmail());
     
     // if user already found
             if( $user ) {

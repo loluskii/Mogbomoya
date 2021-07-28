@@ -24,5 +24,10 @@ class Event extends Model
     {
         return $this->belongsToMany(Interest::class);
     }
+
+    public function registrations()
+    {
+        return $this->hasMany(EventRegistration::class);
+    }
     
 }

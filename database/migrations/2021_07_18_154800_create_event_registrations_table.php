@@ -16,11 +16,10 @@ class CreateEventRegistrationsTable extends Migration
         Schema::create('event_registrations', function (Blueprint $table) {
             $table->id();
             $table->integer('event_id');
-            $table->json('tiers');
-            $table->integer('amount');
-            $table->string('first_name');
-            $table->string('last_name');
+            $table->string('name');
             $table->string('email');
+            $table->boolean('isPaid');
+            $table->integer('guests')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

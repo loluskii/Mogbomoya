@@ -14,11 +14,11 @@ class EventQueries{
     }
 
     public function findRefWithAuth($ref){
-        return Event::where('user_id', Auth::id())->where('reference', $ref)->first();
+        return Event::firstWhere('user_id', Auth::id())->where('reference', $ref);
     }
 
     public function findRef($ref){
-        return Event::where('reference', $ref)->first();
+        return Event::firstWhere('reference', $ref);
     }
 
     public function findById($id){

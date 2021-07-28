@@ -7,7 +7,7 @@ use Auth;
 class CreateOrUpdateBank{
     public function run($request){
         DB::BeginTransaction();
-        $checkIfUserHasBank = Bank::where('user_id', Auth::id())->first();
+        $checkIfUserHasBank = Bank::firstWhere('user_id', Auth::id());
         if($checkIfUserHasBank == null){
             $bank = new Bank;
             $bank->acct_no = $request->account_number;

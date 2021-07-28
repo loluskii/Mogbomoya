@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTiersTable extends Migration
+class CreateSubAccountsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,14 @@ class CreateTiersTable extends Migration
      */
     public function up()
     {
-        Schema::create('tiers', function (Blueprint $table) {
+        Schema::create('sub_accounts', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('reference');
-            $table->integer('price');
-            $table->integer('limit')->nullable();
-            $table->integer('limit_remaining')->nullable();
             $table->integer('event_id');
-            $table->softDeletes();
+            $table->string('name');
+            $table->string('settlement_bank');
+            $table->string('account_number');
+            $table->decimal('percentage_charge', 3, 2);	
+            $table->string('subaccount_code');
             $table->timestamps();
         });
     }
@@ -33,6 +32,6 @@ class CreateTiersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tiers');
+        Schema::dropIfExists('sub_accounts');
     }
 }

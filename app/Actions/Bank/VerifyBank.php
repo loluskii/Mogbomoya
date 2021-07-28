@@ -28,7 +28,7 @@ class VerifyBank{
         $splitName = explode(' ', strtolower($resolve['data']['account_name']));
         $contains = Str::contains(strtolower(Auth::user()->name), $splitName);
         if(!$contains){
-            throw new Exception('You can not withdraw with an account that does not match your profile name.');
+            throw new Exception('You can not add an account that does not match your profile name.');
         }
         $request->merge(['account_name'=> $resolve['data']['account_name']]);
         (new CreateOrUpdateBank())->run($request);

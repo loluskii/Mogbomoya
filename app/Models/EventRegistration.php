@@ -10,12 +10,13 @@ class EventRegistration extends Model
 {
     use HasFactory , SoftDeletes;
 
-    protected $casts = [
-        'tiers' => 'array',
-    ];
-
     public function event()
     {
         return $this->belongsTo(Event::class);
+    }
+
+    public function payment_record()
+    {
+        return $this->hasMany(PaymentRecord::class);
     }
 }

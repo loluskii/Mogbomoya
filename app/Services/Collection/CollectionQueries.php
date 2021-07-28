@@ -14,11 +14,11 @@ class CollectionQueries{
     }
 
     public function findRefWithAuth($ref){
-        return Collection::where('user_id', Auth::id())->where('reference', $ref)->first();
+        return Collection::firstWhere('user_id', Auth::id())->where('reference', $ref);
     }
 
     public function findRef($ref){
-        return Collection::where('reference', $ref)->first();
+        return Collection::firstWhere('reference', $ref);
     }
 
     public function findById($id){

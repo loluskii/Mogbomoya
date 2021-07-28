@@ -107,21 +107,23 @@ Route::get('/site-map', function () {
     return view('site-map');
 });
 
-Route::middleware('verified')->group(function () {
+Route::middleware(['auth','verified'])->group(function () {
 
     Route::prefix('event')->group(function () {
 
-        Route::get('create', [EventController::class, 'index'])->name('event.index')->middleware('auth');
+        Route::get('create', [EventController::class, 'index'])->name('event.index');
 
-        Route::post('create', [EventController::class, 'create'])->name('event.create')->middleware('auth');
+        Route::post('create', [EventController::class, 'create'])->name('event.create');
 
-        Route::get('my-events', [EventController::class, 'myEvents'])->name('user.events')->middleware('auth');
+        Route::post('register/{event_id}', [EventController::class, 'register'])->name('event.register');
+
+        Route::get('my-events', [EventController::class, 'myEvents'])->name('user.events');
 
         Route::get('event-info/{slug}', [EventController::class, 'show'])->name('event.info');
 
-        Route::post('update-info/{slug}', [EventController::class, 'update'])->name('update.event-info')->middleware('auth');
+        Route::post('update-info/{slug}', [EventController::class, 'update'])->name('update.event-info');
 
-        Route::get('add-to-collection/{event_reference}/{collection_reference}', [EventController::class, 'addToCollection'])->name('event.add_to_collection')->middleware('auth');
+        Route::get('add-to-collection/{event_reference}/{collection_reference}', [EventController::class, 'addToCollection'])->name('event.add_to_collection');
     });
 
     Route::middleware('auth')->prefix('user')->group(function () {

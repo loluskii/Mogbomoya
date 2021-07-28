@@ -1,4 +1,5 @@
-<form action="">
+<form action="{{route('event.register', $event->id)}}" method="POST">
+    @csrf
     <div class="modal fade bd-example-modal-lg" id="paidEventRegisterModal" tabindex="-1" role="dialog"
     aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -23,9 +24,7 @@
                                         <p>&#8358; {{ $tier->price }}</p>
                                     </div>
                                     <div class="form-group">
-                                        <input type="number" max="{{ $tier->limit_remaining ?? 100000000000000000 }}"
-                                            class="custom-select form-control form-control-lg mx-3"
-                                            name="{{ $tier->id }}">
+                                        <input type="number" max="{{ $tier->limit_remaining ?? 100000000000000000 }}" class="custom-select form-control form-control-lg mx-3" name="{{ $tier->reference }}">
                                         <b for=""><i>{{ $tier->limit_remaining ?? 'Unlimited' }} slot(s) left</i></b>
 
                                     </div>

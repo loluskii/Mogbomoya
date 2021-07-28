@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Actions\Event\AddToCollection;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreEventRequest;
+use App\Http\Requests\RegisterForEventRequest;
 use App\Actions\Event\CreateEvent;
+use App\Actions\Event\RegisterForEvent;
 use App\Actions\Event\UpdateEvent;
 use App\Services\Event\EventQueries;
 use Illuminate\Support\Facades\Auth;
@@ -17,7 +19,13 @@ class EventController extends Controller
     public function index()
     {
         $interests = Interest::all();
-        return view('events.new-event.index')->with('interests', $interests);
+        if(Auth::user()->bank){
+            return view('events.new-event.index')->with('interests', $interests);
+        }else{
+            return redirect()->route('bank.details')->with(
+                'error', 'You need to setup your bank details to create an event'
+            );
+        }
     }
     public function myEvents(){
         $events = (new EventQueries())->withPagination(12);
@@ -28,10 +36,26 @@ class EventController extends Controller
     public function create(StoreEventRequest $request){
         try{
             $request->validated();
+            
             (new CreateEvent())->run($request);
             return redirect()->route('user.events')->with(
                 'success', 'Event Created Successfully'
-            );
+            );    
+        }catch(\Exception $e){
+            return back()->with(
+                'error', $e->getMessage()
+            );   
+        }
+    }
+
+    public function register(RegisterForEventRequest $request, $id){
+        try{
+            $request->validated();
+            
+            (new RegisterForEvent())->run($request, $id);
+            return back()->with(
+                'success', 'Event Registration Successful'
+            );    
         }catch(\Exception $e){
             return back()->with(
                 'error', $e->getMessage()

@@ -7,7 +7,7 @@ use App\Models\InterestEvent;
 use DB;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
-
+use App\Actions\Event\CreateEventSubAccount;
 class CreateEvent{
     public function run($request){
         DB::beginTransaction();
@@ -26,16 +26,20 @@ class CreateEvent{
             $request->featured_image->move(public_path('images/event'), $imageName);
             $event->featured_image = $imageName;
             $event->save();
-            for($i = 0; $i < count($request['tier_name']); $i++){
-                $tier = new Tier;
-                $tier->name =  $request['tier_name'][$i];
-                $tier->price =  $request['tier_price'][$i];
-                $tier->limit =  $request['limit'][$i];
-                $tier->limit_remaining =  $request['limit'][$i];
-                $tier->event_id = $event->id;
-
-                $tier->save();
+            
+            if($event->isPaid == 1){
+                for($i = 0; $i < count($request['tier_name']); $i++){
+                    $tier = new Tier;
+                    $tier->name =  $request['tier_name'][$i];
+                    $tier->price =  $request['tier_price'][$i];
+                    $tier->limit =  $request['limit'][$i];
+                    $tier->limit_remaining =  $request['limit'][$i];
+                    $tier->event_id = $event->id;
+                    $tier->reference = Str::random(12);
+                    $tier->save();
+                }
             }
+            
             for($i = 0; $i < count($request['categories']); $i++){
                 $findInterest = Interest::find((int)$request['categories'][$i]);
                 if($findInterest){
@@ -45,6 +49,15 @@ class CreateEvent{
                     $category->save();
                 }
             }
+            $eventDetails = [
+                'name' => $event->name,
+                'id' => $event->id
+            ];
+            
+            if($event->isPaid == 1){
+                (new CreateEventSubAccount())->run($eventDetails);
+            }
+            
         DB::commit();
     }
 }
