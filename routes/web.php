@@ -28,7 +28,6 @@ use Illuminate\Http\Request;
 
 Route::get('/', [PagesController::class, 'index'])->name('index.view');
 
-
 Route::get('/sign-up', function () {
     return view('auth.sign-up');
 });
@@ -116,6 +115,8 @@ Route::middleware(['auth','verified'])->group(function () {
         Route::post('create', [EventController::class, 'create'])->name('event.create');
 
         Route::post('register/{event_id}', [EventController::class, 'register'])->name('event.register');
+
+        Route::get('payment-callback', [EventController::class, 'handleCallback'])->name('event.payment.callback');
 
         Route::get('my-events', [EventController::class, 'myEvents'])->name('user.events');
 

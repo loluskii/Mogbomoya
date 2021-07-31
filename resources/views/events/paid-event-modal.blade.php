@@ -21,11 +21,11 @@
                                 <div class="row">
                                     <div class="mr-auto">
                                         <h6>{{ $tier->name }}</h6>
-                                        <p>&#8358; {{ $tier->price }}</p>
+                                        <p>&#8358; {{ number_format($tier->price) }}</p>
                                     </div>
                                     <div class="form-group">
                                         <input type="number" max="{{ $tier->limit_remaining ?? 100000000000000000 }}" class="custom-select form-control form-control-lg mx-3" name="{{ $tier->reference }}">
-                                        <b for=""><i>{{ $tier->limit_remaining ?? 'Unlimited' }} slot(s) left</i></b>
+                                        <b for=""><i>{{ $tier->limit_remaining > 0 ? $tier->limit_remaining : 'Unlimited' }} slot(s) left</i></b>
 
                                     </div>
                                 </div>

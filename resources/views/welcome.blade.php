@@ -18,71 +18,38 @@
         <div class="mt-4" id="tabs">
             <ul class="nav nav-pills mb-3">
                 <li class="nav-item">
-                    <a class="nav-link mx-1 my-1 active" id="pills-home-tab" data-toggle="pill" role="tab" aria-controls="pills-home" aria-selected="true">All Events</a>
+                    <a  href="{{route('index.view')}}" class="nav-link mx-1 my-1 {{(request()->query('search')) ? '' : 'active'}}" aria-selected="true">All Events</a>
                 </li>
                 @foreach($interests as $interest)
                 <li class="nav-item">
-                    <a class="nav-link mx-1 my-1 ls-profile-tab" data-toggle="pill" role="tab" aria-controls="pills-gambling" aria-selected="false"> <img src="{{asset("images/icons/$interest->icon")}}" alt="" srcset=""> {{$interest->name}}</a>
+                    @if(request()->query('search'))
+                        <a href="{{route('index.view',['search' => encrypt($interest->id)])}}" class="nav-link mx-1 my-1 ls-profile-tab  {{ decrypt(request()->query('search')) == $interest->id ? 'active' : ''}}"> <img src="{{asset("images/icons/$interest->icon")}}" alt="" srcset=""> {{$interest->name}}</a>
+                    @else 
+                        <a href="{{route('index.view',['search' => encrypt($interest->id)])}}" class="nav-link mx-1 my-1 ls-profile-tab"> <img src="{{asset("images/icons/$interest->icon")}}" alt="" srcset=""> {{$interest->name}}</a>
+                    @endif
                 </li>
                 @endforeach
             </ul>
-
-
             
             <div class="row py-4">
-                <div class="col-md-3">
-                    <div class="card" >
-                        <img src="{{asset('images/category-images/Rectangle.png')}}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Eat & Drink Festival</h5>
-                            <p class="card-text mb-0 text-muted">Sterling Arena, Marina road, Lagos</p>
-                            <p class="card-text text-muted"><span>Fri, 29 Dec 2020</span> | <span>1:20pm </span></p>
+                @forelse ($events as $event)
+                    <div class="col-md-3">
+                        <div class="card" >
+                            <img src="{{asset("images/event/$event->featured_image")}}" class="card-img-top" alt="$event->name}}">
+                            <div class="card-body">
+                                <a href="{{route('event.info', $event->reference)}}"><h5 class="text-dark  card-title">{{$event->name}}</h5></a>
+                                <p class="card-text mb-0 text-muted">{{$event->location}}</p>
+                                <p class="card-text text-muted"><span>{{\Carbon\Carbon::parse($event->date)->toFormattedDateString()}}</span> | <span>{{\Carbon\Carbon::parse($event->time)->toTimeString()}}</span></p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card" >
-                        <img src="{{asset('images/category-images/Rectangle.png')}}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Eat & Drink Festival</h5>
-                            <p class="card-text mb-0 text-muted">Sterling Arena, Marina road, Lagos</p>
-                            <p class="card-text text-muted"><span>Fri, 29 Dec 2020</span> | <span>1:20pm </span></p>
-                            
-                        </div>
+                @empty
+                    <div class="col-md-12 text-center">
+                        <p>Nothing to display.</p>
                     </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card" >
-                        <img src="{{asset('images/category-images/Rectangle.png')}}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Eat & Drink Festival</h5>
-                            <p class="card-text mb-0 text-muted">Sterling Arena, Marina road, Lagos</p>
-                            <p class="card-text text-muted"><span>Fri, 29 Dec 2020</span> | <span>1:20pm </span></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card" >
-                        <img src="{{asset('images/category-images/Rectangle.png')}}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Eat & Drink Festival</h5>
-                            <p class="card-text mb-0 text-muted">Sterling Arena, Marina road, Lagos</p>
-                            <p class="card-text text-muted"><span>Fri, 29 Dec 2020</span> | <span>1:20pm </span></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="container text-center">
-                <button type="button" class="btn btn-outline-secondary">Load More</button>
+                @endforelse
+                {{$events->appends(request()->except('page'))->links()}}
             </div>
         </div>
     </div>
 @endsection
-
-@section('scripts')
-    <script src="">
-        console.log('hello');
-    </script>
-
-    @endsection

@@ -74,9 +74,18 @@
                                         <a class="dropdown-item py-2" href="#">No collections</a>
                                     @endif
                                 </div>
-                                <a href="http://" class="btn save shadow">
+                                {{-- <a href="http://" class="btn save shadow">
                                     <img src="{{ asset('images/share.svg') }}" srcset="">
-                                </a>
+                                </a> --}}
+                                <span class="mr-3">
+                                    <a href="https://www.facebook.com/sharer/sharer.php?u={{url()->current()}}" class="btn btn-sm text-white" style="background-color: #3b5998" target="_blank"><i class="fa fa-facebook text-white"></i> Share</a>
+                                </span>
+                                <span class="mr-3">
+                                <a href="whatsapp://send?text=Mogbomoya Event {{url()->current()}}" class="btn btn-sm text-white" style="background-color: #24d366" data-action="share/whatsapp/share" target="_blank"><i class="fa fa-whatsapp text-white"></i> Share</a>
+                                </span>
+                                <span class="mr-3">
+                                <a href="https://twitter.com/intent/tweet?text=Mogbomoya Event {{url()->current()}}" class="btn btn-sm text-white" style="background-color: #00acee"  target="_blank"><i class="fa fa-twitter text-white"></i> Share</a>
+                                </span>
                             </div>
                             <div class="mr-3">
                                 <button class="btn btnPrimary" data-toggle="modal"
@@ -152,48 +161,19 @@
             <p class="text-dark mb-0" style="font-weight: bold">Other events you may like:</p>
         </div>
         <div class="row flex-nowrap overflow-auto hideScrollbar pt-3 pb-5">
+            @foreach ($similarEvents as $event)
             <div class="col-md-3 col-lg-3 col-xl-3 col-12 w-100">
-                <div class="card">
-                    <img src="{{ asset('images/category-images/Rectangle.png') }}" class="card-img-top" alt="...">
+                <div class="card" >
+                    <img src="{{asset("images/event/$event->featured_image")}}" class="card-img-top" alt="{{$event->name}}">
                     <div class="card-body">
-                        <h5 class="card-title">Eat & Drink Festival</h5>
-                        <p class="card-text mb-0 text-muted">Sterling Arena, Marina road, Lagos</p>
-                        <p class="card-text text-muted"><span>Fri, 29 Dec 2020</span> | <span>1:20pm </span></p>
+                        <a href="{{route('event.info', $event->reference)}}"><h5 class="text-dark  card-title">{{ $event->name }}</h5></a>
+                        <p class="card-text mb-0 text-muted">{{$event->location}}</p>
+                        <p class="card-text text-muted"><span>{{ \Carbon\Carbon::parse($event->date)->toFormattedDateString()}}</span> | <span>{{ \Carbon\Carbon::parse($event->time)->toTimeString()}} </span></p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 col-lg-3 col-xl-3 col-12 w-100">
-                <div class="card">
-                    <img src="{{ asset('images/category-images/Rectangle.png') }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Eat & Drink Festival</h5>
-                        <p class="card-text mb-0 text-muted">Sterling Arena, Marina road, Lagos</p>
-                        <p class="card-text text-muted"><span>Fri, 29 Dec 2020</span> | <span>1:20pm </span></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-lg-3 col-xl-3 col-12 w-100">
-                <div class="card">
-                    <img src="{{ asset('images/category-images/Rectangle.png') }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Eat & Drink Festival</h5>
-                        <p class="card-text mb-0 text-muted">Sterling Arena, Marina road, Lagos</p>
-                        <p class="card-text text-muted"><span>Fri, 29 Dec 2020</span> | <span>1:20pm </span></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-lg-3 col-xl-3 col-12 w-100">
-                <div class="card">
-                    <img src="{{ asset('images/category-images/Rectangle.png') }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Eat & Drink Festival</h5>
-                        <p class="card-text mb-0 text-muted">Sterling Arena, Marina road, Lagos</p>
-                        <p class="card-text text-muted"><span>Fri, 29 Dec 2020</span> | <span>1:20pm </span></p>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
-    </div>
 
 
 

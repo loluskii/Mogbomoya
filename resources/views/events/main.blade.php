@@ -17,18 +17,19 @@
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
-      
+        
         @yield('css')
     </head>
     <body>
-        <div id="wrapper">
-            
-            @yield('content')
 
+        <div id="wrapper">            
+            @yield('content')
         </div>
-      
-        
+
         @include('layouts.partials.footer-scripts')
+
+
         @yield('script')
+
     </body>
 </html>

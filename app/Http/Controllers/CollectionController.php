@@ -33,7 +33,10 @@ class CollectionController extends Controller
 
     public function show($reference){
 
-        $collection = (new CollectionQueries())->findRef($reference);
+        $collection = (new CollectionQueries())->findRefWithAuth($reference);
+
+        abort_if(!$collection, 403);
+
 
         $collection_name = $collection->name;
 

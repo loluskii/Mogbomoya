@@ -14,7 +14,7 @@ class CollectionQueries{
     }
 
     public function findRefWithAuth($ref){
-        return Collection::firstWhere('user_id', Auth::id())->where('reference', $ref);
+        return Collection::Where('user_id', Auth::id())->where('reference', $ref)->first();
     }
 
     public function findRef($ref){

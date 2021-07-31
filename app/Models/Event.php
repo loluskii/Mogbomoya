@@ -29,5 +29,10 @@ class Event extends Model
     {
         return $this->hasMany(EventRegistration::class);
     }
+
+    public function subaccount()
+    {
+        return $this->hasOne(SubAccount::class);
+    }
     
 }

@@ -18,11 +18,12 @@ class CreatePaymentRecordsTable extends Migration
             $table->integer('event_registration_id');
             $table->integer('user_id');
             $table->string('email');
-            $table->integer('phone_number');
+            $table->integer('phone_number')->nullable();
             $table->integer('amount');
             $table->string('description');
             $table->string('payment_method');
             $table->json('payment_method_log');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -41,6 +41,8 @@ return [
 
     'debug' => (bool) env('APP_DEBUG', false),
 
+    'rapid_api_key' => env('RAPID_API_KEY')
+
     /*
     |--------------------------------------------------------------------------
     | Application URL

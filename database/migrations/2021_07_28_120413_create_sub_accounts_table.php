@@ -21,6 +21,7 @@ class CreateSubAccountsTable extends Migration
             $table->string('account_number');
             $table->decimal('percentage_charge', 3, 2);	
             $table->string('subaccount_code');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

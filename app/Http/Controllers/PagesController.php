@@ -6,26 +6,33 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Auth;
 use App\Models\Interest;
+use App\Services\Event\EventQueries;
 
 class PagesController extends Controller
 {
     public function index(){
-        $interests = Interest::select('id','name', 'icon')->get();
+        try{
+            $interests = Interest::select('id','name', 'icon')->get();
+            $events = (new EventQueries())->withSimplePaginateAndParams(12);
+            // $events = (new EventQueries())->withPagination(12);
+            if(Auth::check()){
+                // $words = array(Auth::user()->name);
+                    
+                // $initials = implode('/', array_map(function ($name) { 
+                //     preg_match_all('/\b\w/', $name, $matches);
+                //     return implode('', $matches[0]);
+                // }, $words));
 
-        if(Auth::check()){
-            // $words = array(Auth::user()->name);
-                
-            // $initials = implode('/', array_map(function ($name) { 
-            //     preg_match_all('/\b\w/', $name, $matches);
-            //     return implode('', $matches[0]);
-            // }, $words));
-
-            return view('welcome')->with('interests', $interests);
-        }else{
-            return view('welcome')->with('interests', $interests);
+                return view('welcome')->with('interests', $interests)->with('events', $events);
+            }else{
+                return view('welcome')->with('interests', $interests);
+            }
+        }catch(\Exception $e){
+            return redirect()->route('index.view');
         }
         
     }
+
 
     public function interests(){
         $interests = Interest::select('id','name', 'icon')->get();

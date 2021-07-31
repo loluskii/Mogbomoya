@@ -8,7 +8,7 @@ use Exception;
 class CreateEventSubAccount{
     public function run($details){
         $response = Http::withToken(config('paystack.secretKey'))->post('https://api.paystack.co/subaccount', [
-            'business_name' => "Mogbomoya ".$details['name'],
+            'business_name' => "Mogbomoya ".$details['name'].'#'.mt_rand(10000, 99999),
             'settlement_bank' => Auth::user()->bank->bank_code, 
             'account_number' => Auth::user()->bank->acct_no, 
             'percentage_charge' => 0.9
