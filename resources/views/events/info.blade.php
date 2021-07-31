@@ -44,7 +44,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="card">
-                    <img src="{{ asset("images/event/$event->featured_image") }}" alt="" srcset="">
+                    <img src="{{ asset("images/event/$event->featured_image") }}" style="max-height:800px;" alt="" srcset="">
                 </div>
             </div>
             <div class="px-0 col-md-6 eventDetails">
