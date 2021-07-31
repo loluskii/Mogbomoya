@@ -14,6 +14,10 @@ p {
     font-weight: 100;
 }
 
+.form-control-lg {
+    font-size: medium;
+}
+
 body {
     font-family: 'Sen', sans-serif;
     background-color: #f7f7f7;

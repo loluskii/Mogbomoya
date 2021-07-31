@@ -92,36 +92,8 @@
             <img src="{{ asset('images/side-bar.svg') }}" alt="">
         </div>
         <div class="col-sm-8 offset-sm-4 pl-0 ">
-            <nav class="navbar navbar-expand-lg navbar-light">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item mr-4" style="padding-top: 15px">
-                            <a class="nav-link" href="/help-center">Help Center </a>
-                        </li>
-                        <li class="nav-item dropdown pt-2">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="{{asset('images/icons/user-image.svg')}}" alt="" srcset=""> {{auth()->user()->name}} 
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item py-3" href="#">Interests</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item py-3" href="#"><img src="{{ asset('images/icons/account.svg') }}" class="px-2" alt="" srcset=""> Account Settings</a>
-                                <a class="dropdown-item py-3" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                    <img src="{{asset('images/icons/logout.svg')}}" class="pr-2" alt="" srcset=""> Logout
-                                </a>
-                      
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+           
+            @include('user.partial-nav')
             <div class="container py-3">
                 <nav>
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -233,9 +205,8 @@
                                         <label for="">SELECT 1-3 CATEGORIES</label>
                                         <div class="col-md-10 col-sm-12 pl-0">
                                             <select class="form-control form-control-lg" name="categories[]" id="categories" multiple>
-                                                <option value=" " selected>-- Categories --</option>
                                                 @foreach ($interests as $interest)
-                                                    <option value="{{$interest->id}}">{{$interest->name}}</option>
+                                                    <option value="{{$interest->id}}" data-icon="{{ asset("images/icon/$interest->icon") }}" >{{$interest->name}}</option>
                                                 @endforeach
                                             </select>
                                             @error('categories')
@@ -283,7 +254,7 @@
                                         <label for="">IS THIS A PAID EVENT?</label>
                                         <div class="col-md-10 col-sm-12 pl-0">
                                             <select class="form-control form-control-lg" name="isPaid">
-                                                <option value=" " selected> -- IS THIS A PAID EVENT --</option>
+                                                <option value=" " selected> ---</option>
                                                 <option value="0">No</option>
                                                 <option value="1">Yes</option>
                                             </select>
@@ -339,6 +310,7 @@
 @endsection @section('script')
 <script>
     $(document).ready(function(){
+        $('#categories').select2();
 
         $('#addNewTier').click(function(e) {
             e.preventDefault()

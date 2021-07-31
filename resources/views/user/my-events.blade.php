@@ -15,7 +15,7 @@
         @forelse ($events as $event)
             <div class="col-md-3">
                 <div class="card" >
-                    <img src="{{asset("images/event/$event->featured_image")}}" class="card-img-top" alt="{{$event->name}}">
+                    <img src="{{asset("images/event/$event->featured_image")}}" style="max-height: 300px;" class="card-img-top" alt="{{$event->name}}">
                     <div class="card-body">
                         <a href="{{route('event.info', $event->reference)}}"><h5 class="text-dark  card-title">{{ $event->name }}</h5></a>
                         <p class="card-text mb-0 text-muted">{{$event->location}}</p>
