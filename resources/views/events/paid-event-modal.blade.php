@@ -6,7 +6,7 @@
         <div class="modal-content">
             <div class="row">
                 <div class="col-md-6 pl-4">
-                    <div class="modal-header flex-column py-4 mr-auto" style="border-bottom: none">
+                    <div class="modal-header flex-column py-3 mr-auto" style="border-bottom: none">
                         <h5 class="modal-title" id="freeEventRegisterModalLabel" style="font-weight: bold">Register for
                             {{ $event->name }}<br> </h5>
                         <p class="mb-0"> {{ \Carbon\Carbon::parse($event->date)->toFormattedDateString() }} by
@@ -19,14 +19,16 @@
                         <div class="container ticketQuantity">
                             @foreach ($event->tiers as $tier)
                                 <div class="row">
-                                    <div class="mr-auto">
+                                    <div class="px-0 col-6">
                                         <h6>{{ $tier->name }}</h6>
-                                        <p>&#8358; {{ $tier->price }}</p>
+                                        <p class="text-muted">&#8358; {{ $tier->price }}</p>
                                     </div>
-                                    <div class="form-group">
-                                        <input type="number" max="{{ $tier->limit_remaining ?? 100000000000000000 }}" class="custom-select form-control form-control-lg mx-3" name="{{ $tier->reference }}">
-                                        <b for=""><i>{{ $tier->limit_remaining ?? 'Unlimited' }} slot(s) left</i></b>
-
+                                    <div class="px-0 col-6">
+                                        <div class="form-group">
+                                            <input type="number" max="{{ $tier->limit_remaining ?? 100000000000000000 }}" class="custom-select form-control form-control-lg mx-3" name="{{ $tier->reference }}">
+                                            <p for="" class="float-right">{{ $tier->limit_remaining ?? 'Unlimited' }} slot(s) left</p>
+    
+                                        </div>
                                     </div>
                                 </div>
                             @endforeach
@@ -59,7 +61,7 @@
                 </div>
                 <div class="col-md-6 bg-light px-0">
                     <div class="modal-header flex-column pt-0 pr-0"
-                        style="background-image: url(../images/info-image.svg); background-position: center center; height: 250px;">
+                        style="background-image: url({{asset('images/info-image.svg')}}); background-position: center center; height: 250px;">
                         {{-- <img src="{{asset('images/info-image.svg')}}" class="img-fluid" style=""> --}}
                     </div>
                     <div class="modal-body">

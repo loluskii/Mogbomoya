@@ -16,22 +16,15 @@
                 <h1> Collections </h1>
                 <div class="row my-5">
                     <div class="col-sm-4 col-md-3">
-                        <a  data-toggle="modal" data-target="#addNewCollectionModal">
-                            <div class="card add_to">
-                                <div class="card-body text-center p-5">
-                                    <div class="">
-                                        <img src="{{asset('images/icons/plus.svg')}}" alt="" srcset="">
-                                    </div>
-                                </div>
-                            </div>
+                        <a class="btn btnPrimary"  data-toggle="modal" data-target="#addNewCollectionModal">
+                            Add
                         </a>
-                        <p class="mt-2">Add new collection</p>
                     </div>
                 </div>
             </div>
         </div>
         
-        <div class="row py-4">
+        <div class="row py-3">
           @forelse ($collections as $collection)
               <div class="col-md-3">
                   <div class="card" >
