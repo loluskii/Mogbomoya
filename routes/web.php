@@ -92,6 +92,9 @@ Route::get('/terms-and-condition', function () {
 Route::get('/privacy-policy', function () {
     return view('privacy');
 });
+Route::get('/s=location', function () {
+    return view('search.index');
+});
 
 Route::get('/faq', function () {
     return view('help-center.faq');
