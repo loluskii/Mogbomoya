@@ -10,7 +10,7 @@
         <div class="col-md-7 pt-3 px-3 bg-white">
             <div class="row justify-content-between">
                 <div class="col">
-                    <h5>120 events found</h5>
+                    <h5>{{$events->count()}} event(s) found</h5>
                     <p> <img src="{{asset('images/icons/location.svg')}}" class="img-fluid">  <small>Lekki, Lagos</small> <a href="">Change</a></p>
                 </div>
                 <div class="col">
@@ -31,47 +31,24 @@
                     </div>
                 </div>
             </div>
-            <div class="row py-4">
-                <div class="col-md-6 mb-3">
-                    <div class="card" >
-                        <img src="{{asset('images/category-images/Rectangle.png')}}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Eat & Drink Festival</h5>
-                            <p class="card-text mb-0 text-muted">Sterling Arena, Marina road, Lagos</p>
-                            <p class="card-text text-muted"><span>Fri, 29 Dec 2020</span> | <span>1:20pm </span></p>
+            <div class="row py-4">               
+                @forelse ($events as $event)
+                    <div class="col-md-6 mb-3">
+                        <div class="card" >
+                            <img src="{{asset("images/event/$event->featured_image")}}" style="max-height: 300px;" class="card-img-top" alt="{{$event->name}}">
+                            <div class="card-body">
+                                <a href="{{route('event.info', $event->reference)}}"><h5 class="text-dark  card-title">{{ $event->name }}</h5></a>
+                                <p class="card-text mb-0 text-muted">{{$event->location}}</p>
+                                <p class="card-text text-muted"><span>{{ \Carbon\Carbon::parse($event->date)->toFormattedDateString()}}</span> | <span>{{ \Carbon\Carbon::parse($event->time)->toTimeString()}} </span></p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <div class="card" >
-                        <img src="{{asset('images/category-images/Rectangle.png')}}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Eat & Drink Festival</h5>
-                            <p class="card-text mb-0 text-muted">Sterling Arena, Marina road, Lagos</p>
-                            <p class="card-text text-muted"><span>Fri, 29 Dec 2020</span> | <span>1:20pm </span></p>
-                        </div>
+                @empty
+                    <div class="col-md-12 text-center">
+                        <p>No events to display.</p>
                     </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <div class="card" >
-                        <img src="{{asset('images/category-images/Rectangle.png')}}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Eat & Drink Festival</h5>
-                            <p class="card-text mb-0 text-muted">Sterling Arena, Marina road, Lagos</p>
-                            <p class="card-text text-muted"><span>Fri, 29 Dec 2020</span> | <span>1:20pm </span></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <div class="card" >
-                        <img src="{{asset('images/category-images/Rectangle.png')}}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Eat & Drink Festival</h5>
-                            <p class="card-text mb-0 text-muted">Sterling Arena, Marina road, Lagos</p>
-                            <p class="card-text text-muted"><span>Fri, 29 Dec 2020</span> | <span>1:20pm </span></p>
-                        </div>
-                    </div>
-                </div>
+                @endforelse
+                
             </div>
     
     

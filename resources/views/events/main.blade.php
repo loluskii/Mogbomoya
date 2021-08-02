@@ -26,12 +26,10 @@
 
         <div id="wrapper">            
             @yield('content')
-        </div>
-
-        @include('layouts.partials.footer-scripts')
+            @include('layouts.partials.footer-scripts')
 
 
-        @yield('script')
-
+            @yield('script')
+        </div>   
     </body>
 </html>

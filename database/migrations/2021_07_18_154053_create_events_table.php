@@ -26,6 +26,8 @@ class CreateEventsTable extends Migration
             $table->boolean('isPublic')->default(0);
             $table->boolean('isPaid')->default(0);
             $table->string('location');
+            $table->string('longitude');
+            $table->string('latitude');
             $table->softDeletes();
             $table->timestamps();
         });

@@ -172,4 +172,10 @@ class EventController extends Controller
             );   
         }
     }
+
+    public function eventsNearMe(){
+        $events = (new EventQueries())->findEventsNearMe();
+
+        return view('search.index')->with('events', $events);
+    }
 }

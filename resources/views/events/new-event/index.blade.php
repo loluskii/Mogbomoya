@@ -1,4 +1,5 @@
-@extends('events.main') @section('css')
+@extends('events.main') 
+@section('css')
 <style>
     .nav-tabs {
         border-bottom: none;
@@ -195,12 +196,33 @@
                                     <div class="form-group py-2">
                                         <label for="">LOCATION</label>
                                         <div class="col-md-10 col-sm-12 pl-0">
-                                            <input type="text" name="location" required value="{{old('location')}}" class="form-control form-control-lg">
+                                            <input type="text" id="autocomplete" name="location" value="{{old('location')}}" class="form-control form-control-lg" required>
                                             @error('location')
                                                 <b class="text-danger">{{ $message }} </b>
                                             @enderror
                                         </div>
                                     </div>
+
+                                    <div class="form-group py-2"  id="latitudeArea">
+                                        <label for="">LATITUDE</label>
+                                        <div class="col-md-10 col-sm-12 pl-0">
+                                            <input type="text" id="latitude" name="latitude" class="form-control form-control-lg" placeholder="" required value="{{old('name')}}" aria-describedby="helpId">
+                                            @error('name')
+                                                <b class="text-danger">{{ $message }} </b>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group py-2" id="longtitudeArea">
+                                        <label for="">LONGITUDE</label>
+                                        <div class="col-md-10 col-sm-12 pl-0">
+                                            <input type="text"  name="longitude" id="longitude" class="form-control form-control-lg" placeholder="" required value="{{old('name')}}" aria-describedby="helpId">
+                                            @error('name')
+                                                <b class="text-danger">{{ $message }} </b>
+                                            @enderror
+                                        </div>
+                                    </div>     
+
                                     <div class="form-group">
                                         <label for="">SELECT 1-3 CATEGORIES</label>
                                         <div class="col-md-10 col-sm-12 pl-0">
@@ -304,10 +326,11 @@
                 </div>
             </div>
         </div>
-    </div>conti
+    </div>
 </div>
 
-@endsection @section('script')
+@endsection 
+@section('script')
 <script>
     $(document).ready(function(){
         $('#categories').select2();
@@ -338,10 +361,36 @@
         //         }
         //     }
 
-        // }
-
+        // 
 
     })
 </script>
 
+
+<script src="https://maps.googleapis.com/maps/api/js?key={{config('app.google_key')}}&libraries=places"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            $("#latitudeArea").addClass("d-none");
+            $("#longtitudeArea").addClass("d-none");
+        });
+    </script>
+    <script>
+        google.maps.event.addDomListener(window, 'load', initialize);
+  
+        function initialize() {
+            var input = document.getElementById('autocomplete');
+            var autocomplete = new google.maps.places.Autocomplete(input);
+
+            autocomplete.addListener('place_changed', function () {
+                var place = autocomplete.getPlace();
+                $('#latitude').val(place.geometry['location'].lat());
+                $('#longitude').val(place.geometry['location'].lng());
+
+                // $("#latitudeArea").removeClass("d-none");
+                // $("#longtitudeArea").removeClass("d-none");
+            });
+        }
+    </script>
 @endsection

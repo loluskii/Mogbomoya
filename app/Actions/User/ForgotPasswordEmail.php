@@ -1,5 +1,5 @@
 <?php
-namespace App\ACtions\User;
+namespace App\Actions\User;
 use Illuminate\Support\Facades\Password;
 
 class ForgotPasswordEmail{

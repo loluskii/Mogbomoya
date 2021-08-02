@@ -31,6 +31,8 @@ class StoreEventRequest extends FormRequest
             'date' => 'required',
             'event_type' => 'required',
             'location' => 'required_if:event_type,1',
+            'longitude' => 'required_if:event_type,1',
+            'latitude' => 'required_if:event_type,1',
             'categories' => 'required',
             'isPaid' => 'required',
             'isPublic' => 'required',

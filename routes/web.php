@@ -7,7 +7,6 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\BankController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Requests\EmailVerificationRequest;
@@ -156,11 +155,6 @@ Route::middleware(['auth','verified'])->group(function () {
 
     });
 
-    Route::get('/s=location', function () {
-        return view('search.index');
-    });
+    Route::get('events-near-me', [EventController::class, 'eventsNearMe'])->name('search.index');
 
-
-    Route::get('/payment/callback', [PaymentController::class, 'handleGatewayCallback'])->name('payment.callback');
-    Route::post('/pay', [PaymentController::class, 'redirectToGateway'])->name('pay');
 });

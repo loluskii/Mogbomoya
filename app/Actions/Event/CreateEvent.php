@@ -20,6 +20,8 @@ class CreateEvent{
             $event->date = $request['date'];
             $event->event_type = $request['event_type'];
             $event->location = $request['location'];
+            $event->longitude = $request['longitude'];
+            $event->latitude = $request['latitude'];
             $event->isPublic = $request['isPublic'];
             $event->isPaid = $request['isPaid'];
             $imageName = Str::slug($request['name']).'-'.time().'.'.$request->featured_image->extension();  
