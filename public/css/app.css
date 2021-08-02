@@ -10,6 +10,10 @@ button:focus {
     outline: none;
 }
 
+a:hover {
+    text-decoration: none;
+}
+
 p {
     font-weight: 100;
 }
@@ -37,6 +41,7 @@ body {
 .jumbotron-landing {
     background-image: url('../images/landing.png');
     color: white;
+    border-radius: 0;
 }
 
 .jumbotron-terms {
@@ -135,13 +140,18 @@ footer .top {
     width: var(--avatar-size);
 }
 
+.dropdown-toggle {
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
 .initials {
-    font-size: calc(var(--avatar-size) / 2);
+    font-size: calc(var(--avatar-size) / 2.2);
     /* 50% of parent */
     line-height: 1;
     position: relative;
     color: #fff;
-    ;
     top: calc(var(--avatar-size) / 4);
     /* 25% of parent */
 }

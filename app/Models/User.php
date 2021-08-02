@@ -67,4 +67,13 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(Collection::class);
     }
+    
+    public function initials(){
+        $words = explode(" ", $this->name );
+        $initials = null;
+        foreach ($words as $w) {
+            $initials .= $w[0];
+        }
+        return strtoupper($initials);
+     }
 }

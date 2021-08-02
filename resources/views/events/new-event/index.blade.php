@@ -8,6 +8,14 @@
     .nav-tabs a {
         width: 50%;
     }
+
+    .select2-container--default .select2-selection--multiple {
+        background-color: white;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        cursor: text;
+        height: calc(1.5em + 1rem + 2px);
+    }
     
     .nav-tabs a.active,
     .nav-tabs a:hover,
@@ -63,7 +71,7 @@
     }
     
     input[type=date],
-    input[type=time] {
+    input[type=time],input::placeholder {
         font-size: 14px;
     }
     span{
@@ -175,7 +183,7 @@
                                             <div class="col-md-4 col-6">
                                                 <div class="form-check form-check-inline py-4 w-100" style="border: 1px solid #ECEEEE; border-radius: 5px; background-color:white">
                                                     <label class="form-check-label px-3">
-                                                        <input class="form-check-input" type="radio" name="event_type" id="event-type"
+                                                        <input class="form-check-input virtualEvent" type="radio" name="event_type" id="event-type"
                                                             value="0"> Virtual Event
                                                     </label>
                                                 </div>
@@ -183,7 +191,7 @@
                                             <div class="col-md-4 col-6">
                                                 <div class="form-check form-check-inline  py-4 w-100" style="border: 1px solid #ECEEEE; border-radius: 5px; background-color:white">
                                                     <label class="form-check-label px-3">
-                                                        <input class="form-check-input" type="radio" name="event_type" id="event-type"
+                                                        <input class="form-check-input liveEvent" type="radio" name="event_type" id="event-type"
                                                             value="1"> Physical Event
                                                     </label>
                                                 </div>
@@ -193,7 +201,7 @@
                                     @error('event_type')
                                         <b class="text-danger">{{ $message }} </b>
                                     @enderror
-                                    <div class="form-group py-2">
+                                    <div class="form-group py-2 liveLocation">
                                         <label for="">LOCATION</label>
                                         <div class="col-md-10 col-sm-12 pl-0">
                                             <input type="text" id="autocomplete" name="location" value="{{old('location')}}" class="form-control form-control-lg" required>
@@ -207,9 +215,6 @@
                                         <label for="">LATITUDE</label>
                                         <div class="col-md-10 col-sm-12 pl-0">
                                             <input type="text" id="latitude" name="latitude" class="form-control form-control-lg" placeholder="" required value="{{old('name')}}" aria-describedby="helpId">
-                                            @error('name')
-                                                <b class="text-danger">{{ $message }} </b>
-                                            @enderror
                                         </div>
                                     </div>
 
@@ -217,11 +222,19 @@
                                         <label for="">LONGITUDE</label>
                                         <div class="col-md-10 col-sm-12 pl-0">
                                             <input type="text"  name="longitude" id="longitude" class="form-control form-control-lg" placeholder="" required value="{{old('name')}}" aria-describedby="helpId">
-                                            @error('name')
+                                           
+                                        </div>
+                                    </div>     
+
+                                    <div class="form-group py-2 virtualLocation" style="display: none;">
+                                        <label for="">WEBINAR LINK</label>
+                                        <div class="col-md-10 col-sm-12 pl-0">
+                                            <input type="text" name="link" placeholder="type link here" required value="" class="form-control form-control-lg">
+                                            @error('location')
                                                 <b class="text-danger">{{ $message }} </b>
                                             @enderror
                                         </div>
-                                    </div>     
+                                    </div>
 
                                     <div class="form-group">
                                         <label for="">SELECT 1-3 CATEGORIES</label>
@@ -333,7 +346,19 @@
 @section('script')
 <script>
     $(document).ready(function(){
-        $('#categories').select2();
+        $('#categories').select2({
+            placeholder: 'Select a category',
+            maximumSelectionLength: 3
+        });
+
+        $('.virtualEvent').click(function(){
+            $('.virtualLocation').show();
+            $('.liveLocation').hide();
+        })
+        $('.liveEvent').click(function(){
+            $('.virtualLocation').hide();
+            $('.liveLocation').show();
+        })
 
         $('#addNewTier').click(function(e) {
             e.preventDefault()
@@ -341,6 +366,7 @@
         })
         $('#next').click(function(e) {
             e.preventDefault();
+            
             var next_tab = $('.nav-tabs > .active').next('a');
             if (next_tab.length > 0) {
                 next_tab.trigger('click');

@@ -33,7 +33,10 @@
                 <li class="nav-item dropdown pt-2">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="{{asset('images/icons/user-image.svg')}}" alt="" srcset=""> {{auth()->user()->name}} 
+                        <div class="circle">
+                            <span class="initials">{{ Auth::user()->initials() }}</span>
+                          </div>
+                           <span class="ml-1">{{auth()->user()->name}}</span> 
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item py-3" href="#">Interests</a>
