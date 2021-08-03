@@ -9,21 +9,18 @@
         <div class="row">
             <div class="col-md-3">
                 <section id="sidebar" style="height: 100vh">
-                    <form action="{{route('events.near')}}" method="POST">
+                    <form action="{{route('events.near')}}" method="GET">
                         @csrf
                         <div class="py-4">
                             <div class="bg-white border" style="overflow:scroll; height: 23vh;">
                                 <h5 class="mb-2 p-3 rounded-top font-weight-bold">Event Type</h5>
                                 <div class="container" style="overflow:scroll; height: 40vh">
-                                    <form class="">
                                         <div class="form-inline border rounded p-sm-2 mb-2"> <input type="radio" value="0" name="type"
-                                                id="boring"> <label for="boring" class="pl-1 pt-sm-0 pt-1">Free Events</label>
+                                               {{request()->type == 0 ? 'checked' : ''}}> <label for="boring" class="pl-1 pt-sm-0 pt-1">Free Events</label>
                                         </div>
                                         <div class="form-inline border rounded p-sm-2 my-2"> <input type="radio" value="1" name="type"
-                                                id="ugly"> <label for="ugly" class="pl-1 pt-sm-0 pt-1">Paid Events</label>
+                                            {{request()->type == 1 ? 'checked' : ''}}> <label for="ugly" class="pl-1 pt-sm-0 pt-1">Paid Events</label>
                                         </div>
-                                    </form>
-
                                 </div>
                             </div>
                         </div>
@@ -31,19 +28,13 @@
                             <div class="bg-white border" style="overflow:scroll; height: 30vh;">
                                 <h5 class="mb-2 p-3 rounded-top font-weight-bold">Event Category</h5>
                                 <div class="container" style="overflow:scroll; height: 40vh">
-                                    <form class="">
                                         @foreach ($interests as $interest)
-                                        <div class="form-inline border rounded p-sm-2 mb-2"> <input type="radio" value="{{$interest->id}}" name="category" id=""> <label for="" class="pl-1 pt-sm-0 pt-1"><img src="{{asset("images/icons/$interest->icon")}}" alt="" srcset=""> {{$interest->name}}</label> </div>
+                                        <div class="form-inline border rounded p-sm-2 mb-2"> <input type="radio" value="{{$interest->id}}" name="category"  {{request()->category == $interest->id ? 'checked' : ''}}> <label for="" class="pl-1 pt-sm-0 pt-1"><img src="{{asset("images/icons/$interest->icon")}}" alt="" srcset=""> {{$interest->name}}</label> </div>
                                         @endforeach
-                                    </form>
-
-
                                 </div>
                             </div>
                         </div>
-                        <div class="text-center mt-4">
-                            <input type="submit" class="btn btn-info btn-block" value="Filter"/>
-                        </div>
+                        <input type="submit" class="btn btn-info btn-block" value="Filter"/>
                     </form>
 
                 </section>

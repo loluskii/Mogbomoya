@@ -191,6 +191,9 @@ class EventController extends Controller
     public function eventsNearMe(){
         $events = (new EventQueries())->findEventsNearMe();
         $interests = Interest::all();
+        // if(request()->type != null || request()->type != null){
+        //     return view('search.index')->with('events', $events)->with('interests', $interests)->with('request', request()->except('_token'));
+        // }
         return view('search.index')->with('events', $events)->with('interests', $interests);
     }
 }
