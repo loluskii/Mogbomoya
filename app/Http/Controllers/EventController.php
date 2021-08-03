@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use App\Actions\Event\AddToCollection;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreEventRequest;
+use App\Http\Requests\SendNoteRequest;
 use App\Http\Requests\RegisterForEventRequest;
 use App\Actions\Event\CreateEvent;
 use App\Actions\Event\RegisterForEvent;
 use App\Actions\Event\StorePaymentRecord;
 use App\Actions\Event\VerifyTransaction;
 use App\Actions\Event\UpdateEvent;
+use App\Actions\Event\SendEventNote;
 use App\Services\Event\EventQueries;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Interest;
@@ -132,11 +134,11 @@ class EventController extends Controller
         $getSimilarEvents = (new EventQueries())->getSimilarEvents($reference);
         $collections = (new CollectionQueries())->withPagination(12);
 
-        if($event->user_id == Auth::id()){
+        if($event->user_id != Auth::id()){
             return view('events.info')->with('event', $event)->with('collections', $collections)->with('similarEvents', $getSimilarEvents);
         }
 
-        return view('user.event-info')->with('event', $event);
+        return view('user.event-info')->with('event', $event)->with('collections', $collections)->with('similarEvents', $getSimilarEvents);
 
     }
 
@@ -145,6 +147,19 @@ class EventController extends Controller
             (new UpdateEvent())->run($request, $slug);
             return back()->with(
                 'success', 'Event updated Successfully'
+            );
+        }catch(\Exception $e){
+            return back()->with(
+                'error', $e->getMessage()
+            );   
+        }
+    }
+
+    public function sendNote(SendNoteRequest $request, $slug){
+        try{
+            (new SendEventNote())->run($request, $slug);
+            return back()->with(
+                'success', 'Sent Successfully'
             );
         }catch(\Exception $e){
             return back()->with(
@@ -175,7 +190,7 @@ class EventController extends Controller
 
     public function eventsNearMe(){
         $events = (new EventQueries())->findEventsNearMe();
-
-        return view('search.index')->with('events', $events);
+        $interests = Interest::all();
+        return view('search.index')->with('events', $events)->with('interests', $interests);
     }
 }

@@ -22,6 +22,10 @@ class UpdateEvent{
 
                     //send change of details mail to registrants
 
+                    if($event->registrations->count() > 0){
+                        $details = $event->registrations;
+                        dispatch(new \App\Jobs\SendEventChangeJob($details, $event));
+                    }
                 }
 
                 // $event->event_type = $request['event_type'];

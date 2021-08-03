@@ -9,36 +9,43 @@
         <div class="row">
             <div class="col-md-3">
                 <section id="sidebar" style="height: 100vh">
-                    <div class="py-4">
-                        <div class="bg-white border" style="overflow:scroll; height: 23vh;">
-                            <h5 class="mb-2 p-3 rounded-top font-weight-bold">Event Type</h5>
-                            <div class="container" style="overflow:scroll; height: 40vh">
-                                <form class="">
-                                    <div class="form-inline border rounded p-sm-2 mb-2"> <input type="radio" name="type"
-                                            id="boring"> <label for="boring" class="pl-1 pt-sm-0 pt-1">Free Events</label>
-                                    </div>
-                                    <div class="form-inline border rounded p-sm-2 my-2"> <input type="radio" name="type"
-                                            id="ugly"> <label for="ugly" class="pl-1 pt-sm-0 pt-1">Paid Events</label>
-                                    </div>
-                                </form>
+                    <form action="{{route('events.near')}}" method="POST">
+                        @csrf
+                        <div class="py-4">
+                            <div class="bg-white border" style="overflow:scroll; height: 23vh;">
+                                <h5 class="mb-2 p-3 rounded-top font-weight-bold">Event Type</h5>
+                                <div class="container" style="overflow:scroll; height: 40vh">
+                                    <form class="">
+                                        <div class="form-inline border rounded p-sm-2 mb-2"> <input type="radio" value="0" name="type"
+                                                id="boring"> <label for="boring" class="pl-1 pt-sm-0 pt-1">Free Events</label>
+                                        </div>
+                                        <div class="form-inline border rounded p-sm-2 my-2"> <input type="radio" value="1" name="type"
+                                                id="ugly"> <label for="ugly" class="pl-1 pt-sm-0 pt-1">Paid Events</label>
+                                        </div>
+                                    </form>
 
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div>
-                        <div class="bg-white border" style="overflow:scroll; height: 30vh;">
-                            <h5 class="mb-2 p-3 rounded-top font-weight-bold">Event Category</h5>
-                            <div class="container" style="overflow:scroll; height: 40vh">
-                                <form class="">
-                                    {{-- @foreach ($interests as $interest) --}}
-                                    {{-- <div class="form-inline border rounded p-sm-2 mb-2"> <input type="radio" name="interest" id=""> <label for="" class="pl-1 pt-sm-0 pt-1"><img src="{{asset("images/icons/$interest->icon")}}" alt="" srcset=""> {{$interest->name}}</label> </div> --}}
-                                    {{-- @endforeach --}}
-                                </form>
+                        <div>
+                            <div class="bg-white border" style="overflow:scroll; height: 30vh;">
+                                <h5 class="mb-2 p-3 rounded-top font-weight-bold">Event Category</h5>
+                                <div class="container" style="overflow:scroll; height: 40vh">
+                                    <form class="">
+                                        @foreach ($interests as $interest)
+                                        <div class="form-inline border rounded p-sm-2 mb-2"> <input type="radio" value="{{$interest->id}}" name="category" id=""> <label for="" class="pl-1 pt-sm-0 pt-1"><img src="{{asset("images/icons/$interest->icon")}}" alt="" srcset=""> {{$interest->name}}</label> </div>
+                                        @endforeach
+                                    </form>
 
 
+                                </div>
                             </div>
                         </div>
-                    </div>
+                        <div class="text-center mt-4">
+                            <input type="submit" class="btn btn-info btn-block" value="Filter"/>
+                        </div>
+                    </form>
+
                 </section>
             </div>
             <div class="col-md-9 pt-3 px-3 bg-white">
@@ -50,9 +57,9 @@
                     <div class="col">
                         <div class="row">
                             <div class="col">
-                                <select class="custom-select">
-                                    <option selected value="free">Free Events</option>
-                                    <option value="paid">Paid Events</option>
+                                <select name="type" class="custom-select">
+                                    <option selected value="0">Free Events</option>
+                                    <option value="1">Paid Events</option>
                                 </select>
                             </div>
                             <div class="col">
@@ -65,7 +72,7 @@
                         </div>
                     </div>
                 </div>
-                {{-- <div class="row py-4">               
+                <div class="row py-4">               
                 @forelse ($events as $event)
                     <div class="col-md-6 mb-3">
                         <div class="card" >
@@ -83,7 +90,7 @@
                     </div>
                 @endforelse
                 
-            </div> --}}
+            </div>
 
 
             </div>

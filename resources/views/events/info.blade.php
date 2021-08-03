@@ -44,7 +44,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="card">
-                    <img src="{{ asset("images/event/$event->featured_image") }}" style="max-height:800px;" alt="" srcset="">
+                    <img src="{{ asset("images/event/$event->featured_image") }}" style="max-height:800px; max-width:;" alt="{{$event->name}}" srcset="">
                 </div>
             </div>
             <div class="px-0 col-md-6 eventDetails">
@@ -129,17 +129,22 @@
                             <hr class="" width="640px">
                         </center>
                         <div>
-                            <p style="font-weight: bold"><span>393</span> people are coming</p>
+                            @if($event->registrations->count()  > 1 && $event->registrations->count() < 2)
+                                <p style="font-weight: bold"><span>{{$event->registrations->count()}}</span> people are coming</p>
+                            @endif
+                            @if($event->registrations->count() == 1)
+                                <p style="font-weight: bold"><span>{{$event->registrations->count()}}</span> person is coming</p>
+                            @endif
                             <div class="row justify-content-between">
-                                <div class="ml-3">
+                                {{-- <div class="ml-3">
                                     <img src="{{ asset('images/icons/users/user-1.svg') }}" alt="" srcset="">
                                     <img src="{{ asset('images/icons/users/user-2.svg') }}" alt="" srcset="">
                                     <img src="{{ asset('images/icons/users/user-3.svg') }}" alt="" srcset="">
                                     <img src="{{ asset('images/icons/users/Group.svg') }}" alt="" srcset="">
-                                </div>
-                                <div class="mr-3">
+                                </div> --}}
+                                {{-- <div class="mr-3">
                                     <button class="ml-auto btn follow">Invite a Friend</button>
-                                </div>
+                                </div> --}}
                             </div>
                             <p></p>
                             <h5>About this event</h5>

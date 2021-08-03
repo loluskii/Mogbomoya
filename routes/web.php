@@ -126,6 +126,8 @@ Route::middleware(['auth','verified'])->group(function () {
 
         Route::post('update-info/{slug}', [EventController::class, 'update'])->name('update.event-info');
 
+        Route::post('send-note/{slug}', [EventController::class, 'sendNote'])->name('event.send-note');
+
         Route::get('add-to-collection/{event_reference}/{collection_reference}', [EventController::class, 'addToCollection'])->name('event.add_to_collection');
     });
 
@@ -158,6 +160,6 @@ Route::middleware(['auth','verified'])->group(function () {
 
     });
 
-    Route::get('events-near-me', [EventController::class, 'eventsNearMe'])->name('search.index');
+    Route::get('events-near-me', [EventController::class, 'eventsNearMe'])->name('events.near');
 
 });

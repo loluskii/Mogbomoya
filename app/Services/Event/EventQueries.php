@@ -55,6 +55,14 @@ class EventQueries{
         $latitude = 6.5355;
         $longitude = 3.3087;
         return Event::select(DB::raw("*, ( 6371 * acos( cos( radians('$latitude') ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians('$longitude') ) + sin( radians('$latitude') ) * sin( radians( latitude ) ) ) ) AS distance"))->havingRaw('distance < 50')->orderBy('distance')
+        ->when(request()->category, function ($query) {
+            $query->whereHas('interests', function (Builder $query){
+                return $query->where('interests.id', request()->category);
+            });
+        })
+        ->when(request()->type, function ($query) {
+            return $query->where('isPaid', request()->type);
+        })
         ->get();
     }
 

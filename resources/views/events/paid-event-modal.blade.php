@@ -62,7 +62,7 @@
                 </div>
                 <div class="col-md-6 bg-light px-0">
                     <div class="modal-header flex-column pt-0 pr-0"
-                        style="background-image: url({{asset('images/info-image.svg')}}); background-position: center center; height: 250px;">
+                        style="background-image: url({{asset("images/event/$event->featured_image")}}); background-position: center center; height: 250px;">
                         {{-- <img src="{{asset('images/info-image.svg')}}" class="img-fluid" style=""> --}}
                     </div>
                     <div class="modal-body">

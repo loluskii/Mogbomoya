@@ -31,7 +31,7 @@
                 @endforeach
             </ul>
             
-            {{-- <div class="row py-4">
+            <div class="row py-4">
                 @forelse ($events as $event)
                     <div class="col-md-3">
                         <div class="card" >
@@ -49,7 +49,7 @@
                     </div>
                 @endforelse
                 {{$events ?? ''->appends(request()->except('page'))->links()}}
-            </div> --}}
+            </div>
         </div>
     </div>
 @endsection

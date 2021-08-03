@@ -16,13 +16,6 @@ class PagesController extends Controller
             $events = (new EventQueries())->withSimplePaginateAndParams(12);
             // $events = (new EventQueries())->withPagination(12);
             if(Auth::check()){
-                // $words = array(Auth::user()->name);
-                    
-                // $initials = implode('/', array_map(function ($name) { 
-                //     preg_match_all('/\b\w/', $name, $matches);
-                //     return implode('', $matches[0]);
-                // }, $words));
-
                 return view('welcome')->with('interests', $interests)->with('events', $events);
             }else{
                 return view('welcome')->with('interests', $interests);
