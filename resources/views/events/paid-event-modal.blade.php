@@ -20,8 +20,9 @@
                             @foreach ($event->tiers as $tier)
                                 <div class="row">
                                     <div class="px-0 col-6">
-                                        <p>&#8358; {{ number_format($tier->price) }}</p>
-                                        <p class="text-muted">&#8358; {{ $tier->price }}</p>
+                                        <h6>{{ $tier->name }}</h6>
+
+                                        <p class="text-muted">&#8358; {{ number_format($tier->price) }}</p>
                                     </div>
                                     <div class="px-0 col-6">
                                         <div class="form-group">
