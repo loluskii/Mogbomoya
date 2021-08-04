@@ -18,7 +18,7 @@ class PagesController extends Controller
             if(Auth::check()){
                 return view('welcome')->with('interests', $interests)->with('events', $events);
             }else{
-                return view('welcome')->with('interests', $interests);
+                return view('welcome')->with('interests', $interests)->with('events', $events);
             }
         }catch(\Exception $e){
             return redirect()->route('index.view');

@@ -15,10 +15,12 @@ class ChangeActiveStatus{
                 'current_password' => ['required', new MatchOldPassword],
             ]);
         }
+
         DB::BeginTransaction();
         $user = User::find(Auth::id());
         $user->isActive = !$user->isActive;
         $user->update();
+        DB::commit();
 
         Auth::logout();
 
@@ -27,6 +29,5 @@ class ChangeActiveStatus{
         $request->session()->regenerateToken();
 
         return true;
-        DB::commit();
      }
 }
