@@ -9,8 +9,7 @@
         <div class="row">
             <div class="col-md-3">
                 <section id="sidebar" style="height: 100vh">
-                    <form action="{{route('events.near')}}" method="GET">
-                        @csrf
+                    <form action="{{route('search')}}" method="GET">
                         <div class="py-4">
                             <div class="bg-white border" style="overflow:scroll; height: 23vh;">
                                 <h5 class="mb-2 p-3 rounded-top font-weight-bold">Event Type</h5>
@@ -34,7 +33,8 @@
                                 </div>
                             </div>
                         </div>
-                        <input type="submit" class="btn btn-info btn-block" value="Filter"/>
+                        <input type="search" name="search" value="{{request()->search}}" hidden>
+                        <input type="submit" class="btn btn-info btn-block mt-3" value="Filter"/>
                     </form>
 
                 </section>

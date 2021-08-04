@@ -214,14 +214,14 @@
                                     <div class="form-group py-2"  id="latitudeArea">
                                         <label for="">LATITUDE</label>
                                         <div class="col-md-10 col-sm-12 pl-0">
-                                            <input type="text" id="latitude" name="latitude" class="form-control form-control-lg" placeholder="" required value="{{old('name')}}" aria-describedby="helpId">
+                                            <input type="text" id="latitude" name="latitude" class="form-control form-control-lg" placeholder=""  value="{{old('name')}}" aria-describedby="helpId">
                                         </div>
                                     </div>
 
                                     <div class="form-group py-2" id="longtitudeArea">
                                         <label for="">LONGITUDE</label>
                                         <div class="col-md-10 col-sm-12 pl-0">
-                                            <input type="text"  name="longitude" id="longitude" class="form-control form-control-lg" placeholder="" required value="{{old('name')}}" aria-describedby="helpId">
+                                            <input type="text"  name="longitude" id="longitude" class="form-control form-control-lg" placeholder=""  value="{{old('name')}}" aria-describedby="helpId">
                                            
                                         </div>
                                     </div>     
@@ -229,7 +229,7 @@
                                     <div class="form-group py-2 virtualLocation" style="display: none;">
                                         <label for="">WEBINAR LINK</label>
                                         <div class="col-md-10 col-sm-12 pl-0">
-                                            <input type="text" name="link" placeholder="type link here" required value="" class="form-control form-control-lg">
+                                            <input type="text" name="link" placeholder="type link here" value="" class="form-control form-control-lg">
                                             @error('location')
                                                 <b class="text-danger">{{ $message }} </b>
                                             @enderror
@@ -398,8 +398,8 @@
 
     <script>
         $(document).ready(function () {
-            $("#latitudeArea").addClass("d-none");
-            $("#longtitudeArea").addClass("d-none");
+            // $("#latitudeArea").addClass("d-none");
+            // $("#longtitudeArea").addClass("d-none");
         });
     </script>
     <script>

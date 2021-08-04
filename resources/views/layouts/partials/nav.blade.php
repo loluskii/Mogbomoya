@@ -9,8 +9,8 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-    <form class="form-inline my-2 my-lg-0 ml-3 mr-5">
-      <input class="form-control mr-sm-2 bg-light" type="search" placeholder="Search Events" aria-label="Search" style="width: 500px; height: 60px; border: none">
+    <form  action="{{route('search')}}" method="GET" class="form-inline my-2 my-lg-0 ml-3 mr-5">
+      <input name="search" class="form-control mr-sm-2 bg-light" type="search" placeholder="Search Events" aria-label="Search" style="width: 500px; height: 60px; border: none">
     </form>
     <ul class="navbar-nav mr-0">
       <li class="nav-item mr-4">
@@ -41,8 +41,8 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-    <form class="form-inline my-2 my-lg-0 ml-3 mr-5">
-      <input class="form-control mr-sm-2 bg-light" type="search" placeholder="Search Events" aria-label="Search" style="width: 500px; height: 60px; border: none">
+    <form  action="{{route('search')}}" method="GET" class="form-inline my-2 my-lg-0 ml-3 mr-5">
+      <input name="search" class="form-control mr-sm-2 bg-light" type="search" placeholder="Search Events" aria-label="Search" style="width: 500px; height: 60px; border: none">
     </form>
     <ul class="navbar-nav ml-auto">
       <li class="nav-item mr-4">

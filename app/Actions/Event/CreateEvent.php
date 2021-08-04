@@ -19,7 +19,7 @@ class CreateEvent{
             $event->time = $request['time'];
             $event->date = $request['date'];
             $event->event_type = $request['event_type'];
-            $event->location = $request['location'];
+            $event->location = $request['location'] ?? $request['link'];
             $event->longitude = $request['longitude'];
             $event->latitude = $request['latitude'];
             $event->isPublic = $request['isPublic'];

@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Actions\Event\AddToCollection;
 use Illuminate\Http\Request;
+use App\Http\Requests\SearchRequest;
 use App\Http\Requests\StoreEventRequest;
 use App\Http\Requests\SendNoteRequest;
 use App\Http\Requests\RegisterForEventRequest;
 use App\Actions\Event\CreateEvent;
-use App\Actions\Event\RegisterForEvent;
 use App\Actions\Event\StorePaymentRecord;
 use App\Actions\Event\VerifyTransaction;
 use App\Actions\Event\UpdateEvent;
@@ -23,6 +23,7 @@ use App\Models\EventRegistration;
 use DB;
 use App\Actions\Event\StoreFreeEvent;
 use App\Actions\Event\StorePaidEvent;
+use Exception;
 
 class EventController extends Controller
 {
@@ -189,11 +190,29 @@ class EventController extends Controller
     }
 
     public function eventsNearMe(){
-        $events = (new EventQueries())->findEventsNearMe();
-        $interests = Interest::all();
-        // if(request()->type != null || request()->type != null){
-        //     return view('search.index')->with('events', $events)->with('interests', $interests)->with('request', request()->except('_token'));
-        // }
-        return view('search.index')->with('events', $events)->with('interests', $interests);
+        try{
+            $events = (new EventQueries())->findEventsNearMe();
+            $interests = Interest::all();
+            return view('events.search')->with('events', $events)->with('interests', $interests);
+        } catch (\Exception $e) {
+            return back()->with(
+                'error',
+                $e->getMessage()
+            );
+        }
+    }
+
+    public function search(SearchRequest $request)
+    {
+        try{
+            $events = (new EventQueries())->search();
+            $interests = Interest::all();
+            return view('search.index')->with('events', $events)->with('interests', $interests);
+        } catch (\Exception $e) {
+            return back()->with(
+                'error',
+                $e->getMessage()
+            );
+        }
     }
 }

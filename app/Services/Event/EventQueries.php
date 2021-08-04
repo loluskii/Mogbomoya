@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Event;
 use Illuminate\Database\Eloquent\Builder;
 use DB;
+use Exception;
 
 class EventQueries{
 
@@ -57,6 +58,25 @@ class EventQueries{
         return Event::select(DB::raw("*, ( 6371 * acos( cos( radians('$latitude') ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians('$longitude') ) + sin( radians('$latitude') ) * sin( radians( latitude ) ) ) ) AS distance"))->havingRaw('distance < 50')->orderBy('distance')
         ->when(request()->category !=null, function ($query) {
             $query->whereHas('interests', function (Builder $query){
+                return $query->where('interests.id', request()->category);
+            });
+        })
+        ->when(request()->type != null, function ($query) {
+            return $query->where('isPaid', request()->type);
+        })
+        ->get();
+    }
+
+    public function search()
+    {
+        if(str_word_count(request()->search) < 1 || strlen(request()->search) < 2){
+            throw new Exception('Please the search should be at least a word or 2 characters');
+        }
+        return Event::where('name', 'LIKE', '%' . request()->search . '%' )
+        -> orWhere('description', 'LIKE', '%' . request()->search . '%')
+        -> orWhere('location', 'LIKE', '%' . request()->search . '%')
+        ->when(request()->category != null, function ($query) {
+            $query->whereHas('interests', function (Builder $query) {
                 return $query->where('interests.id', request()->category);
             });
         })
