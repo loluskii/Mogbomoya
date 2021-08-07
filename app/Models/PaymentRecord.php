@@ -14,7 +14,7 @@ class PaymentRecord extends Model
         'payment_method_log' => 'object',
     ];
 
-    public function event()
+    public function event_registration()
     {
         return $this->belongsTo(EventRegistration::class);
     }

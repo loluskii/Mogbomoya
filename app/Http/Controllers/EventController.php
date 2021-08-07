@@ -135,7 +135,7 @@ class EventController extends Controller
         $getSimilarEvents = (new EventQueries())->getSimilarEvents($reference);
         $collections = (new CollectionQueries())->withPagination(12);
 
-        if($event->user_id != Auth::id()){
+        if($event->user_id == Auth::id()){
             return view('events.info')->with('event', $event)->with('collections', $collections)->with('similarEvents', $getSimilarEvents);
         }
 

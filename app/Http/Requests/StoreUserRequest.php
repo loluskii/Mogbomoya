@@ -30,9 +30,7 @@ class StoreUserRequest extends FormRequest
             'email' => 'required|unique:users|email:rfc,dns',
             'username' => 'required|unique:users|regex:/^\S*$/u|regex:/(^([a-zA-Z]+)(\d+)?$)/u',
             'phone_number' => 'required|unique:users',
-            // 'password' => ['required', 'confirmed', Password::min(8)->letters()->mixedCase()->numbers()->symbols()->uncompromised()],
             'password' => ['required', Password::min(8)->letters()->mixedCase()->numbers()->symbols()->uncompromised()],
-
         ];
     }
 }

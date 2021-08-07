@@ -397,10 +397,10 @@
 
 
     <script>
-        $(document).ready(function () {
-            // $("#latitudeArea").addClass("d-none");
-            // $("#longtitudeArea").addClass("d-none");
-        });
+        // $(document).ready(function () {
+        //     // $("#latitudeArea").addClass("d-none");
+        //     // $("#longtitudeArea").addClass("d-none");
+        // });
     </script>
     <script>
         google.maps.event.addDomListener(window, 'load', initialize);
@@ -414,8 +414,8 @@
                 $('#latitude').val(place.geometry['location'].lat());
                 $('#longitude').val(place.geometry['location'].lng());
 
-                // $("#latitudeArea").removeClass("d-none");
-                // $("#longtitudeArea").removeClass("d-none");
+                $("#latitudeArea").removeClass("d-none");
+                $("#longtitudeArea").removeClass("d-none");
             });
         }
     </script>

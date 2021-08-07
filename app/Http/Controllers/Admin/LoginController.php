@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -17,9 +17,6 @@ class LoginController extends Controller
     public function authenticate(Request $request)
     {
         try{
-            if(Auth::check()){
-                return redirect()->route('admin.dashboard');
-            }
             $input = $request->all();
             
             $request->validate([
@@ -31,11 +28,11 @@ class LoginController extends Controller
     
             $shouldRemember = $request->remember ? true : false;
     
-            if (Auth::attempt(array($fieldType => $input['username'] , 'password' => $input['password'], 'isActive' => 1 ) ,  $shouldRemember ) ) {
+            if (Auth::attempt(array($fieldType => $input['username'] , 'password' => $input['password'], 'isAdmin' => 1 ) ,  $shouldRemember ) ) {
                 $request->session()->regenerate();
     
-                return redirect()->intended('/')->with(
-                    'success', 'Welcome!',
+                return redirect()->route('admin.dashboard')->with(
+                    'success', 'Welcome Admin!',
                 );
             }
             return back()->with(
@@ -57,7 +54,7 @@ class LoginController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/')->with(
+        return route('admin.login.view')->with(
             'success', 'Logged Out Successfully',
         );
     }

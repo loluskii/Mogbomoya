@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
-class UpdateUserRequest extends FormRequest
+class AdminUpdateUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,11 +26,12 @@ class UpdateUserRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            // 'email' => 'required|unique:users,email,'.Auth::id(),
-            'username' => 'required|min:5|max:30|regex:/^\S*$/u|regex:/(^([a-zA-Z]+)(\d+)?$)/u|unique:users,username,'.Auth::id(),
-            'phone_number' => 'nullable|string|unique:users,phone_number,'.Auth::id(),
-            'country' => 'nullable|string',
-            'interests' => 'nullable|array',
+            'email' => 'required|unique:users,email,'.$this->id,
+            'username' => 'required|min:5|max:30|regex:/^\S*$/u|regex:/(^([a-zA-Z]+)(\d+)?$)/u|unique:users,username,'.$this->id,
+            'phone_number' => 'nullable|string|unique:users,phone_number,'.$this->id,
+            'isActive' => 'nullable|string',
+            'isAdmin' => 'nullable|string',
+            // 'country' => 'nullable|string',
         ];
     }
 }

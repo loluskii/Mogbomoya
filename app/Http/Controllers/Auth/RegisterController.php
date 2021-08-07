@@ -134,20 +134,13 @@ class RegisterController extends Controller
                 'username' => $request->username,
                 'phone_number' => $request->phone_number,
                 'password' => Hash::make($request->password)
-          ]);   
-    
-
-          Auth::login($user, true);
-          event(new Registered($user));
-          DB::commit();
-
-
-        //   $user->sendEmailVerificationNotification();
-
-          return redirect()->intended('/')->with(
-            'success' , 'Welcome'
-          );
-
+            ]);   
+            Auth::login($user, true);
+            event(new Registered($user));
+            DB::commit();
+            return redirect()->intended('/')->with(
+                'success' , 'Welcome'
+            );
         }catch(\Exception $e){
             return back()->with(
                 'error', $e->getMessage()
