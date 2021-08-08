@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('guest', ['except' => ['logout']]);
@@ -50,12 +49,9 @@ class LoginController extends Controller
     {
         Auth::logout();
 
-        $request->session()->invalidate();
-
-        $request->session()->regenerateToken();
-
-        return route('admin.login.view')->with(
-            'success', 'Logged Out Successfully',
+        return redirect('/administrator-backend')->with(
+            'success',
+            'Logged Out Successfully',
         );
     }
 }

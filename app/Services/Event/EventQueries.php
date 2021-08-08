@@ -72,10 +72,7 @@ class EventQueries{
         if(str_word_count(request()->search) < 1 || strlen(request()->search) < 2){
             throw new Exception('Please the search should be at least a word or 2 characters');
         }
-        return Event::where('name', 'LIKE', '%' . request()->search . '%' )
-        -> orWhere('description', 'LIKE', '%' . request()->search . '%')
-        -> orWhere('location', 'LIKE', '%' . request()->search . '%')
-        ->when(request()->category != null, function ($query) {
+        return Event::when(request()->category != null, function ($query) {
             $query->whereHas('interests', function (Builder $query) {
                 return $query->where('interests.id', request()->category);
             });
@@ -83,6 +80,9 @@ class EventQueries{
         ->when(request()->type != null, function ($query) {
             return $query->where('isPaid', request()->type);
         })
+        ->where('name', 'LIKE', '%' . request()->search . '%' ) 
+        -> orWhere('description', 'LIKE', '%' . request()->search . '%')
+        -> orWhere('location', 'LIKE', '%' . request()->search . '%')
         ->get();
     }
 

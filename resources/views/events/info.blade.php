@@ -65,7 +65,7 @@
                                     @if($collections->count() > 0)
                                         <a class="dropdown-item py-2" href="#">Save to</a>
                                         @foreach ($collections as $collection)
-                                            <a class="dropdown-item py-2" onclick="confirm('Are you sure you want to proceed with this action?')" href="{{ route('event.add_to_collection', ['event_reference' => $event->reference, 'collection_reference' => $collection->reference]) }}">{{ $collection->name }}</a>
+                                            <a class="dropdown-item py-2" onclick="return confirm('Are you sure you want to proceed with this action?')" href="{{ route('event.add_to_collection', ['event_reference' => $event->reference, 'collection_reference' => $collection->reference]) }}">{{ $collection->name }}</a>
                                         @endforeach
 
                                         <div class="dropdown-divider"></div>
@@ -142,9 +142,9 @@
                                     <img src="{{ asset('images/icons/users/user-3.svg') }}" alt="" srcset="">
                                     <img src="{{ asset('images/icons/users/Group.svg') }}" alt="" srcset="">
                                 </div> --}}
-                                {{-- <div class="mr-3">
+                                <div class="mr-3" data-toggle="modal" data-target="#inviteModal">
                                     <button class="ml-auto btn follow">Invite a Friend</button>
-                                </div> --}}
+                                </div>
                             </div>
                             <p></p>
                             <h5>About this event</h5>
@@ -188,6 +188,8 @@
     @include('events.free-event-modal')
     {{-- Paid Event Modal --}}
     @include('events.paid-event-modal')
+
+    @include('events.invite-modal')
 
 @endsection
 

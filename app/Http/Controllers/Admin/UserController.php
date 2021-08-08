@@ -18,20 +18,27 @@ class UserController extends Controller
 
     public function deletedUsers()
     {
-        $users = User::trashed()->paginate(10);
+        $users = User::onlyTrashed()->paginate(10);
         return view('admin.users.index')->with('users', $users);
     }
 
-    public function edit($id){
+    public function deactivatedUsers()
+    {
+        $users = User::where('isActive', 0)->paginate(10);
+        return view('admin.users.index')->with('users', $users);
+    }
+
+    public function edit($id)
+    {
         $user = User::findOrFail($id);
-        return view('admin.users.edit')->with('user', $user);
+        return view('admin.user.edit')->with('user', $user);
     }
 
     public function update(AdminUpdateUserRequest $request)
     {
         try {
             (new AdminUpdateUser())->run($request->validated());
-            return back()->with('success','User Updated');
+            return back()->with('success', 'User Updated');
         } catch (\Exception $e) {
             return back()->with(
                 'error',
@@ -49,6 +56,6 @@ class UserController extends Controller
     public function restore($id)
     {
         User::findOrFail($id)->restore();
-        return redirect()->route('admin.users.index')->with('success', 'User Deleted');
+        return redirect()->route('admin.users.index')->with('success', 'User Restored');
     }
 }

@@ -129,6 +129,8 @@ Route::middleware(['auth','verified'])->group(function () {
 
         Route::post('send-note/{slug}', [EventController::class, 'sendNote'])->name('event.send-note');
 
+        Route::post('invite/{slug}', [EventController::class, 'invite'])->name('event.invite');
+
         Route::get('add-to-collection/{event_reference}/{collection_reference}', [EventController::class, 'addToCollection'])->name('event.add_to_collection');
     });
 

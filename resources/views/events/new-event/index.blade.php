@@ -389,7 +389,7 @@
 
         // 
 
-    })
+    });
 </script>
 
 
@@ -397,10 +397,10 @@
 
 
     <script>
-        // $(document).ready(function () {
-        //     // $("#latitudeArea").addClass("d-none");
-        //     // $("#longtitudeArea").addClass("d-none");
-        // });
+        $(document).ready(function () {
+            $("#latitudeArea").addClass("d-none");
+            $("#longtitudeArea").addClass("d-none");
+        });
     </script>
     <script>
         google.maps.event.addDomListener(window, 'load', initialize);
