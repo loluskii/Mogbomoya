@@ -12,8 +12,8 @@ class PagesController extends Controller
 {
     public function index(){
         try{
-            dump(request()->fullUrl());
-            dd(redirect()->back()->getTargetUrl());
+            // dump(request()->fullUrl());
+            // dd(redirect()->back()->getTargetUrl());
             $interests = Interest::select('id','name', 'icon')->get();
             $events = (new EventQueries())->withSimplePaginateAndParams(12);
             // $events = (new EventQueries())->withPagination(12);
