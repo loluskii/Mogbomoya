@@ -99,7 +99,7 @@ class EventController extends Controller
     {
         try {
             $response = (new VerifyTransaction())->run($request->query('trxref'));
-            // return $response;
+            return $response;
             DB::beginTransaction();
 
             $fecthTiers  = $response['data']['metadata']['tier'];
