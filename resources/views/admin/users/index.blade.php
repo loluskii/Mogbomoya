@@ -31,7 +31,7 @@
                                         <td>{{ $users->perPage() * ($users->currentPage() - 1) + $loop->iteration }}</td>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
-                                        <td>{{ $user->phone_number }}</td>
+                                        <td>{{ $user->phone_number ?? 'N/A'}}</td>
                                         <td>{{ $user->country ?? 'N/A' }}</td>
                                         <td>{{ $user->isAdmin == 0 ? 'Normal User' : 'Admin' }}</td>
                                         <td>
