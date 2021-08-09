@@ -99,7 +99,7 @@ class EventController extends Controller
     {
         try {
             $response = (new VerifyTransaction())->run($request->query('trxref'));
-            return $response;
+            // return $response;
             DB::beginTransaction();
 
             $fecthTiers  = $response['data']['metadata']['tier'];
@@ -109,6 +109,7 @@ class EventController extends Controller
                 $event_id = $tier->event_id;
                 $tier->limit_remaining -= $tier['value'];
                 $tier->update();
+                return $tier;
             }
             $user_details = $response['data']['metadata']['user_details'];
             $registration = new EventRegistration;
