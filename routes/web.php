@@ -126,6 +126,9 @@ Route::get('/site-map', function () {
     return view('site-map');
 });
 
+Route::get('events-near-me', [EventController::class, 'eventsNearMe'])->name('events.near');
+
+Route::any('search', [EventController::class, 'search'])->name('search');
 
 Route::middleware(['auth','verified'])->group(function () {
 
@@ -180,9 +183,5 @@ Route::middleware(['auth','verified'])->group(function () {
         });
 
     });
-
-    Route::get('events-near-me', [EventController::class, 'eventsNearMe'])->name('events.near');
-
-    Route::any('search', [EventController::class, 'search'])->name('search');
 
 });
