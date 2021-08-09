@@ -109,7 +109,7 @@ class EventController extends Controller
                 $event_id = $tier->event_id;
                 $tier->limit_remaining -= $tier['value'];
                 $tier->update();
-                return $tier;
+                return $tier.$tier['value'];
             }
             $user_details = $response['data']['metadata']['user_details'];
             $registration = new EventRegistration;
