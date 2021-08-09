@@ -32,7 +32,10 @@ class EventQueries{
         $getInterestIds =  Event::where('reference', $ref)->first()->interests->pluck('id');
         return Event::whereHas('interests', function (Builder $query) use($getInterestIds) {
             $query->whereIn('interests.id', $getInterestIds);
-        })->get();    
+        })
+        -->where('user_id', '!=' Auth::id())
+        -->where('isPublic', 1)
+        ->get();    
     }
 
     public function withSimplePaginateAndParams($num){
@@ -64,6 +67,8 @@ class EventQueries{
         ->when(request()->type != null, function ($query) {
             return $query->where('isPaid', request()->type);
         })
+        -->where('user_id', '!=' Auth::id())
+        -->where('isPublic', 1)
         ->get();
     }
 
@@ -83,6 +88,7 @@ class EventQueries{
         ->where('name', 'LIKE', '%' . request()->search . '%' ) 
         -> orWhere('description', 'LIKE', '%' . request()->search . '%')
         -> orWhere('location', 'LIKE', '%' . request()->search . '%')
+        -->where('isPublic', 1)
         ->get();
     }
 
