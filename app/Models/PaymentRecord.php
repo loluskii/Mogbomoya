@@ -18,4 +18,9 @@ class PaymentRecord extends Model
     {
         return $this->belongsTo(EventRegistration::class);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
