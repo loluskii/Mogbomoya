@@ -30,7 +30,8 @@ Route::get('/wipe', function () {
     Artisan::call('config:clear');
     Artisan::call('cache:clear');
     Artisan::call('route:clear');
-    Artisan::call('ciew:clear');
+    Artisan::call('view:clear');
+    return 'yes';
 });
 
 Route::get('/', [PagesController::class, 'index'])->name('index.view');
