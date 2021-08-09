@@ -17,6 +17,6 @@ class EventRegistration extends Model
 
     public function payment_record()
     {
-        return $this->hasMany(PaymentRecord::class);
+        return $this->hasMany(PaymentRecord::class, 'event_registration_id');
     }
 }
