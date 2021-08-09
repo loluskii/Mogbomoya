@@ -105,7 +105,7 @@ class EventController extends Controller
             $fecthTiers  = $response['data']['metadata']['tier'];
             $event_id = 0;
             foreach ($fecthTiers as $tier) {
-                return $tier;
+                return (int)$tier['value'];
                 $tier = Tier::find($tier['id']);
                 $event_id = $tier->event_id;
                 $tier->limit_remaining -= $tier['value'];
