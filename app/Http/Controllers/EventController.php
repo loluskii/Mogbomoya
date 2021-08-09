@@ -105,12 +105,13 @@ class EventController extends Controller
             $fecthTiers  = $response['data']['metadata']['tier'];
             $event_id = 0;
             foreach ($fecthTiers as $tier) {
+                return $tier['value'] . (int)$tier['value'] . $tier;
                 $tier = Tier::find($tier['id']);
                 $event_id = $tier->event_id;
                 $tier->limit_remaining -= (int)$tier['value'];
                 $tier->update();
 
-                return $tier['value'].(int)$tier['value'].$tier;
+                
             }
             $user_details = $response['data']['metadata']['user_details'];
             $registration = new EventRegistration;
