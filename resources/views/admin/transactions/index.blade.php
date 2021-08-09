@@ -38,7 +38,7 @@
                                         <td>{{ $transaction->phone_number ?? 'N/A' }}</td>
                                         <td>{{ number_format($transaction->amount) }}</td>
                                         <td>{{ $transaction->description }}</td>
-                                        <td>{{ $transaction->payment_method_log }}</td>
+                                        <td>{{ json_decode($transaction->payment_method_log) }}</td>
                                         <td>{{ $transaction->created_at }}</td>
                                     </tr>
                                 @endforeach
