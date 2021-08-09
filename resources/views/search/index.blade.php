@@ -46,7 +46,7 @@
                         {{-- <p> <img src="{{asset('images/icons/location.svg')}}" class="img-fluid">  <small>Lekki, Lagos</small> <a href="">Change</a></p> --}}
                     </div>
                     <div class="col">
-                        <div class="row">
+                        {{-- <div class="row">
                             <div class="col">
                                 <select name="type" class="custom-select">
                                     <option selected value="0">Free Events</option>
@@ -60,7 +60,7 @@
                                     <option value="3">Career</option>
                                 </select>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <div class="row py-4">               
