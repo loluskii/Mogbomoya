@@ -29,7 +29,7 @@
                                 <td>{{$registrations->perPage()*($registrations->currentPage()-1)+$loop->iteration}}</td>
                                 <td>{{$event->name}}</td>
                                 <td>{{$registration->email}}</td>
-                                <td>{{$event->isPaid == 0 ? $registration->guests : $regisration->payment_records->count()}}</td>
+                                <td>{{$event->isPaid == 0 ? $registration->guests : $registration->payment_records->count()}}</td>
                                 <td>{{($registration->created_at)}}</td>
                             </tr>
                         @endforeach
