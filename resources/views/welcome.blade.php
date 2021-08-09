@@ -18,7 +18,7 @@
         <div class="mt-4" id="tabs">
             <ul class="nav nav-pills mb-3">
                 <li class="nav-item">
-                    <a  href="{{route('index.view')}}" class="nav-link mx-1 my-1 {{(request()->query('search')) ? '' : 'active'}}" aria-selected="true">All Events</a>
+                    <a  href="{{route('index.view')}}" class="nav-link mx-1 my-1 {{(request()->query('category')) ? '' : 'active'}}" aria-selected="true">All Events</a>
                 </li>
                 @foreach($interests as $interest)
                 <li class="nav-item">
