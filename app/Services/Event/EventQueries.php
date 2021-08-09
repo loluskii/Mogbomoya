@@ -33,7 +33,7 @@ class EventQueries{
         return Event::whereHas('interests', function (Builder $query) use($getInterestIds) {
             $query->whereIn('interests.id', $getInterestIds);
         })
-        -->where('user_id', '!=' Auth::id())
+        -->where('user_id', '!=', Auth::id())
         -->where('isPublic', 1)
         ->get();    
     }
@@ -67,7 +67,7 @@ class EventQueries{
         ->when(request()->type != null, function ($query) {
             return $query->where('isPaid', request()->type);
         })
-        -->where('user_id', '!=' Auth::id())
+        -->where('user_id', '!=', Auth::id())
         -->where('isPublic', 1)
         ->get();
     }
