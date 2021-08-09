@@ -118,7 +118,7 @@ class EventController extends Controller
             $registration->isPaid = 1;
             $registration->save();
 
-            (new StorePaymentRecord())->run($response['data'], $registration);
+            (new StorePaymentRecord())->run($response['data'], $registration, $event_id);
 
             DB::commit();
 
