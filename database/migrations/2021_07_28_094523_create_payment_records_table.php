@@ -22,7 +22,8 @@ class CreatePaymentRecordsTable extends Migration
             $table->integer('amount');
             $table->string('description');
             $table->string('payment_method');
-            $table->json('payment_method_log');
+            // $table->json('payment_method_log');
+            $table->longText('payment_method_log');
             $table->softDeletes();
             $table->timestamps();
         });
