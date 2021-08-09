@@ -13,6 +13,7 @@ use App\Http\Requests\EmailVerificationRequest;
 
 // use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,13 @@ use Illuminate\Http\Request;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/wipe', function () {
+    Artisan::call('config:clear');
+    Artisan::call('cache:clear');
+    Artisan::call('route:clear');
+    Artisan::call('ciew:clear');
+});
 
 Route::get('/', [PagesController::class, 'index'])->name('index.view');
 
