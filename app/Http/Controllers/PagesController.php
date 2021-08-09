@@ -12,9 +12,8 @@ class PagesController extends Controller
 {
     public function index(){
         try{
-            dump(request()->fullUrl());
-            dd(redirect()->back()->getTargetUrl());
             $interests = Interest::select('id','name', 'icon')->get();
+            dd('sfsf', $interests);
             $events = (new EventQueries())->withSimplePaginateAndParams(12);
             // $events = (new EventQueries())->withPagination(12);
             if(Auth::check()){
