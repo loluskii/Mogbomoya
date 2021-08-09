@@ -36,7 +36,7 @@
                                         <td>{{ $transaction->user->name }}</td>
                                         <td>{{ $transaction->email }}</td>
                                         <td>{{ $transaction->phone_number ?? 'N/A' }}</td>
-                                        <td>{{ number_format($transaction->amount) }}</td>
+                                        <td>&#8358; {{ number_format($transaction->amount) }}</td>
                                         <td>{{ $transaction->description }}</td>
                                         <td>{{ json_encode($transaction->payment_method_log) }}</td>
                                         <td>{{ $transaction->created_at }}</td>
