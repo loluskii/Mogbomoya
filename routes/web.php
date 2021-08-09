@@ -47,7 +47,7 @@ Route::get('/', [PagesController::class, 'index'])->name('index.view');
 
 Route::get('/sign-up', function () {
     return view('auth.sign-up');
-});
+})->name('signup.view');
 
 Route::get('interests', [PagesController::class, 'interests']);
 

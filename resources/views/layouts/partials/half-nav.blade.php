@@ -44,9 +44,9 @@
                                    <span class="ml-1">{{auth()->user()->name}}</span>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item py-3" href="#">Interests</a>
+                                {{-- <a class="dropdown-item py-3" href="#">Interests</a> --}}
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item py-3" href="#"><img src="{{ asset('images/icons/account.svg') }}"
+                                <a class="dropdown-item py-3" href="{{route('user.edit')}}"><img src="{{ asset('images/icons/account.svg') }}"
                                         class="px-2" alt="" srcset=""> Account Settings</a>
                                 <a class="dropdown-item py-3" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                     <img src="{{asset('images/icons/logout.svg')}}" class="pr-2" alt="" srcset=""> Logout
