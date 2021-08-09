@@ -414,8 +414,8 @@
                 $('#latitude').val(place.geometry['location'].lat());
                 $('#longitude').val(place.geometry['location'].lng());
 
-                $("#latitudeArea").removeClass("d-none");
-                $("#longtitudeArea").removeClass("d-none");
+                // $("#latitudeArea").removeClass("d-none");
+                // $("#longtitudeArea").removeClass("d-none");
             });
         }
     </script>
