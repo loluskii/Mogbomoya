@@ -32,7 +32,7 @@
                                     <tr>
                                         <td>{{ $transactions->perPage() * ($transactions->currentPage() - 1) + $loop->iteration }}
                                         </td>
-                                        <td>{{ $transaction->event_registration->event>name }}</td>
+                                        <td>{{ $transaction->event_registration->event->name }}</td>
                                         <td>{{ $transaction->user->name }}</td>
                                         <td>{{ $transaction->email }}</td>
                                         <td>{{ $transaction->phone_number ?? 'N/A' }}</td>
