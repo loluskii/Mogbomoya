@@ -27,7 +27,6 @@ use Illuminate\Support\Facades\Artisan;
 */
 
 Route::get('/wipe', function () {
-    Artisan::call('key:generate');
     Artisan::call('config:clear');
     Artisan::call('cache:clear');
     Artisan::call('route:clear');
