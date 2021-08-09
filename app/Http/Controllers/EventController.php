@@ -149,7 +149,8 @@ class EventController extends Controller
     {
 
         $event = (new EventQueries())->findRef($reference);
-        abort_if(!$event, 403);
+        abort_if(!$event, 404);
+        // abort_if($event->isPublic == 0, 404);
         $getSimilarEvents = (new EventQueries())->getSimilarEvents($reference);
         $collections = (new CollectionQueries())->withPagination(12);
 
