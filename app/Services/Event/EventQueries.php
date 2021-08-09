@@ -36,7 +36,7 @@ class EventQueries{
     }
 
     public function withSimplePaginateAndParams($num){
-        if(request()->query('search')){
+        if(request()->query('category')){
             return Event::whereHas('interests', function (Builder $query){
                 $query->where('interests.id', decrypt(request()->query('search')));
             })->simplePaginate($num); 
