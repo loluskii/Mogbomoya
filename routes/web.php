@@ -27,6 +27,9 @@ use Illuminate\Support\Facades\Artisan;
 */
 
 Route::get('/wipe', function () {
+    Artisan::call('migrate:reset', [
+        '--force' => true,
+    ]);
     Artisan::call('migrate:fresh', [
         '--force' => true,
     ]);
