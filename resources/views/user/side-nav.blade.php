@@ -1,3 +1,19 @@
+<style>
+    @media (max-width:478px ){
+        .navbar{
+        background: white;
+    }
+    }
+
+    @media (max-width:768px ){
+        .navbar{
+            background: white;
+        }
+        .container{
+            padding: 0px;
+        }
+    }
+</style>
 <div class="col-md-3 d-none d-md-block d-sm-none sidebar" style="height: 120vh">
     <div class="list-group list-group-flush mt-5 pt-2">
         <a href="/" class="mb-5 pb-5"><img src="{{asset('images/logo-white.svg')}}" class="img-fluid" style="height: 50px" srcset=""></a>
@@ -18,8 +34,11 @@
     </div>
 
 </div>
-<div class="col-md-9 px-sm-0 px-2">
-    <nav class="navbar navbar-expand-lg navbar-light px-5">
+<div class="col-md-9 px-0">
+    <nav class="navbar navbar-expand-lg navbar-light px-2">
+        <a class="navbar-brand d-md-none d-sm-block" href="/">
+            <img src="{{asset('images/logo.png')}}" height="58" alt="">
+          </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -28,7 +47,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">                    
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item mr-4" style="padding-top: 15px">
-                    <a class="nav-link" href="#">Help Center </a>
+                    <a class="nav-link" href="/">Home </a>
                 </li>
                 <li class="nav-item dropdown pt-2">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"

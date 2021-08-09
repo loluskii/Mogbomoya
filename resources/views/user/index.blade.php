@@ -46,16 +46,16 @@
     <div class="row">
             @include('user.side-nav')
             
-            <div class="container px-sm-5 px-2 mt-5 pt-3">
+            <div class="container px-4 mt-4 mt-sm-2 pt-3">
                 <h3 class=" px-sm-5">My Account</h3>
                 <p class=" px-sm-5">Manage your account details and public profile</p>
-                    <div class="col-md-4 col-sm-12  px-sm-5 px-0">
+                    <div class="col-md-4 col-sm-10 px-sm-5 px-0">
                         <div class="form-group">
                             <label for="">EMAIL ADDRESS</label>
                             <button type="button" style="padding: 8px 16px" name="changeEmail" id="changeEmail" class="w-100 rounded form-contro-lg text-center bg-white border text-muted">Change Email</button>
                           </div>
                     </div>
-                    <div class="col-md-4 col-sm-12  px-sm-5 px-0">
+                    <div class="col-md-4 col-sm-10  px-sm-5 px-0">
                         <div class="form-group">
                             <label for="">PASSWORD</label>
                             <button type="button" style="padding: 8px 16px" name="changePassword" id="changePassword" class="w-100 rounded form-contro-lg text-center bg-white border text-muted">Change Password</button>
@@ -117,7 +117,7 @@
                         </div>
                     </div>
                     <div class="form-row py-2 px-sm-5">
-                        <div class="col">
+                        <div class="col-sm-12">
                             <div class="form-group">
                                 <label for="">CUSTOMIZE YOUR INTERESTS</label>
                                 <select class="form-control form-control-lg interests" name="interests[]" id="" multiple>

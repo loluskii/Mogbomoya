@@ -28,7 +28,7 @@
                                 <h5 class="mb-2 p-3 rounded-top font-weight-bold">Event Category</h5>
                                 <div class="container" style="overflow:scroll; height: 40vh">
                                         @foreach ($interests as $interest)
-                                        <div class="form-inline border rounded p-sm-2 mb-2"> <input type="radio" value="{{$interest->id}}" name="category"  {{request()->category == $interest->id ? 'checked' : ''}}> <label for="" class="pl-1 pt-sm-0 pt-1"><img src="{{asset("images/icons/$interest->icon")}}" alt="" srcset=""> {{$interest->name}}</label> </div>
+                                        <div class="form-inline border rounded p-sm-2 mb-2"> <input type="radio" value="{{$interest->id}}" name="category"  {{request()->category == $interest->id ? 'checked' : ''}}> <label for="" class="pl-1 pt-sm-0 pt-1"> {{$interest->name}}</label> </div>
                                         @endforeach
                                 </div>
                             </div>
