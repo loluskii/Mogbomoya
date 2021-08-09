@@ -129,7 +129,7 @@
                             <hr class="" width="640px">
                         </center>
                         <div>
-                            @if($event->registrations->count()  > 1 && $event->registrations->count() < 2)
+                            @if($event->registrations->count()  > 1)
                                 <p style="font-weight: bold"><span>{{$event->registrations->count()}}</span> people are coming</p>
                             @endif
                             @if($event->registrations->count() == 1)
