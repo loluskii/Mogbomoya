@@ -46,7 +46,7 @@ class StorePaidEvent{
             'subaccount' => $getSubAccount,
             'bearer' => 'subaccount',
             'metadata' => json_encode($metadata),
-            'callback_url' => 'http://mogbomoya.test/event/payment-callback'
+            'callback_url' => 'http://mogbomoya.herokuapp.com/event/payment-callback'
         ]);
 
         return $res;
