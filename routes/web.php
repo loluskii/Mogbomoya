@@ -27,7 +27,8 @@ use Illuminate\Support\Facades\Artisan;
 */
 
 Route::get('/wipe', function () {
-    Artisan::call('migrate:fresh --seed');
+    Artisan::call('migrate:fresh');
+    Artisan::call('db:seed');
     Artisan::call('config:clear');
     Artisan::call('cache:clear');
     Artisan::call('route:clear');
