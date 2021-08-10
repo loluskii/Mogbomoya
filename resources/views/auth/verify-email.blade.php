@@ -8,7 +8,7 @@
 
             <form action="{{route('verification.send')}}" method="POST">
                 @csrf
-                <input type="submit" class="btn btn-success" value="Send Verification Email">
+                <input type="submit" class="btn btn-success" value="Resend Verification Email">
             </form>
         </div>
     </div>
