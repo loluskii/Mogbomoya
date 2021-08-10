@@ -45,29 +45,12 @@ Route::get('/wipe', function () {
 
 Route::get('/', [PagesController::class, 'index'])->name('index.view');
 
-Route::get('/sign-up', function () {
-    return view('auth.sign-up');
-})->name('signup.view');
 
 Route::get('interests', [PagesController::class, 'interests']);
 
-Route::post('sign-up', [RegisterController::class, 'register'])->name('register');
-
-Route::post('login', [LoginController::class, 'authenticate'])->name('login');
-
-Route::get('/login', function () {
-
-    return view('auth.login');
-
-})->name('login.view');
-
-Route::get('oauth/{driver}', [RegisterController::class, 'redirectToProvider'])->name('social.oauth');
-
-Route::get('oauth/{driver}/callback', [RegisterController::class, 'handleProviderCallback'])->name('social.callback');
-
 Route::get('/email/verify', function () {
     return view('auth.verify-email');
-})->name('verification.notice');
+})->name('verification.notice')->middleware('auth');
 
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
@@ -88,6 +71,24 @@ Route::post('/email/verification-notification', function (Request $request) {
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
 Route::middleware('guest')->group(function () {
+
+    Route::get('/sign-up', function () {
+        return view('auth.sign-up');
+    })->name('signup.view');
+
+    Route::post('sign-up', [RegisterController::class, 'register'])->name('register');
+
+    Route::post('login', [LoginController::class, 'authenticate'])->name('login');
+
+    Route::get('/login', function () {
+
+        return view('auth.login');
+    })->name('login.view');
+
+    Route::get('oauth/{driver}', [RegisterController::class, 'redirectToProvider'])->name('social.oauth');
+
+    Route::get('oauth/{driver}/callback', [RegisterController::class, 'handleProviderCallback'])->name('social.callback');
+
     Route::get('/auth/new-password/{token?}', function (Request $request) {
         return view('auth.new-password', ['token' => $request->token, 'email' => $request->email]);
     })->name('password.reset');
