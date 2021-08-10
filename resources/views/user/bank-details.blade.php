@@ -53,7 +53,7 @@
                             <label for="">ACCOUNT NUMBER</label>
                             <input type="text" name="account_number" id="" class="form-control form-control-lg" value="{{$myBank->acct_no ?? ''}}" placeholder="" aria-describedby="helpId">
                         </div>
-                        @if ($myBank->acct_name ?? false)
+                        @if ($myBank)
                             <span><b>{{$myBank->acct_name}} <i style="color: green; font-size:22px" class="fa fa-check-circle"></i></b></span>
                         @endif
 
