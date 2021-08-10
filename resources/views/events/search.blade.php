@@ -1,13 +1,17 @@
 @extends('layouts.main')
 
+@section('css')
+<style>
+    @media (max-width: 780px){
+        
+    }
+</style>
+@endsection
 
 @section('content')
-
-
-
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-3 d-none d-md-block">
                 <section id="sidebar" style="height: 100vh">
                     <form action="{{ route('events.near') }}" method="GET">
                         <div class="py-4">
@@ -47,8 +51,8 @@
             <div class="col-md-9 pt-3 px-3 bg-white">
                 <div class="row justify-content-between">
                     <div class="col">
-                        {{-- <h5>{{$events->count()}} event(s) found</h5> --}}
-                        {{-- <p> <img src="{{asset('images/icons/location.svg')}}" class="img-fluid">  <small>Lekki, Lagos</small> <a href="">Change</a></p> --}}
+                        <h5>{{$events->count()}} event(s) found</h5>
+                        <p> <img src="{{asset('images/icons/location.svg')}}" class="img-fluid">  <small>Lekki, Lagos</small> <a href="">Change</a></p>
                     </div>
                     <div class="col">
                         <div class="row">
@@ -60,9 +64,9 @@
                             </div>
                             <div class="col">
                                 <select class="custom-select">
-                                    <option value="1">Media & Entertainment</option>
-                                    <option value="2">Gaming</option>
-                                    <option value="3">Career</option>
+                                    @foreach ($interests as $interest)
+                                        <option value="{{ $interest->id }}">{{ $interest->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
