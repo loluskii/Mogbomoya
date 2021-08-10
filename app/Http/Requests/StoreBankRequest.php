@@ -26,7 +26,7 @@ class StoreBankRequest extends FormRequest
     public function rules()
     {
         return [
-            'account_number' => 'required',Rule::unique('banks')->ignore(Auth::id(), 'user_id'),
+            'account_number' => 'required|unique:banks,account_number,'.Auth::id(),
             'bank_name' => 'required'
         ];
     }
