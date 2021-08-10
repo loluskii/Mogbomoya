@@ -59,7 +59,7 @@
                             <div class="col">
                                 <select name="type" class="custom-select">
                                     <option selected value="0">Free Events</option>
-                                    <option value="1">Paid Events</option>
+                                    <option value="1">Paid vents</option>
                                 </select>
                             </div>
                             <div class="col">
