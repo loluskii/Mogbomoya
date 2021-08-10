@@ -111,9 +111,6 @@ Route::get('/terms-and-condition', function () {
 Route::get('/privacy-policy', function () {
     return view('privacy');
 });
-Route::get('/s=location', function () {
-    return view('search.index');
-});
 
 Route::get('/faq', function () {
     return view('help-center.faq');
@@ -127,7 +124,7 @@ Route::get('/site-map', function () {
     return view('site-map');
 });
 
-Route::get('events-near-me', [EventController::class, 'eventsNearMe'])->name('events.near');
+Route::any('events-near-me', [EventController::class, 'eventsNearMe'])->name('events.near');
 
 Route::any('search', [EventController::class, 'search'])->name('search');
 

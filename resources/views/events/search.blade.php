@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-md-3">
                 <section id="sidebar" style="height: 100vh">
-                    <form action="{{ route('search') }}" method="GET">
+                    <form action="{{ route('events.near') }}" method="GET">
                         <div class="py-4">
                             <div class="bg-white border" style="overflow:scroll; height: 23vh;">
                                 <h5 class="mb-2 p-3 rounded-top font-weight-bold">Event Type</h5>
