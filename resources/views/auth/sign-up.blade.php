@@ -43,10 +43,10 @@
 
 <div class="bg-light">
     <div class="row">
-        <div class="col-md-5 d-sm-none d-none d-md-block">
+        <div class="col-md-4 d-sm-none d-none d-md-block">
             <a href="/"><img src="{{ asset('images/side.svg') }}" alt="" srcset=""></a>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-7">
             <div class="container p-5 mt-5">
                 <h3 style="font-weight: bold">Welcome to Mogbomoya👋🏾</h3>
                 <p class="text-muted">Already have an account? <a href="/login">Sign In</a></p>

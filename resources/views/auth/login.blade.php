@@ -38,10 +38,10 @@
 
 <div class="bg-light">
     <div class="row">
-        <div class="col-md-5 d-sm-none d-none d-md-block">
+        <div class="col-md-4 d-sm-none d-none d-md-block" style="height: 100vh">
             <a href="/"><img src="{{ asset('images/side.svg') }}" alt="" srcset=""></a>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-7">
             <div class="container p-5 mt-5">
                 <h3 style="font-weight: bold">Welcome back!👋🏾</h3>
                 <p class="text-muted">Hey there! We've missed you.</p>
