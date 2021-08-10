@@ -12,7 +12,7 @@ class BankController extends Controller
 {
     public function index(){
         $myBank = User::find(Auth::id())->bank;
-        // dd($myBank);
+        dd($myBank);
         $banks = (new AllBanks())->run();
         return view('user.bank-details')->with('banks', $banks)->with('myBank', $myBank);
     }
