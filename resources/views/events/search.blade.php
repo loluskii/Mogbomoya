@@ -64,9 +64,9 @@
                             </div>
                             <div class="col">
                                 <select class="custom-select">
-                                    <option value="1">Media & Entertainment</option>
-                                    <option value="2">Gaming</option>
-                                    <option value="3">Career</option>
+                                    @foreach ($interests as $interest)
+                                        <option value="{{ $interest->id }}">{{ $interest->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
