@@ -1,13 +1,17 @@
 @extends('layouts.main')
 
+@section('css')
+<style>
+    @media (max-width: 780px){
+        
+    }
+</style>
+@endsection
 
 @section('content')
-
-
-
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-3 d-sm-none d-md-block">
                 <section id="sidebar" style="height: 100vh">
                     <form action="{{ route('search') }}" method="GET">
                         <div class="py-4">
