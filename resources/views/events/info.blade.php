@@ -74,10 +74,11 @@
                                         <a class="dropdown-item py-2" href="#">No collections</a>
                                     @endif
                                 </div>
-                                {{-- <a href="http://" class="btn save shadow">
+                                <a data-toggle="modal" data-target="#exampleModal"  class="btn save shadow">
                                     <img src="{{ asset('images/share.svg') }}" srcset="">
-                                </a> --}}
-                                <span class="mr-3">
+                                </a>
+                                @include('user.share-modal')
+                                {{-- <span class="mr-3">
                                     <a href="https://www.facebook.com/sharer/sharer.php?u={{url()->current()}}" class="btn btn-sm text-white" style="background-color: #3b5998" target="_blank"><i class="fa fa-facebook text-white"></i> Share</a>
                                 </span>
                                 <span class="mr-3">
@@ -85,7 +86,7 @@
                                 </span>
                                 <span class="mr-3">
                                 <a href="https://twitter.com/intent/tweet?text=Mogbomoya Event {{url()->current()}}" class="btn btn-sm text-white" style="background-color: #00acee"  target="_blank"><i class="fa fa-twitter text-white"></i> Share</a>
-                                </span>
+                                </span> --}}
                             </div>
                             <div class="mr-3">
                                 <button class="btn btnPrimary" data-toggle="modal"

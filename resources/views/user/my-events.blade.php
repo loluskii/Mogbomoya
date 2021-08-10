@@ -4,6 +4,9 @@
     a:hover{
         text-decoration: none;
     }
+    .card{
+        height: 100%;
+    }
 </style>
 @endsection
 

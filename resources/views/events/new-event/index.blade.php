@@ -204,7 +204,7 @@
                                     <div class="form-group py-2 liveLocation">
                                         <label for="">LOCATION</label>
                                         <div class="col-md-10 col-sm-12 pl-0">
-                                            <input type="text" id="autocomplete" name="location" value="{{old('location')}}" class="form-control form-control-lg" required>
+                                            <input type="text" id="autocomplete" name="location" value="{{old('location')}}" class="form-control form-control-lg">
                                             @error('location')
                                                 <b class="text-danger">{{ $message }} </b>
                                             @enderror
