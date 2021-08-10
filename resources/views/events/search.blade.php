@@ -51,15 +51,15 @@
             <div class="col-md-9 pt-3 px-3 bg-white">
                 <div class="row justify-content-between">
                     <div class="col">
-                        {{-- <h5>{{$events->count()}} event(s) found</h5> --}}
-                        {{-- <p> <img src="{{asset('images/icons/location.svg')}}" class="img-fluid">  <small>Lekki, Lagos</small> <a href="">Change</a></p> --}}
+                        <h5>{{$events->count()}} event(s) found</h5>
+                        <p> <img src="{{asset('images/icons/location.svg')}}" class="img-fluid">  <small>Lekki, Lagos</small> <a href="">Change</a></p>
                     </div>
                     <div class="col">
                         <div class="row">
                             <div class="col">
                                 <select name="type" class="custom-select">
                                     <option selected value="0">Free Events</option>
-                                    <option value="1">Paid vents</option>
+                                    <option value="1">Paid Events</option>
                                 </select>
                             </div>
                             <div class="col">
