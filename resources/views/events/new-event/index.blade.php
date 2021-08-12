@@ -325,7 +325,7 @@
                                                     <select class="form-control form-control-lg" name="isPaid" onchange="showDiv('tier', this)">
                                                         <option value=" " selected> ---</option>
                                                         <option value="0">No</option>
-                                                        <option value="1">Yes</option>
+                                                        <option value="1">Yes, there are different tiers for this event</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -369,7 +369,7 @@
                                                 </div>
                                                 <a onClick=countNumOfTier() class="btn btnSecondary" href="#" id="addNewTier"> <img
                                                         src="{{ asset('images/icons/plus.svg') }}" alt="" srcset=""> Add a new
-                                                    tier</a> <span class="bg-warning text-white">Maximum of 3 Tiers!</span>
+                                                    tier</a>
     
                                             </div>
                                             <div class="py-4">
@@ -396,7 +396,7 @@
             count = count + 1
             console.log(count);
             if(count > 2){
-                document.getElementById('addNewTier').disabled = true;
+                document.getElementById('addNewTier').classList.add('disabled');
                 alert('Maximun of 3 tiers!')
             }else{
                 $('.tier').append("<div class='tier-category'><div class='form-group py-2'><label for=''>TIER NAME</label><div class='col-md-10 col-sm-12 pl-0'><input type='text' name='tier_name[]' id='tier-name' class='form-control form-control-lg' placeholder='' aria-describedby='helpId'></div></div><div class='form-group py-2'><div class='form-row'><div class='col-md-3 col-6'><label for=''>PRICE</label><input type='currency' name='tier_price[]' class='form-control form-control-lg'></div><div class='col-md-3 col-6'><label for=''>SET LIMITS (OPTIONAL)</label><input type='number' name='limit[]' class='form-control form-control-lg'></div></div></div></div><div class='col-md-10 col-sm-12 pl-0'><hr class='my-2' style='border-style: dashed; width: auto;'></div>"

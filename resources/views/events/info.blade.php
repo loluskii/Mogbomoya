@@ -201,30 +201,22 @@
     <script>
         $(document).ready(function() {
             // let user = false;
-            let price = $('.priceValue').html();
-            $("#vipQuantity").change(function() {
-                var totalPrice = parseFloat($(this).children("option:selected").val()) * price;
-                $('.totalPrice').append(totalPrice);
-            });
+            // const price = $('#tierPrice').html().replace(',','');
+            // const totalPrice = parseInt($('.totalPrice').html());
 
-            $('.ctaButton').click(function() {
-                $('.ticketQuantity').hide();
-                $('.guestForm').show();
-                $(this).hide();
-                $('.submitButton').show();
-            });
+            // $("#quantity").change(function() {
+            //     const totalPrice = parseInt($(this).val()) * price;
+            //     console.log(totalPrice);
+                
+            //     $('.totalPrice').html(+totalPrice);
+            // });
 
-            // if (user) {
-            //     $('.ctaButton').text('Register');
-            // } else {
-            //     $('.ctaButton').text('Continue');
-            //     $('.ctaButton').click(function() {
-            //         $('.ticketQuantity').hide();
-            //         $('.guestForm').show();
-            //         $(this).text('Register');
-            //         $(this).attr("type", "submit");
-            //     });
-            // }
+            // $('.ctaButton').click(function() {
+            //     $('.ticketQuantity').hide();
+            //     $('.guestForm').show();
+            //     $(this).hide();
+            //     $('.submitButton').show();
+            // });
 
         });
     </script>

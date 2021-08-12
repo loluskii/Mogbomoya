@@ -109,7 +109,7 @@ class EventController extends Controller
                 $numberOfTier = (int)$tier['value'];
                 $tier = Tier::find($tier['id']);
                 $event_id = $tier->event_id;
-                $tier->limit_remaining -= $numberOfTier;
+                $tier->limit_remaining -= $numberOfTier; 
                 $tier->update();
 
                 
