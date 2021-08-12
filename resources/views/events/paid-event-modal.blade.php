@@ -26,7 +26,7 @@
                                     </div>
                                     <div class="px-0 col-6">
                                         <div class="form-group">
-                                            <input type="number" id="quantity{{$key}}" max="{{ $tier->limit_remaining ?? 100000000000000000 }}" class="numberOfSlots custom-select form-control form-control-lg mx-3" name="{{ $tier->reference }}">
+                                            <input type="number" id="quantity{{$key}}" min="1" max="{{ $tier->limit_remaining ?? 100000000000000000 }}" class="numberOfSlots custom-select form-control form-control-lg mx-3" name="{{ $tier->reference }}">
                                             <small for="" class=" text-muted float-right">{{ $tier->limit_remaining ?? 'Unlimited' }} slot(s) left</small>
     
                                         </div>
