@@ -68,7 +68,7 @@
                         @endforeach
                     </tbody>
                     </table>
-                    {{$events->links()}}
+                    {{$events->links('vendor.pagination.custom')}}
 
                 </div>
             @else

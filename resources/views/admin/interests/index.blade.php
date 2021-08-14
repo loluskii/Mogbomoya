@@ -48,7 +48,7 @@
                         @endforeach
                     </tbody>
                     </table>
-                    {{$interests->links()}}
+                    {{$interests->links('vendor.pagination.custom')}}
 
                 </div>
             @else

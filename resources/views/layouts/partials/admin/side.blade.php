@@ -6,30 +6,35 @@
                     <span data-feather="home"></span> Dashboard <span class="sr-only">(current)</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('admin.users.deactivated') }}">
-                    <span data-feather="file"></span>Deactivated Users
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('admin.users.deleted') }}">
-                    <span data-feather="file"></span>Deleted Users
-                </a>
-            </li>
+            
+            
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('admin.users.index') }}">
                     <span data-feather="file"></span> Users
                 </a>
             </li>
+
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('admin.transactions.index') }}">
-                    <span data-feather="file"></span> Transactions
+                <a class="nav-link" href="{{ route('admin.users.deactivated') }}">
+                    <span data-feather="file"></span>Deactivated Users
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.users.deleted') }}">
+                    <span data-feather="file"></span>Deleted Users
                 </a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('admin.events.index') }}">
                     <span data-feather="users"></span> Events
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.transactions.index') }}">
+                    <span data-feather="file"></span> Transactions
                 </a>
             </li>
 
