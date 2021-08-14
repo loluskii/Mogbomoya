@@ -11,7 +11,7 @@ use App\Http\Controllers\BankController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Requests\EmailVerificationRequest;
 
-// use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Foundation\Auth\EmailVerificationRequest as NewRegistrationVerificationEmail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 
@@ -52,7 +52,7 @@ Route::get('/email/verify', function () {
     return view('auth.verify-email');
 })->name('verification.notice')->middleware('auth');
 
-Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+Route::get('/email/verify/{id}/{hash}', function (NewRegistrationVerificationEmail $request) {
     $request->fulfill();
 
     return redirect('/');
