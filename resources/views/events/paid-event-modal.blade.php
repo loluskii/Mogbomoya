@@ -110,28 +110,37 @@
         total = 0;
     // const sumTotal1 = 0;
     // const sumTotal2= 0;
+    if($('#tierPrice0').length){
+        const price = $('#tierPrice0').html().replace(',','');
+        $("#quantity0").change(function() {
+            sumTotal1 = (parseInt($(this).val()) * price);
+            total = sumTotal1 + sumTotal2 
+            $('.totalPrice').html(+total);
+                    
+        });
+    }
     
-    const price = $('#tierPrice0').html().replace(',','');
-    $("#quantity0").change(function() {
-        sumTotal1 = (parseInt($(this).val()) * price);
-        total = sumTotal1 + sumTotal2 
-        $('.totalPrice').html(+total);
-                   
-    });
 
-    const price2 = $('#tierPrice1').html().replace(',','');
-    $("#quantity1").change(function() {
-        sumTotal2 = (parseInt($(this).val()) * price2);
-        total = sumTotal1+ sumTotal2 
-        $('.totalPrice').html(+total);
-    });
+    if($('#tierPrice01').length){
+        const price2 = $('#tierPrice1').html().replace(',','');
+        $("#quantity1").change(function() {
+            sumTotal2 = (parseInt($(this).val()) * price2);
+            total = sumTotal1+ sumTotal2 
+            $('.totalPrice').html(+total);
+        });
 
-    const price3 = $('#tierPrice2').html().replace(',','');
-    $("#quantity2").change(function() {
-        sumTotal3 = (parseInt($(this).val()) * price3);
-        total = sumTotal1+ sumTotal2 + sumTotal3;
-        $('.totalPrice').html(+total);
-    });
+    }
+    
+    if($('#tierPrice2').length){
+        const price3 = $('#tierPrice2').html().replace(',','');
+        $("#quantity2").change(function() {
+            sumTotal3 = (parseInt($(this).val()) * price3);
+            total = sumTotal1+ sumTotal2 + sumTotal3;
+            $('.totalPrice').html(+total);
+        });
+    }
+
+    
 });
     // const price = $('#tierPrice').html().replace(',','');
     // const totalPrice = parseInt($('.totalPrice').html());
