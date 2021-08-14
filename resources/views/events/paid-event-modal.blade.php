@@ -17,17 +17,17 @@
                     <div class="modal-body">
 
                         <div class="container ticketQuantity">
-                            @foreach ($event->tiers as $tier)
+                            @foreach ($event->tiers as $key => $tier)
                                 <div class="row">
                                     <div class="px-0 col-6">
                                         <h6>{{ $tier->name }}</h6>
 
-                                        <p class="text-muted">&#8358; {{ number_format($tier->price) }}</p>
+                                        <p class="text-muted">&#8358; <span id="tierPrice{{$key}}">{{ number_format($tier->price) }}</span></p>
                                     </div>
                                     <div class="px-0 col-6">
                                         <div class="form-group">
-                                            <input type="number" max="{{ $tier->limit_remaining ?? 100000000000000000 }}" class="custom-select form-control form-control-lg mx-3" name="{{ $tier->reference }}">
-                                            <p for="" class="float-right">{{ $tier->limit_remaining ?? 'Unlimited' }} slot(s) left</p>
+                                            <input type="number" id="quantity{{$key}}" min="1" max="{{ $tier->limit_remaining ?? 100000000000000000 }}" class="numberOfSlots custom-select form-control form-control-lg mx-3" name="{{ $tier->reference }}">
+                                            <small for="" class=" text-muted float-right">{{ $tier->limit_remaining ?? 'Unlimited' }} slot(s) left</small>
     
                                         </div>
                                     </div>
@@ -68,21 +68,23 @@
                     <div class="modal-body">
                         <div class="container-fluid">
                             <h6 class="font-weight-bold">Order Summary</h6>
-                            <div class="row justify-content-between text-muted my-4">
-                                <span class="ml-3">
-                                    Free
-                                </span>
-                                <span class="mr-3">
-                                    £0.00
-                                </span>
-                            </div>
+                            @foreach ($event->tiers as $tier)
+                                <div class="row justify-content-between text-muted my-4">
+                                    <span class="ml-3">
+                                        {{ $tier->name }}
+                                    </span>
+                                    <span class="mr-3">
+                                        &#8358; <span>{{ number_format($tier->price) }}</span>
+                                    </span>
+                                </div>
+                            @endforeach
                             <hr style="width: auto">
                             <div class="row justify-content-between text-muted  font-weight-bold my-4">
                                 <span class="ml-3">
                                     Total
                                 </span>
                                 <span class="mr-3">
-                                    £<span class="totalPrice"></span>
+                                    &#8358; <span class="totalPrice">0</span>
                                 </span>
                             </div>
                             <div class="pt-3 pb-5 float-right">
@@ -99,3 +101,49 @@
 </div>
 
 </form>
+
+<script>
+    $(document).ready(function() {
+        sumTotal1 = 0;
+        sumTotal2 = 0;
+        sumTotal3 = 0;
+        total = 0;
+    // const sumTotal1 = 0;
+    // const sumTotal2= 0;
+    
+    const price = $('#tierPrice0').html().replace(',','');
+    $("#quantity0").change(function() {
+        sumTotal1 = (parseInt($(this).val()) * price);
+        total = sumTotal1 + sumTotal2 
+        $('.totalPrice').html(+total);
+                   
+    });
+
+    const price2 = $('#tierPrice1').html().replace(',','');
+    $("#quantity1").change(function() {
+        sumTotal2 = (parseInt($(this).val()) * price2);
+        total = sumTotal1+ sumTotal2 
+        $('.totalPrice').html(+total);
+    });
+
+    const price3 = $('#tierPrice2').html().replace(',','');
+    $("#quantity2").change(function() {
+        sumTotal3 = (parseInt($(this).val()) * price3);
+        total = sumTotal1+ sumTotal2 + sumTotal3;
+        $('.totalPrice').html(+total);
+    });
+});
+    // const price = $('#tierPrice').html().replace(',','');
+    // const totalPrice = parseInt($('.totalPrice').html());
+    // const quantity = document.querySelectorAll('#quantity');
+    // console.log(quantity.val());
+
+    // $("#quantity").change(function() {
+    //     const totalPrice = parseInt($(this).val()) * price;
+    //     console.log(totalPrice);
+        
+    //     $('.totalPrice').html(+totalPrice);
+    // });
+    
+    
+</script>

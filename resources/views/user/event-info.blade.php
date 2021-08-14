@@ -78,9 +78,10 @@
                                 <a href="http://" class="btn save shadow">
                                     <img src="{{ asset('images/icons/edit.svg') }}" srcset="">
                                 </a>
-                                <a href="http://" class="btn save shadow">
+                                <a data-toggle="modal" data-target="#exampleModal" class="btn save shadow">
                                     <img src="{{ asset('images/share.svg') }}" srcset="">
                                 </a>
+                                @include('user.share-modal')
                             </div>
                             
                         </div>
@@ -117,13 +118,18 @@
                         <center>
                             <hr class="" width="640px">
                         </center>
-                        <div>
-                            @if($event->registrations->count()  > 1)
-                                <p style="font-weight: bold"><span>{{$event->registrations->count()}}</span> people are coming</p>
+                        <div class="mt-3">
+                                           
+                            <div class="row justify-content-between">
+                                @if($event->registrations->count()  > 1)
+                                <p class="ml-3"><span>{{$event->registrations->count()}}</span> people are coming</p>
                             @endif
                             @if($event->registrations->count() == 1)
-                                <p style="font-weight: bold"><span>{{$event->registrations->count()}}</span> person is coming</p>
-                            @endif                            <div class="row justify-content-between">
+                                <p class="ml-3"><span>{{$event->registrations->count()}}</span> person is coming</p>
+                            @endif 
+                            @if($event->registrations->count() < 1)
+                                <p class="ml-3"> No one has registered for this event</p>
+                            @endif             
                                 {{-- <div class="ml-3">
                                     <img src="{{ asset('images/icons/users/user-1.svg') }}" alt="" srcset="">
                                     <img src="{{ asset('images/icons/users/user-2.svg') }}" alt="" srcset="">

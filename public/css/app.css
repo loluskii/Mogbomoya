@@ -99,6 +99,9 @@ footer .top {
 .btnPrimary:hover {
     color: white;
 }
+.card{
+    height: 100%;
+}
 
 .btnSecondary {
     background: #E6F4F0;

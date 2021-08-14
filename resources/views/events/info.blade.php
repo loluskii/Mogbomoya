@@ -74,10 +74,11 @@
                                         <a class="dropdown-item py-2" href="#">No collections</a>
                                     @endif
                                 </div>
-                                {{-- <a href="http://" class="btn save shadow">
+                                <a data-toggle="modal" data-target="#exampleModal"  class="btn save shadow">
                                     <img src="{{ asset('images/share.svg') }}" srcset="">
-                                </a> --}}
-                                <span class="mr-3">
+                                </a>
+                                @include('user.share-modal')
+                                {{-- <span class="mr-3">
                                     <a href="https://www.facebook.com/sharer/sharer.php?u={{url()->current()}}" class="btn btn-sm text-white" style="background-color: #3b5998" target="_blank"><i class="fa fa-facebook text-white"></i> Share</a>
                                 </span>
                                 <span class="mr-3">
@@ -85,7 +86,7 @@
                                 </span>
                                 <span class="mr-3">
                                 <a href="https://twitter.com/intent/tweet?text=Mogbomoya Event {{url()->current()}}" class="btn btn-sm text-white" style="background-color: #00acee"  target="_blank"><i class="fa fa-twitter text-white"></i> Share</a>
-                                </span>
+                                </span> --}}
                             </div>
                             <div class="mr-3">
                                 <button class="btn btnPrimary" data-toggle="modal"
@@ -200,30 +201,22 @@
     <script>
         $(document).ready(function() {
             // let user = false;
-            let price = $('.priceValue').html();
-            $("#vipQuantity").change(function() {
-                var totalPrice = parseFloat($(this).children("option:selected").val()) * price;
-                $('.totalPrice').append(totalPrice);
-            });
+            // const price = $('#tierPrice').html().replace(',','');
+            // const totalPrice = parseInt($('.totalPrice').html());
 
-            $('.ctaButton').click(function() {
-                $('.ticketQuantity').hide();
-                $('.guestForm').show();
-                $(this).hide();
-                $('.submitButton').show();
-            });
+            // $("#quantity").change(function() {
+            //     const totalPrice = parseInt($(this).val()) * price;
+            //     console.log(totalPrice);
+                
+            //     $('.totalPrice').html(+totalPrice);
+            // });
 
-            // if (user) {
-            //     $('.ctaButton').text('Register');
-            // } else {
-            //     $('.ctaButton').text('Continue');
-            //     $('.ctaButton').click(function() {
-            //         $('.ticketQuantity').hide();
-            //         $('.guestForm').show();
-            //         $(this).text('Register');
-            //         $(this).attr("type", "submit");
-            //     });
-            // }
+            // $('.ctaButton').click(function() {
+            //     $('.ticketQuantity').hide();
+            //     $('.guestForm').show();
+            //     $(this).hide();
+            //     $('.submitButton').show();
+            // });
 
         });
     </script>
