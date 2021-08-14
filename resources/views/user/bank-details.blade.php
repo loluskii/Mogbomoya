@@ -23,15 +23,14 @@
     </style>
 @endsection
 
-
 @section('content')
 <div class="container-fluid">
     <div class="row">
             @include('user.side-nav')
 
             <div class="container px-sm-5 px-2 mt-5 pt-3">
-                <h3 class=" px-sm-5">My Account</h3>
-                <p class=" px-sm-5">Manage your account details and public profile</p>
+                <h3 class=" px-sm-5">Setup Bank Account</h3>
+                <p class=" px-sm-5">Manage your bank account.</p>
                 <form action="{{ route('bank.store') }}" method="POST">
                     @csrf
                     <div class="col-md-10 col-sm-12  px-sm-5 px-0">
@@ -51,7 +50,7 @@
                     <div class="col-md-10 col-sm-12  px-sm-5 px-0">
                         <div class="form-group">
                             <label for="">ACCOUNT NUMBER</label>
-                            <input type="text" name="account_number" id="" class="form-control form-control-lg" value="{{$myBank->acct_no ?? ''}}" placeholder="" aria-describedby="helpId">
+                            <input type="text" name="account_number" id="" class="form-control" value="{{$myBank->acct_no ?? ''}}" placeholder="" aria-describedby="helpId">
                         </div>
                         @if ($myBank)
                             <span><b>{{$myBank->acct_name}} <i style="color: green; font-size:22px" class="fa fa-check-circle"></i></b></span>
@@ -71,6 +70,14 @@
         </div>
     </div>
 </div>
+@endsection
 
-
+@section('script')
+    <script>
+         $(document).ready(function () {
+            $('select').selectize({
+                sortField: 'text'
+            });
+        });
+    </script>
 @endsection

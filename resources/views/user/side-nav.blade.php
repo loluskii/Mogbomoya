@@ -17,10 +17,10 @@
 <div class="col-md-3 d-none d-md-block d-sm-none sidebar" style="height: 120vh">
     <div class="list-group list-group-flush mt-5 pt-2">
         <a href="/" class="mb-5 pb-5"><img src="{{asset('images/logo-white.svg')}}" class="img-fluid" style="height: 50px" srcset=""></a>
-        <a class="list-group-item list-group-item-action" href="{{ route('user.edit') }}">My account</a>
+        <a class="list-group-item list-group-item-action" href="{{ route('user.edit') }}">My Account</a>
         <a class="list-group-item list-group-item-action p-3" href="{{route('bank.details')}}">Bank account details</a>
         {{-- <a class="list-group-item list-group-item-action p-3" href="#!">Customize your interests</a> --}}
-        <a class="list-group-item list-group-item-action p-3" href="#!">Talk to us</a>
+        {{-- <a class="list-group-item list-group-item-action p-3" href="#!">Talk to us</a> --}}
         @if(auth()->user()->password != '')
         {{-- request password modal --}}
             <a class="list-group-item list-group-item-action p-3"  id="inputPassword" href="#">Deactivate account</a> 

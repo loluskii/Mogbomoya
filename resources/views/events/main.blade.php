@@ -24,7 +24,7 @@
     </head>
     <body>
 
-        <div id="wrapper">            
+        <div id="wrapper">  
             @yield('content')
             @include('layouts.partials.footer-scripts')
 

@@ -45,9 +45,20 @@
             <div class="container p-5 mt-5">
                 <h3 style="font-weight: bold">Welcome back!👋🏾</h3>
                 <p class="text-muted">Hey there! We've missed you.</p>
+                
                 <form action="{{route('login')}}" method = "POST" class="pt-4">
                 @csrf
                     <div class="col-sm-12 col-md-9 px-0">
+                        @if (session('loginMsg'))
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+
+                                <strong>{{ session('loginMsg') }}</strong>
+
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        @endif
                         @error('username')
                             <span class="invalid-feedback" role="alert">
                                 <b>{{$message}}</b>

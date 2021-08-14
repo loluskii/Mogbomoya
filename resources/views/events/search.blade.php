@@ -91,8 +91,8 @@
 
                 <div class="row justify-content-between">
                     <div class="col">
-                        <h5>{{$events->count()}} event(s) found at <span></span></h5>
-                        <p> <img src="{{asset('images/icons/location.svg')}}" style="height: " class="img-fluid">  <small>Lekki, Lagos</small> <a href="">Change</a></p>
+                        <h5>{{$events->count()}} event(s) found<span></span></h5>
+                        {{-- <p> <img src="{{asset('images/icons/location.svg')}}" style="height: " class="img-fluid">  <small>Lekki, Lagos</small> <a href="">Change</a></p> --}}
                     </div>
                 </div>
                 <div class="row py-4">

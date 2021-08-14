@@ -148,10 +148,13 @@
                                             attend your event.</p>
                                         <div>
                                             <div class="form-group py-2">
-                                                @error('featured_image')
-                                                    <b class="text-danger">{{ $message }} </b>
-                                                @enderror
-                                                <input type="file" name="featured_image" class="featured_image" required>
+                                                <label for="">FEATURED IMAGE</label>
+                                                <div class="col-md-10 col-sm-12 pl-0">
+                                                    <input type="file" name="featured_image" class=" featured_image" required>
+                                                    @error('featured_image')
+                                                        <b class="text-danger">{{ $message }} </b>
+                                                    @enderror
+                                                </div>
 
                                             </div>
                                             <div class="form-group py-2">
@@ -322,11 +325,13 @@
                                             <div class="form-group py-2">
                                                 <label for="">IS THIS A PAID EVENT?</label>
                                                 <div class="col-md-10 col-sm-12 pl-0">
-                                                    <select class="form-control form-control-lg" name="isPaid" onchange="showDiv('tier', this)">
+                                                    <input type="radio" name="isPaid" value="0" onchange="showDiv('tier', this)">&nbsp;No<br/>
+                                                    <input type="radio" name="isPaid" value="1" onchange="showDiv('tier', this)">&nbsp;Yes, there are different tiers for this event
+                                                    {{-- <select class="form-control form-control-lg" name="isPaid" onchange="showDiv('tier', this)">
                                                         <option value=" " selected> ---</option>
                                                         <option value="0">No</option>
                                                         <option value="1">Yes, there are different tiers for this event</option>
-                                                    </select>
+                                                    </select> --}}
                                                 </div>
                                             </div>
                                             @error('isPaid')

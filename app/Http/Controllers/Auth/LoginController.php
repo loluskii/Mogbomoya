@@ -38,9 +38,8 @@ class LoginController extends Controller
                     'success', 'Welcome!',
                 );
             }
-            return back()->with(
-                'error', 'The provided credentials do not match our records.',
-            );
+            session()->flash('loginMsg', 'The provided credentials do not match our records.');
+            return back();
         }catch(\Exception $e){
             return back()->with(
                 'error', $e->getMessage()
