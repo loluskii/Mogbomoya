@@ -23,7 +23,7 @@
                                     <th scope="col">Phone Number</th>
                                     <th scope="col">Amount</th>
                                     <th scope="col">Description</th>
-                                    <th scope="col">Payment Log</th>
+                                    {{-- <th scope="col">Payment Log</th> --}}
                                     <th scope="col">Date/Time</th>
                                 </tr>
                             </thead>
@@ -38,7 +38,7 @@
                                         <td>{{ $transaction->phone_number ?? 'N/A' }}</td>
                                         <td>&#8358; {{ number_format($transaction->amount) }}</td>
                                         <td>{{ $transaction->description }}</td>
-                                        <td>{{ json_encode($transaction->payment_method_log) }}</td>
+                                        {{-- <td>{{ json_encode($transaction->payment_method_log) }}</td> --}}
                                         <td>{{ $transaction->created_at }}</td>
                                     </tr>
                                 @endforeach
