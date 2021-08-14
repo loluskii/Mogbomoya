@@ -200,23 +200,12 @@
 @section('script')
     <script>
         $(document).ready(function() {
-            // let user = false;
-            // const price = $('#tierPrice').html().replace(',','');
-            // const totalPrice = parseInt($('.totalPrice').html());
-
-            // $("#quantity").change(function() {
-            //     const totalPrice = parseInt($(this).val()) * price;
-            //     console.log(totalPrice);
-                
-            //     $('.totalPrice').html(+totalPrice);
-            // });
-
-            // $('.ctaButton').click(function() {
-            //     $('.ticketQuantity').hide();
-            //     $('.guestForm').show();
-            //     $(this).hide();
-            //     $('.submitButton').show();
-            // });
+            $('.ctaButton').click(function() {
+                $('.ticketQuantity').hide();
+                $('.guestForm').show();
+                $(this).hide();
+                $('.submitButton').show();
+            });
 
         });
     </script>
