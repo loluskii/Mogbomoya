@@ -47,7 +47,7 @@
     </form> --}}
     <ul class="navbar-nav ml-auto">
       <li class="nav-item mr-4">
-        <a class="nav-link" href="{{ route('signup.view') }}">Help Center </a>
+        <a class="nav-link" href="{{route('help-center')}}">Help Center </a>
       </li>
       <li class="nav-item mr-4">
         <a class="nav-link" href="{{ route('login.view') }}">Sign In</a>

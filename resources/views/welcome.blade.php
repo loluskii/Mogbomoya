@@ -6,7 +6,7 @@
             <h1 class="h2">Find events to attend</h1>
             <div class="col-md-4 col-sm-12 pl-0">
                 <p>From virtual events to music concerts and business seminars, Mògbómoyá gives you access to a wide range of events tailored to suit your needs</p>
-                <a class="btn cta-button btn-lg py-2 px-4" href="#" role="button">Browse Events</a>
+                <a class="btn cta-button btn-lg py-2 px-4" href="#browse" role="button">Browse Events</a>
             </div>
         </div>
     </div>
@@ -14,9 +14,9 @@
         <p class="text-muted">
             Find all events in
         </p>
-        <input type="text" name="location" class="home-location" id="">
+        {{-- <input type="text" name="location" class="home-location" id=""> --}}
         <div class="mt-4" id="tabs">
-            <ul class="nav nav-pills mb-3">
+            <ul class="nav nav-pills mb-3"  id="browse"> 
                 <li class="nav-item">
                     <a  href="{{route('index.view')}}" class="nav-link mx-1 my-1 {{(request()->query('category')) ? '' : 'active'}}" aria-selected="true">All Events</a>
                 </li>

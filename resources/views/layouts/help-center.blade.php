@@ -34,7 +34,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-0">
                         <li class="nav-item mr-4" style="padding-top: 10px">
-                            <a class="nav-link" href="#">Help Center </a>
+                            <a class="nav-link" href="{{route('help-center')}}">Help Center </a>
                         </li>
                     </ul>
                 </div>

@@ -106,23 +106,23 @@ Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/terms-and-condition', function () {
     return view('tandc');
-});
+})->name('tandc');
 
 Route::get('/privacy-policy', function () {
     return view('privacy');
-});
+})->name('privacy');
 
 Route::get('/faq', function () {
     return view('help-center.faq');
-});
+})->name('faq');
 
 Route::get('/help-center', function () {
     return view('help-center.help-center');
-});
+})->name('help-center');
 
 Route::get('/site-map', function () {
     return view('site-map');
-});
+})->name('site-map');
 
 Route::any('events-near-me', [EventController::class, 'eventsNearMe'])->name('events.near');
 
