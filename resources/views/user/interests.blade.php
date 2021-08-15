@@ -2,15 +2,7 @@
 
 @section('css')
 <style>
-  label{
-    background-color: white;
-    border: none;
 
-  }
-  
-  label.active, .active{
-    border: 2px solid aquamarine;
-  }
 .card{
     border: none;
 }
@@ -18,12 +10,6 @@
     width: 30%;
     margin: 0;
     float: left
-}
-
-#products {
-    width: 70%;
-    margin: 0;
-    float: right
 }
 
 @media(min-width:991px) {
@@ -71,48 +57,79 @@
         display: none
     }
 }
+
+.container {
+  max-width: 99vw;
+  margin: 15px auto;
+  padding: 0 15px;
+}
+
+.checkbox-content{
+	text-align: center;
+	border-radius: 3px;
+  box-shadow: 0 2px 4px 0 rgba(219, 215, 215, 0);
+  border: solid 2px transparent;
+	background: #fff;
+	padding: 10px;
+	transition: .3s ease-in-out all;
+  height: 100%;
+  width: 100%;
+}
+
+.checkbox-content img {
+    width: 30%;
+		margin: 0 auto;
+}
+.checkbox-label{
+	position: relative;
+}
+.checkbox-label input{
+	display: none;
+}
+.checkbox-label .icon{
+	width: 20px;
+  height: 20px;
+  border: solid 2px #e3e3e3;
+	border-radius: 50%;
+	position: absolute;
+	top: 15px;
+	left: 15px;
+	transition: .3s ease-in-out all;
+	transform: scale(1);
+	z-index: 1;
+}
+.checkbox-label .icon:before{
+	content: "\f00c";
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	font-family: "Font Awesome 5 Free";
+	font-weight: 900;
+	font-size: 12px;
+	color: #000;
+	text-align: center;
+	opacity: 0;
+	transition: .2s ease-in-out all;
+	transform: scale(2);
+}
+.checkbox-label input:checked + .icon{
+	background: #008A69;
+	border-color: #008A69;
+	transform: scale(1.2);
+}
+.checkbox-label input:checked + .icon:before{
+	color: #fff;
+	opacity: 1;
+	transform: scale(.8);
+}
+.checkbox-label input:checked ~ .checkbox-content{
+  box-shadow: 0 2px 4px 0 rgba(219, 215, 215, 0.5);
+  border: solid 1px #008A69;
+}
 </style>
 @endsection
 
 @section('content')
-    {{-- <div class="row">
-        <div class="col-md-4 col-4 pl-0 d-md-block d-none d-sm-none">
-                <img src="{{ asset('images/interests-sidenav.svg') }}" alt="">
-        </div>
-        <div class="col-md-8">
-            @include('user.partial-nav')
-            <div class="container pt-2 mt-5">
-                    <h3 style="font-weight: bold">Pick your Interests</h3>
-                    <p><small>Follow at least 3 topics to get event recommendations tailored for you.</small></p>
-                    <form action="{{ route('user.interests.update')}}" method="POST" class="pt-4" autocomplete="off">
-                      @csrf
-                      <div class="row" id="interestsCat">
-                        @foreach($interests as $key => $interest)
-                        <div class="col-sm-3 col-6 mb-3">
-                          <div>
-                            <label class="mb-0 w-100" id="{{$interest->id}}" style="padding: 0;" onclick="selectInterest('{{$interest->id}}')">
-                              <input type="checkbox" name="interests[]" value="{{$interest->name}}" style="display: none"> 
-                              <div class="card">
-                                <div class="card-body">
-                                    <h3 class="card-title text-center"><img src="{{asset("images/icons/$interest->icon")}}" alt="" srcset=""></h3>
-                                    <p class="card-text text-center">{{$interest->name}}</p>  
-                                </div>
-                              </div>
-                            </label>
-                          </div>
-                        </div>
-                        @endforeach
-                        <div class="col-12 py-4">
-                          <button class="btn btnPrimary" type="submit">Save Interests</button>
-                        </div>
-                      </div>
-                  </form>
-
-                </div>
-            </div>
-
-        </div>
-    </div> --}}
 
     <section id="sidebar">
       <img src="{{ asset('images/interests-sidenav.svg') }}" alt="">
@@ -124,50 +141,27 @@
           <p><small>Follow at least 3 topics to get event recommendations tailored for you.</small></p>
           <form action="{{ route('user.interests.update')}}" method="POST" class="pt-4" autocomplete="off">
             @csrf
-            <div class="row" id="interestsCat">
+            <div class="row">
                 @foreach($interests as $key => $interest)
-                <div class="col-lg-3 col-sm-6 col-6 mb-3">
-                  <div>
-                    <label class="mb-0 w-100" id="{{$interest->id}}" style="padding: 0;" onclick="selectInterest('{{$interest->id}}')">
-                      <input type="checkbox" name="interests[]" value="{{$interest->name}}" style="display: none"> 
-                      <div class="card">
-                        <div class="card-body">
-                            <h3 class="card-title text-center"><img src="{{asset("images/icons/$interest->icon")}}" alt="" srcset=""></h3>
-                            <p class="card-text text-center">{{$interest->name}}</p>  
-                        </div>
+                <div class="col-lg-3 col-sm-12 mb-3 d-flex align-items-stretch">                  
+                  <label class="checkbox-label">
+                    <div class="card">
+                      <input type="checkbox" value="{{encrypt($interest->id)}}" name="interests[]">
+                      <span class="icon"></span>
+                      <div class="checkbox-content">
+                        <img class="mt-2 img img-responsive" src="{{asset("images/icons/$interest->icon")}}">
+                        <p class="pt-2">{{$interest->name}}</p>
                       </div>
-                    </label>
-                  </div>
+                    </div>
+                  </label>
                 </div>
                 @endforeach
+                <div class="col-md-12">
+                  <input type="submit" value="Save" class="btn btn-success px-5">
+                  <a href="{{route('index.view')}}" class="btn btn-dark">Skip for now</a>
+                </div>
             </div>
           </form>
         </div>
     </section>
-
-@endsection
-
-
-@section('script')
-
-
-<script>
-
-    let selectedInterests = [];
-    
-    function selectInterest(id){
-      // selectInterest.preventDefault();
-      // event.preventDefault();
-      if(document.getElementById(id).classList.contains("active")){
-        document.getElementById(id).classList.remove("active");
-      }else{
-        document.getElementById(id).classList.add("active");
-
-      }
-      
-    }
-
-
-
-</script>
 @endsection

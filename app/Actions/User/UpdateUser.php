@@ -23,7 +23,7 @@ class UpdateUser
     $verifyInterestIds = [];
     if (!empty($request['interests'])) {
       for ($i = 0; $i < count($request['interests']); $i++) {
-        $findInterest = Interest::find((int)$request['interests'][$i]);
+        $findInterest = Interest::find(decrypt($request['interests'][$i]));
         array_push($verifyInterestIds, $findInterest->id);
       }
     }

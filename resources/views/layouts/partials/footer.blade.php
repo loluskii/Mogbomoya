@@ -3,13 +3,13 @@
         text-decoration: none;
         color:white;
     }
-
+/* 
     a:hover{
         font-size: 17px;
         color: white;
         text-decoration: none;
 
-    }
+    } */
 </style>
 <footer>
     <div class="container py-5">

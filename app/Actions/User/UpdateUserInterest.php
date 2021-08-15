@@ -15,7 +15,7 @@ class UpdateUserInterest
     $verifyInterestIds = [];
     if (!empty($request['interests'])) {
       for ($i = 0; $i < count($request['interests']); $i++) {
-        $findInterest = Interest::find((int)$request['interests'][$i]);
+        $findInterest = Interest::find(decrypt($request['interests'][$i]));
         array_push($verifyInterestIds, $findInterest->id);
       }
     }
@@ -23,9 +23,8 @@ class UpdateUserInterest
     if (empty($verifyInterestIds)) {
       Auth::user()->interests()->detach();
     } else {
-      Auth::user()->interests()->sync($verifyInterestIds);
+      Auth::user()->interests()->attach($verifyInterestIds);
     }
-
     DB::commit();
   }
 }
