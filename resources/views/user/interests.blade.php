@@ -9,7 +9,15 @@
 #sidebar {
     width: 30%;
     margin: 0;
-    float: left
+    float: left;
+    position: fixed;
+}
+
+#products{
+  width: 70%;
+  margin: 0;
+  float: right;
+  left: 30%;
 }
 
 @media(min-width:991px) {
@@ -50,8 +58,15 @@
         /* width: 230px; */
         display: inline-block;
         margin-bottom: 10px;
-        margin-top: 10px
+        margin-top: 10px;
+        min-width: 150px;
+        max-width: 170px;
     }
+
+    .cont{
+      width: auto;
+    }
+    
 
     #sidebar {
         display: none
@@ -143,7 +158,7 @@
             @csrf
             <div class="row">
                 @foreach($interests as $key => $interest)
-                <div class="col-lg-3 col-sm-12 mb-3 d-flex align-items-stretch">                  
+                <div class="col-lg-3 col-md-4 mb-3 d-flex align-items-stretch cont">                  
                   <label class="checkbox-label">
                     <div class="card">
                       <input type="checkbox" value="{{encrypt($interest->id)}}" name="interests[]">

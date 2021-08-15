@@ -278,6 +278,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group py-2">
+                                                <label for="">EVENT TYPE (SELECT ONE)</label>
                                                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                                     <div class="form-row">
                                                         <div class="col-md-4 col-6">
