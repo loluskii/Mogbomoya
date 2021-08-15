@@ -118,6 +118,9 @@ class RegisterController extends Controller
             );
         }
         Auth::login($user, true);
+        if (Auth::user()->interests->count() == 0) {
+            return redirect()->route('customize-interests');
+        }
         return $this->sendSuccessResponse();
     }
 
@@ -141,6 +144,9 @@ class RegisterController extends Controller
             Auth::login($user, true);
             event(new Registered($user));
             DB::commit();
+            if (Auth::user()->interests->count() == 0) {
+                return redirect()->route('customize-interests');
+            }
             return redirect()->intended('/')->with(
                 'success',
                 'Welcome'

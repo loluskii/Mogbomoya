@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
@@ -16,36 +17,41 @@ class LoginController extends Controller
 
     public function authenticate(Request $request)
     {
-        try{
-            if(Auth::check()){
+        try {
+            if (Auth::check()) {
                 return redirect()->route('admin.dashboard');
             }
             $input = $request->all();
-            
+
             $request->validate([
                 'username' => ['required'],
                 'password' => ['required'],
             ]);
-    
-            $fieldType = filter_var($request->username , FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
-    
+
+            $fieldType = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+
             $shouldRemember = $request->remember ? true : false;
-    
-            if (Auth::attempt(array($fieldType => $input['username'] , 'password' => $input['password'], 'isActive' => 1 ) ,  $shouldRemember ) ) {
+
+            if (Auth::attempt(array($fieldType => $input['username'], 'password' => $input['password'], 'isActive' => 1),  $shouldRemember)) {
                 $request->session()->regenerate();
-    
+
+                if(Auth::user()->interests->count() == 0){
+                    return redirect()->route('customize-interests');
+                }
+
                 return redirect()->intended('/')->with(
-                    'success', 'Welcome!',
+                    'success',
+                    'Welcome!',
                 );
             }
             session()->flash('loginMsg', 'The provided credentials do not match our records.');
             return back();
-        }catch(\Exception $e){
+        } catch (\Exception $e) {
             return back()->with(
-                'error', $e->getMessage()
+                'error',
+                $e->getMessage()
             );
         }
-        
     }
 
     public function logout(Request $request)
@@ -53,7 +59,8 @@ class LoginController extends Controller
         Auth::logout();
 
         return redirect('/')->with(
-            'success', 'Logged Out Successfully',
+            'success',
+            'Logged Out Successfully',
         );
     }
 }

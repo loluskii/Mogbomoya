@@ -46,8 +46,6 @@ Route::get('/wipe', function () {
 Route::get('/', [PagesController::class, 'index'])->name('index.view');
 
 
-Route::get('interests', [PagesController::class, 'interests']);
-
 Route::get('/email/verify', function () {
     return view('auth.verify-email');
 })->name('verification.notice')->middleware('auth');
@@ -128,7 +126,10 @@ Route::any('events-near-me', [EventController::class, 'eventsNearMe'])->name('ev
 
 Route::any('search', [EventController::class, 'search'])->name('search');
 
+Route::get('interests', [PagesController::class, 'interests'])->name('customize-interests')->middleware('auth');
+
 Route::middleware(['auth','verified'])->group(function () {
+
 
     Route::prefix('event')->group(function () {
 
