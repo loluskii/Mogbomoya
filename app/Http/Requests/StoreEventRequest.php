@@ -40,7 +40,6 @@ class StoreEventRequest extends FormRequest
             'tier_name' => 'required_if:isPaid,1',
             'tier_price' => 'required_if:isPaid,1',
             'limit' => 'required|nullable',
-
         ];
     }
 

@@ -1,6 +1,9 @@
 @extends('layouts.main') 
 @section('css')
 <style>
+    .collection{
+        height: calc(100vh - 377px);
+    }
     a:hover{
         text-decoration: none;
     }
@@ -8,7 +11,7 @@
 @endsection
 
 @section('content')
-<div class="container-fluid my-5 py-5">
+<div class="collection container-fluid my-5 py-5">
     <h3>{{ $collection_name }}</h3>
     
     <div class="row py-4">

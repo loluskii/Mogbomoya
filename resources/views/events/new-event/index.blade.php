@@ -237,19 +237,19 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            {{-- <div class="form-group py-2"  id="latitudeArea">
-                                            <label for="">LATITUDE</label>
-                                            <div class="col-md-10 col-sm-12 pl-0">
-                                                <input type="text" id="latitude" name="latitude" class="form-control form-control-lg" placeholder=""  value="{{old('name')}}" aria-describedby="helpId">
+                                            <div class="form-group py-2"  id="latitudeArea">
+                                                <label for="">LATITUDE</label>
+                                                <div class="col-md-10 col-sm-12 pl-0">
+                                                    <input type="text" id="latitude" name="latitude" class="form-control form-control-lg" placeholder=""  value="{{old('name')}}" aria-describedby="helpId">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group py-2" id="longtitudeArea">
-                                            <label for="">LONGITUDE</label>
-                                            <div class="col-md-10 col-sm-12 pl-0">
-                                                <input type="text"  name="longitude" id="longitude" class="form-control form-control-lg" placeholder=""  value="{{old('name')}}" aria-describedby="helpId">
-                                               
+                                            <div class="form-group py-2" id="longtitudeArea">
+                                                <label for="">LONGITUDE</label>
+                                                <div class="col-md-10 col-sm-12 pl-0">
+                                                    <input type="text"  name="longitude" id="longitude" class="form-control form-control-lg" placeholder=""  value="{{old('name')}}" aria-describedby="helpId">
+                                                
+                                                </div>
                                             </div>
-                                        </div> --}}
                                             <div class="form-group py-2 virtualLocation" style="display: none;">
                                                 <label for="">WEBINAR LINK</label>
                                                 <div class="col-md-10 col-sm-12 pl-0">
@@ -314,7 +314,7 @@
                                                 <b class="text-danger">{{ $message }} </b>
                                             @enderror
                                             <div class="py-4">
-                                                <button class="btn btnPrimary" id="next">Continue</button>
+                                                <button type="button" class="btn btnPrimary" id="next">Continue</button>
                                             </div>
                                         </div>
                                     </div>
@@ -414,6 +414,9 @@
             document.getElementById(divId).style.display = element.value == 1 ? 'block' : 'none';
         }
         $(document).ready(function() {
+            $("#latitudeArea").addClass("d-none");
+            $("#longtitudeArea").addClass("d-none");
+
             $('#categories').select2({
                 placeholder: 'Select a category',
                 maximumSelectionLength: 3
@@ -427,6 +430,8 @@
                 $('.virtualLocation').hide();
                 $('.liveLocation').show();
             })
+
+            
 
             $('#next').click(function(e) {
                 e.preventDefault();
