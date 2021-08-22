@@ -329,7 +329,7 @@
                                                 
                                                 </div>
                                             </div>
-                                            {{-- <div class="form-group py-2 virtualLocation" style="display: none;">
+                                            <div class="form-group py-2 virtualLocation" style="display: none;">
                                                 <label for="">WEBINAR LINK</label>
                                                 <div class="col-md-10 col-sm-12 pl-0">
                                                     <input type="text" name="link" placeholder="type link here" value=""
@@ -338,7 +338,7 @@
                                                         <b class="text-danger">{{ $message }} </b>
                                                     @enderror
                                                 </div>
-                                            </div> --}}
+                                            </div>
 
                                             <div class="form-group">
                                                 <label for="">SELECT 1-3 CATEGORIES</label>
