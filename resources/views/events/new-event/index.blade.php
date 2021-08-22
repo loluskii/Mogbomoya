@@ -83,7 +83,77 @@
             color: black;
         }
 
+        #preview{
+            height:250px ;
+            width:250px ;
+            object-fit: cover;
+        }
+        input[type=file]{
+            display: none;
+        }
+        .upload{
+            display: flex;
+            border: 2px solid #ECEEEE;
+            background-color: white;
+            height: 180px;
+            width: 204px;
+            border-radius: 8px;
+            align-items: center;
+            font-size: 13px;
+            cursor: pointer;
+        }
 
+        .select2-container--default .select2-selection--multiple .select2-selection__choice {
+            background-color: #fcfcfc;
+            border: 1px solid rgb(220, 220, 220);
+            border-radius: 4px;
+            cursor: default;
+            float: left;
+            margin-right: 5px;
+            margin-top: 5px;
+            padding: 2px 5px;
+        }
+        
+        .radio-label .icon{
+            width: 20px;
+            height: 20px;
+            border: solid 2px #e3e3e3;
+            border-radius: 50%;
+            position: absolute;
+            top: 10px;
+            transition: .3s ease-in-out all;
+            transform: scale(1);
+            z-index: 1;
+        }
+        .radio-label .icon:before{
+            content: "\f00c";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            font-size: 12px;
+            color: #000;
+            text-align: center;
+            opacity: 0;
+            transition: .2s ease-in-out all;
+            transform: scale(2);
+        }
+        .radio-label input:checked + .icon{
+            background: #008A69;
+            border-color: #008A69;
+            transform: scale(1.0);
+        }
+        .radio-label input:checked + .icon:before{
+            color: #fff;
+            opacity: 1;
+            transform: scale(.8);
+        }
+
+        .btnPrimaryOutline {
+    color: black;
+    border: 1px solid rgb(226, 226, 226)
+}
 
 
         @media only screen and (max-width: 600px) {
@@ -137,7 +207,7 @@
                             </div>
                         </nav>
                         <div class="container-fluid">
-                            <form action="{{ route('event.create') }}" method="POST" class="py-4"
+                            <form action="{{ route('event.create') }}" method="POST" class="form py-4"
                                 enctype="multipart/form-data">
                                 @csrf
                                 <div class="tab-content" id="nav-tabContent">
@@ -146,11 +216,20 @@
                                         <h4 style="font-weight: bold">Basic Information</h4>
                                         <p>Provide information about your event that would help users know why they should
                                             attend your event.</p>
-                                        <div>
+                                        <div class="tab1">
                                             <div class="form-group py-2">
                                                 <label for="">FEATURED IMAGE</label>
                                                 <div class="col-md-10 col-sm-12 pl-0">
-                                                    <input type="file" name="featured_image" class=" featured_image" required>
+                                                    <input type="file" name="featured_image" accept="image/*" id="imgInp" class="featured_image">
+                                                    <div class="upload">
+                                                        <div class="col my-auto text-center">
+                                                            <img src="{{asset('images/icons/Vector.svg')}}" class="img-fluid" srcset="">
+                                                            <p class="text-cen">Upload Featured Image</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="py-2">
+                                                        <img src="" alt="preview" class="img-fluid" id="preview">
+                                                    </div>
                                                     @error('featured_image')
                                                         <b class="text-danger">{{ $message }} </b>
                                                     @enderror
@@ -205,7 +284,7 @@
                                                     <div class="col-md-4 col-6">
                                                         <div class="form-check form-check-inline py-4 w-100"
                                                             style="border: 1px solid #ECEEEE; border-radius: 5px; background-color:white">
-                                                            <label class="form-check-label px-3">
+                                                            <label class="radio-label form-check-label px-3">
                                                                 <input class="form-check-input virtualEvent" type="radio"
                                                                     name="event_type" id="event-type" value="0"> Virtual
                                                                 Event
@@ -250,7 +329,7 @@
                                                 
                                                 </div>
                                             </div>
-                                            <div class="form-group py-2 virtualLocation" style="display: none;">
+                                            {{-- <div class="form-group py-2 virtualLocation" style="display: none;">
                                                 <label for="">WEBINAR LINK</label>
                                                 <div class="col-md-10 col-sm-12 pl-0">
                                                     <input type="text" name="link" placeholder="type link here" value=""
@@ -259,7 +338,7 @@
                                                         <b class="text-danger">{{ $message }} </b>
                                                     @enderror
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
                                             <div class="form-group">
                                                 <label for="">SELECT 1-3 CATEGORIES</label>
@@ -282,26 +361,20 @@
                                                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                                     <div class="form-row">
                                                         <div class="col-md-4 col-6">
-                                                            <label
-                                                                class="btn btnPrimaryOutline bg-white pt-sm-4 pt-2 pb-sm-2 pb-1 px-sm-3 px-2"
-                                                                style="text-align: left;">
-                                                                <input type="radio" name="isPublic" value="0"
-                                                                    style="display: none">
-                                                                <span>
-                                                                    Private Event
-                                                                </span>
+                                                            <label class=" radio-label btn btnPrimaryOutline bg-white pt-sm-4 pt-2 pb-sm-2 pb-1 px-sm-3 px-2" style="text-align: left;">
+                                                                <input type="radio" name="isPublic" value="0" style="display: none">
+                                                                <span class="icon"></span>
+                                                                <p class="type pt-3 mb-0">Private Event</p>
                                                                 <p class="text-dark span-text">Only people with the unique
                                                                     link can see & register to attend</p>
 
                                                             </label>
                                                         </div>
                                                         <div class="col-md-4 col-6">
-                                                            <label
-                                                                class="btn btnPrimaryOutline bg-white pt-sm-4 pt-2 pb-sm-2 pb-1 px-sm-3 px-2"
-                                                                style="text-align: left">
-                                                                <input type="radio" name="isPublic" value="1" name="options"
-                                                                    style="display: none">
-                                                                <span>Public Event</span>
+                                                            <label class="radio-label btn btnPrimaryOutline bg-white pt-sm-4 pt-2 pb-sm-2 pb-1 px-sm-3 px-2" style="text-align: left">
+                                                                <input type="radio" name="isPublic" value="1" name="options" style="display: none">
+                                                                <span class="icon"></span>
+                                                                <p class="type pt-3 mb-0">Public Event</p>
                                                                 <p class="text-dark span-text">Everyone on the app can see &
                                                                     register to attend your event</p>
                                                             </label>
@@ -397,6 +470,32 @@
 @section('script')
     <script src="https://maps.googleapis.com/maps/api/js?key={{ config('app.google_key') }}&libraries=places"></script>
     <script>
+        $('#preview').hide();
+        $('.upload').click(function(){ $('.featured_image').trigger('click'); });
+        imgInp.onchange = evt => {
+            const [file] = imgInp.files
+            if (file) {
+                preview.src = URL.createObjectURL(file);
+                $('#preview').show();
+                $('.upload').css('display','none');
+                console.log()
+            }
+        }
+        
+        $form = $('.tab1'); // cache
+        $form.find(':input[type="submit"]').prop('disabled', true); // disable submit btn
+        $form.find(':input').change(function() { // monitor all inputs for changes
+            var disable = false;
+            $form.find(':input').not('[type="submit"],[type="hidden"]').each(function(i, el) { // test all inputs for values
+                if ($.trim(el.value) === '') {
+                    disable = true; // disable submit if any of them are still blank
+                }
+                console.log(el)
+            });
+            $form.find(':input[type="submit"]').prop('disabled',disable);
+        });
+
+
         let count = 0;
         function countNumOfTier(){
             count = count + 1
