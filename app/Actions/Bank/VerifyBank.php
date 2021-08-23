@@ -1,7 +1,7 @@
 <?php
 namespace App\Actions\Bank;
 
-use App\Actions\Bank\AllBank;
+use App\Actions\Bank\AllBanks;
 use App\Actions\Bank\ResolveAccount;
 use Exception;
 use Auth;
