@@ -31,6 +31,12 @@
         p {
             color: #616B69;
         }
+        .card{
+            border: none;
+        }
+        .card img{
+            object-fit: cover;
+        }
 
         @media screen and (max-width: 540px) {
             .eventDetails {
@@ -45,7 +51,7 @@
     </style>
     @endsection @section('content')
     <div class="container-fluid">
-        <div class="row">
+        <div class="row mb-5">
             <div class="col-md-6">
                 <div class="card">
                     <img src="{{ asset("images/event/$event->featured_image") }}" style="max-height:800px;" alt="" srcset="">

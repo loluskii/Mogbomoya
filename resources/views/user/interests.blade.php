@@ -9,29 +9,32 @@
 #sidebar {
     width: 30%;
     margin: 0;
-    float: left
+    float: left;
+}
+
+#products{
+  width: 70%;
+  margin: 0;
+  float: right;
+  left: 30%;
 }
 
 @media(min-width:991px) {
-    .card {
-        width: 190px;
-        display: inline-block;
-    }
+
 }
 
 @media(min-width:768px) and (max-width:991px) {
-    .card {
-        width: 230px;
-        display: inline-block;
-        margin-bottom: 10px
-    }
+
 }
 @media(min-width:568px) and (max-width:767px) {
-    .card {
-        width: 205px;
-        display: inline-block;
-        margin-bottom: 10px
+    
+    #sidebar {
+        display: none
     }
+    #products {
+        width: 100%;
+    }
+
 
 }
 
@@ -45,13 +48,17 @@
         margin: 0;
         float: right
     }
-
-    .card {
-        /* width: 230px; */
-        display: inline-block;
-        margin-bottom: 10px;
-        margin-top: 10px
+    .checkbox-content{
+      width: 185px;
     }
+
+
+    
+
+    .cont{
+      width: auto;
+    }
+    
 
     #sidebar {
         display: none
@@ -70,10 +77,11 @@
   box-shadow: 0 2px 4px 0 rgba(219, 215, 215, 0);
   border: solid 2px transparent;
 	background: #fff;
-	padding: 10px;
+	padding: 15px;
 	transition: .3s ease-in-out all;
   height: 100%;
-  width: 100%;
+  max-width: 185px;
+  min-width: 150px;
 }
 
 .checkbox-content img {
@@ -92,8 +100,8 @@
   border: solid 2px #e3e3e3;
 	border-radius: 50%;
 	position: absolute;
-	top: 15px;
-	left: 15px;
+	top: 10px;
+	left: 10px;
 	transition: .3s ease-in-out all;
 	transform: scale(1);
 	z-index: 1;
@@ -132,7 +140,7 @@
 @section('content')
 
     <section id="sidebar">
-      <img src="{{ asset('images/interests-sidenav.svg') }}" alt="">
+      <img src="{{ asset('images/interests-sidenav.svg') }}" style="width:100%">
     </section>
     <section id="products">
       @include('user.partial-nav')
@@ -141,18 +149,17 @@
           <p><small>Follow at least 3 topics to get event recommendations tailored for you.</small></p>
           <form action="{{ route('user.interests.update')}}" method="POST" class="pt-4" autocomplete="off">
             @csrf
-            <div class="row">
+            <div class="container">
+              <div class="row ">
                 @foreach($interests as $key => $interest)
-                <div class="col-lg-3 col-sm-12 mb-3 d-flex align-items-stretch">                  
+                <div class="col-auto mb-3 justify-content-center">                  
                   <label class="checkbox-label">
-                    <div class="card">
-                      <input type="checkbox" value="{{encrypt($interest->id)}}" name="interests[]">
+                    <input type="checkbox" value="{{encrypt($interest->id)}}" name="interests[]">
                       <span class="icon"></span>
                       <div class="checkbox-content">
-                        <img class="mt-2 img img-responsive" src="{{asset("images/icons/$interest->icon")}}">
-                        <p class="pt-2">{{$interest->name}}</p>
+                        <img class="mt-2 img img-fluid" src="{{asset("images/icons/$interest->icon")}}" style="width:45px; height: 45px;">
+                        <p class="pt-2" style="font-size: 13px;">{{$interest->name}}</p>
                       </div>
-                    </div>
                   </label>
                 </div>
                 @endforeach
@@ -161,6 +168,8 @@
                   <a href="{{route('index.view')}}" class="btn btn-dark">Skip for now</a>
                 </div>
             </div>
+            </div>
+           
           </form>
         </div>
     </section>

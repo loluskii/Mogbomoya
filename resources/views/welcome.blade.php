@@ -1,4 +1,54 @@
 @extends('layouts.main') 
+@section('css')
+<style>
+    .card{
+        border-radius: 8px;
+        border: none;
+    }
+    .card img{
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
+
+    img.card-img-top{
+        height: 144px;
+        max-width: 385px;
+        object-fit: cover;
+    }
+
+    .icon{
+        right: 24px;
+        position: absolute;
+        bottom: 130px;
+        border: 50%;
+        z-index: 99;
+    }
+    .save {
+        background: white;
+        border: 1px solid rgba(0, 0, 0, .125);
+        border-radius: 50%;
+    }
+    .badge{
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 0;
+        padding: 10px;
+        font-size: 14px;
+        line-height: 16px;
+        border-radius: 8px 0;
+    }
+    span.paid{
+        display: none;
+    }
+    span.free{
+        background: #008A69;
+        color: white;
+    }
+
+</style>
+@endsection
 @section('content')
 <div class="container-fluid">
     <div class="jumbotron jumbotron-landing">
@@ -33,13 +83,24 @@
             
             <div class="row py-4">
                 @forelse ($events as $event)
-                    <div class="col-md-3">
-                        <div class="card" >
+                    <div class="col-md-3 mb-3">
+                        <div class="card shadow" >
+                            <span class="badge {{ $event->isPaid == 0 ? 'free' : 'paid' }}">{{ $event->isPaid == 0 ? 'Free Event' : 'Paid Event' }}</span>
+                            <span class="icon">
+                                <a data-toggle="modal" data-target="#exampleModal"  class="btn save  shadow">
+                                    <img src="{{ asset('images/share.svg') }}" srcset="">
+                                </a>
+                                <a data-toggle="modal" data-target="#exampleModal"  class="btn save  shadow">
+                                    <img src="{{ asset('images/save.svg') }}" srcset="">
+                                </a>
+                            </span>
                             <img src="{{asset("images/event/$event->featured_image")}}" class="card-img-top" alt="{{$event->name}}">
+                            
                             <div class="card-body">
-                                <a href="{{route('event.info', $event->reference)}}"><h5 class="text-dark  card-title">{{$event->name}}</h5></a>
-                                <p class="card-text mb-0 text-muted">{{$event->location}}</p>
-                                <p class="card-text text-muted"><span>{{\Carbon\Carbon::parse($event->date)->toFormattedDateString()}}</span> | <span>{{\Carbon\Carbon::parse($event->time)->toTimeString()}}</span></p>
+                                <a href="{{route('event.info', $event->reference)}}"><h5 class="text-dark font-weight-bold  card-title">{{$event->name}}</h5></a>
+                                
+                                <p class="card-text mb-0 text-muted"><i class="fa fa-map-marker "></i> <span class="font-weight-light">{{$event->location}}</span></p>
+                                <p class="card-text text-muted"> <i class="fa fa-clock-o"></i> <span class="font-weight-light"> {{\Carbon\Carbon::parse($event->date)->toFormattedDateString()}}</span> | <span>{{\Carbon\Carbon::parse($event->time)->toTimeString()}}</span></p>
                             </div>
                         </div>
                     </div>

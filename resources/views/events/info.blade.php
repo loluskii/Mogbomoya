@@ -19,7 +19,7 @@
             border-radius: 50%;
         }
 
-        a {
+        p a {
             text-decoration: none;
             color: #008A69;
         }
@@ -27,10 +27,13 @@
         p {
             color: #616B69;
         }
-
+        .card img{
+            object-fit: cover;
+        }
+        
         @media screen and (max-width: 540px) {
             .eventDetails {
-                margin-top: -250px;
+                margin-top: -550px;
             }
 
             .cardDetails {
@@ -41,10 +44,10 @@
     </style>
     @endsection @section('content')
     <div class="container-fluid">
-        <div class="row">
+        <div class="row mb-5">
             <div class="col-md-6">
                 <div class="card">
-                    <img src="{{ asset("images/event/$event->featured_image") }}" style="max-height:800px; max-width:;" alt="{{$event->name}}" srcset="">
+                    <img src="{{ asset("images/event/$event->featured_image") }}" style="max-height:800px;" alt="{{$event->name}}" srcset="">
                 </div>
             </div>
             <div class="px-0 col-md-6 eventDetails">
@@ -102,7 +105,7 @@
                                     <img class="mr-2" src="{{ asset('images/icons/calendar-black.svg') }}" srcset="">
                                     {{ \Carbon\Carbon::parse($event->date)->toFormattedDateString() }}
                                 </p>
-                                <p class="ml-4 pl-3">{{ \Carbon\Carbon::parse($event->time)->toTimeString() }} WAT</p>
+                                <p class="ml-4 pl-3 mb-1">{{ \Carbon\Carbon::parse($event->time)->toTimeString() }} WAT</p>
                                 <p style="font-weight: bold" class="ml-4 pl-3"><a href="">Add to Calendar</a></p>
                             </div>
                             <div class="py-1">
@@ -143,7 +146,7 @@
                                     <img src="{{ asset('images/icons/users/user-3.svg') }}" alt="" srcset="">
                                     <img src="{{ asset('images/icons/users/Group.svg') }}" alt="" srcset="">
                                 </div> --}}
-                                <div class="mr-3" data-toggle="modal" data-target="#inviteModal">
+                                <div class="ml-3" data-toggle="modal" data-target="#inviteModal">
                                     <button class="ml-auto btn follow">Invite a Friend</button>
                                 </div>
                             </div>

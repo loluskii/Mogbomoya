@@ -10,7 +10,7 @@
 @endsection
 
 @section('content')
-    <div class="container py-5 ">
+    <div class="container-fluid px-3 py-5 ">
         <div class="row">
             <div class="col">
                 <h1> Collections </h1>
@@ -27,7 +27,7 @@
         <div class="row py-3">
           @forelse ($collections as $collection)
               <div class="col-md-3">
-                  <div class="card" >
+                  <div class="card shadow">
                       @if($collection->event_collections->first())
                         <img src="{{asset("images/event/".$collection->event_collections->first()->event->featured_image)}}" class="card-img-top" alt="{{$collection->name}}">
                       @else 

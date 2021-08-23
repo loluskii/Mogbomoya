@@ -7,6 +7,23 @@
     .card{
         height: 100%;
     }
+    .card{
+        border-radius: 8px;
+        border: none;
+    }
+    .card img{
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
+
+    img.card-img-top{
+        height: 144px;
+        max-width: 385px;
+        object-fit: cover;
+    }
+
+
+
 </style>
 @endsection
 
@@ -17,7 +34,7 @@
     <div class="row py-4">
         @forelse ($events as $event)
             <div class="col-md-3">
-                <div class="card" >
+                <div class="card shadow" >
                     <img src="{{asset("images/event/$event->featured_image")}}" style="max-height: 300px;" class="card-img-top" alt="{{$event->name}}">
                     <div class="card-body">
                         <a href="{{route('event.info', $event->reference)}}"><h5 class="text-dark  card-title">{{ $event->name }}</h5></a>
