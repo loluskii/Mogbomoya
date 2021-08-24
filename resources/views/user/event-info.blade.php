@@ -34,13 +34,10 @@
         .card{
             border: none;
         }
-        .card img{
-            object-fit: cover;
-        }
 
         @media screen and (max-width: 540px) {
             .eventDetails {
-                margin-top: -250px;
+                margin-top: -550px;
             }
 
             .cardDetails {

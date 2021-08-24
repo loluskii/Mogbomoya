@@ -146,7 +146,7 @@
     }
     
 
-    if($('#tierPrice01').length){
+    if($('#tierPrice1').length){
         const price2 = $('#tierPrice1').html().replace(',','');
         $("#quantity1").change(function() {
             sumTotal2 = (parseInt($(this).val()) * price2);
