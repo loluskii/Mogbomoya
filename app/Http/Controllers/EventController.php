@@ -152,7 +152,7 @@ class EventController extends Controller
         abort_if(!$event, 404);
         // abort_if($event->isPublic == 0, 404);
         $getSimilarEvents = (new EventQueries())->getSimilarEvents($reference);
-        $collections = (new CollectionQueries())->withPagination(12);
+        $collections = (new CollectionQueries())->all();
 
         if ($event->user_id != Auth::id()) {
             return view('events.info')->with('event', $event)->with('collections', $collections)->with('similarEvents', $getSimilarEvents);

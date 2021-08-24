@@ -60,7 +60,7 @@
                         </p>
                         <div class="row justify-content-between mb-4">
                             <div class="ml-3">
-                                <a href="http://" class="btn save shadow" role="button" data-toggle="dropdown"
+                                <a href="#" class="btn save shadow" role="button" data-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false">
                                     <img src="{{ asset('images/save.svg') }}" srcset="">
                                 </a>

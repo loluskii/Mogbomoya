@@ -25,4 +25,8 @@ class CollectionQueries{
         return Collection::find($id);
     }
 
+    public function all()
+    {
+        return Collection::cursor();
+    }
 }

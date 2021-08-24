@@ -87,11 +87,31 @@
                         <div class="card shadow" >
                             <span class="badge {{ $event->isPaid == 0 ? 'free' : 'paid' }}">{{ $event->isPaid == 0 ? 'Free Event' : 'Paid Event' }}</span>
                             <span class="icon">
-                                <a data-toggle="modal" data-target="#exampleModal"  class="btn save  shadow">
+                                {{-- <a data-toggle="modal" data-target="#exampleModal"  class="btn save  shadow">
                                     <img src="{{ asset('images/share.svg') }}" srcset="">
                                 </a>
                                 <a data-toggle="modal" data-target="#exampleModal"  class="btn save  shadow">
                                     <img src="{{ asset('images/save.svg') }}" srcset="">
+                                </a> --}}
+                                <a href="#" class="btn save shadow" role="button" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                    <img src="{{ asset('images/save.svg') }}" srcset="">
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    @if($collections->count() > 0)
+                                        <a class="dropdown-item py-2" href="#">Save to</a>
+                                        @foreach ($collections as $collection)
+                                            <a class="dropdown-item py-2" onclick="return confirm('Are you sure you want to proceed with this action?')" href="{{ route('event.add_to_collection', ['event_reference' => $event->reference, 'collection_reference' => $collection->reference]) }}">{{ $collection->name }}</a>
+                                        @endforeach
+
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item py-2" href="#">Done</a>
+                                    @else 
+                                        <a class="dropdown-item py-2" href="#">No collections</a>
+                                    @endif
+                                </div>
+                                <a data-toggle="modal" data-target="#exampleModal"  class="btn save shadow">
+                                    <img src="{{ asset('images/share.svg') }}" srcset="">
                                 </a>
                             </span>
                             <img src="{{asset("images/event/$event->featured_image")}}" class="card-img-top" alt="{{$event->name}}">
@@ -113,4 +133,6 @@
             </div>
         </div>
     </div>
+   @include('user.share-modal')
+
 @endsection
