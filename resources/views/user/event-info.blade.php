@@ -37,7 +37,7 @@
 
         @media screen and (max-width: 540px) {
             .eventDetails {
-                margin-top: -550px;
+                margin-top: -100px;
             }
 
             .cardDetails {

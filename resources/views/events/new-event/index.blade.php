@@ -213,6 +213,7 @@
                                 <div class="tab-content" id="nav-tabContent">
                                     <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
                                         aria-labelledby="nav-home-tab">
+                                        @include('layouts.partials.errors')
                                         <h4 style="font-weight: bold">Basic Information</h4>
                                         <p>Provide information about your event that would help users know why they should
                                             attend your event.</p>
@@ -359,7 +360,7 @@
                                             <div class="form-group py-2">
                                                 <label for="">EVENT TYPE (SELECT ONE)</label>
                                                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                                    <div class="form-row">
+                                                    <div class="form-row d-flex align-items-stretch">
                                                         <div class="col-md-4 col-6">
                                                             <label class=" radio-label btn btnPrimaryOutline bg-white pt-sm-4 pt-2 pb-sm-2 pb-1 px-sm-3 px-2" style="text-align: left;">
                                                                 <input type="radio" name="isPublic" value="0" style="display: none">
