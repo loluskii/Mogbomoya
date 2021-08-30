@@ -26,22 +26,22 @@ use Illuminate\Support\Facades\Artisan;
 |
 */
 
-Route::get('/wipe', function () {
-    Artisan::call('migrate:reset', [
-        '--force' => true,
-    ]);
-    Artisan::call('migrate:fresh', [
-        '--force' => true,
-    ]);
-    Artisan::call('db:seed', [
-        '--force' => true,
-    ]);
-    Artisan::call('config:clear');
-    Artisan::call('cache:clear');
-    Artisan::call('route:clear');
-    Artisan::call('view:clear');
-    return 'yes';
-});
+// Route::get('/wipe', function () {
+//     Artisan::call('migrate:reset', [
+//         '--force' => true,
+//     ]);
+//     Artisan::call('migrate:fresh', [
+//         '--force' => true,
+//     ]);
+//     Artisan::call('db:seed', [
+//         '--force' => true,
+//     ]);
+//     Artisan::call('config:clear');
+//     Artisan::call('cache:clear');
+//     Artisan::call('route:clear');
+//     Artisan::call('view:clear');
+//     return 'yes';
+// });
 
 Route::get('/', [PagesController::class, 'index'])->name('index.view');
 
