@@ -34,6 +34,6 @@ class SendEventNoteMail extends Mailable
      */
     public function build()
     {
-        return $this->view('events.emails.note')->with('event', $this->event)->with('name', $this->name)->with('note', $this->note)->subject('About '.$this->event->name);
+        return $this->view('events.emails.note')->with('event', $this->event)->with('name', $this->name)->with('note', $this->note)->subject('About ' . $this->event->name);
     }
 }
