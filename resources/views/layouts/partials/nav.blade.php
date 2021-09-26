@@ -66,7 +66,7 @@
 @endguest
 
 @auth
-<nav class="navbar navbar-expand-lg navbar-light bg-white px-sm-5 px-2">
+<nav class="navbar navbar-expand-lg navbar-light bg-white px-sm-3 px-2">
   <a class="navbar-brand d-none d-md-block" href="/">
     <img src="{{ asset('images/logo.png') }}" height="58" alt="">
   </a>
@@ -121,7 +121,7 @@
           </div>
           <span class="ml-1">{{ auth()->user()->name }}</span>
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <a class="dropdown-item py-3" href="{{ route('user.edit') }}"><img
               src="{{ asset('images/icons/account.svg') }}" class="px-2" alt="" srcset=""> Account
             Settings</a>
