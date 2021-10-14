@@ -57,7 +57,7 @@
                             <div class="col">
                                 <div class="form-group pb-2">
                                     <label for="">full name</label>
-                                    <input class="form-control form-control-lg" placeholder="John Appleseed" type="text" name="name" value = "{{old('name')}}" required>
+                                    <input class="form-control form-control-lg" placeholder="John Appleseed" type="text" name="name" required>
                                     @error('name')
                                         <b class="text-danger">{{ $message }} </b>
                                     @enderror
@@ -66,7 +66,7 @@
                             <div class="col">
                                 <div class="form-group pb-3">
                                     <label for="">pick a username</label>
-                                    <input class="form-control form-control-lg" placeholder="@appleseed" type="text" name="username" value = "{{old('username')}}" required>
+                                    <input class="form-control form-control-lg" placeholder="@appleseed" type="text" name="username"  required>
                                     @error('username')
                                         <b class="text-danger">{{ $message }} </b>
                                     @enderror
@@ -78,7 +78,7 @@
                             <div class="col">
                                 <div class="form-group pb-2">
                                     <label for="">email address</label>
-                                    <input class="form-control form-control-lg" placeholder="youremail@address.com" type="email" name="email" value = "{{old('email')}}" required>
+                                    <input class="form-control form-control-lg" placeholder="youremail@address.com" type="email" name="email"  required>
                                     @error('email')
                                         <b class="text-danger">{{ $message }} </b>
                                     @enderror
@@ -87,7 +87,7 @@
                             <div class="col">
                                 <div class="form-group pb-2">
                                     <label for="">phone number</label>
-                                    <input class="form-control form-control-lg" placeholder="2349-012-3456" type="number" name="phone_number" value =" {{old('phone_number')}}" required>
+                                    <input class="form-control form-control-lg" placeholder="2349-012-3456" type="number" name="phone_number"  required>
                                     @error('phone_number')
                                         <b class="text-danger">{{ $message }} </b>
                                     @enderror

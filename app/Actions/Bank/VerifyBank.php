@@ -23,6 +23,7 @@ class VerifyBank{
         $request->merge(['bank_id'=> $bankDetails[0]['id'], 'bank_code'=> $bankDetails[0]['code'], 'bank_name'=>$bankDetails[0]['name']]);
         $resolve = (new ResolveAccount())->run($request);
         if($resolve['status'] != true){
+            
             throw new Exception($resolve['message']);
         }
         $splitName = explode(' ', strtolower($resolve['data']['account_name']));
