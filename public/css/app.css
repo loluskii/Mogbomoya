@@ -11,7 +11,9 @@ button:focus {
 }
 
 
-a,a:hover { color: inherit; } 
+a,a:hover { 
+text-decoration: none;
+color: inherit; } 
 
 p {
     font-weight: 100;
