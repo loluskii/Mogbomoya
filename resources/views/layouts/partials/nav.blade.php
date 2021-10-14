@@ -67,10 +67,6 @@
 
 @auth
 <nav class="navbar navbar-expand-lg navbar-light bg-white px-sm-3 px-2">
-  <li class="nav-item">
-    <a class="nav-link " href="{{ route('events.near') }}" style="color: #D60B7B; font-weight: bold"> <img
-        src="{{ asset('images/icons/location.svg') }}" alt="" srcset=""> Find events near me</a>
-  </li>
   <a class="navbar-brand d-none d-md-block" href="/">
     <img src="{{ asset('images/logo.png') }}" height="58" alt="">
   </a>
@@ -91,6 +87,10 @@
         aria-label="Search" style="width: 500px; height: 60px; border: none">
     </form> --}}
     <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link " href="{{ route('events.near') }}" style="color: #D60B7B; font-weight: bold"> <img
+            src="{{ asset('images/icons/location.svg') }}" alt="" srcset=""> Find events near me</a>
+      </li>    
       <li class="nav-item mr-4">
         <div class="text-center">
           <a href="{{ route('event.create') }}" class="nav-link">
