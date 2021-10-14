@@ -91,7 +91,7 @@
         <div class="text-center">
           <a class="nav-link " href="{{ route('events.near') }}">
             <p class="mb-0"><img src="{{ asset('images/icons/location.svg') }}" alt="" srcset=""></p>
-            <p style="color: #D60B7B; font-weight: bold">Find events near me</p>
+            <p style="color: #D60B7B;">Find events near me</p>
           </a>
         </div>
       </li>    

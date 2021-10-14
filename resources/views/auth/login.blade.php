@@ -25,9 +25,10 @@
             overflow-y: hidden;
         }
 
-        a{
+        p a{
             text-decoration: none;
-            color: black;
+            color:#008A69;
+            font-weight: bold;
         }
         a:hover{
             text-decoration: none;
