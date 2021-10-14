@@ -31,7 +31,7 @@
     <img src="{{ asset('images/logo-colored.png') }}" height="58" alt="">
   </a>
   <form action="{{ route('search') }}" method="GET" class="form-inline my-2">
-    <input name="search" class="form-control bg-light" type="search" placeholder="Search Events" aria-label="Search"
+    <input name="search" class="form-control bg-light" type="search" placeholder="Find Events" aria-label="Search"
       style=" height: 60px; border: none">
   </form>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -74,7 +74,7 @@
     <img src="{{ asset('images/logo-colored.png') }}" height="58" alt="">
   </a>
   <form action="{{ route('search') }}" method="GET" class="form-inline my-2">
-    <input name="search" class="form-control mr-sm-2 bg-light" type="search" placeholder="Search Events"
+    <input name="search" class="form-control mr-sm-2 bg-light" type="search" placeholder="Find Events"
       aria-label="Search" style=" height: 60px; border: none">
   </form>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"

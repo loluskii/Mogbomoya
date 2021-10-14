@@ -14,7 +14,7 @@
 <footer>
     <div class="container py-5">
         <div class="row">
-            <div class="col-md-4 col-lg-4 col-xl-4 col-sm-12">
+            <div class="col-md-3 col-lg-3 col-xl-3 col-sm-12">
                 <ul style="list-style-type: none">
                     <li class="top my-3">
                         The Mogbomoya App
@@ -24,7 +24,7 @@
                     {{-- <li class="my-3"><a href="{{route('site-map')}}">Site Map</a></li> --}}
                 </ul>
             </div>
-            {{-- <div class="col-md-3 col-lg-3 col-xl-3 col-sm-12">
+            <div class="col-md-3 col-lg-3 col-xl-3 col-sm-12">
                 <ul style="list-style-type: none">
                     <li class="top my-3">
                         Find Events
@@ -34,21 +34,21 @@
                     <li class="my-3">Virtual Conferences</li>
                     <li class="my-3">Festival and Concerts</li>
                 </ul>
-            </div> --}}
-            <div class="col-md-4 col-lg-4 col-xl-4 col-sm-12">
+            </div>
+            <div class="col-md-3 col-lg-3 col-xl-3 col-sm-12">
                 <ul style="list-style-type: none">
                     <li class="top my-3">
                         Legal
                     </li>
                     {{-- <li class="my-3">Community Guidelines</li> --}}
-                    <li class="my-3"><a href="{{route('tandc')}}">Terms of Use</a></li>
-                    <li class="my-3"><a href="{{route('privacy')}}">Privacy Policy</a></li>
+                    <li class="my-3"><a class="text-white" href="{{route('tandc')}}">Terms of Use</a></li>
+                    <li class="my-3"><a class="text-white" href="{{route('privacy')}}">Privacy Policy</a></li>
                 </ul>
             </div>
-            <div class="col-md-4 col-lg-4 col-xl-4 col-sm-12">
+            <div class="col-md-3 col-lg-3 col-xl-3 col-sm-12">
                 <ul style="list-style-type: none">
                     <li class="top my-3">
-                        Get the App
+                        Coming Soon
                     </li>
                     <li class="my-3">
                         <img src="{{asset('images/footer/app-store.svg')}}" alt="" srcset="">

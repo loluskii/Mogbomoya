@@ -10,9 +10,8 @@ button:focus {
     outline: none;
 }
 
-a:hover {
-    text-decoration: none;
-}
+
+a,a:hover { color: inherit; } 
 
 p {
     font-weight: 100;
