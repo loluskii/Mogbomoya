@@ -35,9 +35,9 @@ class LoginController extends Controller
             if (Auth::attempt(array($fieldType => $input['username'], 'password' => $input['password'], 'isActive' => 1),  $shouldRemember)) {
                 $request->session()->regenerate();
 
-                if(Auth::user()->interests->count() == 0){
-                    return redirect()->route('customize-interests');
-                }
+                // if(Auth::user()->interests->count() == 0){
+                //     return redirect()->route('customize-interests');
+                // }
 
                 return redirect()->intended('/')->with(
                     'success',

@@ -19,9 +19,14 @@ class CreateEvent{
             $event->time = $request['time'];
             $event->date = $request['date'];
             $event->event_type = $request['event_type'];
-            $event->location = $request['location'] ?? $request['link'];
-            $event->longitude = $request['longitude'];
-            $event->latitude = $request['latitude'];
+            if($request->has('link')){
+                $event->link = $request['link'];
+            }
+            if ($request->has('location')){
+                $event->location = $request['location'];
+                $event->longitude = $request['longitude'];
+                $event->latitude = $request['latitude'];
+            }
             $event->isPublic = $request['isPublic'];
             $event->isPaid = $request['isPaid'];
             $imageName = Str::slug($request['name']).'-'.time().'.'.$request->featured_image->extension();  

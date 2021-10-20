@@ -40,7 +40,8 @@
         border-radius: 8px 0;
     }
     span.paid{
-        display: none;
+        background: #008A69;
+        color: white;
     }
     span.free{
         background: #008A69;
@@ -68,14 +69,14 @@
         <div class="mt-4" id="tabs">
             <ul class="nav nav-pills mb-3"  id="browse"> 
                 <li class="nav-item">
-                    <a  href="{{route('index.view')}}" class="nav-link mx-1 my-1 {{(request()->query('category')) ? '' : 'active'}}" aria-selected="true">All Events</a>
+                    <a  href="{{route('index.view')}}" class="nav-link mx-1 my-1 shadow-sm {{(request()->query('category')) ? '' : 'active'}}" aria-selected="true">All Events</a>
                 </li>
                 @foreach($interests as $interest)
                 <li class="nav-item">
                     @if(request()->query('category'))
-                        <a href="{{route('index.view',['category' => encrypt($interest->id)])}}" class="nav-link mx-1 my-1 ls-profile-tab  {{ decrypt(request()->query('category')) == $interest->id ? 'active' : ''}}"> <img src="{{asset("images/icons/$interest->icon")}}" alt="" srcset=""> {{$interest->name}}</a>
+                        <a href="{{route('index.view',['category' => encrypt($interest->id)])}}" class="nav-link mx-1 my-1 shadow-sm ls-profile-tab  {{ decrypt(request()->query('category')) == $interest->id ? 'active' : ''}}"> <img src="{{asset("images/icons/$interest->icon")}}" alt="" srcset=""> {{$interest->name}}</a>
                     @else 
-                        <a href="{{route('index.view',['category' => encrypt($interest->id)])}}" class="nav-link mx-1 my-1 ls-profile-tab"> <img src="{{asset("images/icons/$interest->icon")}}" alt="" srcset=""> {{$interest->name}}</a>
+                        <a href="{{route('index.view',['category' => encrypt($interest->id)])}}" class="nav-link mx-1 my-1 bg-white shadow-sm ls-profile-tab"> <img src="{{asset("images/icons/$interest->icon")}}" alt="" srcset=""> {{$interest->name}}</a>
                     @endif
                 </li>
                 @endforeach
@@ -118,8 +119,11 @@
                             
                             <div class="card-body">
                                 <a href="{{route('event.info', $event->reference)}}"><h5 class="text-dark font-weight-bold  card-title">{{$event->name}}</h5></a>
-                                
-                                <p class="card-text mb-0 text-muted"><i class="fa fa-map-marker "></i> <span class="font-weight-light">{{$event->location}}</span></p>
+                                @if ($event->latitude)
+                                    <p class="card-text mb-0 text-muted text-truncate"><i class="fa fa-map-marker "></i> <span class="font-weight-light">{{$event->location}}</span></p>
+                                @else
+                                    <p class="card-text mb-0 text-muted text-truncate"><i class="fa fa-link "></i> <span class="font-weight-light">{{$event->link}}</span></p>
+                                @endif
                                 <p class="card-text text-muted"> <i class="fa fa-clock-o"></i> <span class="font-weight-light"> {{\Carbon\Carbon::parse($event->date)->toFormattedDateString()}}</span> | <span>{{\Carbon\Carbon::parse($event->time)->toTimeString()}}</span></p>
                             </div>
                         </div>

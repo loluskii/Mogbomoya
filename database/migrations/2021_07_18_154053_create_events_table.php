@@ -25,7 +25,8 @@ class CreateEventsTable extends Migration
             $table->boolean('event_type')->default(0);
             $table->boolean('isPublic')->default(0);
             $table->boolean('isPaid')->default(0);
-            $table->string('location');
+            $table->string('location')->nullable();
+            $table->string('link')->nullable();
             $table->string('longitude')->nullable();
             $table->string('latitude')->nullable();
             $table->softDeletes();

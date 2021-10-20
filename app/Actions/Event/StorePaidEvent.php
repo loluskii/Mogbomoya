@@ -29,6 +29,7 @@ class StorePaidEvent{
                 array_push($totalAmount, ($value * $findTier->price));
             }
         }
+        dd($details,$totalAmount);
         if(empty($details) || empty($totalAmount)){
             throw new Exception('Something went wrong');
         }
@@ -46,9 +47,11 @@ class StorePaidEvent{
             'subaccount' => $getSubAccount,
             'bearer' => 'subaccount',
             'metadata' => json_encode($metadata),
-            'callback_url' => 'http://mogbomoya.herokuapp.com/event/payment-callback'
+            'callback_url' => 'http://mogbomoya.test/event/payment-callback'
         ]);
+        
+        // dd($res);
+        
 
-        return $res;
     }
 }

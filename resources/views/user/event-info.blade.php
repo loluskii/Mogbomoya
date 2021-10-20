@@ -103,13 +103,21 @@
                                 <p class="ml-4 pl-3">{{ \Carbon\Carbon::parse($event->time)->toTimeString()}} WAT</p>
                                 <p style="font-weight: bold; cursor: pointer;" class="ml-4 pl-3"><span style="color: #008A69;" data-toggle="modal" data-target="#updateTimeModal">Change date and time</span></p>
                             </div>
+                            @if ($event->location)
                             <div class="py-1">
-                                <p class="mb-1" style="font-weight: bold"><img class="mr-3"
-                                        src="{{ asset('images/icons/location-black.svg') }}" srcset=""> {{$event->location}}
+                                <p class="mb-1" style="font-weight: bold"><img class="mr-3" src="{{ asset('images/icons/location-black.svg') }}" srcset=""> 
+                                    {{ Str::before($event->location, ',') }}
                                 </p>
                                 {{-- <p class="ml-4 pl-3">Marina Road, Lagos Island, Lagos State, Nigeria</p> --}}
                                 <p style="font-weight: bold;  cursor: pointer;" class="ml-4 pl-3"><span style="color: #008A69;" data-toggle="modal" data-target="#updateLocationModal">Change Location</span></p>
                             </div>
+                            @elseif ($event->link)
+                            <div class="py-1">
+                                <p class="mb-1" style="font-weight: bold"> <i class="fa fa-link mr-3"></i> {{$event->link}}
+                                </p>
+                                <p style="font-weight: bold;  cursor: pointer;" class="ml-4 pl-3"><span style="color: #008A69;" data-toggle="modal" data-target="#updateLocationModal">Change Link</span></p>
+                            </div>
+                            @endif
                             <div class="py-1">
                                 <p class="mb-1" style="font-weight: bold"><img class="mr-3"
                                         src="{{ asset('images/icons/ticket-black.svg') }}" srcset="">{{$event->isPaid == 0 ? 'Free Event' : 'Paid Event'}} 

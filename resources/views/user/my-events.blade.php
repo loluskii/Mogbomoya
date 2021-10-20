@@ -38,7 +38,7 @@
                     <img src="{{asset("images/event/$event->featured_image")}}" style="max-height: 300px;" class="card-img-top" alt="{{$event->name}}">
                     <div class="card-body">
                         <a href="{{route('event.info', $event->reference)}}"><h5 class="text-dark  card-title">{{ $event->name }}</h5></a>
-                        <p class="card-text mb-0 text-muted">{{$event->location}}</p>
+                        <p class="card-text mb-0 text-muted text-truncate">{{$event->location}}</p>
                         <p class="card-text text-muted"><span>{{ \Carbon\Carbon::parse($event->date)->toFormattedDateString()}}</span> | <span>{{ \Carbon\Carbon::parse($event->time)->toTimeString()}} </span></p>
                     </div>
                 </div>

@@ -17,6 +17,11 @@ use Auth;
 class UserController extends Controller
 {
     public function edit(){
+        // $myInterests = Auth::user()->interests->pluck('id')->toArray();
+        // $countries = (new AllCountries())->run();
+        // $interests = Interest::select('id','name', 'icon')->get();
+
+        // return view('user.index')->with('countries', $countries)->with('interests', $interests)->with('myInterests', $myInterests);
         try{
             $myInterests = Auth::user()->interests->pluck('id')->toArray();
             $countries = (new AllCountries())->run();
