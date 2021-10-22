@@ -2,6 +2,7 @@
 namespace App\Services\Event;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Event;
+use App\Models\EventRegistration;
 use Illuminate\Database\Eloquent\Builder;
 use DB;
 use Exception;
@@ -14,6 +15,11 @@ class EventQueries{
 
     public function withPagination($num){
         return Event::where('user_id', Auth::id())->paginate($num ?? 10);
+    }
+    
+    public function myRegisteredEvents(){
+        // dd(Auth::user()->registrations);
+        return Auth::user()->registrations;
     }
 
     public function findRefWithAuth($ref){

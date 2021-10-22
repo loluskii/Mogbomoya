@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Illuminate\Http\Request;
 use App\Actions\Bank\AllBanks;
 use App\Actions\Bank\VerifyBank;
 use App\Http\Requests\StoreBankRequest;
-use Auth;
 use App\Models\User;
 class BankController extends Controller
 {

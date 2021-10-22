@@ -27,7 +27,7 @@
                                             </div>
                                             <div class="px-0 col-3">
                                                 <div class="form-group">
-                                                    <input type="number" id="" min="1" max" class="numberOfSlots custom-select form-control form-control-lg mx-3" name="">
+                                                    <input type="number" id="" min="1" class="numberOfSlots custom-select form-control form-control-lg mx-3" name="guests">
                                                 </div>
                                             </div>
                                         </div>

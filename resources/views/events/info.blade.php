@@ -60,9 +60,9 @@
                         </p>
                         <div class="row justify-content-between mb-4">
                             <div class="ml-3">
-                                <a href="#" class="btn save shadow" role="button" data-toggle="dropdown"
+                                <a href="#" class="btn save shadow-sm" role="button" data-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false">
-                                    <img src="{{ asset('images/save.svg') }}" srcset="">
+                                    <img src="{{ asset('images/save.svg') }}" style="border-radius: 0" srcset="">
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     @if($collections->count() > 0)
@@ -77,7 +77,7 @@
                                         <a class="dropdown-item py-2" href="#">No collections</a>
                                     @endif
                                 </div>
-                                <a data-toggle="modal" data-target="#exampleModal"  class="btn save shadow">
+                                <a data-toggle="modal" data-target="#exampleModal"  class="btn save shadow-sm">
                                     <img src="{{ asset('images/share.svg') }}" srcset="">
                                 </a>
                                 @include('user.share-modal')
@@ -99,34 +99,40 @@
                         <center>
                             <hr class="my-0" width="640px">
                         </center>
-                        <div class="container pl-0 mt-4 py-3">
+                        <div class="container pl-0 mt-3 py-3">
                             <div class="pb-2">
                                 <p class="mb-1" style="font-weight: bold">
-                                    <img class="mr-2" src="{{ asset('images/icons/calendar-black.svg') }}" srcset="">
+                                    <img class="mr-2 pr-1" src="{{ asset('images/icons/calendar-black.svg') }}" srcset="">
                                     {{ \Carbon\Carbon::parse($event->date)->toFormattedDateString() }}
                                 </p>
                                 <p class="ml-4 pl-3 mb-1">{{ \Carbon\Carbon::parse($event->time)->toTimeString() }} WAT</p>
                                 <p style="font-weight: bold" class="ml-4 pl-3"><a href="">Add to Calendar</a></p>
                             </div>
-                            <div class="py-1">
-                                <p class="mb-1" style="font-weight: bold"><img class="mr-2"
-                                        src="{{ asset('images/icons/location-black.svg') }}" srcset=""> Friday, 29 Dec
-                                    2020
-                                </p>
-                                <p class="ml-4 pl-3">12:00pm - 8:00pm WAT</p>
-                            </div>
-                            <div class="py-1">
+                            {{-- <div class="py-1">
                                 <p class="mb-1" style="font-weight: bold"><img class="mr-3"
                                         src="{{ asset('images/icons/location-black.svg') }}" srcset="">
                                     {{ $event->location }}
                                 </p>
-                            </div>
+                            </div> --}}
+                            @if ($event->location)
                             <div class="py-1">
-                                <p class="mb-1" style="font-weight: bold"><img class="mr-3"
-                                        src="{{ asset('images/icons/ticket-black.svg') }}"
-                                        srcset="">{{ $event->isPaid == 0 ? 'Free Event' : 'Paid Event' }}
+                                <p class="mb-1" style="font-weight: bold"><img class="mr-3" src="{{ asset('images/icons/location-black.svg') }}" srcset=""> 
+                                    {{ Str::before($event->location, ',') }}
                                 </p>
-                                <p class="ml-4 pl-3">Registration is required</p>
+                                {{-- <p class="ml-4 pl-3">Marina Road, Lagos Island, Lagos State, Nigeria</p> --}}
+                                <p style="cursor: pointer;" class="ml-4 pl-3">{{ Str::after($event->location, ',') }}</p>
+                            </div>
+                            @elseif ($event->link)
+                            <div class="py-1">
+                                <p class="mb-1" style="font-weight: bold"> <i class="fa fa-link mr-3"></i> {{$event->link}} </p>
+                                <p style="font-weight: bold;  cursor: pointer;" class="ml-4 pl-3"><span style="color: #008A69;" data-toggle="modal" data-target="#updateLocationModal">Change Link</span></p>
+                            </div>
+                            @endif
+                            <div class="py-1">
+                                <p class="mb-1" style="font-weight: bold"><img class="mr-3" src="{{ asset('images/icons/ticket-black.svg') }}" style="border-radius: 0">
+                                    {{ $event->isPaid == 0 ? 'Free Event' : 'Paid Event' }}
+                                </p>
+                                <p class="pl-4 ml-3">Registration is required</p>
                             </div>
                         </div>
                         <center>
@@ -139,7 +145,7 @@
                             @if($event->registrations->count() == 1)
                                 <p style="font-weight: bold"><span>{{$event->registrations->count()}}</span> person is coming</p>
                             @endif
-                            <div class="row justify-content-between">
+                            <div class="row justify-content-end">
                                 {{-- <div class="ml-3">
                                     <img src="{{ asset('images/icons/users/user-1.svg') }}" alt="" srcset="">
                                     <img src="{{ asset('images/icons/users/user-2.svg') }}" alt="" srcset="">

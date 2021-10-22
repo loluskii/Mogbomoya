@@ -33,20 +33,13 @@ class EventController extends Controller
     {
         $interests = Interest::all();
         return view('events.new-event.index')->with('interests', $interests);
-        // if (Auth::user()->bank) {
-        //     return view('events.new-event.index')->with('interests', $interests);
-        // } else {
-        //     return redirect()->route('bank.details')->with(
-        //         'error',
-        //         'You need to setup your bank details to create an event'
-        //     );
-        // }
     }
     public function myEvents()
     {
-        $events = (new EventQueries())->withPagination(12);
-
-        return view('user.my-events')->with('events', $events);
+        $createdEvents = (new EventQueries())->withPagination(12);
+        $registeredEvents = (new EventQueries())->myRegisteredEvents();
+        return view('user.my-events')->with('events', $createdEvents)
+                                     ->with('registeredEvents', $registeredEvents);
     }
 
     public function create(StoreEventRequest $request)
@@ -94,52 +87,30 @@ class EventController extends Controller
             $request->validate([
                 'guests' => ['required'],
             ]);
-            $registration = new EventRegistration;
-            $registration->event_id = $id;
-            $registration->name = $request->name;
-            $registration->email = $request->email;
-            $registration->isPaid = 0;
-            $registration->guests = $request->guests;
-            $registration->save();
-            // (new StoreFreeEvent())->run($request, $id);
-        // } else {
-        //     $res = (new StorePaidEvent())->run($request, $id);
-            // dd($res);
-            // if ($res['status'] == true && $res['data']['authorization_url']) {
-            //     return redirect()->away($res['data']['authorization_url']);
-            // } else {
-            //     throw new Exception('Something went wrong ');
-            // }
+            $res = (new StoreFreeEvent())->run($request, $id);
+            if($res){
+                return back()->with(
+                    'success',
+                    'Event Registration Successful'
+                );
+            }else{
+                return back()->with(
+                    'error',
+                    'An Error Occured!'
+                );
+            }
+        } else {
+            $res = (new StorePaidEvent())->run($request, $id);
+            if ($res['status'] == true && $res['data']['authorization_url']) {
+                return redirect()->away($res['data']['authorization_url']);
+            } else {
+                throw new Exception('Something went wrong ');
+            }
         }
         return back()->with(
             'success',
             'Event Registration Successful'
         );
-        // try {
-        //     $event = Event::find($id);
-        //     if ($event->isPaid == 0) {
-        //         $request->validate([
-        //             'guests' => ['required'],
-        //         ]);
-        //         (new StoreFreeEvent())->run($request, $id);
-        //     } else {
-        //         $res = (new StorePaidEvent())->run($request, $id);
-        //         if ($res['status'] == true && $res['data']['authorization_url']) {
-        //             return redirect()->away($res['data']['authorization_url']);
-        //         } else {
-        //             throw new Exception('Something went wrong ');
-        //         }
-        //     }
-        //     return back()->with(
-        //         'success',
-        //         'Event Registration Successful'
-        //     );
-        // } catch (\Exception $e) {
-        //     return back()->with(
-        //         'error',
-        //         $e->getMessage()
-        //     );
-        // }
     }
 
     public function handleCallback(Request $request)
@@ -161,12 +132,17 @@ class EventController extends Controller
 
                 
             }
+            
+            
             $user_details = $response['data']['metadata']['user_details'];
+            $details = $response['data']['metadata']['tier'];
             $registration = new EventRegistration;
             $registration->event_id = $event_id;
+            $registration->user_id = Auth::id();
             $registration->name = $user_details['name'];
             $registration->email = $user_details['email'];
             $registration->isPaid = 1;
+            $registration->guests = $details['value'];
             $registration->save();
 
             (new StorePaymentRecord())->run($response['data'], $registration, $event_id);
