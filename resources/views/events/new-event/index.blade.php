@@ -558,6 +558,11 @@
         function initialize() {
             var input = document.getElementById('autocomplete');
             var autocomplete = new google.maps.places.Autocomplete(input);
+            
+            autocomplete.setComponentRestrictions({
+              country: ["ng"],
+            });
+
 
             autocomplete.addListener('place_changed', function() {
                 var place = autocomplete.getPlace();
