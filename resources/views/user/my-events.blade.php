@@ -36,8 +36,8 @@
             @forelse ($events as $event)
             <div class="col-md-3">
                 <div class="card shadow">
-                    <img src="{{asset("images/event/$event->featured_image")}}" style="max-height: 300px;"
-                    class="card-img-top" alt="{{$event->name}}">
+                    <img src="{{$event->featured_image}}" style="max-height: 300px;" class="card-img-top"
+                        alt="{{$event->name}}">
                     <div class="card-body">
                         <a href="{{route('event.info', $event->reference)}}">
                             <h5 class="text-dark  card-title">{{ $event->name }}</h5>
@@ -68,16 +68,18 @@
                 @php
                 $newImage = $list->event->featured_image;
                 @endphp
-                <img src="{{asset("images/event/$newImage")}}" style="max-height: 300px;" class="card-img-top"
+                <img src="{{asset(" images/event/$newImage")}}" style="max-height: 300px;" class="card-img-top"
                     alt="{{$list->event->name}}">
                 <div class="card-body">
                     <a href="">
                         <h5 class="text-dark  card-title">{{ $list->event->name }}</h5>
                     </a>
                     @if ($list->event->location)
-                    <p class="card-text mb-0 text-muted text-truncate"><i class="fa fa-map-marker "></i> {{$list->event->location}}</p>
+                    <p class="card-text mb-0 text-muted text-truncate"><i class="fa fa-map-marker "></i>
+                        {{$list->event->location}}</p>
                     @elseif ($list->event->link)
-                    <p class="card-text mb-0 text-muted text-truncate"><i class="fa fa-link "></i> {{$list->event->link}}</p>
+                    <p class="card-text mb-0 text-muted text-truncate"><i class="fa fa-link "></i>
+                        {{$list->event->link}}</p>
                     @endif
                     <p class="card-text text-muted"><i class="fa fa-clock-o "></i> <span>{{
                             \Carbon\Carbon::parse($list->date)->toFormattedDateString()}}</span> | <span>{{

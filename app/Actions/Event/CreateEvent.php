@@ -11,6 +11,8 @@ use App\Actions\Event\CreateEventSubAccount;
 class CreateEvent{
     public function run($request){
         DB::beginTransaction();
+            $path = $request->file('featured_image')->storeOnCloudinary('mogbomoya');
+            
             $event = new Event;
             $event->name = $request['name'];
             $event->user_id = Auth::id();
@@ -29,9 +31,10 @@ class CreateEvent{
             }
             $event->isPublic = $request['isPublic'];
             $event->isPaid = $request['isPaid'];
-            $imageName = Str::slug($request['name']).'-'.time().'.'.$request->featured_image->extension();  
-            $request->featured_image->move(public_path('images/event'), $imageName);
-            $event->featured_image = $imageName;
+            $imageUrl =  $path->getSecurePath();
+            // $imageName = Str::slug($request['name']).'-'.time().'.'.$request->featured_image->extension();  
+            // $request->featured_image->move(public_path('images/event'), $imageName);
+            $event->featured_image = $imageUrl;
             $event->save();
             
             if($event->isPaid == 1){

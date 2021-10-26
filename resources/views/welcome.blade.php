@@ -64,9 +64,9 @@
         background: transparent;
         /* Optional: just make scrollbar invisible */
     }
-    
-    .pac-item{
-    
+
+    .pac-item {
+
         padding: 10px;
         font-family: 'Sen', sans-serif;
     }
@@ -105,13 +105,14 @@
             display: bloc;
         }
     }
+
     @media only screen and (min-width:850px) {
         input.location {
 
             width: 20%;
 
         }
-}
+    }
 </style>
 @endsection
 @section('content')
@@ -137,8 +138,7 @@
                     style="font-size: 25px; color: #008A69;"></i></span>
         </form>
         {{-- <input type="text" name="location" class="home-location" id=""> --}}
-        <div class="row flex-nowrap overflow-auto hideScrollbar scroll-mobile d-sm-block d-md-none" style=" overflow-x: hidden;"
-            data-aos="fade-left" data-aos-duration="2500">
+        <div class="row flex-nowrap overflow-auto hideScrollbar scroll-mobile d-sm-block d-md-none" style="overflow-x: hidden;" data-aos="fade-left" data-aos-duration="2500">
             <div class="col-auto pr-0">
                 <div class="nav-pills">
                     <li class="nav-item" style="list-style-type: none">
@@ -155,11 +155,9 @@
                         @if(request()->query('category'))
                         <a href="{{route('index.view',['category' => encrypt($interest->id)])}}"
                             class="nav-link mx-1 my-1 shadow-sm ls-profile-tab  {{ decrypt(request()->query('category')) == $interest->id ? 'active' : 'bg-white'}}">
-                            <img src="{{asset("images/icons/$interest->icon")}}" alt="" srcset="">
-                            {{$interest->name}}</a>
+                            <img src="{{asset("images/icons/$interest->icon")}}" alt="" srcset=""> {{$interest->name}}</a>
                         @else
-                        <a href="{{route('index.view',['category' => encrypt($interest->id)])}}"
-                            class="nav-link mx-1 my-1 bg-white shadow-sm ls-profile-tab"> <img src="{{asset("images/icons/$interest->icon")}}" alt="" srcset=""> {{$interest->name}}</a>
+                        <a href="{{route('index.view',['category' => encrypt($interest->id)])}}" class="nav-link mx-1 my-1 bg-white shadow-sm ls-profile-tab"> <img src="{{asset("images/icons/$interest->icon")}}" alt="" srcset=""> {{$interest->name}}</a>
                         @endif
                     </li>
                 </div>
@@ -227,8 +225,7 @@
                                 <img src="{{ asset('images/share.svg') }}" srcset="">
                             </a>
                         </span>
-                        <img src="{{asset("images/event/$event->featured_image")}}" class="card-img-top"
-                        alt="{{$event->name}}">
+                        <img src="{{$event->featured_image}}" class="card-img-top" alt="{{$event->name}}">
 
                         <div class="card-body">
                             <a href="{{route('event.info', $event->reference)}}">
