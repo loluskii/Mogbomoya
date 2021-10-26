@@ -5,12 +5,19 @@ use Illuminate\Support\Collection;
 class AllCountries{
     public function run(){
         $response = Http::withHeaders([
-            'x-rapidapi-host' => 'ajayakv-rest-countries-v1.p.rapidapi.com',
-            // 'x-rapidapi-key' => 'cd2ebe6ddamsha65bfa4121d1237p1aa8aajsn0ff705bd7db1',
-            'x-rapidapi-key' => config('app.rapid_api_key'),
-        ])->get('https://ajayakv-rest-countries-v1.p.rapidapi.com/rest/v1/all');
+            'x-rapidapi-host' => 'world-geo-data.p.rapidapi.com',
+            'x-rapidapi-key' => '1fa601995fmshcc1d2fcc97ee24cp1ac29djsn9b9b11cc10ec',
+            //'x-rapidapi-key' => config('app.rapid_api_key'),
+        ])->get('https://world-geo-data.p.rapidapi.com/countries');
         
-        return $response->collect()->pluck('name')
-        ->all();
+        $arr = $response->json(['countries']);
+        $array = array();
+        foreach($arr as $key){
+            $array[] = $key['name'];
+        }
+        return $array;
+        
+        // return $response->collect()->pluck('name')
+        // ->all();
     }
 }

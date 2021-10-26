@@ -16,8 +16,10 @@ text-decoration: none;
 color: inherit; } 
 
 p {
-    font-weight: 100;
-}select {
+    font-weight: 400;
+}
+
+select {
     -webkit-appearance: none;
     -moz-appearance: none;
     text-indent: 1px;

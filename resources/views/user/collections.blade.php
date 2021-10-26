@@ -13,7 +13,7 @@
     <div class="container-fluid px-3 py-5 ">
         <div class="row">
             <div class="col">
-                <h1> Collections </h1>
+                <h1> Group your Events </h1>
                 <div class="row my-5">
                     <div class="col-sm-4 col-md-3">
                         <a class="btn btnPrimary"  data-toggle="modal" data-target="#addNewCollectionModal">
