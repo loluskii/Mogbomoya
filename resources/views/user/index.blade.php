@@ -10,6 +10,22 @@
             color: #fff;
             padding: 8px 32px;
         }
+        .select2-container--default .select2-selection--multiple {
+        background-color: white;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        cursor: text;
+        height: calc(1.5em + 1rem + 2px);
+        }
+        .select2-selection__rendered{
+            height: 100%;
+        }
+        .select2-container--default .select2-selection--multiple .select2-selection__choice{
+            background-color: #e9e9e9;
+            padding: 2px 5px 3px 5px;
+            border: none;
+        }
+
 
         .sidebar {
             background-color: #006554;
@@ -137,10 +153,9 @@
                                 <select class="form-control form-control-lg interests" name="interests[]" id="" multiple>
                                     <option value="">---</option>
                                     @foreach ($interests as $interest)
-                                        <option value="{{ encrypt($interest->id) }}"
-                                            {{ in_array($interest->id, $myInterests) ? 'selected' : '' }}> <img
-                                                src="{{ asset("images/icons/$interest->icon") }}" alt="" srcset="">
-                                            {{ $interest->name }} </option>
+                                        <option value="{{ encrypt($interest->id) }}" data-icon="{{ asset("images/icons/$interest->icon") }}" {{ in_array($interest->id, $myInterests) ? 'selected' : '' }}> 
+                                            {{ $interest->name }} 
+                                        </option>
                                     @endforeach
                                 </select>
                                 @error('interests')
@@ -177,7 +192,27 @@
             $('#changePassword').click(function() {
                 $('#changePasswordModal').modal('show');
             });
-            $('.interests').select2();
+            $(".interests").select2({
+        	  allowClear: true,
+        	  templateResult: format,
+        	  templateSelection: format
+        	});
+            function format(opt) {
+        	  if (!opt.id) {
+        	    return opt.text;
+        	  }
+        	  var optimage = $(opt.element).attr('data-icon'); 
+        	//   console.log(optimage);
+        	  if(!optimage){
+                return opt.text;
+                } else {                    
+                    var $opt = $(
+                       '<span><img src="' + optimage + '" /> ' + opt.text + '</span>'
+                    );
+                    return $opt;
+                }
+        	};
+
 
 
             var body = $('#myModal');
