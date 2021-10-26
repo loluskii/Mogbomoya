@@ -148,6 +148,10 @@
         transition: .2s ease-in-out all;
         transform: scale(2);
     }
+    .pac-item {
+        padding: 10px;
+        font-family: 'Sen', sans-serif;
+    }
 
     .radio-label input:checked+.icon {
         background: #008A69;
