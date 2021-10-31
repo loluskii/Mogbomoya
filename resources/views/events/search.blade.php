@@ -99,7 +99,7 @@
                     @forelse ($events as $event)
                         <div class="col-md-6 mb-3">
                             <div class="card">
-                                <img src="{{ asset("images/event/$event->featured_image") }}" style="max-height: 300px;"
+                                <img src="{{ $event->featured_image }}" style="max-height: 300px;"
                                     class="card-img-top" alt="{{ $event->name }}">
                                 <div class="card-body">
                                     <a href="{{ route('event.info', $event->reference) }}">

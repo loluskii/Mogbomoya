@@ -18,7 +18,7 @@
         @forelse ($event_collections as $event_collection)
             <div class="col-md-3">
                 <div class="card shadow">
-                    <img src="{{asset('images/event/'.$event_collection->event->featured_image)}}" class="card-img-top" alt="{{$event_collection->event->name}}">
+                    <img src="{{ $event_collection->event->featured_image }}" class="card-img-top" alt="{{$event_collection->event->name}}">
                     <div class="card-body">
                         <a href="{{route('event.info', $event_collection->event->reference)}}"><h5 class="text-dark  card-title">{{ $event_collection->event->name }}</h5></a>
                         <p class="card-text mb-0 text-muted">{{$event_collection->event->location}}</p>
