@@ -71,7 +71,7 @@
                 <img src="{{ $newImage }}" style="max-height: 300px;" class="card-img-top"
                     alt="{{$list->event->name}}">
                 <div class="card-body">
-                    <a href="">
+                    <a href="{{route('event.info', $list->event->reference)}}">
                         <h5 class="text-dark  card-title">{{ $list->event->name }}</h5>
                     </a>
                     @if ($list->event->location)
