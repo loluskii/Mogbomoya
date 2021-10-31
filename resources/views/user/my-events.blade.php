@@ -68,7 +68,7 @@
                 @php
                 $newImage = $list->event->featured_image;
                 @endphp
-                <img src="{{asset(" images/event/$newImage")}}" style="max-height: 300px;" class="card-img-top"
+                <img src="{{ $newImage }}" style="max-height: 300px;" class="card-img-top"
                     alt="{{$list->event->name}}">
                 <div class="card-body">
                     <a href="">
