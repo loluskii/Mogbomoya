@@ -1,6 +1,7 @@
 <?php
 namespace App\Actions\Event;
 use App\Models\EventRegistration;
+use App\Services\Event\EventQueries;
 use Illuminate\Support\Facades\Auth;
 
 class StoreFreeEvent{
@@ -13,6 +14,13 @@ class StoreFreeEvent{
         $registration->isPaid = 0;
         $registration->guests = $request->guests;
         $registration->save();
+        
+        // $event_name;
+        $event = (new EventQueries())->findById($id);
+        $email = $request->email;
+        
+        
+        dispatch(new \App\Jobs\SendRegistrationMailJob($event,$email));
         
         return true;
     }

@@ -82,7 +82,7 @@
                                 <a class="dropdown-item py-2" href="#">No collections</a>
                                 @endif
                             </div>
-                            <a href="http://" class="btn save shadow">
+                            <a href="http://" class="border-0 btn save shadow">
                                 <img src="{{ asset('images/icons/edit.svg') }}" srcset="">
                             </a>
                             <a data-toggle="modal" data-target="#exampleModal" class="btn save shadow">
