@@ -61,7 +61,7 @@
                                                         <div class="form-group">
                                                             <input type="number" id="quantity{{$key}}" min="1"
                                                                 max="{{ $tier->limit_remaining ?? 100000000000000000 }}"
-                                                                class="numberOfSlots custom-select form-control form-control-lg mx-3"
+                                                                class="numberOfSlots form-control form-control-lg mx-3"
                                                                 name="{{ $tier->reference }}">
                                                             <small for="" class=" text-muted float-right">{{
                                                                 $tier->limit_remaining ?? 'Unlimited' }} slot(s)
