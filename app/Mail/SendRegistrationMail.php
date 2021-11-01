@@ -11,6 +11,7 @@ class SendRegistrationMail extends Mailable
 {
     use Queueable, SerializesModels;
     protected $event;
+    protected $no_of_ticket;
 
 
     /**
@@ -18,9 +19,10 @@ class SendRegistrationMail extends Mailable
      *
      * @return void
      */
-    public function __construct($event)
+    public function __construct($event, $no_of_ticket)
     {
         $this->event = $event;
+        $this->no_of_ticket = $no_of_ticket;
     }
 
     /**
@@ -29,7 +31,12 @@ class SendRegistrationMail extends Mailable
      * @return $this
      */
     public function build()
-    {
-        return $this->view('event.emails.registration')->with('event', $this->event)->subject('Mogbomoya - Registration for '.$this->event->name);
+    {   
+        if($this->event->location){
+            $hasLocation = true; 
+        }else{
+            $hasLocation = false;
+        }
+        return $this->view('events.emails.registration')->with('event', $this->event)->with('noOfTickets',$this->no_of_ticket)->with('hasLocation',$hasLocation)->subject('Mogbomoya - Registration for '.$this->event->name);
     }
 }

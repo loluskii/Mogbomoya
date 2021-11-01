@@ -62,10 +62,10 @@
                     <p><span class="mr-4 text-muted">by {{$event->user->name}}</span></p>
                     <div class="row justify-content-between mb-4">
                         <div class="ml-3">
-                            <a href="http://" class="btn save shadow" role="button" data-toggle="dropdown"
+                            {{-- <a href="http://" class="btn save shadow border-0" role="button" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
                                 <img src="{{ asset('images/icons/analytics.svg') }}" srcset="">
-                            </a>
+                            </a> --}}
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 @if($collections->count() > 0)
                                 <a class="dropdown-item py-2" href="#">Save to</a>
@@ -85,7 +85,7 @@
                             <a href="http://" class="border-0 btn save shadow">
                                 <img src="{{ asset('images/icons/edit.svg') }}" srcset="">
                             </a>
-                            <a data-toggle="modal" data-target="#exampleModal" class="btn save shadow">
+                            <a data-toggle="modal" data-target="#exampleModal" class="btn border-0 save shadow">
                                 <img src="{{ asset('images/share.svg') }}" srcset="">
                             </a>
                             @include('user.share-modal')

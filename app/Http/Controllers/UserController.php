@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests\UpdateUserRequest;
 use App\Http\Requests\UpdateUserInterestRequest;
@@ -12,7 +12,6 @@ use App\Actions\User\ChangePassword;
 use App\Actions\User\ChangeEmail;
 use App\Actions\User\ChangeActiveStatus;
 use App\Actions\Country\AllCountries;
-use Auth;
 
 class UserController extends Controller
 {
