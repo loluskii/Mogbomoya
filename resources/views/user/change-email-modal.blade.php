@@ -24,12 +24,12 @@
                         <b class="text-danger">{{ $message }} </b>
                     @enderror
                 </div>
-                <div class="form-check">
+                {{-- <div class="form-check">
                     <input type="checkbox" class="form-check-input checkbox" id="exampleCheck1">
                     <label class="form-check-label pt-1"  for="exampleCheck1">Show Password</label>
-                </div> 
+                </div>  --}}
                 <div class="py-3">
-                    <button type="submit" class="btn btnPrimary py-2">Save changes</button>
+                    <button type="submit" class="btn btnPrimary btn-block py-2">Save changes</button>
                 </div>
             </form>
             </div>
