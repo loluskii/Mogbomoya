@@ -19,16 +19,16 @@
             <label class="mb-0 font-weight-light"> {{ auth()->user()->password != '' ? 'Update your current password': 'You have not set a default password. Please enter your new password.' }}</label>
             <form action="{{ route('user.update.password') }}" method="POST" class="py-4">
                 @csrf
-                <div class="form-group">
-                    @if (auth()->user()->password != '')
+                @if (auth()->user()->password != '')
+                    <div class="form-group">
                         <label for="">CURRENT PASSWORD</label>
                         <input type="password" name="current_password" id="password-field" class="form-control form-control-lg" placeholder="Old Password" aria-describedby="helpId">
                         <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                         @error('current_password')
                             <b class="text-danger">{{ $message }} </b>
                         @enderror
-                    @endif
-                </div>
+                    </div>
+                @endif
                 <div class="form-group">
                     <label for="">NEW PASSWORD</label>
                     <input type="password" name="new_password" id="password-field" class="form-control form-control-lg" placeholder="New Password" aria-describedby="helpId">
