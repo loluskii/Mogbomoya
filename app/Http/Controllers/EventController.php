@@ -56,7 +56,7 @@ class EventController extends Controller
                     return redirect()->route('user.events')->with(
                         'success',
                         'Event Created Successfully'
-                    );
+                    ); 
                 } else {
                     //redirect to bank details page
                     return redirect()->route('bank.details')->with(
