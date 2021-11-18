@@ -6,12 +6,12 @@
             <div class="container">
                 <h5 class="modal-title" id="exampleModalLabel" style="font-weight: bold">Change Email </h5>
             <p class="mb-0"> Re-enter your Mogbomoya password to continue.</p>
-            <form action="{{route('user.update.email')}}" method="POST" class=" pt-1 pb-4">
+            <form action="{{route('user.update.email')}}" method="POST" class=" pt-1 pb-4" autocomplete="off">
                 @csrf
                 <div class="form-group">
                     @if (auth()->user()->password != '')
                         <label for="">CURRENT PASSWORD</label>
-                        <input type="text" name="current_password" class="form-control form-control-lg" placeholder="Current Password" aria-describedby="helpId">
+                        <input type="password" name="current_password" class="form-control form-control-lg" placeholder="Current Password" aria-describedby="helpId">
                         @error('current_password')
                             <b class="text-danger">{{ $message }} </b>
                         @enderror

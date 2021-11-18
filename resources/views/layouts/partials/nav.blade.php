@@ -1,18 +1,17 @@
 <style>
   @media (min-width: 1023px) {
     form input[type=search].form-control {
-      min-width: 28vw;
+      min-width: 30vw;
       margin-left: calc(3 * .5rem);
     }
   }
 
   @media (max-width: 768px) {
     form input[type=search].form-control {
-      min-width: 20vw;
+      min-width: 60vw;
     }
 
   }
-
 
   @media (max-width: 478px) {
     form input[type=search].form-control {
@@ -21,6 +20,9 @@
 
     }
   }
+
+
+
 </style>
 @guest
 <nav class="navbar navbar-expand-lg navbar-light bg-white px-sm-5 px-2">
@@ -77,7 +79,7 @@
     <input name="search" class="form-control mr-sm-2 bg-light" type="search" placeholder="Find Events"
       aria-label="Search" style=" height: 60px; border: none">
   </form>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -94,7 +96,7 @@
             <p style="color: #D60B7B;">Find events near me</p>
           </a>
         </div>
-      </li>    
+      </li>
       <li class="nav-item mr-4">
         <div class="text-center">
           <a href="{{ route('event.create') }}" class="nav-link">
@@ -155,7 +157,7 @@
 
 
 
-{{-- 
+{{--
 
 
 <style>
@@ -204,7 +206,7 @@
     {{-- <form action="{{ route('search') }}" method="GET" class="form-inline my-2 my-lg-0 ml-3 mr-5">
       <input name="search" class="form-control mr-sm-2 bg-light" type="search" placeholder="Search Events"
         aria-label="Search" style="width: 500px; height: 60px; border: none">
-    </form> 
+    </form>
     <ul class="navbar-nav ml-auto">
       <li class="nav-item mr-3">
         <a class="nav-link" href="{{route('help-center')}}">Help Center </a>
@@ -250,9 +252,10 @@
       <li class="nav-item mr-2 d-flex align-items-center justify-items-center pt-2">
         <a class="nav-link" href="{{ route('events.near') }}">
           <p class="mb-0"><img src="{{ asset('images/icons/location.svg') }}" alt="" srcset=""></p>
-          <p style="color: #D60B7B;"> <img src="{{ asset('images/icons/location.svg') }}" alt="" srcset=""> Find events near me</p>
+          <p style="color: #D60B7B;"> <img src="{{ asset('images/icons/location.svg') }}" alt="" srcset=""> Find events
+            near me</p>
         </a>
-      </li>    
+      </li>
       <li class="nav-item mr-3 d-flex align-items-center justify-items-center pt-2">
         <a href="{{ route('event.create') }}" class="nav-link">
           <p class="mb-0"><img src="{{ asset('images/icons/plus.svg') }}" srcset=""></p>
@@ -299,4 +302,4 @@
   </div>
 </nav>
 @endauth
- --}}
+--}}

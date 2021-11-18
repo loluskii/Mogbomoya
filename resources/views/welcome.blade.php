@@ -105,11 +105,13 @@
             display: bloc;
         }
     }
+    
+    
 
-    @media only screen and (min-width:850px) {
+    @media only screen and (min-width:768px) {
         input.location {
 
-            width: 20%;
+            width: 50%;
 
         }
     }

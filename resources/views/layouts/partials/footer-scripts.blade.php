@@ -56,3 +56,15 @@
     feather.replace()
 })()
 </script>
+
+<script>
+    $(document).ready(function(){
+    $('.navbar-toggler,.slide-fade,.sliding-panel-close').on('click touchstart',function (e) {
+      $('.slide-content,.slide-fade').toggleClass('is-visible');
+      $('#wrapper').toggleClass('is-obscured');
+      e.preventDefault();
+    });
+  });
+  </script>
+  
+
