@@ -16,7 +16,7 @@
         <div class="modal-body">
             <div class="container">
                 <h5 class="modal-title" id="exampleModalLabel" style="font-weight: bold">Change My Password </h5>
-            <label class="mb-0 font-weight-light"> Update your current password</label>
+            <label class="mb-0 font-weight-light"> {{ auth()->user()->password != '' ? 'Update your current password': 'You have not set a default password. Please enter your new password.' }} Update your current password</label>
             <form action="{{ route('user.update.password') }}" method="POST" class="py-4">
                 @csrf
                 <div class="form-group">
