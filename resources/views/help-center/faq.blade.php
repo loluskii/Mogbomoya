@@ -37,7 +37,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-2 pt-3">
-                                <img src="{{asset('images/icons/ticket.svg')}}" alt="" srcset="">
+                                <img src="{{secure_asset('images/icons/ticket.svg')}}" alt="" srcset="">
                             </div>
                             <div class="col-10">
                                 <h5 class="card-title">Going to an event</h5>
@@ -54,7 +54,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-2 pt-3">
-                                <img src="{{asset('images/icons/note.svg')}}" alt="" srcset="">
+                                <img src="{{secure_asset('images/icons/note.svg')}}" alt="" srcset="">
                             </div>
                             <div class="col-10">
                                 <h5 class="card-title">Creating a new event</h5>
@@ -73,7 +73,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-2 pt-3">
-                                <img src="{{asset('images/icons/speaker.svg')}}" alt="" srcset="">
+                                <img src="{{secure_asset('images/icons/speaker.svg')}}" alt="" srcset="">
                             </div>
                             <div class="col-10">
                                 <h5 class="card-title">Promoting an event</h5>
@@ -90,7 +90,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-2 pt-3">
-                                <img src="{{asset('images/icons/calendar.svg')}}" alt="" srcset="">
+                                <img src="{{secure_asset('images/icons/calendar.svg')}}" alt="" srcset="">
                             </div>
                             <div class="col-10">
                                 <h5 class="card-title">Managing an event</h5>

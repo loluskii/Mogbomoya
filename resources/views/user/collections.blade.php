@@ -29,7 +29,7 @@
               <div class="col-md-3">
                   <div class="card shadow">
                       @if($collection->event_collections->first())
-                        <img src="{{asset("images/event/".$collection->event_collections->first()->event->featured_image)}}" class="card-img-top" alt="{{$collection->name}}">
+                        <img src="{{secure_asset("images/event/".$collection->event_collections->first()->event->featured_image)}}" class="card-img-top" alt="{{$collection->name}}">
                       @else 
                         <img src="https://www.online-tech-tips.com/wp-content/uploads/2020/04/WallpaperCraft.jpg.optimal.jpg" class="card-img-top" alt="{{$collection->name}}">
                       @endif

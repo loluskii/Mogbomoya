@@ -153,7 +153,7 @@
                                 <select class="form-control form-control-lg interests" name="interests[]" id="" multiple>
                                     <option value="">---</option>
                                     @foreach ($interests as $interest)
-                                        <option value="{{ encrypt($interest->id) }}" data-icon="{{ asset("images/icons/$interest->icon") }}" {{ in_array($interest->id, $myInterests) ? 'selected' : '' }}> 
+                                        <option value="{{ encrypt($interest->id) }}" data-icon="{{ secure_asset("images/icons/$interest->icon") }}" {{ in_array($interest->id, $myInterests) ? 'selected' : '' }}> 
                                             {{ $interest->name }} 
                                         </option>
                                     @endforeach

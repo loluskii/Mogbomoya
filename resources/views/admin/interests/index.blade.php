@@ -33,7 +33,7 @@
                                 <td>{{$interests->perPage()*($interests->currentPage()-1)+$loop->iteration}}</td>
                                 <td>{{$interest->name}}</td>
                                 <td>
-                                    <img src="{{asset("images/icons/$interest->icon")}}" alt="{{$interest->name}}">
+                                    <img src="{{secure_asset("images/icons/$interest->icon")}}" alt="{{$interest->name}}">
                                 </td>
                                 <td>
                                     @include('admin.interests.update-interest-modal')

@@ -16,7 +16,7 @@
 </style>
 <div class="col-md-3 d-none d-md-block d-sm-none sidebar" style="height: 120vh">
     <div class="list-group list-group-flush mt-5 pt-2 justify-content-center">
-        <a href="/" class="mb-5 pb-5"><img src="{{asset('images/Mogbomoya _White).png')}}" class="img-fluid text-center" style="height: 150px" srcset=""></a>
+        <a href="/" class="mb-5 pb-5"><img src="{{secure_asset('images/Mogbomoya _White).png')}}" class="img-fluid text-center" style="height: 150px" srcset=""></a>
         <a class="list-group-item list-group-item-action" href="{{ route('user.edit') }}">My Account</a>
         <a class="list-group-item list-group-item-action p-3" href="{{route('bank.details')}}">Bank account details</a>
         {{-- <a class="list-group-item list-group-item-action p-3" href="#!">Customize your interests</a> --}}
@@ -37,7 +37,7 @@
 <div class="col-md-9 px-0">
     <nav class="navbar navbar-expand-lg navbar-light px-2">
         <a class="navbar-brand d-md-none d-sm-block" href="/">
-            <img src="{{asset('images/logo.png')}}" height="58" alt="">
+            <img src="{{secure_asset('images/logo.png')}}" height="58" alt="">
           </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -60,11 +60,11 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         {{-- <a class="dropdown-item py-3" href="#">Interests</a> --}}
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item py-3" href="{{ route('user.edit')}}"><img src="{{ asset('images/icons/account.svg') }}"class="px-2" alt="" srcset="">
+                        <a class="dropdown-item py-3" href="{{ route('user.edit')}}"><img src="{{ secure_asset('images/icons/account.svg') }}"class="px-2" alt="" srcset="">
                             Account Settings
                         </a>
                         <a class="dropdown-item py-3" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            <img src="{{asset('images/icons/logout.svg')}}" class="pr-2" alt="" srcset=""> Logout
+                            <img src="{{secure_asset('images/icons/logout.svg')}}" class="pr-2" alt="" srcset=""> Logout
                         </a>
                 
                         <form id="status-form" action="{{ route('user.deactivate') }}" method="POST" style="display: none;">

@@ -8,15 +8,15 @@
         <meta content="Admin Dashboard" name="description">
         <meta content="Themesbrand" name="author">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <link rel="shortcut icon" href="{{ asset('/images/mobile/logo.png') }}">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">        <link rel="stylesheet" href="{{ asset('css/app.css') }}" >
+        <link rel="shortcut icon" href="{{ secure_asset('/images/mobile/logo.png') }}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">        <link rel="stylesheet" href="{{ secure_asset('css/app.css') }}" >
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Sen:wght@400;700;800&display=swap" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <link rel="stylesheet" href="{{ secure_asset('css/app.css') }}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
       
@@ -46,10 +46,10 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 {{-- <a class="dropdown-item py-3" href="#">Interests</a> --}}
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item py-3" href="{{route('user.edit')}}"><img src="{{ asset('images/icons/account.svg') }}"
+                                <a class="dropdown-item py-3" href="{{route('user.edit')}}"><img src="{{ secure_asset('images/icons/account.svg') }}"
                                         class="px-2" alt="" srcset=""> Account Settings</a>
                                 <a class="dropdown-item py-3" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                    <img src="{{asset('images/icons/logout.svg')}}" class="pr-2" alt="" srcset=""> Logout
+                                    <img src="{{secure_asset('images/icons/logout.svg')}}" class="pr-2" alt="" srcset=""> Logout
                                 </a>
                         
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
