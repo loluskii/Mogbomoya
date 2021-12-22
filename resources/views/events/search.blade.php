@@ -322,6 +322,7 @@
 
 @section('script')
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script async="false" type="text/javascript"  src="https://maps.googleapis.com/maps/api/js?key={{ config('app.google_key') }}&callback=initMap"></script>
 <script>
     /*Dropdown Menu*/
     $('.dropdowns').click(function () {
@@ -346,4 +347,47 @@
     });
 
 </script>
+<script>
+
+    // navigator.geolocation.getCurrentPosition(success);
+    // function success(pos) {
+    //   var crd = pos.coords;
+    //   console.log('Your current position is:');
+    //   console.log(`Latitude : ${crd.latitude}`);
+    //   console.log(`Longitude: ${crd.longitude}`);
+    //   console.log(`More or less ${crd.accuracy} meters.`);
+    //   initMap(crd);
+    // };
+
+    function initMap() {
+        const initialPosition = { lat: 59.325, lng: 18.069 };
+        
+        const map = new google.maps.Map(document.getElementById('map'), {
+            center: initialPosition,
+            zoom: 15
+        });
+
+        const marker = new google.maps.Marker({ map, position: initialPosition });
+        new google.maps.Marker();
+        
+        if ('geolocation' in navigator) {
+    navigator.geolocation.getCurrentPosition(
+      position => console.log(`Lat: ${position.coords.latitude} Lng: ${position.coords.longitude}`),
+      err => alert(`Error (${err.code}): ${getPositionErrorMessage(err.code)}`)
+    );
+  } else {
+    alert('Geolocation is not supported by your browser.');
+  }
+    }
+    
+    function getLocation(){
+        return console.log(navigator.geolocation);
+    }
+    
+    window.addEventListener('load', getLocation);
+
+</script>
+
+
+
 @endsection

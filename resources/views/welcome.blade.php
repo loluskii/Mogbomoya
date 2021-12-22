@@ -111,7 +111,7 @@
     @media only screen and (min-width:768px) {
         input.location {
 
-            width: 50%;
+            width: 25%;
 
         }
     }
