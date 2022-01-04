@@ -503,7 +503,7 @@
 @section('script')
 <script src="https://maps.googleapis.com/maps/api/js?key={{ config('app.google_key') }}&libraries=places"></script>
 <script>
-    $('#preview').hide();
+        $('#preview').hide();
         $('.upload').click(function(){ $('.featured_image').trigger('click'); });
         imgInp.onchange = evt => {
             const [file] = imgInp.files

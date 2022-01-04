@@ -136,12 +136,12 @@
     <nav class="slide-content p-3">
         <div class="list-group list-group-flush mt-5 pt-2 justify-content-center">
             <a href="/" class="pb-3"><img src="{{secure_asset('images/Mogbomoya _White).png')}}" class="img-fluid text-center" style="height: 150px" srcset=""></a>
-            <a class="list-group-item list-group-item-action bg-transparent text-white" href="">Find Events Near Me</a>
-            <a class="list-group-item list-group-item-action bg-transparent text-white" href="">Create Event</a>
-            <a class="list-group-item list-group-item-action bg-transparent text-white" href="">My Events</a>
-            <a class="list-group-item list-group-item-action bg-transparent text-white" href="">Bookmarks</a>
-            <a class="list-group-item list-group-item-action bg-transparent text-white" href="">My Account</a>
-            <a class="list-group-item list-group-item-action bg-transparent text-white" href="">Logout</a>
+            <a class="list-group-item list-group-item-action bg-transparent text-white" href="{{ route('events.near') }}">Find Events Near Me</a>
+            <a class="list-group-item list-group-item-action bg-transparent text-white" href="{{ route('event.create') }}">Create Event</a>
+            <a class="list-group-item list-group-item-action bg-transparent text-white" href="{{ route('user.events') }}">My Events</a>
+            <a class="list-group-item list-group-item-action bg-transparent text-white" href="{{ route('user.collections') }}">Bookmarks</a>
+            <a class="list-group-item list-group-item-action bg-transparent text-white" href="{{ route('user.edit') }}">My Account</a>
+            <a class="list-group-item list-group-item-action bg-transparent text-white" href="{{ route('logout') }}">Logout</a>
             {{-- <a class="list-group-item list-group-item-action p-3" href="#!">Customize your interests</a> --}}
             {{-- <a class="list-group-item list-group-item-action p-3" href="#!">Talk to us</a> --}}
             {{--  --}}
