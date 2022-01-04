@@ -22,10 +22,138 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <style>
+        p {
+            font-family: Sen;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 24px;
+            letter-spacing: 0em;
+            /* text-align: left; */
+        }
+
+
+
+        .group:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .slide-content {
+            position: fixed;
+            top: 0px;
+            left: auto;
+            bottom: 0px;
+            right: 0px;
+            height: 100%;
+            width: 220px;
+            -webkit-transform: translateX(220px);
+            -moz-transform: translateX(220px);
+            -ms-transform: translateX(220px);
+            -o-transform: translateX(220px);
+            transform: translateX(220px);
+
+            -webkit-transition: all 0.25s ease-in-out;
+            -moz-transition: all 0.25s ease-in-out;
+            transition: all 0.25s ease-in-out;
+            z-index: 999999;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .slide-content.is-visible {
+            -webkit-transform: translateX(0);
+            -moz-transform: translateX(0);
+            -ms-transform: translateX(0);
+            -o-transform: translateX(0);
+            transform: translateX(0);
+        }
+
+        #wrapper {
+            -webkit-transition: all 0.25s ease-out;
+            -moz-transition: all 0.25s ease-out;
+            transition: all 0.25s ease-out;
+        }
+
+        .is-obscured {
+            -webkit-transform: translateX(-220px);
+            -moz-transform: translateX(-220px);
+            -ms-transform: translateX(-220px);
+            -o-transform: translateX(-220px);
+            transform: translateX(-220px);
+        }
+
+        .slide-fade {
+            position: fixed;
+            top: 0px;
+            right: 0px;
+            bottom: 0px;
+            left: 0px;
+            -webkit-transition: all 0.15s ease-out 0s;
+            -moz-transition: all 0.15s ease-out 0s;
+            transition: all 0.15s ease-out 0s;
+            opacity: 0;
+            /*   background: black; */
+            visibility: hidden;
+            z-index: 999998;
+        }
+
+        .slide-fade.is-visible {
+            opacity: 0.4;
+            visibility: visible;
+        }
+
+        nav.slide-content {
+            background-color: #008A69;
+        }
+
+        nav.slide-content li {
+            border-bottom: 1px solid #333;
+        }
+
+        nav.slide-content a {
+            display: block;
+            padding: 25px 15px;
+            text-decoration: none;
+        }
+
+
+
+        .menu {
+            float: right;
+        }
+    </style>
+
     @yield('css')
 </head>
 
 <body>
+    <nav class="slide-content p-3">
+        <div class="list-group list-group-flush mt-5 pt-2 justify-content-center">
+            <a href="/" class="pb-3"><img src="{{ secure_asset('images/Mogbomoya _White).png')}}" class="img-fluid text-center" style="height: 150px" srcset=""></a>
+            <a class="list-group-item list-group-item-action bg-transparent text-white" href="{{ route('event.create') }}">Create Event</a>
+            <a class="list-group-item list-group-item-action bg-transparent text-white" href="{{ route('user.events') }}">My Events</a>
+            <a class="list-group-item list-group-item-action bg-transparent text-white" href="{{ route('user.edit') }}">My Account</a>
+            <a class="list-group-item list-group-item-action p-3" href="{{route('bank.details')}}">Bank account details</a>
+            @if(auth()->user()->password != '')
+            {{-- request password modal --}}
+                <a class="list-group-item list-group-item-action p-3"  id="inputPassword" href="#">Deactivate account</a> 
+            @else
+                <a class="list-group-item list-group-item-action p-3" onclick="return confirm('Are you sure you want to deactivate this account?') ? initRoute() : '' "  href="#">Deactivate account</a> 
+            @endif
+    
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+    
+            {{-- <a class="list-group-item list-group-item-action p-3" href="#!">Customize your interests</a> --}}
+            {{-- <a class="list-group-item list-group-item-action p-3" href="#!">Talk to us</a> --}}
+            {{--  --}}
+        </div>
+    </nav>
+    
     <div id="wrapper">
         
             {{-- <nav class="navbar navbar-expand-lg navbar-light bg-white">
