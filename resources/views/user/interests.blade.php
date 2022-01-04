@@ -49,7 +49,10 @@
         float: right
     }
     .checkbox-content{
-      width: 185px;
+      width: auto;
+    }
+    .col-auto{
+      padding-left: 0;
     }
 
 
@@ -149,8 +152,8 @@
           <p><small>Follow at least 3 topics to get event recommendations tailored for you.</small></p>
           <form action="{{ route('user.interests.update')}}" method="POST" class="pt-4" autocomplete="off">
             @csrf
-            <div class="container">
-              <div class="row ">
+            <div class="container px-sm-2 px-0">
+              <div class="row mx-0 px-0">
                 @foreach($interests as $key => $interest)
                 <div class="col-auto mb-3 justify-content-center">                  
                   <label class="checkbox-label">

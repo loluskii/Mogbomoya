@@ -130,29 +130,43 @@
 </head>
 
 <body>
-    <nav class="slide-content p-3">
-        <div class="list-group list-group-flush mt-5 pt-2 justify-content-center">
-            <a href="/" class="pb-3"><img src="{{ secure_asset('images/Mogbomoya _White).png')}}" class="img-fluid text-center" style="height: 150px" srcset=""></a>
-            <a class="list-group-item list-group-item-action bg-transparent text-white" href="{{ route('event.create') }}">Create Event</a>
-            <a class="list-group-item list-group-item-action bg-transparent text-white" href="{{ route('user.events') }}">My Events</a>
-            <a class="list-group-item list-group-item-action bg-transparent text-white" href="{{ route('user.edit') }}">My Account</a>
-            <a class="list-group-item list-group-item-action p-3" href="{{route('bank.details')}}">Bank account details</a>
-            @if(auth()->user()->password != '')
-            {{-- request password modal --}}
-                <a class="list-group-item list-group-item-action p-3"  id="inputPassword" href="#">Deactivate account</a> 
-            @else
-                <a class="list-group-item list-group-item-action p-3" onclick="return confirm('Are you sure you want to deactivate this account?') ? initRoute() : '' "  href="#">Deactivate account</a> 
-            @endif
+    @auth
+        <nav class="slide-content p-3">
+            <div class="list-group list-group-flush mt-5 pt-2 justify-content-center">
+                <a href="/" class="pb-3"><img src="{{ secure_asset('images/Mogbomoya _White).png')}}" class="img-fluid text-center" style="height: 150px" srcset=""></a>
+                <a class="list-group-item list-group-item-action bg-transparent text-white" href="{{ route('event.create') }}">Create Event</a>
+                <a class="list-group-item list-group-item-action bg-transparent text-white" href="{{ route('user.events') }}">My Events</a>
+                <a class="list-group-item list-group-item-action bg-transparent text-white" href="{{ route('user.edit') }}">My Account</a>
+                <a class="list-group-item list-group-item-action p-3" href="{{route('bank.details')}}">Bank account details</a>
+                @if(auth()->user()->password != '')
+                {{-- request password modal --}}
+                    <a class="list-group-item list-group-item-action p-3"  id="inputPassword" href="#">Deactivate account</a> 
+                @else
+                    <a class="list-group-item list-group-item-action p-3" onclick="return confirm('Are you sure you want to deactivate this account?') ? initRoute() : '' "  href="#">Deactivate account</a> 
+                @endif
+        
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+        
+                {{-- <a class="list-group-item list-group-item-action p-3" href="#!">Customize your interests</a> --}}
+                {{-- <a class="list-group-item list-group-item-action p-3" href="#!">Talk to us</a> --}}
+                {{--  --}}
+            </div>
+        </nav>
+    @endauth
     
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                @csrf
-            </form>
-    
-            {{-- <a class="list-group-item list-group-item-action p-3" href="#!">Customize your interests</a> --}}
-            {{-- <a class="list-group-item list-group-item-action p-3" href="#!">Talk to us</a> --}}
-            {{--  --}}
-        </div>
-    </nav>
+    @guest
+        <nav class="slide-content p-3">
+            <div class="list-group list-group-flush mt-5 pt-2 justify-content-center">
+                <a href="/" class="pb-3"><img src="{{ secure_asset('images/Mogbomoya _White).png')}}" class="img-fluid text-center" style="height: 150px" srcset=""></a>
+                <a class="list-group-item list-group-item-action bg-transparent text-white" href="{{ route('login.view') }}">Sign In</a>
+                <a class="list-group-item list-group-item-action bg-transparent text-white" href="{{ route('event.create') }}">Create Event</a>
+                <a class="list-group-item list-group-item-action p-3" href="{{ route('events.near') }}">Find Events Near Me</a>
+                <a class="list-group-item list-group-item-action bg-transparent text-white" href="{{route('help-center')}}">Help Center </a>
+            </div>
+        </nav>
+    @endguest
     
     <div id="wrapper">
         
