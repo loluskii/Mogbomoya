@@ -1,9 +1,10 @@
 <style>
-    a{
+    a {
         text-decoration: none;
-        color:white;
+        color: white;
     }
-/* 
+
+    /* 
     a:hover{
         font-size: 17px;
         color: white;
@@ -51,26 +52,26 @@
                         Coming Soon
                     </li>
                     <li class="my-3">
-                        <img src="{{secure_asset('images/footer/app-store.svg')}}" alt="" srcset="">
+                        <img src="{{asset('images/footer/app-store.svg')}}" alt="" srcset="">
                     </li>
                     <li class="my-3">
-                        <img src="{{secure_asset('images/footer/google-play.svg')}}" alt="" srcset="">
+                        <img src="{{asset('images/footer/google-play.svg')}}" alt="" srcset="">
                     </li>
                 </ul>
             </div>
         </div>
-        
+
     </div>
     <hr>
-        <div class="container">
-            <div class="row mx-4 py-2 justify-content-between">
-                <p>© 2021 Mógbòmoyá. All rights reserved</p>
-                <p>
-                    <span><img src="{{secure_asset('images/footer/twitter.svg')}}" alt="" srcset=""></span>
-                    <span><img src="{{secure_asset('images/footer/instagram.svg')}}" alt="" srcset=""></span>
-                    <span><img src="{{secure_asset('images/footer/facebook.svg')}}" alt="" srcset=""></span>
-                    <span><img src="{{secure_asset('images/footer/youtube.svg')}}" alt="" srcset=""></span>
-                </p>
-            </div>
+    <div class="container">
+        <div class="row mx-4 py-2 justify-content-between">
+            <p>© 2021 Mógbòmoyá. All rights reserved</p>
+            <p>
+                <span><img src="{{asset('images/footer/twitter.svg')}}" alt="" srcset=""></span>
+                <span><img src="{{asset('images/footer/instagram.svg')}}" alt="" srcset=""></span>
+                <span><img src="{{asset('images/footer/facebook.svg')}}" alt="" srcset=""></span>
+                <span><img src="{{asset('images/footer/youtube.svg')}}" alt="" srcset=""></span>
+            </p>
         </div>
+    </div>
 </footer>

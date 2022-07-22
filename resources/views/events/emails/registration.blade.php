@@ -1,4 +1,5 @@
-<table style="margin-left:auto;margin-right:auto;border-collapse:collapse;border-spacing:0;border:0;padding:0" cellpadding="0" cellspacing="0" border="0">
+<table style="margin-left:auto;margin-right:auto;border-collapse:collapse;border-spacing:0;border:0;padding:0"
+    cellpadding="0" cellspacing="0" border="0">
     <tbody>
         <tr>
             <td style="margin-left:auto;margin-right:auto" align="center" bgcolor="#EEEDF2">
@@ -47,7 +48,7 @@
 
                                                                                 <div
                                                                                     style="height:25px;margin:0 auto;text-align:center">
-                                                                                    <img src="{{ secure_asset('images/full-logo.svg') }}"
+                                                                                    <img src="{{ asset('images/full-logo.svg') }}"
                                                                                         title="" alt="Eventbrite">
                                                                                 </div>
 
@@ -306,7 +307,7 @@
                                                                                         <tr>
                                                                                             <td width="26"
                                                                                                 style="vertical-align:top">
-                                                                                                <img src="{{ secure_asset('images/icons/ticket-black.svg') }}"
+                                                                                                <img src="{{ asset('images/icons/ticket-black.svg') }}"
                                                                                                     title="date" alt=""
                                                                                                     style="padding-top:4px"
                                                                                                     border="0">
@@ -389,7 +390,7 @@
                                                                                         <tr>
                                                                                             <td width="26"
                                                                                                 style="vertical-align:top">
-                                                                                                <img src="{{ secure_asset('images/icons/calendar-black.svg') }}"
+                                                                                                <img src="{{ asset('images/icons/calendar-black.svg') }}"
                                                                                                     title="date" alt=""
                                                                                                     style="padding-top:4px"
                                                                                                     border="0">
@@ -455,17 +456,45 @@
                                                                                             <td width="26"
                                                                                                 style="vertical-align:top">
                                                                                                 @if ($hasLocation)
-                                                                                                <img src="{{ secure_asset('images/icons/location-black.svg') }}" alt="" style="padding-top:4px">
+                                                                                                <img src="{{ asset('images/icons/location-black.svg') }}"
+                                                                                                    alt=""
+                                                                                                    style="padding-top:4px">
                                                                                                 @else
                                                                                                 {{-- <img
                                                                                                     src="https://img.icons8.com/ios-glyphs/30/000000/link--v1.png" />
                                                                                                 --}}
-                                                                                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 172 172" style=" fill:#000000;">
+                                                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                                    x="0px" y="0px"
+                                                                                                    width="30"
+                                                                                                    height="30"
+                                                                                                    viewBox="0 0 172 172"
+                                                                                                    style=" fill:#000000;">
                                                                                                     <g transform="">
-                                                                                                        <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
-                                                                                                            <path d="M0,172v-172h172v172z" fill="none"> </path>
-                                                                                                            <path d="" fill="none">  </path> <path d="" fill="none">
-                                                                                                            </path> <g
+                                                                                                        <g fill="none"
+                                                                                                            fill-rule="nonzero"
+                                                                                                            stroke="none"
+                                                                                                            stroke-width="1"
+                                                                                                            stroke-linecap="butt"
+                                                                                                            stroke-linejoin="miter"
+                                                                                                            stroke-miterlimit="10"
+                                                                                                            stroke-dasharray=""
+                                                                                                            stroke-dashoffset="0"
+                                                                                                            font-family="none"
+                                                                                                            font-weight="none"
+                                                                                                            font-size="none"
+                                                                                                            text-anchor="none"
+                                                                                                            style="mix-blend-mode: normal">
+                                                                                                            <path
+                                                                                                                d="M0,172v-172h172v172z"
+                                                                                                                fill="none">
+                                                                                                            </path>
+                                                                                                            <path d=""
+                                                                                                                fill="none">
+                                                                                                            </path>
+                                                                                                            <path d=""
+                                                                                                                fill="none">
+                                                                                                            </path>
+                                                                                                            <g
                                                                                                                 fill="#000000">
                                                                                                                 <path
                                                                                                                     d="M127.28,13.76c-8.26976,0 -16.04169,3.22231 -21.88969,9.07031l-17.2,17.2c-4.9708,4.9708 -8.04347,11.33125 -8.85531,18.20781c-0.14104,1.21088 -0.215,2.44347 -0.215,3.68187c0,4.70592 1.07903,9.24248 3.05703,13.3636l5.24734,-5.25406c-0.91848,-2.57312 -1.42437,-5.29905 -1.42437,-8.10953c0,-6.4328 2.50701,-12.47419 7.05469,-17.02531l17.2,-17.2c4.55112,-4.54768 10.59251,-7.05469 17.02531,-7.05469c6.4328,0 12.47419,2.50701 17.02531,7.05469c4.55112,4.54768 7.05469,10.59251 7.05469,17.02531c0,6.4328 -2.50701,12.47419 -7.05469,17.02531l-17.2,17.2c-4.55112,4.54768 -10.59251,7.05469 -17.02531,7.05469c-2.81048,0 -5.53641,-0.50589 -8.10953,-1.42437l-5.25406,5.24734c4.12112,1.978 8.65768,3.05703 13.3636,3.05703c8.26976,0 16.04169,-3.22231 21.88969,-9.07031l17.2,-17.2c5.848,-5.848 9.07031,-13.61993 9.07031,-21.88969c0,-8.26976 -3.22231,-16.04169 -9.07031,-21.88969c-5.848,-5.848 -13.61993,-9.07031 -21.88969,-9.07031zM106.57281,61.8864c-0.89371,0.02663 -1.74194,0.40014 -2.365,1.04141l-41.28,41.28c-0.89867,0.86281 -1.26068,2.14404 -0.94641,3.34956c0.31427,1.20552 1.2557,2.14696 2.46122,2.46122c1.20552,0.31427 2.48675,-0.04774 3.34956,-0.94641l41.28,-41.28c1.01742,-0.98897 1.32333,-2.50111 0.77034,-3.80778c-0.55299,-1.30667 -1.85145,-2.13983 -3.26971,-2.098zM61.92,79.12c-8.26976,0 -16.04169,3.22231 -21.88969,9.07031l-17.2,17.2c-5.38016,5.37672 -8.53856,12.38437 -9.00984,19.90765c-0.04128,0.65704 -0.06047,1.31811 -0.06047,1.98203c0,8.26976 3.22231,16.04169 9.07031,21.88969c5.848,5.848 13.61993,9.07031 21.88969,9.07031c8.26976,0 16.04169,-3.22231 21.88969,-9.07031l17.2,-17.2c5.848,-5.848 9.07031,-13.61993 9.07031,-21.88969c0,-4.70592 -1.07903,-9.24248 -3.05703,-13.3636l-5.24734,5.25406c0.91848,2.57312 1.42437,5.29905 1.42437,8.10953c0,6.4328 -2.50701,12.47419 -7.05469,17.02531l-17.2,17.2c-4.55112,4.54768 -10.59251,7.05469 -17.02531,7.05469c-6.4328,0 -12.47419,-2.50701 -17.02531,-7.05469c-4.55112,-4.54768 -7.05469,-10.59251 -7.05469,-17.02531c0,-6.4328 2.50701,-12.47419 7.05469,-17.02531l17.2,-17.2c4.55112,-4.54768 10.59251,-7.05469 17.02531,-7.05469c2.81048,0 5.53641,0.50589 8.10953,1.42437l5.25406,-5.24734c-4.12112,-1.978 -8.65768,-3.05703 -13.3636,-3.05703z">
@@ -490,9 +519,12 @@
                                                                                                                     style="font-weight:normal;margin:4px 0;font-size:17px;line-height:24px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:#1e0a3c;font-weight:normal">
                                                                                                                     @if($hasLocation)
                                                                                                                     {{
-                                                                                                                    Str::before($event->location, ',')}}
+                                                                                                                    Str::before($event->location,
+                                                                                                                    ',')}}
                                                                                                                     @else
-                                                                                                                    {{ $event->link  }}
+                                                                                                                    {{
+                                                                                                                    $event->link
+                                                                                                                    }}
                                                                                                                     @endif
                                                                                                                 </span>
                                                                                                             </td>
@@ -504,12 +536,14 @@
                                                                                                                 bgcolor="white"
                                                                                                                 width="100%"
                                                                                                                 height="22px">
-                                                                                                                <span style="font-weight:normal;margin:4px 0;font-size:15px;line-height:21px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:#6f7287;font-weight:normal">
+                                                                                                                <span
+                                                                                                                    style="font-weight:normal;margin:4px 0;font-size:15px;line-height:21px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:#6f7287;font-weight:normal">
                                                                                                                     @if($hasLocation)
                                                                                                                     {{
-                                                                                                                    Str::after($event->location, ',')}}
+                                                                                                                    Str::after($event->location,
+                                                                                                                    ',')}}
                                                                                                                     @else
-                                                                                                                    
+
                                                                                                                     @endif
                                                                                                                 </span>
                                                                                                             </td>
@@ -764,7 +798,7 @@
 
                                                                                 <div
                                                                                     style="height:25px;margin:0 auto;text-align:center">
-                                                                                    <img src="{{ secure_asset('images/full-logo.svg') }}"
+                                                                                    <img src="{{ asset('images/full-logo.svg') }}"
                                                                                         title="" alt="Eventbrite">
                                                                                 </div>
                                                                             </td>

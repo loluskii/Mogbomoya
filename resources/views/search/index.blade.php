@@ -48,7 +48,7 @@
             <div class="row justify-content-between">
                 <div class="col">
                     {{-- <h5>{{$events->count()}} event(s) found</h5> --}}
-                    {{-- <p> <img src="{{secure_asset('images/icons/location.svg')}}" class="img-fluid"> <small>Lekki,
+                    {{-- <p> <img src="{{asset('images/icons/location.svg')}}" class="img-fluid"> <small>Lekki,
                             Lagos</small> <a href="">Change</a></p> --}}
                 </div>
                 <div class="col">

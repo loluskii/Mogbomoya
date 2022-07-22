@@ -15,11 +15,12 @@
         cursor: text;
         height: calc(1.5em + 1rem + 2px);
     }
-    .select2-container--default .select2-selection--multiple .select2-selection__choice{
-            background-color: #e9e9e9;
-            padding: 2px 5px 3px 5px;
-            border: none;
-        }
+
+    .select2-container--default .select2-selection--multiple .select2-selection__choice {
+        background-color: #e9e9e9;
+        padding: 2px 5px 3px 5px;
+        border: none;
+    }
 
 
     .nav-tabs a.active,
@@ -148,6 +149,7 @@
         transition: .2s ease-in-out all;
         transform: scale(2);
     }
+
     .pac-item {
         padding: 10px;
         font-family: 'Sen', sans-serif;
@@ -190,7 +192,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-3 col-md-3 col-lg-4 col col-3 fixed-top one pl-0 d-md-block d-none d-sm-none">
-            <img src="{{ secure_asset('images/side-bar.svg') }}" alt="">
+            <img src="{{ asset('images/side-bar.svg') }}" alt="">
         </div>
         <div class="col">
             @include('user.partial-nav')
@@ -239,7 +241,7 @@
                                                     class="featured_image">
                                                 <div class="upload">
                                                     <div class="col my-auto text-center">
-                                                        <img src="{{secure_asset('images/icons/Vector.svg')}}"
+                                                        <img src="{{asset('images/icons/Vector.svg')}}"
                                                             class="img-fluid" srcset="">
                                                         <p class="text-cen">Upload Featured Image</p>
                                                     </div>
@@ -368,7 +370,8 @@
                                                     id="categories" multiple>
 
                                                     @foreach ($interests as $interest)
-                                                    <option value="{{ $interest->id }}" data-icon="{{ secure_asset("images/icons/$interest->icon") }}">
+                                                    <option value="{{ $interest->id }}" data-icon="{{ asset("
+                                                        images/icons/$interest->icon") }}">
                                                         {{ $interest->name }}</option>
                                                     @endforeach
                                                 </select>
@@ -479,7 +482,7 @@
                                                 <div class="tier"></div>
                                             </div>
                                             <a onClick=countNumOfTier() class="btn btnSecondary" href="#"
-                                                id="addNewTier"> <img src="{{ secure_asset('images/icons/plus.svg') }}" alt=""
+                                                id="addNewTier"> <img src="{{ asset('images/icons/plus.svg') }}" alt=""
                                                     srcset=""> Add a new
                                                 tier</a>
 
@@ -503,7 +506,7 @@
 @section('script')
 <script src="https://maps.googleapis.com/maps/api/js?key={{ config('app.google_key') }}&libraries=places"></script>
 <script>
-        $('#preview').hide();
+    $('#preview').hide();
         $('.upload').click(function(){ $('.featured_image').trigger('click'); });
         imgInp.onchange = evt => {
             const [file] = imgInp.files

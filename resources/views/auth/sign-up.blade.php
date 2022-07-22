@@ -46,7 +46,7 @@
 <div class="bg-light">
     <div class="row">
         <div class="col-md-4 d-sm-none d-none d-md-block">
-            <a href="/"><img src="{{ secure_asset('images/side.svg') }}" alt="" srcset=""></a>
+            <a href="/"><img src="{{ asset('images/side.svg') }}" alt="" srcset=""></a>
         </div>
         <div class="col-md-7">
             <div class="container p-5 mt-5">
@@ -102,31 +102,38 @@
                         </div>
                         <div class="form-group pb-2">
                             <label for="">password</label>
-                            <input class="form-control form-control-lg" placeholder="**********" id="NewPassword" type="password" name="password" required>
+                            <input class="form-control form-control-lg" placeholder="**********" id="NewPassword"
+                                type="password" name="password" required>
                             @error('password')
                             <b class="text-danger">{{ $message }} </b>
                             @enderror
                             <div class="errorMsg d-none">
                                 <div class="bg-light rounded py-2 pr-2 pl-0 mt-1">
-                                    {{-- <div class="small font-weight-bold text-warning mb-1">Password Requirements</div> --}}
+                                    {{-- <div class="small font-weight-bold text-warning mb-1">Password Requirements
+                                    </div> --}}
                                     <div class="d-flex align-items-start small">
-                                        <span class="pt-1 pr-2"><i id="Length" class="fa fa-times text-danger"></i></span>
+                                        <span class="pt-1 pr-2"><i id="Length"
+                                                class="fa fa-times text-danger"></i></span>
                                         <span>6 - 20 characters long</span>
                                     </div>
                                     <div class="d-flex align-items-start small my-1">
-                                        <span class="pt-1 pr-2"><i id="Uppercase" class="fa fa-times text-danger"></i></span>
+                                        <span class="pt-1 pr-2"><i id="Uppercase"
+                                                class="fa fa-times text-danger"></i></span>
                                         <span>Must contain at least one uppercase letter</span>
                                     </div>
                                     <div class="d-flex align-items-start small">
-                                        <span class="pt-1 pr-2"><i id="Lowercase" class="fa fa-times text-danger"></i></span>
+                                        <span class="pt-1 pr-2"><i id="Lowercase"
+                                                class="fa fa-times text-danger"></i></span>
                                         <span>Must contain at least one lowercase letter</span>
                                     </div>
                                     <div class="d-flex align-items-start small">
-                                        <span class="pt-1 pr-2"><i id="Numbers" class="fa fa-times text-danger"></i></span>
+                                        <span class="pt-1 pr-2"><i id="Numbers"
+                                                class="fa fa-times text-danger"></i></span>
                                         <span>Must contain at least one number</span>
                                     </div>
                                     <div class="d-flex align-items-start small">
-                                        <span class="pt-1 pr-2"><i id="Symbols" class="fa fa-times text-danger"></i></span>
+                                        <span class="pt-1 pr-2"><i id="Symbols"
+                                                class="fa fa-times text-danger"></i></span>
                                         <span>Must contain at least one symbol</span>
                                     </div>
                                 </div>
@@ -149,9 +156,9 @@
                             <p class="text-center text-sm-left">Or continue with:</p>
                             <p class="text-sm-left text-center">
                                 <a href="{{ route('social.oauth', 'google') }}" class="mr-3 mr-sm-2"><img
-                                        src="{{secure_asset('images/icons/google.svg')}}" alt="" srcset=""></a>
+                                        src="{{asset('images/icons/google.svg')}}" alt="" srcset=""></a>
                                 <a href="{{ route('social.oauth', 'facebook') }}" class="mr-3 mr-sm-2"><img
-                                        src="{{secure_asset('images/icons/facebook.svg')}}" alt="" srcset=""></a>
+                                        src="{{asset('images/icons/facebook.svg')}}" alt="" srcset=""></a>
                             </p>
                         </div>
                     </div>

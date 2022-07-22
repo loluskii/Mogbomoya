@@ -105,8 +105,8 @@
             display: bloc;
         }
     }
-    
-    
+
+
 
     @media only screen and (min-width:768px) {
         input.location {
@@ -140,7 +140,8 @@
                     style="font-size: 25px; color: #008A69;"></i></span>
         </form>
         {{-- <input type="text" name="location" class="home-location" id=""> --}}
-        <div class="row flex-nowrap overflow-auto hideScrollbar scroll-mobile d-sm-block d-md-none" style="overflow-x: hidden;" data-aos="fade-left" data-aos-duration="2500">
+        <div class="row flex-nowrap overflow-auto hideScrollbar scroll-mobile d-sm-block d-md-none"
+            style="overflow-x: hidden;" data-aos="fade-left" data-aos-duration="2500">
             <div class="col-auto pr-0">
                 <div class="nav-pills">
                     <li class="nav-item" style="list-style-type: none">
@@ -157,9 +158,12 @@
                         @if(request()->query('category'))
                         <a href="{{route('index.view',['category' => encrypt($interest->id)])}}"
                             class="nav-link mx-1 my-1 shadow-sm ls-profile-tab  {{ decrypt(request()->query('category')) == $interest->id ? 'active' : 'bg-white'}}">
-                            <img src="{{secure_asset("images/icons/$interest->icon")}}" alt="" srcset=""> {{$interest->name}}</a>
+                            <img src="{{asset("images/icons/$interest->icon")}}" alt="" srcset="">
+                            {{$interest->name}}</a>
                         @else
-                        <a href="{{route('index.view',['category' => encrypt($interest->id)])}}" class="nav-link mx-1 my-1 bg-white shadow-sm ls-profile-tab"> <img src="{{secure_asset("images/icons/$interest->icon")}}" alt="" srcset=""> {{$interest->name}}</a>
+                        <a href="{{route('index.view',['category' => encrypt($interest->id)])}}"
+                            class="nav-link mx-1 my-1 bg-white shadow-sm ls-profile-tab"> <img src="{{asset("
+                                images/icons/$interest->icon")}}" alt="" srcset=""> {{$interest->name}}</a>
                         @endif
                     </li>
                 </div>
@@ -179,10 +183,11 @@
                     @if(request()->query('category'))
                     <a href="{{route('index.view',['category' => encrypt($interest->id)])}}"
                         class="nav-link mx-1 my-1 shadow-sm ls-profile-tab  {{ decrypt(request()->query('category')) == $interest->id ? 'active' : 'bg-white'}}">
-                        <img src="{{secure_asset("images/icons/$interest->icon")}}" alt="" srcset=""> {{$interest->name}}</a>
+                        <img src="{{asset("images/icons/$interest->icon")}}" alt="" srcset=""> {{$interest->name}}</a>
                     @else
                     <a href="{{route('index.view',['category' => encrypt($interest->id)])}}"
-                        class="nav-link mx-1 my-1 bg-white shadow-sm ls-profile-tab"> <img src="{{secure_asset("images/icons/$interest->icon")}}" alt="" srcset=""> {{$interest->name}}</a>
+                        class="nav-link mx-1 my-1 bg-white shadow-sm ls-profile-tab"> <img src="{{asset("
+                            images/icons/$interest->icon")}}" alt="" srcset=""> {{$interest->name}}</a>
                     @endif
                 </li>
                 @endforeach
@@ -198,14 +203,14 @@
                             Event' : 'Paid Event' }}</span>
                         <span class="icon">
                             {{-- <a data-toggle="modal" data-target="#exampleModal" class="btn save  shadow">
-                                <img src="{{ secure_asset('images/share.svg') }}" srcset="">
+                                <img src="{{ asset('images/share.svg') }}" srcset="">
                             </a>
                             <a data-toggle="modal" data-target="#exampleModal" class="btn save  shadow">
-                                <img src="{{ secure_asset('images/save.svg') }}" srcset="">
+                                <img src="{{ asset('images/save.svg') }}" srcset="">
                             </a> --}}
                             <a href="#" class="btn save shadow" role="button" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
-                                <img src="{{ secure_asset('images/save.svg') }}" srcset="">
+                                <img src="{{ asset('images/save.svg') }}" srcset="">
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 @if($collections->count() > 0)
@@ -224,7 +229,7 @@
                                 @endif
                             </div>
                             <a data-toggle="modal" data-target="#exampleModal" class="btn border-0 save shadow">
-                                <img src="{{ secure_asset('images/share.svg') }}" srcset="">
+                                <img src="{{ asset('images/share.svg') }}" srcset="">
                             </a>
                         </span>
                         <img src="{{$event->featured_image}}" class="card-img-top" alt="{{$event->name}}">

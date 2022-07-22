@@ -1,69 +1,70 @@
 @extends('events.main')
 @section('css')
-    <style>
-        body {
-            margin: 0;
-            overflow-y: hidden;
-        }
+<style>
+    body {
+        margin: 0;
+        overflow-y: hidden;
+    }
 
-        label {
-            font-size: 11px;
-            font-weight: 700;
-            color: grey;
-            text-transform: uppercase;
-        }
-        .register {
-            background-color: #008A69;
-            color: #fff;
-            padding: 8px 32px;
-        }
+    label {
+        font-size: 11px;
+        font-weight: 700;
+        color: grey;
+        text-transform: uppercase;
+    }
+
+    .register {
+        background-color: #008A69;
+        color: #fff;
+        padding: 8px 32px;
+    }
 
 
-        .left {
-            z-index: 1;
-            overflow-x: hidden;
-            overflow-y: hidden;
-        }
+    .left {
+        z-index: 1;
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
 
-        p a{
-            text-decoration: none;
-            color:#008A69;
-            font-weight: bold;
-        }
-        a:hover{
-            text-decoration: none;
-        }
+    p a {
+        text-decoration: none;
+        color: #008A69;
+        font-weight: bold;
+    }
 
-    </style>
+    a:hover {
+        text-decoration: none;
+    }
+</style>
 @endsection
 
 <div class="bg-light">
     <div class="row">
         <div class="col-md-4 d-sm-none d-none d-md-block" style="height: 100vh">
-            <a href="/"><img src="{{ secure_asset('images/side.svg') }}" alt="" srcset=""></a>
+            <a href="/"><img src="{{ asset('images/side.svg') }}" alt="" srcset=""></a>
         </div>
         <div class="col-md-7">
             <div class="container p-5 mt-5">
                 <h3 style="font-weight: bold">Welcome back!👋🏾</h3>
                 <p class="text-muted">Hey there! We've missed you.</p>
-                
-                <form action="{{route('login')}}" method = "POST" class="pt-4">
-                @csrf
+
+                <form action="{{route('login')}}" method="POST" class="pt-4">
+                    @csrf
                     <div class="col-sm-12 col-md-9 px-0">
                         @if (session('loginMsg'))
-                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
 
-                                <strong>{{ session('loginMsg') }}</strong>
+                            <strong>{{ session('loginMsg') }}</strong>
 
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
                         @endif
                         @error('username')
-                            <span class="invalid-feedback" role="alert">
-                                <b>{{$message}}</b>
-                            </span>
+                        <span class="invalid-feedback" role="alert">
+                            <b>{{$message}}</b>
+                        </span>
                         @enderror
                         <div class="form-group pb-3">
                             <label for="">username/email</label>
@@ -75,26 +76,33 @@
                         </div>
                         <div class="form-row justify-content-between pb-4">
                             <div class="custom-control custom-checkbox my-1 mr-sm-2 ml-1">
-                                <input type="checkbox" name="remember" class="custom-control-input" id="customControlInline">
+                                <input type="checkbox" name="remember" class="custom-control-input"
+                                    id="customControlInline">
                                 <label class="custom-control-label pt-1" for="customControlInline">Remember me</label>
-                              </div>
+                            </div>
                             <div class="custom-control custom-checkbox my-1 mr-sm-2">
                                 <a href="{{route('password.request')}}">Forgot Password?</a>
                             </div>
                         </div>
                         <div class="py-4">
                             <button type="submit" class="btn btnPrimary d-sm-none d-none d-md-block">Continue</button>
-                            <button type="submit" class="btn btn-block btnPrimary d-sm-block  d-md-none">Continue</button>
+                            <button type="submit"
+                                class="btn btn-block btnPrimary d-sm-block  d-md-none">Continue</button>
                         </div>
                         <div>
                             <p class="text-center text-sm-left">Or continue with:</p>
                             <p class="text-sm-left text-center">
-                                {{-- <a href="" class="mr-3 mr-sm-2"><img src="{{secure_asset('images/icons/apple.svg')}}" alt="" srcset=""></a> --}}
-                                <a href="{{ route('social.oauth', 'google') }}" class="mr-3 mr-sm-2"><img src="{{secure_asset('images/icons/google.svg')}}" alt="" srcset=""></a>
-                                <a href="{{ route('social.oauth', 'facebook') }}" class="mr-3 mr-sm-2"><img src="{{secure_asset('images/icons/facebook.svg')}}" alt="" srcset=""></a>
-                                {{-- <a href="" class="mr-3 mr-sm-2"><img src="{{secure_asset('images/icons/twitter.svg')}}" alt="" srcset=""></a> --}}
+                                {{-- <a href="" class="mr-3 mr-sm-2"><img src="{{asset('images/icons/apple.svg')}}"
+                                        alt="" srcset=""></a> --}}
+                                <a href="{{ route('social.oauth', 'google') }}" class="mr-3 mr-sm-2"><img
+                                        src="{{asset('images/icons/google.svg')}}" alt="" srcset=""></a>
+                                <a href="{{ route('social.oauth', 'facebook') }}" class="mr-3 mr-sm-2"><img
+                                        src="{{asset('images/icons/facebook.svg')}}" alt="" srcset=""></a>
+                                {{-- <a href="" class="mr-3 mr-sm-2"><img src="{{asset('images/icons/twitter.svg')}}"
+                                        alt="" srcset=""></a> --}}
                             </p>
-                            <p class="text-sm-left text-center">Dont't have an account? <a href="/sign-up">Sign up</a></p>
+                            <p class="text-sm-left text-center">Dont't have an account? <a href="/sign-up">Sign up</a>
+                            </p>
                         </div>
                     </div>
                 </form>
