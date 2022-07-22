@@ -23,7 +23,7 @@
         {{-- <a class="list-group-item list-group-item-action p-3" href="#!">Talk to us</a> --}}
         @if(auth()->user()->password != '')
         {{-- request password modal --}}
-            <a class="list-group-item list-group-item-action p-3"  id="inputPassword" href="#">Deactivate account</a> 
+            <a class="list-group-item list-group-item-action p-3" data-toggle="modal"  id="inputPassword" data-target="#deactivateModal">Deactivate account</a> 
         @else
             <a class="list-group-item list-group-item-action p-3" onclick="return confirm('Are you sure you want to deactivate this account?') ? initRoute() : '' "  href="#">Deactivate account</a> 
         @endif
@@ -67,7 +67,7 @@
                             <img src="{{secure_asset('images/icons/logout.svg')}}" class="pr-2" alt="" srcset=""> Logout
                         </a>
                 
-                        <form id="status-form" action="{{ route('user.deactivate') }}" method="POST" style="display: none;">
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
                         </form>
                     </div>

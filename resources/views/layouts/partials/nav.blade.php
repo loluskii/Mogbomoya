@@ -1,7 +1,7 @@
 <style>
   @media (min-width: 1023px) {
     form input[type=search].form-control {
-      min-width: 3 0vw;
+      min-width: 35vw;
       margin-left: calc(3 * .5rem);
     }
   }
