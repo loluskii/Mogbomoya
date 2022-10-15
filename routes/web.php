@@ -92,7 +92,7 @@ Route::middleware('guest')->group(function () {
     })->name('password.reset');
 
     Route::get('/auth/reset-password', function () {
-        return view('auth.reset-password');
+        return view('auth.rest-password');
     })->name('password.request');;
 
     Route::post('reset-password', [ForgotPasswordController::class, 'sendEmail'])->name('user.reset.password');

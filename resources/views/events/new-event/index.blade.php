@@ -370,8 +370,7 @@
                                                     id="categories" multiple>
 
                                                     @foreach ($interests as $interest)
-                                                    <option value="{{ $interest->id }}" data-icon="{{ asset("
-                                                        images/icons/$interest->icon") }}">
+                                                    <option value="{{ $interest->id }}" data-icon="{{ asset("images/icons/$interest->icon") }}">
                                                         {{ $interest->name }}</option>
                                                     @endforeach
                                                 </select>
