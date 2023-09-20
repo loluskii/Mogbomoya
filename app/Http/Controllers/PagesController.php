@@ -10,21 +10,16 @@ use App\Services\Event\EventQueries;
 class PagesController extends Controller
 {
     public function index(){
-        try{
-            $interests = Interest::select('id','name', 'icon')->get();
-            $events = (new EventQueries())->withSimplePaginateAndParams(12);
-            $collections = (new CollectionQueries())->all();
+        $interests = Interest::select('id','name', 'icon')->get();
+        $events = (new EventQueries())->withSimplePaginateAndParams(12);
+        $collections = (new CollectionQueries())->all();
 
-            // $events = (new EventQueries())->withPagination(12);
-            if(Auth::check()){
-                return view('welcome')->with('interests', $interests)->with('events', $events)->with('collections', $collections);
-            }else{
-                return view('welcome')->with('interests', $interests)->with('events', $events)->with('collections', $collections);
-            }
-        }catch(\Exception $e){
-            return redirect()->route('index.view');
+        // $events = (new EventQueries())->withPagination(12);
+        if(Auth::check()){
+            return view('welcome')->with('interests', $interests)->with('events', $events)->with('collections', $collections);
+        }else{
+            return view('welcome')->with('interests', $interests)->with('events', $events)->with('collections', $collections);
         }
-        
     }
 
 
