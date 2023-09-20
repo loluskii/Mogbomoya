@@ -249,5 +249,5 @@
 @endsection
 
 @section('script')
-<script src="{{asset('js/main.js')}}"></script>
+<script src="{{secure_asset('js/main.js')}}"></script>
 @endsection

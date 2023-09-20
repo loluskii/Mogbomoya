@@ -151,7 +151,7 @@
 @section('content')
 
 <section id="sidebar">
-  <img src="{{ asset('images/interests-sidenav.svg') }}" style="width:100%">
+  <img src="{{ secure_asset('images/interests-sidenav.svg') }}" style="width:100%">
 </section>
 <section id="products">
   @include('user.partial-nav')
@@ -168,7 +168,8 @@
               <input type="checkbox" value="{{encrypt($interest->id)}}" name="interests[]">
               <span class="icon"></span>
               <div class="checkbox-content">
-                <img class="mt-2 img img-fluid" src="{{asset("images/icons/$interest->icon")}}" style="width:45px;
+                <img class="mt-2 img img-fluid" src="{{secure_asset(" images/icons/$interest->icon")}}"
+                style="width:45px;
                 height: 45px;">
                 <p class="pt-2" style="font-size: 13px;">{{$interest->name}}</p>
               </div>

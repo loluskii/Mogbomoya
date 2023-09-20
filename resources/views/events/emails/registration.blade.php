@@ -48,7 +48,7 @@
 
                                                                                 <div
                                                                                     style="height:25px;margin:0 auto;text-align:center">
-                                                                                    <img src="{{ asset('images/full-logo.svg') }}"
+                                                                                    <img src="{{ secure_asset('images/full-logo.svg') }}"
                                                                                         title="" alt="Eventbrite">
                                                                                 </div>
 
@@ -307,7 +307,7 @@
                                                                                         <tr>
                                                                                             <td width="26"
                                                                                                 style="vertical-align:top">
-                                                                                                <img src="{{ asset('images/icons/ticket-black.svg') }}"
+                                                                                                <img src="{{ secure_asset('images/icons/ticket-black.svg') }}"
                                                                                                     title="date" alt=""
                                                                                                     style="padding-top:4px"
                                                                                                     border="0">
@@ -390,7 +390,7 @@
                                                                                         <tr>
                                                                                             <td width="26"
                                                                                                 style="vertical-align:top">
-                                                                                                <img src="{{ asset('images/icons/calendar-black.svg') }}"
+                                                                                                <img src="{{ secure_asset('images/icons/calendar-black.svg') }}"
                                                                                                     title="date" alt=""
                                                                                                     style="padding-top:4px"
                                                                                                     border="0">
@@ -456,7 +456,7 @@
                                                                                             <td width="26"
                                                                                                 style="vertical-align:top">
                                                                                                 @if ($hasLocation)
-                                                                                                <img src="{{ asset('images/icons/location-black.svg') }}"
+                                                                                                <img src="{{ secure_asset('images/icons/location-black.svg') }}"
                                                                                                     alt=""
                                                                                                     style="padding-top:4px">
                                                                                                 @else
@@ -798,7 +798,7 @@
 
                                                                                 <div
                                                                                     style="height:25px;margin:0 auto;text-align:center">
-                                                                                    <img src="{{ asset('images/full-logo.svg') }}"
+                                                                                    <img src="{{ secure_asset('images/full-logo.svg') }}"
                                                                                         title="" alt="Eventbrite">
                                                                                 </div>
                                                                             </td>

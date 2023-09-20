@@ -61,7 +61,7 @@
                         <div class="ml-3">
                             <a href="#" class="btn save shadow-sm" role="button" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
-                                <img src="{{ asset('images/save.svg') }}" style="border-radius: 0" srcset="">
+                                <img src="{{ secure_asset('images/save.svg') }}" style="border-radius: 0" srcset="">
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 @if($collections->count() > 0)
@@ -80,7 +80,7 @@
                                 @endif
                             </div>
                             <a data-toggle="modal" data-target="#exampleModal" class="btn save shadow-sm">
-                                <img src="{{ asset('images/share.svg') }}" srcset="">
+                                <img src="{{ secure_asset('images/share.svg') }}" srcset="">
                             </a>
                             @include('user.share-modal')
                             {{-- <span class="mr-3">
@@ -111,7 +111,8 @@
                     <div class="container pl-0 mt-3 py-3">
                         <div class="pb-2">
                             <p class="mb-1" style="font-weight: bold">
-                                <img class="mr-2 pr-1" src="{{ asset('images/icons/calendar-black.svg') }}" srcset="">
+                                <img class="mr-2 pr-1" src="{{ secure_asset('images/icons/calendar-black.svg') }}"
+                                    srcset="">
                                 {{ \Carbon\Carbon::parse($event->date)->toFormattedDateString() }}
                             </p>
                             <p class="ml-4 pl-3 mb-1">{{ \Carbon\Carbon::parse($event->time)->toTimeString() }} WAT</p>
@@ -119,14 +120,14 @@
                         </div>
                         {{-- <div class="py-1">
                             <p class="mb-1" style="font-weight: bold"><img class="mr-3"
-                                    src="{{ asset('images/icons/location-black.svg') }}" srcset="">
+                                    src="{{ secure_asset('images/icons/location-black.svg') }}" srcset="">
                                 {{ $event->location }}
                             </p>
                         </div> --}}
                         @if ($event->location)
                         <div class="py-1">
                             <p class="mb-1" style="font-weight: bold"><img class="mr-3"
-                                    src="{{ asset('images/icons/location-black.svg') }}" srcset="">
+                                    src="{{ secure_asset('images/icons/location-black.svg') }}" srcset="">
                                 {{ Str::before($event->location, ',') }}
                             </p>
                             {{-- <p class="ml-4 pl-3">Marina Road, Lagos Island, Lagos State, Nigeria</p> --}}
@@ -143,7 +144,7 @@
                         @endif
                         <div class="py-1">
                             <p class="mb-1" style="font-weight: bold"><img class="mr-3"
-                                    src="{{ asset('images/icons/ticket-black.svg') }}" style="border-radius: 0">
+                                    src="{{ secure_asset('images/icons/ticket-black.svg') }}" style="border-radius: 0">
                                 {{ $event->isPaid == 0 ? 'Free Event' : 'Paid Event' }}
                             </p>
                             <p class="pl-4 ml-3">Registration is required</p>
@@ -163,10 +164,10 @@
                         @endif
                         <div class="row justify-content-end">
                             {{-- <div class="ml-3">
-                                <img src="{{ asset('images/icons/users/user-1.svg') }}" alt="" srcset="">
-                                <img src="{{ asset('images/icons/users/user-2.svg') }}" alt="" srcset="">
-                                <img src="{{ asset('images/icons/users/user-3.svg') }}" alt="" srcset="">
-                                <img src="{{ asset('images/icons/users/Group.svg') }}" alt="" srcset="">
+                                <img src="{{ secure_asset('images/icons/users/user-1.svg') }}" alt="" srcset="">
+                                <img src="{{ secure_asset('images/icons/users/user-2.svg') }}" alt="" srcset="">
+                                <img src="{{ secure_asset('images/icons/users/user-3.svg') }}" alt="" srcset="">
+                                <img src="{{ secure_asset('images/icons/users/Group.svg') }}" alt="" srcset="">
                             </div> --}}
                             <div class="ml-3" data-toggle="modal" data-target="#inviteModal">
                                 <button class="ml-auto btn follow">Invite a Friend</button>

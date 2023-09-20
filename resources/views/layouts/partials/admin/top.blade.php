@@ -1,6 +1,6 @@
 <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
     <a class="col-md-3 col-lg-2 mr-0 px-3" style="padding-top: .75rem; padding-bottom: .75rem; " href="#">
-        <img src="{{ asset('images/full-logo-white.svg') }}" alt="" srcset="">
+        <img src="{{ secure_asset('images/full-logo-white.svg') }}" alt="" srcset="">
     </a>
     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse"
         data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">

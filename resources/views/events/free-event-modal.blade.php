@@ -64,7 +64,8 @@
                         <div class="col-md-6 col-sm-12 bg-light px-0">
                             <div class="modal-header flex-column pt-0 pr-0 d-none d-md-block"
                                 style="background-image: url({{$event->featured_image}}); background-position: center center; height: 250px;">
-                                {{-- <img src="{{asset('images/info-image.svg')}}" class="img-fluid" style=""> --}}
+                                {{-- <img src="{{secure_asset('images/info-image.svg')}}" class="img-fluid" style="">
+                                --}}
                             </div>
                             <div class="modal-body">
                                 <div class="container-fluid">

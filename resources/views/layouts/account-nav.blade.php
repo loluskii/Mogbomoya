@@ -9,10 +9,10 @@
     <meta content="Admin Dashboard" name="description">
     <meta content="Themesbrand" name="author">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="shortcut icon" href="{{ asset('/images/mobile/logo.png') }}">
+    <link rel="shortcut icon" href="{{ secure_asset('/images/mobile/logo.png') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
         integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ secure_asset('css/app.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sen:wght@400;700;800&display=swap" rel="stylesheet">
@@ -134,8 +134,8 @@
     @auth
     <nav class="slide-content p-3">
         <div class="list-group list-group-flush mt-5 pt-2 justify-content-center">
-            <a href="/" class="pb-3"><img src="{{ asset('images/Mogbomoya _White).png')}}" class="img-fluid text-center"
-                    style="height: 150px" srcset=""></a>
+            <a href="/" class="pb-3"><img src="{{ secure_asset('images/Mogbomoya _White).png')}}"
+                    class="img-fluid text-center" style="height: 150px" srcset=""></a>
             <a class="list-group-item list-group-item-action bg-transparent text-white"
                 href="{{ route('event.create') }}">Create Event</a>
             <a class="list-group-item list-group-item-action bg-transparent text-white"
@@ -167,8 +167,8 @@
     @guest
     <nav class="slide-content p-3">
         <div class="list-group list-group-flush mt-5 pt-2 justify-content-center">
-            <a href="/" class="pb-3"><img src="{{ asset('images/Mogbomoya _White).png')}}" class="img-fluid text-center"
-                    style="height: 150px" srcset=""></a>
+            <a href="/" class="pb-3"><img src="{{ secure_asset('images/Mogbomoya _White).png')}}"
+                    class="img-fluid text-center" style="height: 150px" srcset=""></a>
             <a class="list-group-item list-group-item-action bg-transparent text-white"
                 href="{{ route('login.view') }}">Sign In</a>
             <a class="list-group-item list-group-item-action bg-transparent text-white"
@@ -199,16 +199,17 @@
                     <li class="nav-item dropdown pt-2">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img src="{{ asset('images/icons/user-image.svg') }}" alt="" srcset="">
+                            <img src="{{ secure_asset('images/icons/user-image.svg') }}" alt="" srcset="">
                             Appleseed John
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item py-3" href="#">Interests</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item py-3" href="#"><img src="{{ asset('images/icons/account.svg') }}"
-                                    class="px-2" alt="" srcset=""> Account Settings</a>
+                            <a class="dropdown-item py-3" href="#"><img
+                                    src="{{ secure_asset('images/icons/account.svg') }}" class="px-2" alt="" srcset="">
+                                Account Settings</a>
                             <a class="dropdown-item py-3" href="{{ route('logout') }}"><img
-                                    src="{{ asset('images/icons/logout.svg') }}" class="pr-2" alt="" srcset="">
+                                    src="{{ secure_asset('images/icons/logout.svg') }}" class="pr-2" alt="" srcset="">
                                 Logout</a>
                         </div>
                     </li>

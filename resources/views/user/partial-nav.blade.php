@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light">
     <a class="navbar-brand d-md-none d-sm-block" href="/">
-        <img src="{{ asset('images/logo.png') }}" height="58" alt="">
+        <img src="{{ secure_asset('images/logo.png') }}" height="58" alt="">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,13 +24,13 @@
                     {{-- <a class="dropdown-item py-3" href="#">Interests</a> --}}
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item py-3" href="{{ route('user.edit') }}"><img
-                            src="{{ asset('images/icons/account.svg') }}" class="px-2" alt="" srcset="">
+                            src="{{ secure_asset('images/icons/account.svg') }}" class="px-2" alt="" srcset="">
                         Account Settings
                     </a>
 
                     <a class="dropdown-item py-3" href="#"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                        <img src="{{ asset('images/icons/logout.svg') }}" class="pr-2" alt="" srcset=""> Logout
+                        <img src="{{ secure_asset('images/icons/logout.svg') }}" class="pr-2" alt="" srcset=""> Logout
                     </a>
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

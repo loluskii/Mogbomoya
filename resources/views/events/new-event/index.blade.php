@@ -192,7 +192,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-3 col-md-3 col-lg-4 col col-3 fixed-top one pl-0 d-md-block d-none d-sm-none">
-            <img src="{{ asset('images/side-bar.svg') }}" alt="">
+            <img src="{{ secure_asset('images/side-bar.svg') }}" alt="">
         </div>
         <div class="col">
             @include('user.partial-nav')
@@ -241,7 +241,7 @@
                                                     class="featured_image">
                                                 <div class="upload">
                                                     <div class="col my-auto text-center">
-                                                        <img src="{{asset('images/icons/Vector.svg')}}"
+                                                        <img src="{{secure_asset('images/icons/Vector.svg')}}"
                                                             class="img-fluid" srcset="">
                                                         <p class="text-cen">Upload Featured Image</p>
                                                     </div>
@@ -370,7 +370,8 @@
                                                     id="categories" multiple>
 
                                                     @foreach ($interests as $interest)
-                                                    <option value="{{ $interest->id }}" data-icon="{{ asset("images/icons/$interest->icon") }}">
+                                                    <option value="{{ $interest->id }}" data-icon="{{ secure_asset("
+                                                        images/icons/$interest->icon") }}">
                                                         {{ $interest->name }}</option>
                                                     @endforeach
                                                 </select>
@@ -481,8 +482,8 @@
                                                 <div class="tier"></div>
                                             </div>
                                             <a onClick=countNumOfTier() class="btn btnSecondary" href="#"
-                                                id="addNewTier"> <img src="{{ asset('images/icons/plus.svg') }}" alt=""
-                                                    srcset=""> Add a new
+                                                id="addNewTier"> <img src="{{ secure_asset('images/icons/plus.svg') }}"
+                                                    alt="" srcset=""> Add a new
                                                 tier</a>
 
                                         </div>

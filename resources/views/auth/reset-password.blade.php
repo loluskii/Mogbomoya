@@ -57,7 +57,7 @@
 <div class="bg-light">
     <div class="row">
         <div class="col-md-5 d-sm-none d-none d-md-block">
-            <img src="{{ asset('images/side.svg') }}" alt="" srcset="">
+            <img src="{{ secure_asset('images/side.svg') }}" alt="" srcset="">
         </div>
         <div class="col-md-6">
             <div class="container p-5 mt-5">

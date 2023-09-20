@@ -158,11 +158,11 @@
                         @if(request()->query('category'))
                         <a href="{{route('index.view',['category' => encrypt($interest->id)])}}"
                             class="nav-link mx-1 my-1 shadow-sm ls-profile-tab  {{ decrypt(request()->query('category')) == $interest->id ? 'active' : 'bg-white'}}">
-                            <img src="{{asset("images/icons/$interest->icon")}}" alt="" srcset="">
+                            <img src="{{secure_asset(" images/icons/$interest->icon")}}" alt="" srcset="">
                             {{$interest->name}}</a>
                         @else
                         <a href="{{route('index.view',['category' => encrypt($interest->id)])}}"
-                            class="nav-link mx-1 my-1 bg-white shadow-sm ls-profile-tab"> <img src="{{asset("
+                            class="nav-link mx-1 my-1 bg-white shadow-sm ls-profile-tab"> <img src="{{secure_asset("
                                 images/icons/$interest->icon")}}" alt="" srcset=""> {{$interest->name}}</a>
                         @endif
                     </li>
@@ -183,10 +183,12 @@
                     @if(request()->query('category'))
                     <a href="{{route('index.view',['category' => encrypt($interest->id)])}}"
                         class="nav-link mx-1 my-1 shadow-sm ls-profile-tab  {{ decrypt(request()->query('category')) == $interest->id ? 'active' : 'bg-white'}}">
-                        <img src="{{asset("images/icons/$interest->icon")}}" alt="" srcset=""> {{$interest->name}}</a>
+                        <img src="{{secure_asset(" images/icons/$interest->icon")}}" alt="" srcset="">
+                        {{$interest->name}}</a>
                     @else
                     <a href="{{route('index.view',['category' => encrypt($interest->id)])}}"
-                        class="nav-link mx-1 my-1 bg-white shadow-sm ls-profile-tab"> <img src="{{asset("images/icons/$interest->icon")}}" alt="" srcset=""> {{$interest->name}}</a>
+                        class="nav-link mx-1 my-1 bg-white shadow-sm ls-profile-tab"> <img src="{{secure_asset("
+                            images/icons/$interest->icon")}}" alt="" srcset=""> {{$interest->name}}</a>
                     @endif
                 </li>
                 @endforeach
@@ -202,14 +204,14 @@
                             Event' : 'Paid Event' }}</span>
                         <span class="icon">
                             {{-- <a data-toggle="modal" data-target="#exampleModal" class="btn save  shadow">
-                                <img src="{{ asset('images/share.svg') }}" srcset="">
+                                <img src="{{ secure_asset('images/share.svg') }}" srcset="">
                             </a>
                             <a data-toggle="modal" data-target="#exampleModal" class="btn save  shadow">
-                                <img src="{{ asset('images/save.svg') }}" srcset="">
+                                <img src="{{ secure_asset('images/save.svg') }}" srcset="">
                             </a> --}}
                             <a href="#" class="btn save shadow" role="button" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
-                                <img src="{{ asset('images/save.svg') }}" srcset="">
+                                <img src="{{ secure_asset('images/save.svg') }}" srcset="">
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 @if($collections->count() > 0)
@@ -228,7 +230,7 @@
                                 @endif
                             </div>
                             <a data-toggle="modal" data-target="#exampleModal" class="btn border-0 save shadow">
-                                <img src="{{ asset('images/share.svg') }}" srcset="">
+                                <img src="{{ secure_asset('images/share.svg') }}" srcset="">
                             </a>
                         </span>
                         <img src="{{$event->featured_image}}" class="card-img-top" alt="{{$event->name}}">

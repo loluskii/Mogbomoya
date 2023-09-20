@@ -24,10 +24,10 @@
 @guest
 <nav class="navbar navbar-expand-lg navbar-light bg-white px-sm-5 px-2">
   <a class="navbar-brand d-none d-md-block" href="/">
-    <img src="{{ asset('images/logo.png') }}" height="58" alt="">
+    <img src="{{ secure_asset('images/logo.png') }}" height="58" alt="">
   </a>
   <a class="navbar-brand d-sm-block d-md-none mr-0" href="/">
-    <img src="{{ asset('images/logo-colored.png') }}" height="58" alt="">
+    <img src="{{ secure_asset('images/logo-colored.png') }}" height="58" alt="">
   </a>
   <form action="{{ route('search') }}" method="GET" class="form-inline my-2">
     <input name="search" class="form-control bg-light" type="search" placeholder="Find Events" aria-label="Search"
@@ -53,11 +53,11 @@
       </li>
       <li class="nav-item mr-4">
         <a class="nav-link " href="{{ route('event.create') }}" style="color: #008A69;"> <img
-            src="{{ asset('images/icons/plus.svg') }}" alt="" srcset=""> Create Event</a>
+            src="{{ secure_asset('images/icons/plus.svg') }}" alt="" srcset=""> Create Event</a>
       </li>
       <li class="nav-item">
         <a class="nav-link " href="{{ route('events.near') }}" style="color: #D60B7B; font-weight: bold"> <img
-            src="{{ asset('images/icons/location.svg') }}" alt="" srcset=""> Find events near me</a>
+            src="{{ secure_asset('images/icons/location.svg') }}" alt="" srcset=""> Find events near me</a>
       </li>
     </ul>
   </div>
@@ -67,10 +67,10 @@
 @auth
 <nav class="navbar navbar-expand-lg navbar-light bg-white px-sm-3 px-2">
   <a class="navbar-brand d-none d-md-block" href="/">
-    <img src="{{ asset('images/logo.png') }}" height="58" alt="">
+    <img src="{{ secure_asset('images/logo.png') }}" height="58" alt="">
   </a>
   <a class="navbar-brand d-sm-block d-md-none mr-0" href="/">
-    <img src="{{ asset('images/logo-colored.png') }}" height="58" alt="">
+    <img src="{{ secure_asset('images/logo-colored.png') }}" height="58" alt="">
   </a>
   <form action="{{ route('search') }}" method="GET" class="form-inline my-2">
     <input name="search" class="form-control mr-sm-2 bg-light" type="search" placeholder="Find Events"
@@ -89,7 +89,7 @@
       <li class="nav-item mr-2">
         <div class="text-center">
           <a class="nav-link " href="{{ route('events.near') }}">
-            <p class="mb-0"><img src="{{ asset('images/icons/location.svg') }}" alt="" srcset=""></p>
+            <p class="mb-0"><img src="{{ secure_asset('images/icons/location.svg') }}" alt="" srcset=""></p>
             <p style="color: #D60B7B;">Find events near me</p>
           </a>
         </div>
@@ -97,7 +97,7 @@
       <li class="nav-item mr-4">
         <div class="text-center">
           <a href="{{ route('event.create') }}" class="nav-link">
-            <p class="mb-0"><img src="{{ asset('images/icons/plus.svg') }}" srcset=""></p>
+            <p class="mb-0"><img src="{{ secure_asset('images/icons/plus.svg') }}" srcset=""></p>
             <p style="color: #008A69;">Create Event</p>
           </a>
         </div>
@@ -105,7 +105,7 @@
       <li class="nav-item mr-4">
         <div class="text-center">
           <a href="{{ route('user.events') }}" class="nav-link">
-            <p class="mb-0"><img src="{{ asset('images/icons/ticket-black.svg') }}" alt="" srcset="">
+            <p class="mb-0"><img src="{{ secure_asset('images/icons/ticket-black.svg') }}" alt="" srcset="">
             </p>
             <p>My Events</p>
           </a>
@@ -114,7 +114,7 @@
       <li class="nav-item mr-4">
         <div class="text-center">
           <a href="{{ route('user.collections') }}" class="nav-link">
-            <p class="mb-0"><img src="{{ asset('images/icons/bookmarks.svg') }}" alt="" srcset="">
+            <p class="mb-0"><img src="{{ secure_asset('images/icons/bookmarks.svg') }}" alt="" srcset="">
             </p>
             <p>Bookmarks</p>
           </a>
@@ -130,11 +130,11 @@
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <a class="dropdown-item py-3" href="{{ route('user.edit') }}"><img
-              src="{{ asset('images/icons/account.svg') }}" class="px-2" alt="" srcset=""> Account
+              src="{{ secure_asset('images/icons/account.svg') }}" class="px-2" alt="" srcset=""> Account
             Settings</a>
           <a class="dropdown-item py-3" href="#"
             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-            <img src="{{ asset('images/icons/logout.svg') }}" class="pr-2" alt="" srcset=""> Logout
+            <img src="{{ secure_asset('images/icons/logout.svg') }}" class="pr-2" alt="" srcset=""> Logout
           </a>
 
           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -184,10 +184,10 @@
 @guest
 <nav class="navbar navbar-expand-lg navbar-light bg-white px-sm-5 px-2">
   <a class="navbar-brand d-none d-md-block" href="/">
-    <img src="{{ asset('images/logo.png') }}" height="58" alt="">
+    <img src="{{ secure_asset('images/logo.png') }}" height="58" alt="">
   </a>
   <a class="navbar-brand d-sm-block d-md-none mr-0" href="/">
-    <img src="{{ asset('images/logo-colored.png') }}" height="58" alt="">
+    <img src="{{ secure_asset('images/logo-colored.png') }}" height="58" alt="">
   </a>
   <form action="{{ route('search') }}" method="GET" class="form-inline my-2">
     <input name="search" class="form-control bg-light" type="search" placeholder="Find Events" aria-label="Search"
@@ -213,11 +213,11 @@
       </li>
       <li class="nav-item mr-3">
         <a class="nav-link " href="{{ route('event.create') }}" style="color: #008A69;"> <img
-            src="{{ asset('images/icons/plus.svg') }}" alt="" srcset=""> Create Event</a>
+            src="{{ secure_asset('images/icons/plus.svg') }}" alt="" srcset=""> Create Event</a>
       </li>
       <li class="nav-item">
         <a class="nav-link " href="{{ route('events.near') }}" style="color: #D60B7B; font-weight: bold"> <img
-            src="{{ asset('images/icons/location.svg') }}" alt="" srcset=""> Find events near me</a>
+            src="{{ secure_asset('images/icons/location.svg') }}" alt="" srcset=""> Find events near me</a>
       </li>
     </ul>
   </div>
@@ -227,10 +227,10 @@
 @auth
 <nav class="navbar navbar-expand-lg navbar-light bg-white px-sm-3 px-2">
   <a class="navbar-brand d-none d-md-block" href="/">
-    <img src="{{ asset('images/logo.png') }}" height="58" alt="">
+    <img src="{{ secure_asset('images/logo.png') }}" height="58" alt="">
   </a>
   <a class="navbar-brand d-sm-block d-md-none mr-0" href="/">
-    <img src="{{ asset('images/logo-colored.png') }}" height="58" alt="">
+    <img src="{{ secure_asset('images/logo-colored.png') }}" height="58" alt="">
   </a>
   <form action="{{ route('search') }}" method="GET" class="form-inline my-2">
     <input name="search" class="form-control mr-sm-2 bg-light" type="search" placeholder="Find Events"
@@ -248,29 +248,30 @@
     <ul class="navbar-nav ml-auto">
       <li class="nav-item mr-2 d-flex align-items-center justify-items-center pt-2">
         <a class="nav-link" href="{{ route('events.near') }}">
-          <p class="mb-0"><img src="{{ asset('images/icons/location.svg') }}" alt="" srcset=""></p>
-          <p style="color: #D60B7B;"> <img src="{{ asset('images/icons/location.svg') }}" alt="" srcset=""> Find events
+          <p class="mb-0"><img src="{{ secure_asset('images/icons/location.svg') }}" alt="" srcset=""></p>
+          <p style="color: #D60B7B;"> <img src="{{ secure_asset('images/icons/location.svg') }}" alt="" srcset=""> Find
+            events
             near me</p>
         </a>
       </li>
       <li class="nav-item mr-3 d-flex align-items-center justify-items-center pt-2">
         <a href="{{ route('event.create') }}" class="nav-link">
-          <p class="mb-0"><img src="{{ asset('images/icons/plus.svg') }}" srcset=""></p>
-          <p style="color: #008A69;"><img src="{{ asset('images/icons/plus.svg') }}" srcset=""> Create Event</p>
+          <p class="mb-0"><img src="{{ secure_asset('images/icons/plus.svg') }}" srcset=""></p>
+          <p style="color: #008A69;"><img src="{{ secure_asset('images/icons/plus.svg') }}" srcset=""> Create Event</p>
         </a>
       </li>
       <li class="nav-item mr-3 d-flex align-items-center justify-items-center pt-2">
         <a href="{{ route('user.events') }}" class="nav-link">
-          <p class="mb-0"><img src="{{ asset('images/icons/ticket-black.svg') }}" alt="" srcset="">
+          <p class="mb-0"><img src="{{ secure_asset('images/icons/ticket-black.svg') }}" alt="" srcset="">
           </p>
-          <p class=""><img src="{{ asset('images/icons/ticket-black.svg') }}" alt="" srcset=""> My Events</p>
+          <p class=""><img src="{{ secure_asset('images/icons/ticket-black.svg') }}" alt="" srcset=""> My Events</p>
         </a>
       </li>
       <li class="nav-item mr-3 d-flex align-items-center justify-items-center pt-2">
         <a href="{{ route('user.collections') }}" class="nav-link">
-          <p class="mb-0"><img src="{{ asset('images/icons/bookmarks.svg') }}" alt="" srcset="">
+          <p class="mb-0"><img src="{{ secure_asset('images/icons/bookmarks.svg') }}" alt="" srcset="">
           </p>
-          <p> <img src="{{ asset('images/icons/bookmarks.svg') }}" alt="" srcset=""> Bookmarks</p>
+          <p> <img src="{{ secure_asset('images/icons/bookmarks.svg') }}" alt="" srcset=""> Bookmarks</p>
         </a>
       </li>
       <li class="nav-item dropdown">
@@ -283,11 +284,11 @@
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <a class="dropdown-item py-3" href="{{ route('user.edit') }}"><img
-              src="{{ asset('images/icons/account.svg') }}" class="px-2" alt="" srcset=""> Account
+              src="{{ secure_asset('images/icons/account.svg') }}" class="px-2" alt="" srcset=""> Account
             Settings</a>
           <a class="dropdown-item py-3" href="#"
             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-            <img src="{{ asset('images/icons/logout.svg') }}" class="pr-2" alt="" srcset=""> Logout
+            <img src="{{ secure_asset('images/icons/logout.svg') }}" class="pr-2" alt="" srcset=""> Logout
           </a>
 
           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

@@ -46,7 +46,7 @@
 <div class="bg-light">
     <div class="row">
         <div class="col-md-4 d-sm-none d-none d-md-block">
-            <a href="/"><img src="{{ asset('images/side.svg') }}" alt="" srcset=""></a>
+            <a href="/"><img src="{{ secure_asset('images/side.svg') }}" alt="" srcset=""></a>
         </div>
         <div class="col-md-7">
             <div class="container p-5 mt-5">
@@ -156,9 +156,9 @@
                             <p class="text-center text-sm-left">Or continue with:</p>
                             <p class="text-sm-left text-center">
                                 <a href="{{ route('social.oauth', 'google') }}" class="mr-3 mr-sm-2"><img
-                                        src="{{asset('images/icons/google.svg')}}" alt="" srcset=""></a>
+                                        src="{{secure_asset('images/icons/google.svg')}}" alt="" srcset=""></a>
                                 <a href="{{ route('social.oauth', 'facebook') }}" class="mr-3 mr-sm-2"><img
-                                        src="{{asset('images/icons/facebook.svg')}}" alt="" srcset=""></a>
+                                        src="{{secure_asset('images/icons/facebook.svg')}}" alt="" srcset=""></a>
                             </p>
                         </div>
                     </div>

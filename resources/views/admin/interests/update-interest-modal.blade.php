@@ -22,7 +22,7 @@
           <div class="form-group">
             <label for="">Icon</label>
             <br />
-            <img src="{{asset("images/icons/$interest->icon")}}" alt="{{$interest->name}}">
+            <img src="{{secure_asset(" images/icons/$interest->icon")}}" alt="{{$interest->name}}">
             <br />
             <input type="file" name="icon" class="form-control mb-3">
             @error('icon')
