@@ -158,12 +158,11 @@
                         @if(request()->query('category'))
                         <a href="{{route('index.view',['category' => encrypt($interest->id)])}}"
                             class="nav-link mx-1 my-1 shadow-sm ls-profile-tab  {{ decrypt(request()->query('category')) == $interest->id ? 'active' : 'bg-white'}}">
-                            <img src="{{secure_asset(" images/icons/$interest->icon")}}" alt="" srcset="">
+                            <img src="{{secure_asset("images/icons/$interest->icon")}}" alt="" srcset="">
                             {{$interest->name}}</a>
                         @else
                         <a href="{{route('index.view',['category' => encrypt($interest->id)])}}"
-                            class="nav-link mx-1 my-1 bg-white shadow-sm ls-profile-tab"> <img src="{{secure_asset("
-                                images/icons/$interest->icon")}}" alt="" srcset=""> {{$interest->name}}</a>
+                            class="nav-link mx-1 my-1 bg-white shadow-sm ls-profile-tab"> <img src="{{secure_asset("images/icons/$interest->icon")}}" alt="" srcset=""> {{$interest->name}}</a>
                         @endif
                     </li>
                 </div>
@@ -183,12 +182,11 @@
                     @if(request()->query('category'))
                     <a href="{{route('index.view',['category' => encrypt($interest->id)])}}"
                         class="nav-link mx-1 my-1 shadow-sm ls-profile-tab  {{ decrypt(request()->query('category')) == $interest->id ? 'active' : 'bg-white'}}">
-                        <img src="{{secure_asset(" images/icons/$interest->icon")}}" alt="" srcset="">
+                        <img src="{{secure_asset("images/icons/$interest->icon")}}" alt="" srcset="">
                         {{$interest->name}}</a>
                     @else
                     <a href="{{route('index.view',['category' => encrypt($interest->id)])}}"
-                        class="nav-link mx-1 my-1 bg-white shadow-sm ls-profile-tab"> <img src="{{secure_asset("
-                            images/icons/$interest->icon")}}" alt="" srcset=""> {{$interest->name}}</a>
+                        class="nav-link mx-1 my-1 bg-white shadow-sm ls-profile-tab"> <img src="{{secure_asset("images/icons/$interest->icon")}}" alt="" srcset=""> {{$interest->name}}</a>
                     @endif
                 </li>
                 @endforeach

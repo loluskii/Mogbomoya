@@ -168,7 +168,7 @@
               <input type="checkbox" value="{{encrypt($interest->id)}}" name="interests[]">
               <span class="icon"></span>
               <div class="checkbox-content">
-                <img class="mt-2 img img-fluid" src="{{secure_asset(" images/icons/$interest->icon")}}"
+                <img class="mt-2 img img-fluid" src="{{secure_asset("images/icons/$interest->icon")}}"
                 style="width:45px;
                 height: 45px;">
                 <p class="pt-2" style="font-size: 13px;">{{$interest->name}}</p>
